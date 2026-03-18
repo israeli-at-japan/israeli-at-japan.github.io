@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תכנון מסלול ומידע כללי | ישראלי ביפן</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+        body { font-family: 'Assistant', sans-serif; color: #3e7b73; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+
+        /* תפריט עליון - זהה לעמוד הבית */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: #fff; }
+        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
+        nav ul li:hover { opacity: 0.7; cursor: pointer; }
+        nav ul li a { color: #3e7b73; }
+
+        /* באנר עליון ראשי */
+        .main-banner {
+            height: 400px;
+            /* כאן תחליף בהמשך לתמונה של המקדש שלך */
+            background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        /* שכבה כהה מעל התמונות כדי שהטקסט הלבן יבלוט */
+        .overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .main-banner h1 {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            font-size: 55px;
+            font-weight: 300;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        /* טקסט הסבר אמצעי */
+        .intro-text { text-align: center; padding: 60px 20%; background: #fff; }
+        .intro-text h2 { font-size: 36px; margin-bottom: 20px; font-weight: 300; }
+        .intro-text p { font-size: 24px; font-weight: 300; line-height: 1.5; }
+
+        /* באנרים של הפוסטים (כפתורים ענקיים) */
+        .post-link-banner {
+            display: block; /* הופך את כל האזור ללחיץ */
+            padding: 100px 20px;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: #fff;
+            transition: opacity 0.3s;
+        }
+        .post-link-banner:hover { opacity: 0.9; }
+        .post-link-content { position: relative; z-index: 1; }
+        .post-link-content h2 { font-size: 45px; font-weight: 300; margin-bottom: 15px; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
+        .post-link-content p { font-size: 22px; font-weight: 300; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
+
+        /* אזור יצירת קשר תחתון */
+        .contact-section { text-align: center; padding: 80px 20%; background: #fff; }
+        .contact-section p { font-size: 32px; font-weight: 300; margin-bottom: 40px; line-height: 1.4; }
+        .btn {
+            display: inline-block;
+            background-color: #437a71;
+            color: #fff;
+            padding: 15px 40px;
+            font-size: 20px;
+            border-radius: 3px;
+            transition: background 0.3s;
+        }
+        .btn:hover { background-color: #2e5750; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">ישראלי ביפן</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>Forum</li>
+                <li>תכנון טיול ומידע כללי על יפן</li>
+                <li>טוקיו פוג'י והסביבה</li>
+                <li>האלפים היפניים</li>
+                <li>קיוטו אוסקה ומה שביניהן</li>
+                <li>איילנד הופינג ביפן</li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-banner">
+        <div class="overlay"></div>
+        <h1>תכנון מסלול ומידע כללי על יפן</h1>
+    </div>
+
+    <section class="intro-text">
+        <h2>עושים לכם סדר</h2>
+        <p>אירגנו לכם כאן את כל המידע הלוגיסטי שאתם צריכים לקראת הטיול שלכם ביפן, לחצו על התמונות כדי לקרוא עוד, בסלולר לחצו על הכותרות</p>
+    </section>
+
+    <a href="#" class="post-link-banner" style="background-image: url('https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?auto=format&fit=crop&w=1600&q=80');">
+        <div class="overlay"></div>
+        <div class="post-link-content">
+            <h2>תכנון מסלול</h2>
+            <p>ההמלצות שלנו לכמה ימים להשקיע<br>ואיפה בהתאם לכמות הזמן שלכם ביפן</p>
+        </div>
+    </a>
+
+    <a href="#" class="post-link-banner" style="background-image: url('https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?auto=format&fit=crop&w=1600&q=80');">
+        <div class="overlay"></div>
+        <div class="post-link-content">
+            <h2>יפן - מידע כללי</h2>
+            <p>כל המידע על העונות ביפן, טפסי כניסה<br>ליפן, אפליקציות, סים, התניידות ועוד</p>
+        </div>
+    </a>
+
+    <section class="contact-section">
+        <p>יש לכם שאלה? המלצה על מסעדה<br>שאסור לפספס? או אפילו יעד מיוחד<br>שאף אחד לא שמע עליו? שתפו אותנו<br>בסיפור הדרך שלכם ונשתף אותו כאן</p>
+        <a href="mailto:your-email@example.com" class="btn">Message us</a>
+    </section>
+
+</body>
+</html>
