@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תכנון מסלול | ישראלי ביפן</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+        body { font-family: 'Assistant', sans-serif; color: #3e7b73; line-height: 1.8; background-color: #fafafa; }
+        a { text-decoration: none; color: inherit; }
+
+        /* תפריט עליון */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: #fff; border-bottom: 1px solid #eee; }
+        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
+        nav ul li:hover { opacity: 0.7; cursor: pointer; }
+
+        /* אזור התוכן של הפוסט */
+        .post-container { max-width: 800px; margin: 50px auto; background: #fff; padding: 60px; box-shadow: 0 0 10px rgba(0,0,0,0.02); }
+        
+        .post-header { text-align: center; margin-bottom: 40px; }
+        .post-header h1 { font-size: 45px; font-weight: 300; margin-bottom: 10px; }
+        .post-date { font-size: 14px; color: #888; text-align: left; display: block; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+
+        .post-content { text-align: center; font-size: 18px; }
+        .post-content p { margin-bottom: 20px; }
+        
+        .route-title { text-decoration: underline; font-weight: 600; margin-top: 40px; margin-bottom: 15px; display: inline-block; }
+        .post-content ul { list-style: none; margin-bottom: 40px; }
+        .post-content ul li { margin-bottom: 5px; }
+
+        .post-image { width: 100%; margin: 40px 0; border-radius: 4px; }
+
+        /* אזור פוסטים אחרונים */
+        .recent-posts-container { max-width: 1000px; margin: 60px auto; }
+        .recent-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 0 20px; }
+        .recent-header h3 { font-weight: 300; font-size: 22px; }
+        .recent-header a { font-size: 14px; }
+        
+        .recent-grid { display: flex; gap: 20px; padding: 0 20px; }
+        .recent-card { flex: 1; background: #fff; border: 1px solid #eee; transition: transform 0.2s; }
+        .recent-card:hover { transform: translateY(-3px); }
+        .recent-card img { width: 100%; height: 180px; object-fit: cover; }
+        .recent-card-body { padding: 20px; text-align: center; }
+        .recent-card-body h4 { font-weight: 400; font-size: 18px; margin-bottom: 30px; }
+        
+        /* אזור תגובות בלבד בכרטיסיות */
+        .card-meta { display: flex; justify-content: center; font-size: 14px; color: #888; border-top: 1px solid #eee; padding-top: 15px; }
+
+        /* אזור תגובות (עיצוב בלבד בינתיים) */
+        .comments-section { max-width: 800px; margin: 0 auto 100px auto; background: #fff; padding: 40px; border: 1px solid #eee; }
+        .comments-section h3 { font-weight: 300; font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .comment-box { width: 100%; box-sizing: border-box; border: 1px solid #ddd; padding: 15px; font-family: 'Assistant', sans-serif; font-size: 16px; min-height: 80px; resize: vertical; color: #3e7b73; }
+        .comment-box:focus { outline: none; border-color: #3e7b73; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">ישראלי ביפן</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>Forum</li>
+                <li><a href="general-info.html">תכנון טיול ומידע כללי על יפן</a></li>
+                <li>טוקיו פוג'י והסביבה</li>
+                <li>האלפים היפניים</li>
+                <li>קיוטו אוסקה ומה שביניהן</li>
+                <li>איילנד הופינג ביפן</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="post-container">
+        <div class="post-header">
+            <h1>תכנון מסלול</h1>
+            <span class="post-date">Updated: Oct 27, 2024</span>
+        </div>
+
+        <div class="post-content">
+            <p>חשוב לציין שבנינו את המסלול על בסיס החוויות שלנו בחודשים של מאי-יוני. פחות מומלץ להגיע למטסומוטו וניקו בחודשי החורף (נובמבר עד אפריל) מכיוון שמושלג והמזג אוויר לא מתאים לטיולי הליכה בטבע.<br>
+            בנוסף המסלול האלפיני מומלץ במיוחד לתקופת האביב(אפריל-יולי, תאריכים מדויקים משתנים משנה לשנה)</p>
+
+            <span class="route-title">המסלול שלנו (חודש-שלושה שבועות):</span>
+            <ul>
+                <li>נחיתה בטוקיו</li>
+                <li>טוקיו 5 ימים (4 טוקיו, 1 קאמאקורה, להוסיף עוד יום אם רוצים גם דיסני)</li>
+                <li>ניקו 2-3 ימים</li>
+                <li>פוג'י (קאווגוצ'יקו) 2-3 ימים</li>
+                <li>מטסומוטו 3 ימים (עמק הקיסו וקאמיקוצ'י)</li>
+                <li>קאנאזווה 3 ימים (שירקאווה גו והמסלול האלפיני)</li>
+                <li>קיוטו 3 ימים (3 קיוטו)</li>
+                <li>טיולי יום מקיוטו/אוסקה ולהוסיף שם עוד לילות- נארה, אוג'י. 2 ימים.</li>
+                <li>אוסקה 2-3 ימים (טיול יום לקובה)</li>
+                <li>הירושימה 2 ימים (1 הירושימה, 1 מיאג'ימה)</li>
+                <li>אוקיאמה 2 לילות 1 ימים (נאושימה)</li>
+                <li>טיסה מאוסקה</li>
+            </ul>
+
+            <span class="route-title">מפה של המסלול טיול שלנו:</span>
+            <img src="map-image.jpg" alt="מפת המסלול" class="post-image">
+
+            <span class="route-title">מסלול לשבועיים אופציה 1- המסלול הקלאסי</span>
+            <ul>
+                <li>טוקיו 7 ימים (5 טוקיו, 1 קאמאקורה, 1 פוג'י)</li>
+                <li>קיוטו 4 ימים</li>
+                <li>אוסקה 3 ימים (1 נארה, 2 אוסקה)</li>
+            </ul>
+
+            <span class="route-title">מסלול לשבועיים אופציה 2- לאוהבי הטבע</span>
+            <ul>
+                <li>טוקיו 5 ימים (3 טוקיו, 1 קאמאקורה, 1 פוג'י)</li>
+                <li>טויאמה 3 ימים (1 קמיקוצ'י, 1 מסלול אלפיני)</li>
+                <li>קאנאזווה 2 ימים (1 קאנזווה, 1 שירקאווה גו)</li>
+                <li>קיוטו 4 ימים (3 קיוטו, 1 נארה ואוג'י, לצאת לאוסקה בערב אחד או שניים)</li>
+            </ul>
+
+            <span class="route-title">מסלול לשבועיים אופציה 3- קלאסי משולב עם טבע</span>
+            <ul>
+                <li>טוקיו 4 ימים (3 טוקיו, 1 קאמאקורה)</li>
+                <li>ניקו 2 ימים</li>
+                <li>פוג'י 2 ימים</li>
+                <li>קיוטו 4 ימים (3 קיוטו, 1 נארה ואוג'י)</li>
+                <li>אוסקה 2 ימים (אופציה לטיול יום בקובה)</li>
+            </ul>
+        </div>
+    </main>
+
+    <section class="recent-posts-container">
+        <div class="recent-header">
+            <h3>Recent Posts</h3>
+            <a href="#">See All</a>
+        </div>
+        <div class="recent-grid">
+            
+            <a href="#" class="recent-card">
+                <img src="kyoto.jpeg" alt="קיוטו">
+                <div class="recent-card-body">
+                    <h4>קיוטו</h4>
+                    <div class="card-meta">
+                        <span>💬 0 תגובות</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="recent-card">
+                <img src="torii-gates.jpg" alt="יפן - מידע כללי">
+                <div class="recent-card-body">
+                    <h4>יפן - מידע כללי</h4>
+                    <div class="card-meta">
+                        <span>💬 0 תגובות</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="recent-card">
+                <img src="tokyo.jpeg" alt="טוקיו - מידע כללי">
+                <div class="recent-card-body">
+                    <h4>טוקיו - מידע כללי</h4>
+                    <div class="card-meta">
+                        <span>💬 0 תגובות</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <section class="comments-section">
+        <h3>Comments</h3>
+        <textarea class="comment-box" placeholder="Write a comment..."></textarea>
+    </section>
+
+</body>
+</html>
