@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>יפן - מידע כללי | ישראלי ביפן</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+        body { font-family: 'Assistant', sans-serif; color: #3e7b73; line-height: 1.8; background-color: #fafafa; }
+        a { text-decoration: none; color: inherit; }
+
+        /* תפריט עליון */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: #fff; border-bottom: 1px solid #eee; }
+        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
+        nav ul li:hover { opacity: 0.7; cursor: pointer; }
+
+        /* אזור התוכן של הפוסט */
+        .post-container { max-width: 800px; margin: 50px auto; background: #fff; padding: 60px; box-shadow: 0 0 10px rgba(0,0,0,0.02); }
+        
+        .post-header { text-align: center; margin-bottom: 40px; }
+        .post-header h1 { font-size: 45px; font-weight: 300; margin-bottom: 10px; }
+        .post-meta { font-size: 14px; color: #888; margin-bottom: 5px; }
+        .post-date { font-size: 14px; color: #888; text-align: left; display: block; margin-bottom: 30px; padding-bottom: 20px; }
+
+        .post-content { text-align: right; font-size: 18px; }
+        .post-content p { margin-bottom: 20px; }
+        
+        /* תתי כותרות (עם קו מפריד מעליהן) */
+        .section-title { 
+            font-size: 24px; 
+            font-weight: 600; 
+            margin-top: 50px; 
+            padding-top: 30px; 
+            margin-bottom: 15px; 
+            color: #2e5750; 
+            border-top: 1px solid #c4e0d7; 
+        }
+        
+        /* ביטול הקו המפריד רק עבור הכותרת הראשונה בפוסט */
+        .post-content .section-title:first-of-type {
+            border-top: none;
+            margin-top: 10px;
+            padding-top: 0;
+        }
+
+        /* תתי-תתי כותרות (בלי דגש, עם קו תחתון) */
+        .sub-title { 
+            font-weight: 400; 
+            text-decoration: underline; 
+            margin-top: 25px; 
+            margin-bottom: 5px; 
+            display: inline-block; 
+            font-size: 20px;
+        }
+        
+        .post-content a.content-link { color: #437a71; text-decoration: underline; }
+        .post-content a.content-link:hover { color: #2e5750; }
+        
+        .map-link { display: block; margin-bottom: 10px; color: #437a71; text-decoration: underline; }
+
+        /* אזור פוסטים אחרונים */
+        .recent-posts-container { max-width: 1000px; margin: 60px auto; }
+        .recent-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 0 20px; }
+        .recent-header h3 { font-weight: 300; font-size: 22px; }
+        .recent-header a { font-size: 14px; }
+        
+        .recent-grid { display: flex; gap: 20px; padding: 0 20px; }
+        .recent-card { flex: 1; background: #fff; border: 1px solid #eee; transition: transform 0.2s; }
+        .recent-card:hover { transform: translateY(-3px); }
+        .recent-card img { width: 100%; height: 180px; object-fit: cover; }
+        .recent-card-body { padding: 20px; text-align: center; }
+        .recent-card-body h4 { font-weight: 400; font-size: 18px; margin-bottom: 30px; }
+        .card-meta { display: flex; justify-content: center; font-size: 14px; color: #888; border-top: 1px solid #eee; padding-top: 15px; }
+
+        /* אזור תגובות */
+        .comments-section { max-width: 800px; margin: 0 auto 100px auto; background: #fff; padding: 40px; border: 1px solid #eee; }
+        .comments-section h3 { font-weight: 300; font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .comment-box { width: 100%; box-sizing: border-box; border: 1px solid #ddd; padding: 15px; font-family: 'Assistant', sans-serif; font-size: 16px; min-height: 80px; resize: vertical; color: #3e7b73; }
+        .comment-box:focus { outline: none; border-color: #3e7b73; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">ישראלי ביפן</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="forum.html">Forum</a></li>
+                <li><a href="general-info.html">תכנון טיול ומידע כללי על יפן</a></li>
+                <li><a href="tokyo-fuji.html">טוקיו פוג'י והסביבה</a></li>
+                <li><a href="japan-alps.html">האלפים היפניים</a></li>
+                <li><a href="kyoto-osaka.html">קיוטו אוסקה ומה שביניהן</a></li>
+                <li><a href="island-hopping.html">איילנד הופינג ביפן</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="post-container">
+        <div class="post-header">
+            <h1>יפן - מידע כללי</h1>
+            <div class="post-meta">omri150601 | Jun 23, 2024 | 4 min read</div>
+            <span class="post-date">Updated: Aug 25, 2024</span>
+        </div>
+
+        <div class="post-content">
+            
+            <h2 class="section-title">העונות ביפן</h2>
+            <p>בעיקרון ביפן או שחם, או שקר, או שיש המון תיירים, אנחנו הגענו ממש אחרי סוף פריחת הדובדבן כדי להימנע מההמונים ומעליית המחירים שמגיעה איתם אבל בסופו של דבר יפן תמיד יפה ומרשימה אז העיקר שתגיעו😁</p>
+            <p><strong>דצמבר-מרץ:</strong> קר מאוד ומושלג בחלק מהמקומות, מושלם לסקי באי הצפוני הוקאידו.</p>
+            <p><strong>אפריל-יוני:</strong> אביב, לפעמים גשום, לפעמים שמשי, לפעמים קר ולעיתים חם, שבועיים מהתקופה הזו כוללת את פריחת הדובדבן שהיא עונה יקרה מאוד ומלאה בתיירים.</p>
+            <p><strong>יולי-ספטמבר:</strong> חם מאוד וגשום, יש המון פסטיבלים בחודשי הקיץ.</p>
+            <p><strong>אוקטובר-נובמבר:</strong> סתיו, השלכת מגיעה, מזג אוויר דומה לאביב וכמובן שהמון תיירים.</p>
+
+            <h2 class="section-title">איזה טפסים להכין מראש והאם צריך ויזה?</h2>
+            <p>בהגעה ליפן מקבלים אשרת כניסה ל90 ימים ובעיקרון לא צריך לעשות כלום לפני, כן יש אופציה למלא טופס מסויים מראש וזה יכול לחסוך זמן בשדה אז אם אתם מתכננים לעלות על רכבת אחרונה מהשדה למרכז(איזור 00 בלילה) שווה לעשות את זה. לנו לא בדקו כרטיסי יציאה מהמדינה אבל בעיקון בודקים.<br>
+            קישור לטופס: <a href="https://www.vjw.digital.go.jp/main/#/vjwplo001" target="_blank" class="content-link">https://www.vjw.digital.go.jp/main/#/vjwplo001</a></p>
+
+            <h2 class="section-title">איפה נוחתים?</h2>
+            <p>שדות התעופה המרכזיים הם בטוקיו ואוסקה ואנחנו ממליצים לטוס הלוך לאוסקה וחזור מטוקיו (או להפך) וכך לחסוך את הנסיעה היקרה חזרה ליעד שכבר הייתם בו.</p>
+
+            <h2 class="section-title">טיסה בגולדן ויק(חג של היפנים באזור תחילת מאי)</h2>
+            <p>אם במקרה אתם מגיעים בגולדן וויק והלחיצו אתכם שזה החג שלהם והכל יהיה עמוס אז אני כאן לספר לכם שזה לא כזה עמוס והיה ממש אחלה ואם לא היינו יודעים שחג לא היינו מרגישים שום דבר חריג.<br>
+            חשוב לציין שאנחנו היינו בטוקיו במהלך כל הגולדן ויק ויכול להיות שבשאר יפן מרגישים את החג.</p>
+
+            <h2 class="section-title">טיפים כלליים</h2>
+            
+            <span class="sub-title">מקדשים</span>
+            <p>כל המקדשים נסגרים סביבות ארבע חמש אז אם יש מקדש בתכנון שלכם תגיעו לפני, אלא אם כן המוזה שלכם היא לראות אותו בלילה</p>
+            
+            <span class="sub-title">מסעדות</span>
+            <p>כל המסעדות מפסיקות להכניס אנשים בערך 45 דקות לפני שעת הסגירה הכתובה בגוגל מפס, לכן מומלץ להגיע שעה לפני הסגירה. שימו לב שבכללי מסעדות נסגרות מוקדם</p>
+
+            <span class="sub-title">לוקרים</span>
+            <p>כמעט בכל תחנת רכבת תראו לוקרים בהם תוכלו להשאיר את המזוודות והתיקים שלכם בתשלום, פיתרון מאוד נוח לימים של מעברים. ברוב המקומות תוכלו להשאיר את התיקים עד שלושה ימים ותשלמו את ההפרש על הזמן הנוסף כשתגיעו לאסוף את התיקים, אחרי שלושה ימים יפנו לכם את התיקים ובכללי עדיף לשאול מישהו שעובד בתחנה לכמה זמן הלוקר שמור.</p>
+
+            <span class="sub-title">לוקר לטווח זמן ארוך</span>
+            <p>אם אתם צריכים להשאיר משהו בלוקר לתקופה תחפשו בשדה סניף של abc jal, יעלה בערך 35₪ ליום</p>
+
+            <h2 class="section-title">מזומן או אשראי?</h2>
+            <p>הכי משתלם כלכלית להוציא יין(yen) בצ׳יינג׳ בארץ מכיוון שהמטבע מוכר על ידי בנק ישראל וככה תעקפו את ההמרה הכפולה.<br>
+            אנחנו השתמשנו רק במזומן אבל אם אתם מסתייגים ממזומן ומעדיפים אשראי אז בערים המרכזיות רוב המקומות יקבלו גם אשראי, בכל מקרה שווה להוציא מזומן למקרה שתבקרו במסעדה שלא מקבלת אשראי ולקראת סוף הטיול תעברו להשתמש במזומן שנשאר לכם.<br>
+            יש כספומטים בכל סופרמרקט וכולם עם אותה העמלה.<br>
+            בחלק מהמסעדות אפשר גם להשתמש בSuica- עוד מידע על הסוויקה בהתניידות.</p>
+
+            <h2 class="section-title">אי סים, סים מקומי או חבילה מהארץ?</h2>
+            <p>האופציה הזולה ביותר היא אי סים דרך Airalo, קוד הנחה של 3$- MRI4785(הקוד עובד לשני הצדדים וגם אני אקבל מזה 3$). סים מקומי לחודש יעלה מעט יותר מ100₪ וחבילות בארץ זה תלוי בחברה אבל המחירים באזור ה250₪ ומעלה.<br>
+            חיסרון מרכזי של Airalo- לא מקבלים הודעות SMS, התקנת האי סים מעט מסובכת בפעם הראשונה.</p>
+
+            <h2 class="section-title">אפליקציות מומלצות</h2>
+            <p><strong>Google maps</strong>- האפליקציה הקלאסית לכל טיול בחול עובד מצויין עם קווי רכבת ומראה מחירים של נסיעות</p>
+            <p><strong>Google translate</strong>- היפניים בקושי מדברים אנגלית ואחת דרכי התקשורת המרכזיות היא גוגל תרגם, אפשר להשתמש באפליקציה דרך המצלמה כדי לתרגם שלטים ותפריטים</p>
+            <p><strong>Mymizu</strong>- מראה איפה יש מקומות למלא מים, ככה אפשר להסתובב עם בקבוק חצי ליטר במהלך היום וכשנגמר לפתוח את האפליקציה, במקומות מרכזיים כמו טוקיו יש איפה למלא מים כמעט כל 500 מטרים</p>
+            <p><strong>Klook</strong>- אפליקציה לקניית כרטיסי רכבת ספציפיים ובעיקר אטרציות שונות</p>
+
+            <h2 class="section-title">כביסה</h2>
+            <p>את הכביסות שלנו עשינו במלונות שישנו בהם ובהם היו מכונות כביסה בהפעלה עצמאית. שימו לב שלפעמים המייבשים יחסית חלשים ודורשים באיזור ה3 שעות עד שהכביסה מתייבשת. לרוב גם כל המייבשים תפוסים אז לתרמילאים שישנים בתקציב שווה להביא חבל לתלות את הכביסה בחדר כי לא בכל המלונות יש מתלי כביסה.</p>
+
+            <h2 class="section-title">אם קונים אייפון ביפן המצלמה תמיד תעשה רעש?</h2>
+            <p>האייפון כמו רוב הדברים ביפן מאוד זול, יש לזה קאצ׳ קטן, אם תקנו אייפון 13 ומטה המצלמה שלכם תמיד תעשה רעש ולא תוכלו להשתיק אותה. מאייפון 14 ומעלה המצלמה תמשיך לעשות רעש גם כשהטלפון על שקט רק בתוך יפן, ואחרי שתצאו מהמדינה תוכלו להשתיק את המצלמה.</p>
+
+            <h2 class="section-title">התניידות</h2>
+            
+            <span class="sub-title">Suica</span>
+            <p>הרב הקו היפני או בשמו Suica הוא נוח במיוחד למשתמשי האייפון, מומלץ להוריד את הכרטיס Suica לאפל wallet ולהעלות אליו כסף. בכניסה לכל תחנת מטרו או אוטובוס תוכלו להעביר את הטלפון שלכם במקום לקנות כרטיס, שימו לב שהכרטיס עובד רק בערים מרכזיות.<br>
+            למשתמשי אנדרואיד אל דאגה, פשוט תצטרכו להוציא כרטיס suica פיזי בשדה (לדעתי יש גם אופציה בחלק מהתחנות בעיר אבל אנחנו עם אייפון אז אני לא בטוח), את הכרטיס תוכלו להטעין בכל תחנת מטרו והוא עובד בדיוק כמו הכרטיס הדיגיטלי שבאייפון.</p>
+
+            <span class="sub-title">JR PASS</span>
+            <p>ביפן חברת הרכבות הגדולה נקראת JR, תוכלו לקנות כרטיס מיוחד שיאפשר לכם נסיעה חופשית בקווים הפועלים על ידם, שהם בדרך כלל קווים בין עירוניים והשינקנסן, אך לא כוללים את המטרו.<br>
+            יש סוגים רבים של כרטיסים, הכוללים אזורים ספציפיים ומספר ימים שונה בין איזור לאיזור. בשנים האחרונות הפאס התייקר משמעותית והוא לא משתלם כמעט אף פעם.<br>
+            בגלל נסיעות מרובות בין קיוטו להירושימה וחזרה לאוסקה בזמן קצר הפאס הספציפי לאיזור הזה יצא לנו משתלם, למרות שאם יש לכם זמן ולא מפריע לכם נסיעות ארוכות, כנראה שעדיין יהיה יותר זול לעשות את המעברים באוטובוסים.<br>
+            אתר שבו אפשר לבדוק האם הפאס משתלם- <a href="https://www.japan-guide.com/railpass/" target="_blank" class="content-link">https://www.japan-guide.com/railpass/</a></p>
+
+            <span class="sub-title">אוטובוסים</span>
+            <p>מעברים בין ערים גדולות ורחוקות, כמו קאנזווה לאוסקה או אוסקה להירושימה אפשר לבצע באוטובוסים שיקחו מספר שעות ובמחיר יחסית נוח, אז אם אתם מנסים לחסוך זאת בהחלט אופציה שווה.<br>
+            אתר לקניית כרטיסים לאוטובוס- <a href="https://willerexpress.com/en/" target="_blank" class="content-link">https://willerexpress.com/en/</a></p>
+
+            <span class="sub-title">השכרת רכב</span>
+            <p>השכרת רכב ביפן יחסית יקרה לכן אנחנו לא השכרנו, ולדעתנו זה ממש לא חובה באי הונשו (Honshu) - האי הגדול ביותר ביפן, עליו ממוקמת גם העיר טוקיו. אבל אם אתם ממש מסתייגים מתחבצ אז רכב כן יכול להיות נחמד כשנוסעים לאזור פוג’י ולאלפים היפניים.<br>
+            באי הוקאידו הבנו שהשכרת רכב היא חובה אבל לצערנו בסוף לא הגענו לשם ואין לנו מידע נוסף.</p>
+
+            <h2 class="section-title">המלצות בגוגל מפות</h2>
+            <p>ככה תמיד תראו מה האטרקציות הקרובות ואיזה מסעדות שוות יש באיזור, חשוב לציין ששמרנו הרבה מסעדות שלא הספקנו להיות בהן אבל כן קיבלנו עליהן המלצות אז כנראה שלא תיפלו😁</p>
+            
+            <a href="#" target="_blank" class="map-link">המלצות לטוקיו ניקו וקמקורה</a>
+            <p>לקאווגוצ׳יקו אין לנו מפה אבל די קל למצוא את Fuji-Q ורואים את פוג׳י מכל מקום</p>
+            <a href="#" target="_blank" class="map-link">המלצות למצומוטו וקאנזווה</a>
+            <a href="#" target="_blank" class="map-link">המלצות לקיוטו אוסקה נארה אוג׳י וקובה</a>
+            <a href="#" target="_blank" class="map-link">המלצות להירושימה מיאג׳ימה אוקיאמה ונאושימה</a>
+        </div>
+    </main>
+
+    <section class="recent-posts-container">
+        <div class="recent-header">
+            <h3>Recent Posts</h3>
+            <a href="general-info.html">See All</a>
+        </div>
+        <div class="recent-grid">
+            
+            <a href="route-planning.html" class="recent-card">
+                <img src="map1.AVIF" alt="תכנון מסלול">
+                <div class="recent-card-body">
+                    <h4>תכנון מסלול</h4>
+                    <div class="card-meta">
+                        <span>💬 0 תגובות</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="tokyo.html" class="recent-card">
+                <img src="tokyo.jpeg" alt="טוקיו - מידע כללי">
+                <div class="recent-card-body">
+                    <h4>טוקיו - מידע כללי</h4>
+                    <div class="card-meta">
+                        <span>💬 0 תגובות</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="kyoto.html" class="recent-card">
+                <img src="kyoto.jpg" alt="קיוטו">
+                <div class="recent-card-body">
+                    <h4>קיוטו</h4>
+                    <div class="card-meta">
+                        <span>💬 0 תגובות</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <section class="comments-section">
+        <h3>Comments</h3>
+        <textarea class="comment-box" placeholder="Write a comment..."></textarea>
+    </section>
+
+</body>
+</html>
