@@ -77,6 +77,30 @@
             transition: background 0.3s;
         }
         .btn:hover { background-color: #2e5750; }
+
+        /* =========================================
+           הגדרות עיצוב מיוחדות למסכי טלפון בלבד
+           ========================================= */
+        @media (max-width: 768px) {
+            
+            /* סידור התפריט העליון שייכנס במסך */
+            header { flex-direction: column; padding: 15px; text-align: center; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
+
+            /* הפיכת אזור הפתיחה (Hero) מ"צד בצד" ל"אחד מתחת לשני" */
+            .hero { flex-direction: column; padding: 40px 5%; text-align: center; gap: 30px; }
+            .hero-text h1 { font-size: 38px; } /* הקטנת הכותרת הענקית */
+            .hero-text p { font-size: 18px; }
+
+            /* הקטנת הרווחים בחלק האמצעי */
+            .middle-text { padding: 40px 10%; }
+            .middle-text h2 { font-size: 28px; }
+            .middle-text p { font-size: 18px; }
+
+            /* כרטיסיות הקטגוריות יתפסו את כל רוחב המסך בטלפון */
+            .card { width: 100%; margin-bottom: 20px; }
+            .grid { gap: 15px; }
+        }
     </style>
 </head>
 <body>
