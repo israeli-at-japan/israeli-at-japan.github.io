@@ -1,1 +1,155 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>קיוטו אוסקה ומה שביניהן | ישראלי ביפן</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* איפוס והגדרות בסיס */
+        body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+        body { font-family: 'Assistant', sans-serif; color: #3e7b73; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
 
+        /* תפריט עליון */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: #fff; }
+        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
+        nav ul li:hover { opacity: 0.7; cursor: pointer; }
+        nav ul li a { color: #3e7b73; }
+
+        /* באנר עליון ראשי */
+        .main-banner {
+            height: 400px;
+            /* תזכורת: להחליף לתמונה האמיתית של פביליון הזהב */
+            background-image: url('images/kyoto1.JPG');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .main-banner h1 {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            font-size: 55px;
+            font-weight: 300;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        /* טקסט הסבר אמצעי */
+        .intro-text { text-align: center; padding: 60px 20%; background: #fff; }
+        .intro-text p { font-size: 24px; font-weight: 300; line-height: 1.6; }
+
+        /* באנרים של הפוסטים - הוגדל פי 1.2 בערך ע"י שינוי ה-padding ל-130px */
+        .post-link-banner {
+            display: block;
+            padding: 130px 20px; 
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: #fff;
+            transition: opacity 0.3s;
+        }
+        .post-link-banner:hover { opacity: 0.9; }
+        .post-link-content { position: relative; z-index: 1; }
+        .post-link-content h2 { font-size: 45px; font-weight: 300; margin-bottom: 15px; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
+        .post-link-content p { font-size: 22px; font-weight: 300; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); line-height: 1.5; }
+
+        /* אזור צור קשר תחתון */
+        .contact-section { text-align: center; padding: 80px 20%; background: #fff; }
+        .contact-section p { font-size: 32px; font-weight: 300; margin-bottom: 40px; line-height: 1.4; }
+        .btn {
+            display: inline-block;
+            background-color: #437a71;
+            color: #fff;
+            padding: 15px 40px;
+            font-size: 20px;
+            border-radius: 3px;
+            transition: background 0.3s;
+        }
+        .btn:hover { background-color: #2e5750; }
+
+        /* רספונסיביות לטלפון */
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 15px; text-align: center; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
+            .intro-text { padding: 40px 10%; }
+            .intro-text p { font-size: 18px; }
+            
+            /* בטלפון נקטין מעט את הגובה כדי שלא יתפוס מסך שלם לכל תמונה */
+            .post-link-banner { padding: 90px 20px; }
+            .post-link-content h2 { font-size: 32px; }
+            .post-link-content p { font-size: 18px; }
+            
+            .contact-section { padding: 50px 10%; }
+            .contact-section p { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">ישראלי ביפן</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="forum.html">Forum</a></li>
+                <li><a href="general-info.html">תכנון טיול ומידע כללי על יפן</a></li>
+                <li><a href="tokyo-fuji.html">טוקיו פוג'י והסביבה</a></li>
+                <li><a href="alps.html">האלפים היפניים</a></li>
+                <li><a href="kyoto-osaka.html" style="opacity: 0.5;">קיוטו אוסקה ומה שביניהן</a></li>
+                <li><a href="island-hopping.html">איילנד הופינג ביפן</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-banner">
+        <div class="overlay"></div>
+        <h1>קיוטו אוסקה ומה שביניהן</h1>
+    </div>
+
+    <section class="intro-text">
+        <p>אירגנו לכם כאן את הפוסטים על קיוטו, אוסקה ועל טיולי יום<br>מומלצים, לחצו על התמונות השונות כדי לקרוא עוד</p>
+    </section>
+
+    <a href="kyoto-post.html" class="post-link-banner" style="background-image: url('images/kyoto.JPG');">
+        <div class="overlay"></div>
+        <div class="post-link-content">
+            <h2>קיוטו</h2>
+            <p>המלצות ללינה, אוכל, אטרקציות<br>ותכנון 3 ימים מושלמים בקיוטו</p>
+        </div>
+    </a>
+
+    <a href="uji-nara-post.html" class="post-link-banner" style="background-image: url('images/nara.JPG');">
+        <div class="overlay"></div>
+        <div class="post-link-content">
+            <h2>אוג'י ונארה</h2>
+            <p>המלצות לטיול יום באוג'י ובנארה<br>כשני ימי טיול נפרדים או כאחד</p>
+        </div>
+    </a>
+
+    <a href="osaka-kobe-post.html" class="post-link-banner" style="background-image: url('images/osaka1.JPG');">
+        <div class="overlay"></div>
+        <div class="post-link-content">
+            <h2>אוסקה וקובה</h2>
+            <p>המלצות ללינה אוכל ואטרקציות ביום<br>ובלילה באוסקה וטיול יום בקובה</p>
+        </div>
+    </a>
+
+    <section class="contact-section">
+        <p>יש לכם שאלה? המלצה על מסעדה<br>שאסור לפספס? או אפילו יעד מיוחד<br>שאף אחד לא שמע עליו? שתפו אותנו<br>בסיפור הדרך שלכם ונשתף אותו כאן</p>
+        <a href="mailto:omri150601@gmail.com" class="btn">Message us</a>
+    </section>
+
+</body>
+</html>
