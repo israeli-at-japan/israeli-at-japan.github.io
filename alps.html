@@ -6,22 +6,21 @@
     <title>האלפים היפניים | ישראלי ביפן</title>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* איפוס והגדרות בסיס */
         body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
         body { font-family: 'Assistant', sans-serif; color: #3e7b73; line-height: 1.6; }
         a { text-decoration: none; color: inherit; }
 
-        /* תפריט עליון - זהה לכל האתר */
+        /* תפריט עליון - זהה לעמוד הבית */
         header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: #fff; }
         .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
         nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
-        nav ul li a { color: #3e7b73; transition: opacity 0.3s; }
-        nav ul li a:hover { opacity: 0.7; }
+        nav ul li:hover { opacity: 0.7; cursor: pointer; }
+        nav ul li a { color: #3e7b73; }
 
-        /* באנר עליון ראשי של האלפים */
+        /* באנר עליון ראשי */
         .main-banner {
-            height: 450px;
-            /* כאן תחליף בהמשך לתמונה של האלפים היפניים שלך (שם ה-WebP) */
+            height: 400px;
+            /* כאן תחליף בהמשך לתמונה של המקדש שלך */
             background-image: url('images/kamikuchi.JPG');
             background-size: cover;
             background-position: center;
@@ -31,66 +30,50 @@
             position: relative;
         }
         
-        .overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.3); }
+        /* שכבה כהה מעל התמונות כדי שהטקסט הלבן יבלוט */
+        .overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
 
         .main-banner h1 {
-            position: relative; z-index: 1; color: #fff;
-            font-size: 60px; font-weight: 300;
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            font-size: 55px;
+            font-weight: 300;
             text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
         }
 
         /* טקסט הסבר אמצעי */
-        .intro-text { text-align: center; padding: 70px 20%; background: #fff; }
-        .intro-text h2 { font-size: 40px; margin-bottom: 25px; font-weight: 300; }
-        .intro-text p { font-size: 24px; font-weight: 300; line-height: 1.5; color: #437a71; }
+        .intro-text { text-align: center; padding: 60px 20%; background: #fff; }
+        .intro-text h2 { font-size: 36px; margin-bottom: 20px; font-weight: 300; }
+        .intro-text p { font-size: 24px; font-weight: 300; line-height: 1.5; }
 
-        /* פוסט ענק לחיץ (יער ההתאבדויות) */
-        .large-post-link {
-            display: block;
-            padding: 120px 20px;
+        /* באנרים של הפוסטים (כפתורים ענקיים) */
+        .post-link-banner {
+            display: block; /* הופך את כל האזור ללחיץ */
+            padding: 100px 20px;
             text-align: center;
-            /* כאן תחליף בהמשך לתמונה של היער שלך */
-            background-image: url('images/placeholder-forest.jpg');
             background-size: cover;
             background-position: center;
             position: relative;
             color: #fff;
             transition: opacity 0.3s;
         }
-        .large-post-link:hover { opacity: 0.9; }
-        .large-post-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
-        .large-post-content h2 { font-size: 50px; font-weight: 300; margin-bottom: 20px; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
-        .large-post-content p { font-size: 24px; font-weight: 300; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); line-height: 1.4; }
+        .post-link-banner:hover { opacity: 0.9; }
+        .post-link-content { position: relative; z-index: 1; }
+        .post-link-content h2 { font-size: 45px; font-weight: 300; margin-bottom: 15px; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
+        .post-link-content p { font-size: 22px; font-weight: 300; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
 
-        /* אזור גריד של הפוסטים */
-        .posts-grid { padding: 80px 10%; background: #fff; }
-        .grid-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
-        
-        /* כרטיסייה (מתאימה ל-2 פוסטים בשורה במחשב) */
-        .post-card {
-            flex: 1 1 calc(45% - 40px); /* תופס בערך חצי רוחב מינוס הרווח */
-            max-width: calc(50% - 20px);
-            background: #fff;
-            text-align: right;
-            border-radius: 4px;
-            overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: block;
-        }
-        .post-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .post-card img { width: 100%; height: 350px; object-fit: cover; }
-        .post-card-content { padding: 30px; }
-        .post-card h3 { font-size: 26px; font-weight: 400; color: #3e7b73; margin-bottom: 15px; }
-        .post-card p { font-size: 18px; color: #437a71; font-weight: 300; line-height: 1.6; }
-
-        /* אזור יצירת קשר תחתון - משוכפל מהעמוד הקודם */
-        .contact-section { text-align: center; padding: 100px 20%; background: #fff; }
-        .contact-section p { font-size: 32px; font-weight: 300; margin-bottom: 50px; line-height: 1.4; color: #3e7b73; }
+        /* אזור יצירת קשר תחתון */
+        .contact-section { text-align: center; padding: 80px 20%; background: #fff; }
+        .contact-section p { font-size: 32px; font-weight: 300; margin-bottom: 40px; line-height: 1.4; }
         .btn {
             display: inline-block;
             background-color: #437a71;
             color: #fff;
-            padding: 18px 50px;
+            padding: 15px 40px;
             font-size: 20px;
             border-radius: 3px;
             transition: background 0.3s;
@@ -98,44 +81,27 @@
         .btn:hover { background-color: #2e5750; }
 
         /* =========================================
-           הגדרות עיצוב מיוחדות למסכי טלפון (רספונסיבי)
+           הגדרות עיצוב מיוחדות למסכי טלפון בלבד
            ========================================= */
         @media (max-width: 768px) {
             
-            /* תפריט הופך לטור */
+            /* סידור התפריט העליון שייכנס במסך */
             header { flex-direction: column; padding: 15px; text-align: center; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
 
-            /* הקטנת באנר ראשי */
-            .main-banner { height: 250px; }
-            .main-banner h1 { font-size: 38px; }
+            /* הפיכת אזור הפתיחה (Hero) מ"צד בצד" ל"אחד מתחת לשני" */
+            .hero { flex-direction: column; padding: 40px 5%; text-align: center; gap: 30px; }
+            .hero-text h1 { font-size: 38px; } /* הקטנת הכותרת הענקית */
+            .hero-text p { font-size: 18px; }
 
-            /* הקטנת פונטים וריווחים בטקסט האמצעי */
-            .intro-text { padding: 40px 10%; }
-            .intro-text h2 { font-size: 28px; }
-            .intro-text p { font-size: 18px; }
+            /* הקטנת הרווחים בחלק האמצעי */
+            .middle-text { padding: 40px 10%; }
+            .middle-text h2 { font-size: 28px; }
+            .middle-text p { font-size: 18px; }
 
-            /* הקטנת באנר פוסט ענק */
-            .large-post-link { padding: 60px 20px; }
-            .large-post-content h2 { font-size: 32px; }
-            .large-post-content p { font-size: 18px; }
-
-            /* גריד הופך לטור אחד */
-            .posts-grid { padding: 40px 5%; }
-            .post-card {
-                flex: 1 1 100%; /* תופס את כל הרוחב */
-                max-width: 100%;
-                margin-bottom: 20px;
-            }
-            .post-card img { height: 200px; } /* תמונה נמוכה יותר בנייד */
-            .post-card-content { padding: 20px; }
-            .post-card h3 { font-size: 22px; }
-            .post-card p { font-size: 16px; }
-
-            /* הקטנת פונטים באזור צור קשר */
-            .contact-section { padding: 60px 10%; }
-            .contact-section p { font-size: 24px; }
-            .btn { padding: 15px 40px; font-size: 18px; }
+            /* כרטיסיות הקטגוריות יתפסו את כל רוחב המסך בטלפון */
+            .card { width: 100%; margin-bottom: 20px; }
+            .grid { gap: 15px; }
         }
     </style>
 </head>
@@ -146,12 +112,12 @@
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#">Forum</a></li>
-                <li><a href="general-info.html">תכנון טיול ומידע כללי</a></li>
-                <li><a href="#">טוקיו פוג'י והסביבה</a></li>
-                <li><a href="alps.html" style="opacity: 0.5;">האלפים היפניים</a></li>
-                <li><a href="#">קיוטו אוסקה ומה שביניהן</a></li>
-                <li><a href="#">איילנד הופינג ביפן</a></li>
+                <li><a href="forum.html">Forum</a></li>
+                <li><a href="general-info.html">תכנון טיול ומידע כללי על יפן</a></li>
+                <li><a href="tokyo-fuji.html">טוקיו פוג'י והסביבה</a></li>
+                <li><a href="alps.html">האלפים היפניים</a></li>
+                <li><a href="kyoto-osaka.html">קיוטו אוסקה ומה שביניהן</a></li>
+                <li><a href="island-hopping.html">איילנד הופינג ביפן</a></li>
             </ul>
         </nav>
     </header>
@@ -166,39 +132,25 @@
         <p>אירגנו לכם כאן את כל הפוסטים שלנו על מקומות לינה מומלצים וטיולי יום מהם אל האלפים היפניים לחצו על התמונות השונות כדי לקרוא עוד</p>
     </section>
 
-    <a href="#" class="large-post-link">
+    <a href="mat-kiso-kam.html" class="post-link-banner" style="background-image: url('images/mat.heic');">
         <div class="overlay"></div>
-        <div class="post-link-content large-post-content">
+        <div class="post-link-content">
             <h2>מטסומוטו עמק הקיסו וקמיקוצ׳י</h2>
-            <p>המלצות ללינה במטומוטו, המסלולים שבעמק הקיסו וקמיקוצ׳י ודרכי ההגעה אליהם</p>
+            <p>המלצות ללינה במטסומוטו, המסלולים<br>שבעמק הקיסו וקמיקוצ׳י ודרכי ההגעה אליהם</p>
         </div>
     </a>
 
-    <section class="posts-grid">
-        <div class="grid-container">
-            
-            <a href="#" class="post-card">
-                <img src="images/placeholder-kamikochi.jpg" alt="קאמיקוצ'י">
-                <div class="post-card-content">
-                    <h3>קאמיקוצ'י</h3>
-                    <p>הפארק הלאומי שמאופיין בהרים גבוהים ואגמים צלולים. מסלולי הליכה נוחים המאפשרים לכם ליהנות מנופים מרהיבים ללא מאמץ פיזי רב...</p>
-                </div>
-            </a>
-
-            <a href="#" class="post-card">
-                <img src="images/placeholder-shirakawa.jpg" alt="שירוקאווה-גו">
-                <div class="post-card-content">
-                    <h3>שירוקאווה-גו</h3>
-                    <p>הכפר המסורתי המפורסם בבתי ה-Gassho-zukuri הייחודיים שלו, עם גגות הקש המחודדים שנועדו לעמוד בשלג הכבד של האזור...</p>
-                </div>
-            </a>
-
+    <a href="kanazawa-shirakawa.html" class="post-link-banner" style="background-image: url('images/shira1.webp');">
+        <div class="overlay"></div>
+        <div class="post-link-content">
+            <h2>קנזאווה ושיראקווה-גו</h2>
+            <p>המלצות לאטרקציות ולינה בקנזאווה<br>ונקודות ודרכי הגעה לשיראקווה-גו</p>
         </div>
-    </section>
+    </a>
 
     <section class="contact-section">
         <p>יש לכם שאלה? המלצה על מסעדה<br>שאסור לפספס? או אפילו יעד מיוחד<br>שאף אחד לא שמע עליו? שתפו אותנו<br>בסיפור הדרך שלכם ונשתף אותו כאן</p>
-        <a href="mailto:omri150601@gmail.com" class="btn">Message us</a>
+        <a href="mailto:your-email@example.com" class="btn">Message us</a>
     </section>
 
 </body>
