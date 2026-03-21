@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>קיוטו | ישראלי ביפן</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* איפוס והגדרות בסיס */
+        body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+        body { font-family: 'Assistant', sans-serif; color: #3e7b73; line-height: 1.6; background-color: #fafafa; }
+        a { text-decoration: none; color: inherit; }
+
+        /* תפריט עליון */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: #fff; border-bottom: 1px solid #eee; }
+        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
+        nav ul li:hover { opacity: 0.7; cursor: pointer; }
+        nav ul li a { color: #3e7b73; }
+
+        /* אזור הפוסט המרכזי */
+        .post-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 60px 80px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.02);
+        }
+
+        /* כותרות וטקסט בפוסט */
+        .post-title { font-size: 42px; font-weight: 400; color: #3e7b73; margin-bottom: 10px; margin-top: 20px;}
+        
+        .post-content h3 { font-size: 22px; font-weight: 600; color: #3e7b73; margin: 30px 0 10px 0; }
+        .post-content p { font-size: 19px; font-weight: 300; color: #555; line-height: 1.8; margin-bottom: 25px; }
+        
+        /* עיצוב קישורים בתוך הטקסט */
+        .post-content a { color: #3e7b73; text-decoration: underline; font-weight: 400; }
+        .post-content a:hover { opacity: 0.7; }
+
+        /* תמונות בתוך הפוסט */
+        .post-content img {
+            width: 100%;
+            border-radius: 4px;
+            margin: 40px 0;
+            display: block;
+        }
+
+        /* תמונה ראשית מעל הכותרת */
+        .hero-image {
+            width: 100%;
+            border-radius: 4px;
+            display: block;
+            margin-bottom: 30px;
+        }
+
+        /* קו מפריד */
+        hr { border: 0; border-top: 1px solid #ddd; margin: 60px 0; }
+
+        /* אזור גוגל מפס */
+        .maps-section h3 { font-size: 24px; color: #3e7b73; margin-bottom: 20px; font-weight: 400; text-align: right;}
+        .maps-link { font-size: 19px; color: #3e7b73; text-decoration: underline; font-weight: 300;}
+
+        /* אזור פוסטים אחרונים (Recent Posts) */
+        .recent-posts-wrapper { max-width: 1000px; margin: 0 auto 80px auto; padding: 0 20px; }
+        .recent-posts-title { font-size: 24px; font-weight: 300; color: #3e7b73; margin-bottom: 30px; }
+        .recent-posts-grid { display: flex; gap: 30px; }
+        
+        .recent-card {
+            flex: 1;
+            background: #fff;
+            border: 1px solid #eee;
+            transition: transform 0.2s;
+        }
+        .recent-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .recent-card img { width: 100%; height: 250px; object-fit: cover; }
+        .recent-card-body { padding: 30px; }
+        .recent-card h4 { font-size: 24px; font-weight: 300; color: #3e7b73; margin-bottom: 60px; }
+        
+        /* אייקונים תחתונים בכרטיסייה */
+        .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding-top: 15px; color: #999; font-size: 14px; }
+        .card-footer-left { display: flex; gap: 15px; }
+
+        /* רספונסיביות לטלפון */
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 15px; text-align: center; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
+            
+            .post-container { margin: 0; padding: 40px 20px; border-radius: 0; }
+            .post-title { font-size: 32px; }
+            .post-content p { font-size: 17px; }
+            
+            .recent-posts-grid { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">ישראלי ביפן</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="forum.html">Forum</a></li>
+                <li><a href="general-info.html">תכנון טיול ומידע כללי על יפן</a></li>
+                <li><a href="tokyo-fuji.html">טוקיו פוג'י והסביבה</a></li>
+                <li><a href="alps.html">האלפים היפניים</a></li>
+                <li><a href="kyoto-osaka.html">קיוטו אוסקה ומה שביניהן</a></li>
+                <li><a href="island-hopping.html">איילנד הופינג ביפן</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="post-container">
+        
+        <img src="images/kyoto.JPG" alt="גגות מקדשים בקיוטו" class="hero-image">
+
+        <h1 class="post-title">קיוטו</h1>
+        
+        <div class="post-content">
+            
+            <p>קיוטו היא אחת הערים היפות ביפן עם היסטוריה עשירה ומקדשים מרשימים. עם כל הטוב הזה מגיעים המוני תיירים, וכיום קיוטו סובלת מתיירות יתר במיוחד בסתיו ובאביב אז תתכוננו לעמוד בתורים ולהיות מוקפים בהמונים. למי שממש לא יכול לסבול את המון האנשים מומלץ להשקים ולהתחיל את היום בחמש בבוקר. אנחנו וויתרנו על התענוג והצלחנו להינות גם מהאתרים המרכזיים העמוסים.</p>
+            
+            <hr style="margin: 30px 0;">
+
+            <h3>לינה</h3>
+            <p>האזור המרכזי הוא ליד רחוב פונטצ׳ו (Pontocho Alley) או אזור Gion.<br>
+            אנחנו ישנו יחסית רחוק מהמרכז, 10 דקות הליכה דרומית לתחנה המרכזית של קיוטו, וזה חייב אותנו לקחת תחב"צ יחסית הרבה, אבל גם חשוב לציין שרוב האזורים בקיוטו הם בכל מקרה מרחק נסיעה אז רוב הימים עצמם גם ככה מתחילים בנסיעה לאזור עצמו.<br>
+            אנחנו ישנו ב-Sakura Hotel, חוץ מהמיקום, הווי פיי היה גרוע ועבד כמעט רק בלובי אבל! המלון עצמו היה מקסים! החדר גדול, יש אונסן במלון וכל ערב יש שתייה חריפה אחת חינם ובכללי הישיבה בלובי בערב ממש כיפית ומביאים כל ערב נגן אחר זה ממש אווירה.<br>
+            כל הטוב הזה במחיר של 235 ש"ח ללילה.</p>
+
+            <h3>התניידות</h3>
+            <p>בקיוטו לעומת טוקיו ואוסקה אין מטרו מפואר ויש שם רק שני קווי מטרו כך שמרבית התחב"צ היא באוטובוסים, כל נסיעה תעלה לכם 230 יין, שזה יקר משמעותית לעומת המטרו.<br>
+            אבל אל דאגה היפנים דאגו לנו לדיל משתלם, נסיעות ללא הגבלה ליום שלם ב-1100 יין, תנסו להבין על כמה קווי אוטובוס אתם עומדים לעלות ותקנו את הכרטיס במלון שלכם אם תחליטו שזה משתלם לכם.</p>
+
+            <hr style="margin: 30px 0;">
+
+            <p>את קיוטו עצמה חילקנו לכם לשלושה ימי טיול, אנחנו עשינו ארבעה וביום האחרון כבר קצת נמרחנו, בעיקרון יש איך למלא ארבעה ימים, במיוחד אם עושים טקס תה או סדנאת אוריגאמי.</p>
+
+            <img src="images/south.jpg.avif" alt="דרום היגשיאמה" loading="lazy">
+            
+            <p>
+                הליכה ברחוב חמוד- Matsubara Street<br>
+                להמשיך למקדש kiyomizu dera<br>
+                משם הליכה ל-sannenzaka, לעצור ב- Matcha house- טירמיסו מאצ'ה<br>
+                לפנות שמאלה לרחוב של הפגודה המפורסמת (Hokan-ji Temple)<br>
+                לחזור בחזרה לרחוב ל-ninenezaka<br>
+                Ryōzen Kannon Temple- נמצא גם באזור פסל ענק ויפה אבל עולה כניסה אז אנחנו החלטנו לוותר<br>
+                משם להמשיך ל-kodaiji temple<br>
+                - Entoku-in Temple (אליו לא חייב להיכנס זה מקדש עם פעילויות חמודות אבל לא חובה בעיניי) בכל מקרה הרחובות שם מסביב מתוקים בטירוף<br>
+                ממשיכים עוד צפונה ל-maruyama park ול- yasaka shrine<br>
+                לסיום היום הגעה לאזור הגיישות Hanamikoji Street להסתובב ברחוב המקסים ולשים לב לגיישות שמידי פעם יוצאות החוצה אבל לא לצלם ולהטריד אותן.
+            </p>
+
+            <img src="images/north.jpg.avif" alt="צפון היגשיאמה" loading="lazy">
+
+            <p>
+                מקדש מהמם Eikandō Temple<br>
+                הליכה בדרך הפילוסופית<br>
+                מקדש הכסף Higashiyama Jisho-ji
+            </p>
+
+            <img src="images/arashiyama.jpg.avif" alt="אראשיאמה" loading="lazy">
+
+            <p>
+                נסיעה ל-otagi nenbutsuji temple מקדש מאה הפרצופים (400 ין)<br>
+                אופציה ללכת ליער הבמבוקים הפחות מפורסם Adashino Nenbutsuji Temple (500 ין), מומלץ רק למי שממש רוצה תמונה של יער במבוקים בלי אנשים אבל זה לא משתווה בגודל ליער הבמבוקים המפורסם<br>
+                אופציה להוסיף מקדש עם גנים יפים Giōji Temple (300 ין)<br>
+                מי שמוותר על המקדשים בדרך בכל מקרה ההליכה בין מקדש מאה הפרצופים ליער הבמבוקים ממש יפה<br>
+                אופציה לגנים יפנים (1000 ין) Okochi Sanso Garden<br>
+                אופציה לתצפית על הנהר (במקום הנסיעה המפורסמת ברכבת) Arashiyama Park Observation Deck<br>
+                יער הבמבוקים המפורסם כניסה חינם Arashiyama Bamboo Forest<br>
+                הליכה בגנים של מקדש tenryuji עלות 800 ין. ברגע שעוברים את הגנים האלו זה עיקוף לחזור בחזרה ליער הבמבוקים אז לשים לב אם בוחרים לשנות את המסלול. לשים לב שיש כרטיס לגנים ויש כרטיס למקדש.<br>
+                יער הקימונו Kimono Forest<br>
+                אם סיימתם מוקדם אפשר להוסיף את מקדש הזהב (500 ין) שנמצא מרחק נסיעה או לסגור את היום בנישיקי מרקט שוק אוכל מקורה.
+            </p>
+
+            <hr style="border-top: 1px dashed #3e7b73; margin: 40px 0;">
+
+            <p>בעיקרון יש שלושה אתרים מרכזיים שקצת רחוקים מהכל ששווה להכניס אותם ואנחנו ממליצים להכניס אותם ביום שסיימתם מוקדם מהצפוי או שפשוט יש לכם עוד אנרגיה בסוף היום, חשוב לוודא שאתם מגיעים לפני ארבע וחצי כי כמעט כל המקדשים ביפן נסגרים בחמש🙃</p>
+
+            <img src="images/far-temples.webp" alt="אתרים מרכזיים נוספים בקיוטו" loading="lazy">
+
+            <p>
+                <strong>Fushimi Inari Taisha Sembon Torii</strong>- מקדש עם המון טורי גייטס, ככל שעולים בהר ככה הקהל מצטמצם, אנחנו הגענו אחרי טיול יום באוג׳י.<br>
+                <strong>טירת ניג'ו</strong>- לא חובה אבל אם אתם מתכננים בקיוטו ארבעה ימים זאת אופציה נחמדה.<br>
+                <strong>המקדש המוזהב</strong>- אחד הסמלים של קיוטו, לדעתינו הוא קצת אובר רייטד אבל עדיין לא לפספס!
+            </p>
+
+            <hr>
+
+            <h3>אטרקציות חובה בקיוטו</h3>
+            <p><strong>טקס תה מסורתי</strong>- maikoya tea ceremony, יש גם אופציה לעשות את הטקס בקימונו שזו חוויה בפני עצמה, צריך להזמין לפחות 10 ימים מראש!!! אנחנו ניסינו להזמין שבוע מראש וכבר לא היה מקום ולכן לא עשינו. חברה שלנו הספיקה וממש המליצה.</p>
+            <p><strong>סיור לילה בגיון</strong>- סיור גיישות עם מדריך על בסיס טיפים, התמזל מזלינו וראינו באזור ה30+ גיישות וזה היה מטורף לגמרי! ממש ממש ממש ממליצים אחד הערבים הכי טובים שלנו ביפן!<br>
+            <a href="https://www.guruwalk.com/kyoto" target="_blank">https://www.guruwalk.com/kyoto</a></p>
+            <p>בגלל שלא הספקנו ללכת לטקס תה המסורתי ורצינו את החוויה של ללבוש את הקימונו החלטנו להשכיר קימונו ליום ולהסתובב איתו בקיוטו בין המקדשים. מעבר לזה שהיפנים עפו עלינו בטירוף זה היה ממש מצחיק ואנחנו סך הכל ממליצים. רק שימו לב שאתם לובשים את הקימונו ביום קריר כי ממש ממש חם.</p>
+
+            <hr>
+
+            <h3>אוכל</h3>
+            <p>
+                <strong>Hikiniku to come</strong> - המבורגר מעולה מסעדה חוויה ומעוצבת יפה בטירוף וגם לא יקרה. 1800 יין לשלוש קציצות עם אורז בלי הגבלה, מרק מיסו ומלא אופציות תיבול. הקאץ׳ שצריך להגיע למסעדה מתשע בבוקר כדי להזמין מקום לערב/צהריים, אנחנו הגענו ב9:40 ובערב היה מקום רק ל-18:30 אז תגיעו ב-9:00!<br><br>
+                <strong>Hamburger Hiroyuki</strong> - המסעדה הזאת הפכה למסעדת הבית שלנו, קופסאות בשר טעימות ואפשר לבקש מנת אורז גדולה בלי תוספת תשלום.<br><br>
+                <strong>Gyoza ChaoChao (Shijo-Kawaramachi)</strong> - מסעדת גיוזה מצויינת.<br><br>
+                <strong>Kichi Kichi Omurice</strong> - המסעדה עם בערך הכי הרבה הייפ בקיוטו, על גבול הבלתי אפשרי להזמין לשם מקום. כדי להזמין מקום צריך להתחבר לאתר שלהם באותו יום של ההזמנה בשעה שבה ההזמנות לאותו יום מתחילות ולהזמין מקום, מה קשה בזה? שכל מי שנמצא בקיוטו מנסה לעשות את אותו הדבר כמוכם. לצערינו כשהיינו בקיוטו השף של המקום היה בחופשה ולכן אפילו לא ניסינו.<br><br>
+                <strong>Panel cafe京都</strong> - פנקייקים רכים בטירוף ומאוד טעימים אבל יש שם תמיד שעה+ של תור ותכלס דומה לפליפרס בטוקיו אז אפשר לוותר.
+            </p>
+
+            <hr>
+
+            <div class="maps-section">
+                <h3>נקודות בגוגל מפס</h3>
+                <a href="https://maps.app.goo.gl/mnZP5nUMfR8hijzZ9?g_st=i" class="maps-link" target="_blank">קיוטו</a>
+            </div>
+        </div>
+    </main>
+
+    <section class="recent-posts-wrapper">
+        <h2 class="recent-posts-title">Recent Posts</h2>
+        <div class="recent-posts-grid">
+            
+            <a href="osaka-kobe.html" class="recent-card">
+                <img src="images/osaka1.JPG" alt="אוסקה וקובה">
+                <div class="recent-card-body">
+                    <h4>אוסקה וקובה</h4>
+                    <div class="card-footer">
+                        <div class="card-footer-left"></div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="uji-nara.html" class="recent-card">
+                <img src="images/nara.JPG" alt="אוג'י ונארה">
+                <div class="recent-card-body">
+                    <h4>אוג'י ונארה</h4>
+                    <div class="card-footer">
+                        <div class="card-footer-left"></div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+</body>
+</html>
