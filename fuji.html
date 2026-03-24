@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>פוג'י | ישראלי ביפן</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* איפוס והגדרות בסיס */
+        body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+        body { font-family: 'Assistant', sans-serif; color: #3e7b73; line-height: 1.6; background-color: #fafafa; }
+        a { text-decoration: none; color: inherit; }
+
+        /* תפריט עליון */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: #fff; border-bottom: 1px solid #eee; }
+        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
+        nav ul li:hover { opacity: 0.7; cursor: pointer; }
+        nav ul li a { color: #3e7b73; }
+
+        /* אזור הפוסט המרכזי */
+        .post-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 60px 80px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.02);
+        }
+
+        /* כותרות וטקסט בפוסט */
+        .post-title { font-size: 42px; font-weight: 400; color: #3e7b73; margin-bottom: 10px; margin-top: 20px;}
+        
+        .post-content h3 { font-size: 22px; font-weight: 600; color: #3e7b73; margin: 30px 0 10px 0; }
+        .post-content p { font-size: 19px; font-weight: 300; color: #555; line-height: 1.8; margin-bottom: 25px; }
+        
+        /* עיצוב קישורים בתוך הטקסט */
+        .post-content a { color: #3e7b73; text-decoration: underline; font-weight: 400; }
+        .post-content a:hover { opacity: 0.7; }
+
+        /* תמונות בתוך הפוסט */
+        .post-content img {
+            width: 100%;
+            border-radius: 4px;
+            margin: 40px 0;
+            display: block;
+        }
+
+        /* תמונה ראשית מעל הכותרת - חתוכה ל-40% וממורכזת */
+        .hero-image {
+            width: 100%;
+            height: 40vh;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 4px;
+            display: block;
+            margin-bottom: 30px;
+            aspect-ratio: auto;
+        }
+
+        /* קו מפריד */
+        hr { border: 0; border-top: 1px solid #ddd; margin: 60px 0; }
+
+        /* אזור פוסטים אחרונים (Recent Posts) - 3 כרטיסיות */
+        .recent-posts-wrapper { max-width: 1000px; margin: 0 auto 40px auto; padding: 0 20px; }
+        .recent-posts-title { font-size: 24px; font-weight: 300; color: #3e7b73; margin-bottom: 30px; text-align: left; }
+        .recent-posts-grid { display: flex; gap: 30px; } 
+        
+        .recent-card {
+            flex: 1; 
+            background: #fff;
+            border: 1px solid #eee;
+            transition: transform 0.2s;
+        }
+        .recent-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .recent-card img { width: 100%; height: 200px; object-fit: cover; margin: 0; border-radius: 0; aspect-ratio: auto;}
+        .recent-card-body { padding: 20px; }
+        .recent-card h4 { font-size: 20px; font-weight: 300; color: #3e7b73; margin-bottom: 40px; }
+        
+        /* אייקונים תחתונים בכרטיסייה */
+        .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding-top: 15px; color: #999; font-size: 14px; }
+        .card-footer-left { display: flex; gap: 15px; }
+
+        /* אזור תגובות (Comments) */
+        .comments-outer-wrapper {
+            max-width: 1000px;
+            margin: 0 auto 80px auto;
+            padding: 0 20px;
+        }
+        .comments-box {
+            background: #fff;
+            border: 1px solid #c9dfdc;
+            padding: 40px;
+        }
+        .comments-header {
+            font-size: 18px;
+            color: #3e7b73;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .comments-box hr {
+            margin: 0 0 30px 0;
+            border: none;
+            border-top: 1px solid #eee;
+        }
+        .comments-input {
+            width: 100%;
+            min-height: 80px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            box-sizing: border-box;
+            font-family: 'Assistant', sans-serif;
+            font-size: 16px;
+            resize: vertical;
+            color: #555;
+            background: #fff;
+        }
+        .comments-input::placeholder {
+            color: #999;
+        }
+
+        /* רספונסיביות לטלפון */
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 15px; text-align: center; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
+            
+            .post-container { margin: 0; padding: 40px 20px; border-radius: 0; }
+            .post-title { font-size: 32px; }
+            .post-content p { font-size: 17px; }
+            
+            .recent-posts-grid { flex-direction: column; }
+            .comments-outer-wrapper { padding: 0; margin-top: 40px; }
+            .comments-box { border-left: none; border-right: none; padding: 20px;}
+            
+            .hero-image { height: 30vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">ישראלי ביפן</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="forum.html">Forum</a></li>
+                <li><a href="general-info.html">תכנון טיול ומידע כללי על יפן</a></li>
+                <li><a href="tokyo-fuji.html">טוקיו פוג'י והסביבה</a></li>
+                <li><a href="alps.html">האלפים היפניים</a></li>
+                <li><a href="kyoto-osaka.html">קיוטו אוסקה ומה שביניהן</a></li>
+                <li><a href="island-hopping.html">איילנד הופינג ביפן</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="post-container">
+        
+        <img src="images/fuji.jpg" alt="פוג'י תמונה ראשית" class="hero-image">
+
+        <h1 class="post-title">פוג'י</h1>
+        
+        <div class="post-content">
+            
+            <p>פוג׳י הוא אחד הסמלים המפורסמים של יפן, הר בודד שעובר את ה-3000 מטרים וההייפ לגביו מוצדק לחלוטין, לא משנה מאיפה ומאיזו זווית תראו אותו הוא פשוט מרשים.</p>
+            
+            <hr style="margin: 30px 0;">
+
+            <h3>לאיפה נוסעים כשהולכים לפוג׳י?</h3>
+            <p>רוב האנשים כשהם נוסעים לפוג׳י הם נוסעים או להאקונה, שזו עיירת אונסנים, או לקאווגוציקו, האגם המרכזי מבין חמשת האגמים שמסביב לפוג׳י.<br>
+            אנחנו במקור תכננו לנסוע לימנקאקו, האגם הגדול מבין חמשת האגמים, אבל בגלל שהראות על פוג׳י לא הייתה טובה ברוב השהות שלנו החלטנו להחליף לעיירה המרכזית, קאווגוציקו.</p>
+
+            <h3>טיול יום או עם כמה לילות?</h3>
+            <p>את פוג׳י אפשר לעשות כטיול יום מטוקיו, כך תוכלו להסתכל מספר ימים מראש מתי הראות הטובה ביותר ולנסוע בצורה יותר ספונטנית, כן צריך לוודא שיש אוטובוסים בשעות נוחות בתאריך הזה (הלוך בוקר חזור ערב) כי כשיש ראות טובה הכרטיסים נגמרים ומהר.<br>
+            אנחנו תכננו מראש את הזמן שלנו בפוג׳י ועשינו שם שני לילות, ביומיים הראשונים הייתה ראות גרועה אבל ביום האחרון הייתה ראות מצויינת וזה סיפק אותנו, אז אם אתם מחליטים לתכנן את הלינה באזור מראש אז אנחנו ממליצים להישאר שני לילות ובכך להעלות את הסיכויים שלכם לראות טובה.</p>
+
+            <h3>איך יודעים אם יש ראות טובה?</h3>
+            <p>דרך אתר <a href="https://fuji-san.info/en/" target="_blank">SeeMtFuji</a> מסתכלים מה הראות של פוג׳י בזמן שאתה רוצה להגיע וזה ממש קריטי, אנחנו הסתכלנו שבוע מראש והראות הייתה טובה אבל בימים שהתקרבו הראות הדרדרה עד שביום הראשון שלנו לא ראינו כלום אז זה ממש משהו שצריך לבדוק ימים בודדים מראש או לקחת את הסיכון.</p>
+            <p>חשוב לציין שגם קאווגוציקו וגם האקונה נמצאות צפון מזרחית לפוג׳י וחשוב להסתכל על העמודה הנכונה באתר.</p>
+
+            <hr style="margin: 40px 0;">
+
+            <h3>לינה</h3>
+            <p>אנחנו ישנו בעיירת kawaguchiko<br>
+            מלון Toyoko inn</p>
+            <p>חדר פרטי עלה 280 ש"ח וזה המחיר הכי טוב שראינו באזור לחדר פרטי וסגרנו ממש כמה ימים מראש.<br>
+            מגיע עם ארוחת בוקר שהיא סבבה, יש שם מכונת כביסה ומייבש בתשלום, הסעות חינם הלוך וחזור מהתחנה המרכזית (בשעות קבועות), ושמירת חפצים בחינם.</p>
+
+            <h3>Fuji Q</h3>
+            <p>פארק שעשועים הכי משוגע שיש ביפן והרביעי הכי טוב בעולם, הגענו ביום שהראות על פוגי לא הייתה טובה ובגלל זה הפארק היה ריק וזה היה מטורף עלינו על הכלללל בלי תורים בכלל.<br>
+            עלה 143 ש״ח, שילמנו בכניסה.<br>
+            יש גם אופציה לקנות כרטיס לשלושה מתקנים או פשוט לשלם בכניסה לכל מתקן אם אתם רוצים משהו בקטנה.</p>
+
+            <hr style="border-top: 1px dashed #3e7b73; margin: 40px 0;">
+
+            <h3>נקודות תצפית על פוג׳י</h3>
+            <p>בתאריכים מסוימים יש פסטיבל פרחים ב- Fuji Motosuko Reasort<br>
+            אמור להיות ממש יפה אבל התור לאוטובוס לשם משוגע, אנחנו הגענו במחשבה שנעלה על האוטובוס של תשע וחצי ואמרו לנו שאולי נספיק ל-11:30 אז ויתרנו, אם אתם בוחרים להשקיע ללכת לפסטיבל פשוט תגיעו מוקדם ותיהיו מוכנים לעמוד בתור.</p>
+            
+            <p>אנחנו הלכנו במקום לשני פארקים:</p>
+            <p><strong>Oishi park</strong><br>
+            גם שם היו פרחים מהממים ולא מעט אנשים, אבל הלכנו קצת פנימה לתוך הפרחים ובסוף הגענו לשפת האגם ושם כבר היו פחות אנשים.</p>
+            <p><strong>Oike park</strong><br>
+            יותר קרוב למרכז גם נקודת תצפית חמודה.</p>
+
+            <p>לסיכום, תגיעו בזמן שיש ראות טובה ואז כל מקום שתגיעו אליו יהיה יפה ולא חייב להגיע לאיפה שכולם מגיעים כי זה מפוצץ אנשים.<br>
+            אם במקרה הגעתם ואין ראות לכו לפארק שעשועים ותהנו ממלא מתקנים משוגעים בלי תורים.</p>
+
+            <hr style="margin: 40px 0;">
+
+            <h3>טיפוס על הר פוג׳י</h3>
+            <p>הטיפוס אפשרי רק בחודשים יולי עד ספטמבר בתאריכים ספציפיים בגלל תנאי מזג האוויר הקשים על ההר.<br>
+            אנחנו לא הגענו בתקופה ולא טיפסנו על ההר אבל ממה ששמענו מאנשים, אם אתם טיילנים מושבעים זה יהיה אחד המסלולים הבלתי נשכחים שתעשו, ואם הגעתם להתפנק בחופשה ביפן כנראה שתהנו יותר מהנוף אל ההר מאיזה אונסן מפנק.</p>
+
+            <p>קרדיט לשליו דהן שסידר את <a href="https://docs.google.com/document/d/12I-f3dC_OKZkl7oJSB1-uV1oHKeJFYthLsTxiPFZf5g/edit" target="_blank">כל המידע שצריך לטיפוס על פוג׳י</a></p>
+
+            <img src="images/fuji.jpg.avif" alt="קולאז' פוג'י" loading="lazy">
+
+        </div>
+    </main>
+
+    <section class="recent-posts-wrapper">
+        <h2 class="recent-posts-title">Recent Posts</h2>
+        <div class="recent-posts-grid">
+            
+            <a href="mat-kiso-kam.html" class="recent-card">
+                <img src="images/mat.webp" alt="מצומטו עמק הקיסו וקמיקוצ'י">
+                <div class="recent-card-body">
+                    <h4>מצומטו עמק הקיסו וקמיקוצ'י</h4>
+                    <div class="card-footer">
+                        <div class="card-footer-left"></div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="nikko.html" class="recent-card">
+                <img src="images/niko.JPG" alt="ניקו - טבע יפני שעתיים מטוקיו">
+                <div class="recent-card-body">
+                    <h4>ניקו - טבע יפני שעתיים מטוקיו</h4>
+                    <div class="card-footer">
+                        <div class="card-footer-left"></div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="tokyo-general.html" class="recent-card">
+                <img src="images/tokyo.JPG" alt="טוקיו- מידע כללי">
+                <div class="recent-card-body">
+                    <h4>טוקיו- מידע כללי</h4>
+                    <div class="card-footer">
+                        <div class="card-footer-left"></div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <div class="comments-outer-wrapper">
+        <div class="comments-box">
+            <div class="comments-header">Comments</div>
+            <hr>
+            <textarea class="comments-input" placeholder="Write a comment..."></textarea>
+        </div>
+    </div>
+
+</body>
+</html>
