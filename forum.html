@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>פורום שאלות ותשובות - ישראלי ביפן</title>
+    <meta name="description" content="פורום ישראלי ביפן - קהילת מטיילים. שאלות, התייעצויות והמלצות חמות ממטיילים על תכנון מסלול, תחבורה ואטרקציות ביפן. הצטרפו לדיון!">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* איפוס הגדרות בסיס ופונט */
+        body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+        body { font-family: 'Assistant', sans-serif; color: #3e7b73; line-height: 1.6; background-color: #f9fbfb; }
+        a { text-decoration: none; color: inherit; }
+
+        /* תפריט עליון */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; border-bottom: 1px solid #eee; background-color: #fff; }
+        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; color: #3e7b73; font-weight: 600; }
+        nav ul li:hover { opacity: 0.7; cursor: pointer; }
+
+        /* אזור הכותרת של הפורום */
+        .forum-header { text-align: center; padding: 60px 20px 30px 20px; }
+        .forum-header h1 { font-size: 42px; font-weight: 300; margin-bottom: 15px; color: #3e7b73; }
+        .forum-header p { font-size: 20px; max-width: 600px; margin: 0 auto; color: #3e7b73; }
+
+        /* אזור הדיון (המסגרת הלבנה של הפורום) */
+        .forum-container { max-width: 800px; margin: 0 auto 60px auto; padding: 40px; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+
+        /* התאמה למסכי טלפון */
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 15px; text-align: center; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
+            .forum-header h1 { font-size: 32px; }
+            .forum-header p { font-size: 18px; }
+            .forum-container { margin: 0 15px 40px 15px; padding: 20px; }
+        }
+    </style>
+
+    </head>
+<body>
+
+    <header>
+        <div class="logo">ישראלי ביפן</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="forum.html">Forum</a></li>
+                <li><a href="general-info.html">תכנון טיול ומידע כללי על יפן</a></li>
+                <li><a href="tokyo-fuji.html">טוקיו פוג'י והסביבה</a></li>
+                <li><a href="alps.html">האלפים היפניים</a></li>
+                <li><a href="kyoto-osaka.html">קיוטו אוסקה ומה שביניהן</a></li>
+                <li><a href="island-hopping.html">איילנד הופינג ביפן</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="forum-header">
+            <h1>פורום שאלות ותשובות</h1>
+            <p>מתכננים טיול ליפן ויש לכם שאלות? חזרתם מיפן ובא לכם לחלוק טיפ מנצח? הגעתם למקום הנכון! תרגישו חופשי לשאול, לענות, ולעזור אחד לשנייה לתכנן את הטיול המושלם.</p>
+        </section>
+
+        <section class="forum-container">
+            <p id="disqus-loader" style="text-align: center; font-size: 20px; color: #3e7b73; margin-bottom: 30px;">טוען את הפורום... ⏳</p>
+
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                    this.callbacks.onReady = [function() {
+                        document.getElementById('disqus-loader').style.display = 'none';
+                    }];
+                };
+                
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://israeli-at-japan.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </section>
+    </main>
+
+</body>
+</html>
