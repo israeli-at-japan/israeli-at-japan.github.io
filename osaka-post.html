@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אוסקה וקובה | ישראלי ביפן</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* איפוס והגדרות בסיס */
+        body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+        body { font-family: 'Assistant', sans-serif; color: #3e7b73; line-height: 1.6; background-color: #fafafa; }
+        a { text-decoration: none; color: inherit; }
+
+        /* תפריט עליון */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: #fff; border-bottom: 1px solid #eee; }
+        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
+        nav ul li:hover { opacity: 0.7; cursor: pointer; }
+        nav ul li a { color: #3e7b73; }
+
+        /* אזור הפוסט המרכזי */
+        .post-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 60px 80px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.02);
+        }
+
+        /* כותרות וטקסט בפוסט */
+        .post-title { font-size: 42px; font-weight: 400; color: #3e7b73; margin-bottom: 10px; margin-top: 20px;}
+        
+        .post-content h3 { font-size: 22px; font-weight: 600; color: #3e7b73; margin: 30px 0 10px 0; }
+        .post-content p { font-size: 19px; font-weight: 300; color: #555; line-height: 1.8; margin-bottom: 25px; }
+        
+        /* עיצוב קישורים בתוך הטקסט */
+        .post-content a { color: #3e7b73; text-decoration: underline; font-weight: 400; }
+        .post-content a:hover { opacity: 0.7; }
+
+        /* תמונות בתוך הפוסט */
+        .post-content img {
+            width: 100%;
+            border-radius: 4px;
+            margin: 40px 0;
+            display: block;
+        }
+
+        /* תמונה ראשית מעל הכותרת */
+        .hero-image {
+            width: 100%;
+            border-radius: 4px;
+            display: block;
+            margin-bottom: 30px;
+        }
+
+        /* קו מפריד */
+        hr { border: 0; border-top: 1px solid #ddd; margin: 60px 0; }
+
+        /* אזור תגובות */
+        .comments-wrapper {
+            border: 1px solid #eee;
+            padding: 30px;
+            margin-top: 60px;
+            background: #fff;
+        }
+        .comments-header {
+            font-size: 22px;
+            color: #3e7b73;
+            margin-bottom: 15px;
+        }
+        .comments-wrapper hr {
+            margin: 0 0 20px 0;
+            border-top: 1px solid #eee;
+        }
+        .comments-input {
+            width: 100%;
+            min-height: 100px;
+            border: 1px solid #ddd;
+            border-radius: 2px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-family: 'Assistant', sans-serif;
+            font-size: 16px;
+            resize: vertical;
+            color: #555;
+        }
+        .comments-input::placeholder {
+            color: #aaa;
+        }
+
+        /* אזור גוגל מפס */
+        .maps-section h3 { font-size: 24px; color: #3e7b73; margin-bottom: 20px; font-weight: 400; text-align: right;}
+        .maps-link { font-size: 19px; color: #3e7b73; text-decoration: underline; font-weight: 300;}
+
+        /* אזור פוסטים אחרונים (Recent Posts) */
+        .recent-posts-wrapper { max-width: 1000px; margin: 0 auto 80px auto; padding: 0 20px; }
+        .recent-posts-title { font-size: 24px; font-weight: 300; color: #3e7b73; margin-bottom: 30px; }
+        .recent-posts-grid { display: flex; gap: 30px; }
+        
+        .recent-card {
+            flex: 1;
+            background: #fff;
+            border: 1px solid #eee;
+            transition: transform 0.2s;
+        }
+        .recent-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .recent-card img { width: 100%; height: 250px; object-fit: cover; }
+        .recent-card-body { padding: 30px; }
+        .recent-card h4 { font-size: 24px; font-weight: 300; color: #3e7b73; margin-bottom: 60px; }
+        
+        /* אייקונים תחתונים בכרטיסייה */
+        .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding-top: 15px; color: #999; font-size: 14px; }
+        .card-footer-left { display: flex; gap: 15px; }
+
+        /* רספונסיביות לטלפון */
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 15px; text-align: center; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
+            
+            .post-container { margin: 0; padding: 40px 20px; border-radius: 0; }
+            .post-title { font-size: 32px; }
+            .post-content p { font-size: 17px; }
+            
+            .recent-posts-grid { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">ישראלי ביפן</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="forum.html">Forum</a></li>
+                <li><a href="general-info.html">תכנון טיול ומידע כללי על יפן</a></li>
+                <li><a href="tokyo-fuji.html">טוקיו פוג'י והסביבה</a></li>
+                <li><a href="alps.html">האלפים היפניים</a></li>
+                <li><a href="kyoto-osaka.html">קיוטו אוסקה ומה שביניהן</a></li>
+                <li><a href="island-hopping.html">איילנד הופינג ביפן</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="post-container">
+        
+        <img src="images/osaka1.JPG" alt="אוסקה תמונה ראשית" class="hero-image">
+
+        <h1 class="post-title">אוסקה וקובה</h1>
+        
+        <div class="post-content">
+            
+            <p>הדעות על אוסקה חלוקות לקיצון, יש האומרים שהיא מיותרת ויש האומרים שהיא היעד הכי טוב ביפן.<br>
+            לפי מה שהבנו מי שמתחיל את הטיול באוסקה עף עליה בטירוף ומי שמגיע אליה אחרי טוקיו קצת פחות.<br>
+            אבל כולם מסכימים שיש חיי לילה מטורפים באוסקה ושאותם לא כדאי לפספס.</p>
+            
+            <img src="images/osaka.jpg.avif" alt="קולאז' אוסקה" loading="lazy">
+
+            <hr style="margin: 30px 0;">
+
+            <h3>לינה</h3>
+            <p>אנחנו ממליצים לישון בקרבת Dotonbori וקרוב למטרו.<br>
+            אנחנו ישנו ב- <strong>Nest Hotel Osaka Shinsaibashi</strong> שעלה 175₪ ללילה וזה מקום טוב עם wifi מקרטע אבל סך הכל בסדר.</p>
+
+            <p>אוסקה עקרונית היא עיר של לילה ואוכל שזה מגניב בטירוף אבל זה לא ממלא את היום יותר מידי ואפשר ביום אחד להגיע לכל האטרקציות המרכזיות של אוסקה שהן:</p>
+
+            <p>
+                • <strong>טירת אוסקה</strong> (בפנים יש מוזיאון שהבנו שהוא לא מעניין אז לא נכנסנו)<br>
+                • <strong>Namba Yasaka Jinjya Shrine</strong> - מקדש ממש מגניב ומוכר<br>
+                • <strong>Umeda sky building</strong> - גם בניין מגניב מבחוץ וגם תצפית ממש יפה (1500 יין)<br>
+                • <strong>Shinsaibashi-Suji Shopping Street</strong> - רחוב קניות יפה
+            </p>
+
+            <p>אזורים ללילה (שאפשר גם להסתובב בהם ביום אבל בעיקר ללילה):<br>
+                • <strong>Namba- dotonbori</strong> - כמובן להצטלם עם השלט של האיש של אוסקה<br>
+                • <strong>Shin Sekai "New World"</strong> - יפה גם ביום אבל השוק שם פעיל רק בלילה<br>
+                • אזור וינטג' חמוד באזור של הגלידה הזאת - <strong>IKKI KASUTEIRA</strong>
+            </p>
+
+            <p>יש גם תצוגה של teamlab שפתוחה רק בערב וכמעריצים שלהם כמובן שהגענו גם לשם ולא התאכזבנו. לתערוכה קוראים <strong>teamLab Botanical Garden Osaka</strong>, יש בה אלמנטים דומים לתערוכות בטוקיו אבל גם לה יש קסם משלה והדבר העיקרי שמייחד אותה הוא שהיא נמצאת בחוץ ולא בתוך בניין. אם נהנתם מהטימלאב בטוקיו אז אנחנו לגמרי ממליצים.</p>
+
+            <hr style="border-top: 1px dashed #3e7b73; margin: 40px 0;">
+
+            <h3>אטרקציות מרכזיות שלא הגענו אליהן</h3>
+            <p>
+                • גן החיות של אוסקה - <strong>Tennoji Zoo</strong><br>
+                • פארק השעשועים של יוניברסל סטודיוס<br>
+                • <strong>סוני היילנדס (Soni Highlands)</strong> - יום טיול מאוסקה, אזור עם גבעות ירוקות שנראה מהמם, בגלל שהדרך בתחב"צ ארוכה ומסובכת החלטנו לוותר.
+            </p>
+            <p>אם אתם הולכים לגן חיות וליוניברסל סטודיוס שווה להשקיע באוסקה לפחות 3 ימים.</p>
+
+            <h3>אוכל באוסקה</h3>
+            <p>
+                - עוגת גבינה טעימה בטירוף <strong>Cheese Tart Pablo Shinsaibashi</strong><br>
+                - <strong>Rikuro’s Namba Main Branch</strong> - דיס המלצה רצינית. זאת העוגת גבינה המפורסמת, הייתה הרבה פחות מתוקה מהראשונה שהמלצתי עליה.<br>
+                - ראמן אחד הטובים שאכלנו <strong>Ninjomenya Gyukotsuo</strong><br>
+                - אכול כפי יכולתך מפנק בטירוף מלא סוגי בשר, ומלא תוספות (בצל, תירס, גיוזה, ראמן, מלא קינוחים וכו') <strong>kuroge wagyu all you can eat</strong>
+            </p>
+
+            <p>תכלס אוהבי אוסקה יתנגדו נחרצות לדעה שלנו, אבל אם אתם לא הולכים ליוניברסל ולגן חיות שני לילות לגמרי מספיקים. אם ממש בא לכם לחיות פה את חיי הלילה אתם יכולים להאריך ולעשות טיולי יום לנארה או קובה ואז בערב לבלות בעיר עצמה.</p>
+
+            <hr style="margin: 60px 0;">
+
+            <img src="images/kobe.jpg.avif" alt="קולאז' קובה" loading="lazy">
+
+            <p>קובה היא עיר ממש אסתטית וחמודה, מפורסמת בעיקר בגלל הפרות שמגדלים באזור מזן קובה, שהבשר שלהן הוא לא אחר מהקובה ביף, שנחשב לבשר הטוב בעולם! הבשר באמת טעים וההייפ מוצדק! (תכלס אפשר לאכול קובה ביף בכל יפן באותה איכות).</p>
+
+            <p>מעבר לזה אפשר ללכת שם לצ׳יינה טאון - <strong>Kobe Chinatown Nankin-machi</strong> שהיה מהמם ויש שם מלא מאכלים טעימים, לכו למקומות שיש בהם תור ולא תתאכזבו.</p>
+
+            <p>משם אפשר להמשיך לנמל קובה (<strong>BE KOBE モニュメント (メリケンパーク)</strong>), יש שם סניף של סטארבאקס וזה מקום נחמד לעצור לקפה.</p>
+
+            <p>אנחנו המשכנו לגנים הבוטניים - <strong>Kobe Nunobiki Herb Gardens & Ropeway</strong>, קנינו כרטיס הלוך חזור ברכבל ב-2000 יין, יש גם אופציה לכיוון אחד ולרדת את כל הדרך ברגל (האופציה הזו ב-1100 יין). הגנים מתאימים למי שאוהב תצפיות ופרחים, היה שם נחמד אבל זה לא חובה.</p>
+
+            <h3>אטרקציות מרכזיות שלא הגענו אליהן (קובה)</h3>
+            <p>
+                • <strong>בית הכנסת של קובה</strong> - יש לקובה היסטוריה יהודית אז זה יכול להיות מעניין.<br>
+                • <strong>מוזיאון ואנדרטה לזכר הרוגים מרעידות אדמה</strong> - הוקם לאחר רעידת האדמה שהייתה בקובה ב-1995.
+            </p>
+            <p>אנחנו לא הגענו לאתרים האלה כי רצינו יום יותר קליל אבל אם אתם חובבי היסטוריה זה יכול להיות מאוד מעניין.</p>
+
+            <h3>אוכל</h3>
+            <p>
+                • קופסאת בשר טעימה במחיר טוב - <strong>Kobe Beef Kurosawa</strong><br>
+                • המלצה לטאפנאקי שקיבלנו ולא הספקנו - <strong>Steakland Kobe</strong>
+            </p>
+
+            <hr>
+
+            <div class="maps-section">
+                <h3>נקודות בגוגל מפס</h3>
+                <a href="#" class="maps-link" target="_blank">אוסקה וקובה</a>
+            </div>
+
+            
+
+        </div>
+    </main>
+
+    <section class="recent-posts-wrapper">
+        <h2 class="recent-posts-title">Recent Posts</h2>
+        <div class="recent-posts-grid">
+            
+            <a href="uji-nara.html" class="recent-card">
+                <img src="images/nara.JPG" alt="אוג'י ונארה">
+                <div class="recent-card-body">
+                    <h4>אוג'י ונארה</h4>
+                    <div class="card-footer">
+                        <div class="card-footer-left"></div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="kyoto-post.html" class="recent-card">
+                <img src="images/kyoto1.JPG" alt="קיוטו">
+                <div class="recent-card-body">
+                    <h4>קיוטו</h4>
+                    <div class="card-footer">
+                        <div class="card-footer-left"></div>
+                    </div>
+                </div>
+            </a>
+
+          <div class="comments-wrapper">
+                <div class="comments-header">Comments</div>
+                <hr>
+                <textarea class="comments-input" placeholder="...Write a comment"></textarea>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
