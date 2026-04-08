@@ -9,6 +9,7 @@
     <meta name="description" content="המדריך המקיף למטייל ביפן: מתי כדאי לטוס, מזומן או אשראי, התניידות עם Suica ו-JR Pass, בחירת אי-סים (eSIM), אפליקציות חובה וטיפים שיחסכו לכם כסף וזמן.">
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        /* איפוס והגדרות בסיס */
         body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
         body { font-family: 'Assistant', sans-serif; color: #3e7b73; line-height: 1.8; background-color: #fafafa; }
         a { text-decoration: none; color: inherit; }
@@ -63,19 +64,24 @@
         
         .map-link { display: block; margin-bottom: 10px; color: #437a71; text-decoration: underline; }
 
-        /* אזור פוסטים אחרונים */
-        .recent-posts-container { max-width: 1000px; margin: 60px auto; }
-        .recent-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 0 20px; }
-        .recent-header h3 { font-weight: 300; font-size: 22px; }
-        .recent-header a { font-size: 14px; }
+        /* אזור פוסטים אחרונים (מסונכרן עם תבנית פוג'י) */
+        .recent-posts-wrapper { max-width: 1000px; margin: 0 auto 40px auto; padding: 0 20px; }
+        .recent-posts-title { font-size: 24px; font-weight: 300; color: #3e7b73; margin-bottom: 30px; text-align: left; }
+        .recent-posts-grid { display: flex; gap: 30px; } 
         
-        .recent-grid { display: flex; gap: 20px; padding: 0 20px; }
-        .recent-card { flex: 1; background: #fff; border: 1px solid #eee; transition: transform 0.2s; }
-        .recent-card:hover { transform: translateY(-3px); }
-        .recent-card img { width: 100%; height: 180px; object-fit: cover; }
-        .recent-card-body { padding: 20px; text-align: center; }
-        .recent-card-body h4 { font-weight: 400; font-size: 18px; margin-bottom: 30px; }
-        .card-meta { display: flex; justify-content: center; font-size: 14px; color: #888; border-top: 1px solid #eee; padding-top: 15px; }
+        .recent-card {
+            flex: 1; 
+            background: #fff;
+            border: 1px solid #eee;
+            transition: transform 0.2s;
+        }
+        .recent-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .recent-card img { width: 100%; height: 200px; object-fit: cover; margin: 0; border-radius: 0; aspect-ratio: auto;}
+        .recent-card-body { padding: 20px; }
+        .recent-card h4 { font-size: 20px; font-weight: 300; color: #3e7b73; margin-bottom: 40px; }
+        
+        .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding-top: 15px; color: #999; font-size: 14px; }
+        .card-footer-left { display: flex; gap: 15px; }
 
         /* אזור תגובות */
         .comments-section { max-width: 800px; margin: 0 auto 100px auto; background: #fff; padding: 40px; border: 1px solid #eee; }
@@ -88,36 +94,25 @@
            ========================================= */
         @media (max-width: 768px) {
             
-            /* סידור התפריט העליון שייכנס במסך */
+            /* סידור התפריט העליון */
             header { flex-direction: column; padding: 15px; text-align: center; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
 
-            /* הפיכת אזור הפתיחה (Hero) מ"צד בצד" ל"אחד מתחת לשני" */
-            .hero { flex-direction: column; padding: 40px 5%; text-align: center; gap: 30px; }
-            .hero-text h1 { font-size: 38px; } /* הקטנת הכותרת הענקית */
-            .hero-text p { font-size: 18px; }
+            /* התאמת אזור התוכן המרכזי כדי שלא ייצמד למסך */
+            .post-container { margin: 0; padding: 40px 20px; box-shadow: none; }
+            .post-header h1 { font-size: 32px; }
+            .post-content { font-size: 17px; }
+            
+            /* התאמות תתי-כותרות במובייל */
+            .section-title { font-size: 22px; margin-top: 35px; padding-top: 20px; }
 
-            /* הקטנת הרווחים בחלק האמצעי */
-            .middle-text { padding: 40px 10%; }
-            .middle-text h2 { font-size: 28px; }
-            .middle-text p { font-size: 18px; }
-
-            /* כרטיסיות הקטגוריות יתפסו את כל רוחב המסך בטלפון */
-            .grid { 
-                display: flex; 
-                flex-direction: column; 
-                gap: 20px; 
-            }
-            .card { 
-                width: 100%; 
-                flex: 1 1 100%;
-            }
+            /* הפיכת הפוסטים האחרונים לטור (אחד מתחת לשני) */
+            .recent-posts-grid { flex-direction: column; gap: 20px; }
         }
 
     </style>
 
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D038KR7FQ"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4D038KR7FQ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -147,7 +142,6 @@
     <main class="post-container">
         <div class="post-header">
             <h1>יפן - מידע כללי</h1>
-            
         </div>
 
         <div class="post-content">
@@ -237,19 +231,16 @@
         </div>
     </main>
 
-    <section class="recent-posts-container">
-        <div class="recent-header">
-            <h3>Recent Posts</h3>
-            
-        </div>
-        <div class="recent-grid">
+    <section class="recent-posts-wrapper">
+        <h2 class="recent-posts-title">Recent Posts</h2>
+        <div class="recent-posts-grid">
             
             <a href="route-planning.html" class="recent-card">
                 <img src="images/map1.AVIF" alt="תכנון מסלול">
                 <div class="recent-card-body">
                     <h4>תכנון מסלול</h4>
-                    <div class="card-meta">
-                        
+                    <div class="card-footer">
+                        <div class="card-footer-left"></div>
                     </div>
                 </div>
             </a>
@@ -258,13 +249,11 @@
                 <img src="images/tokyo.JPG" alt="טוקיו - מידע כללי">
                 <div class="recent-card-body">
                     <h4>טוקיו - מידע כללי</h4>
-                    <div class="card-meta">
-                        
+                    <div class="card-footer">
+                        <div class="card-footer-left"></div>
                     </div>
                 </div>
             </a>
-
-            
 
         </div>
     </section>
