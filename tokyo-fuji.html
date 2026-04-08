@@ -96,9 +96,9 @@
             .hero-text p { font-size: 18px; }
 
             /* הקטנת הרווחים בחלק האמצעי */
-            .middle-text { padding: 40px 10%; }
-            .middle-text h2 { font-size: 28px; }
-            .middle-text p { font-size: 18px; }
+            .intro-text { padding: 40px 10%; }
+            .intro-text h2 { font-size: 28px; }
+            .intro-text p { font-size: 18px; line-height: 1.6; }
 
             /* כרטיסיות הקטגוריות יתפסו את כל רוחב המסך בטלפון */
             .card { width: 100%; margin-bottom: 20px; }
@@ -107,6 +107,8 @@
             /* הקטנת אזור צור קשר בטלפון */
             .contact-section { padding: 50px 10%; }
             .contact-section p { font-size: 22px; }
+
+            .desktop-only { display: none; }
         }
     </style>
 
@@ -144,7 +146,7 @@
     </div>
 
     <section class="intro-text">
-        <p>אירגנו לכם כאן את כל הפוסטים על טוקיו ועל טיולי יום מומלצים<br>לחצו על התמונות השונות כדי לקרוא עוד</p>
+        <p>אירגנו לכם כאן את כל הפוסטים על טוקיו ועל טיולי יום מומלצים<br class="desktop-only">לחצו על התמונות השונות כדי לקרוא עוד </p>
     </section>
 
     <a href="tokyo.html" class="post-link-banner" style="background-image: url('images/tokyo.jpg.avif');">
