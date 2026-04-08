@@ -77,8 +77,15 @@
             .middle-text p { font-size: 18px; }
 
             /* כרטיסיות הקטגוריות יתפסו את כל רוחב המסך בטלפון */
-            .card { width: 100%; margin-bottom: 20px; }
-            .grid { gap: 15px; }
+            .grid { 
+                display: flex; 
+                flex-direction: column; 
+                gap: 20px; 
+            }
+            .card { 
+                width: 100%; 
+                flex: 1 1 100%;
+            }
         }
 
     </style>
