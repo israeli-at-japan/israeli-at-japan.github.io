@@ -1,88 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://israeli-at-japan.github.io/index.html</loc>
+    <loc>https://israeli-in-japan.com/index.html</loc>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/general-info.html</loc>
+    <loc>https://israeli-in-japan.com/general-info.html</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/tokyo-fuji.html</loc>
+    <loc>https://israeli-in-japan.com/tokyo-fuji.html</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/alps.html</loc>
+    <loc>https://israeli-in-japan.com/alps.html</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/kyoto-osaka.html</loc>
+    <loc>https://israeli-in-japan.com/kyoto-osaka.html</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/island-hopping.html</loc>
+    <loc>https://israeli-in-japan.com/island-hopping.html</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/forum.html</loc>
+    <loc>https://israeli-in-japan.com/forum.html</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/japan-info.html</loc>
+    <loc>https://israeli-in-japan.com/japan-info.html</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/route-planning.html</loc>
+    <loc>https://israeli-in-japan.com/route-planning.html</loc>
     <priority>0.80</priority>
   </url>
-
   <url>
-    <loc>https://israeli-at-japan.github.io/fuji.html</loc>
+    <loc>https://israeli-in-japan.com/fuji.html</loc>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/hiroshima-miyajima.html</loc>
+    <loc>https://israeli-in-japan.com/hiroshima-miyajima.html</loc>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/kamakura.html</loc>
+    <loc>https://israeli-in-japan.com/kamakura.html</loc>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/kanazawa-shirakawa.html</loc>
+    <loc>https://israeli-in-japan.com/kanazawa-shirakawa.html</loc>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/kyoto-post.html</loc>
+    <loc>https://israeli-in-japan.com/kyoto-post.html</loc>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/mat-kiso-kam.html</loc>
+    <loc>https://israeli-in-japan.com/mat-kiso-kam.html</loc>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/nikko.html</loc>
+    <loc>https://israeli-in-japan.com/nikko.html</loc>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/okayama-naoshima.html</loc>
+    <loc>https://israeli-in-japan.com/okayama-naoshima.html</loc>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/osaka-post.html</loc>
+    <loc>https://israeli-in-japan.com/osaka-post.html</loc>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/tokyo-areas.html</loc>
+    <loc>https://israeli-in-japan.com/tokyo-areas.html</loc>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/tokyo.html</loc>
+    <loc>https://israeli-in-japan.com/tokyo.html</loc>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>https://israeli-at-japan.github.io/uji-nara.html</loc>
+    <loc>https://israeli-in-japan.com/uji-nara.html</loc>
     <priority>0.64</priority>
+  </url>
+  
+  <url>
+    <loc>https://israeli-in-japan.com/backpackers-guide.html</loc>
+    <lastmod>2026-04-09</lastmod>
+    <priority>0.80</priority>
   </url>
 </urlset>
