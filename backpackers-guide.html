@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מידע לתרמילאי | ישראלי ביפן</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="canonical" href="https://israeli-in-japan.com/backpackers-guide.html" />
+    <meta name="description" content="המדריך האולטימטיבי לתרמילאי ביפן: תקציב, אוטובוסי לילה, לינה בחינם בבית שלום, הוסטלים מומלצים, מכבסות ומספרות זולות.">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* איפוס והגדרות בסיס */
+        body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+        body { font-family: 'Assistant', sans-serif; color: #3e7b73; line-height: 1.8; background-color: #fafafa; }
+        a { text-decoration: none; color: inherit; }
+
+        /* תפריט עליון */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: #fff; border-bottom: 1px solid #eee; }
+        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
+        nav ul li:hover { opacity: 0.7; cursor: pointer; }
+        nav ul li a { color: #3e7b73; }
+
+        /* אזור התוכן של הפוסט */
+        .post-container { max-width: 800px; margin: 50px auto; background: #fff; padding: 60px; box-shadow: 0 0 10px rgba(0,0,0,0.02); }
+        
+        /* תמונת נושא (Hero Image) בתחילת הפוסט */
+        .hero-image {
+            width: 100%;
+            height: 40vh;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 4px;
+            display: block;
+            margin-bottom: 40px;
+        }
+
+        .post-header { text-align: center; margin-bottom: 40px; }
+        .post-header h1 { font-size: 45px; font-weight: 300; margin-bottom: 10px; }
+
+        .post-content { text-align: right; font-size: 18px; }
+        .post-content p { margin-bottom: 20px; }
+        
+        /* רשימות בתוך הפוסט */
+        .post-content ul { list-style: disc; margin-right: 25px; margin-bottom: 20px; }
+        .post-content ul li { margin-bottom: 10px; }
+        
+        /* תתי כותרות (עם קו מפריד מעליהן) */
+        .section-title { 
+            font-size: 24px; 
+            font-weight: 600; 
+            margin-top: 50px; 
+            padding-top: 30px; 
+            margin-bottom: 15px; 
+            color: #2e5750; 
+            border-top: 1px solid #c4e0d7; 
+        }
+        
+        .post-content .section-title:first-of-type { border-top: none; margin-top: 10px; padding-top: 0; }
+
+        /* תתי-תתי כותרות (בלי קו מפריד, קו תחתון עדין) */
+        .sub-title { 
+            font-weight: 600; 
+            text-decoration: underline; 
+            margin-top: 25px; 
+            margin-bottom: 10px; 
+            display: inline-block; 
+            font-size: 20px;
+        }
+        
+        .post-content a.content-link { color: #437a71; text-decoration: underline; font-weight: 600;}
+        .post-content a.content-link:hover { color: #2e5750; }
+
+        /* אזור פוסטים אחרונים */
+        .recent-posts-wrapper { max-width: 1000px; margin: 0 auto 40px auto; padding: 0 20px; }
+        .recent-posts-title { font-size: 24px; font-weight: 300; color: #3e7b73; margin-bottom: 30px; text-align: left; }
+        .recent-posts-grid { display: flex; gap: 30px; } 
+        
+        .recent-card { flex: 1; background: #fff; border: 1px solid #eee; transition: transform 0.2s; }
+        .recent-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .recent-card img { width: 100%; height: 200px; object-fit: cover; margin: 0; border-radius: 0; aspect-ratio: auto;}
+        .recent-card-body { padding: 20px; }
+        .recent-card h4 { font-size: 20px; font-weight: 300; color: #3e7b73; margin-bottom: 40px; }
+
+        /* אזור תגובות */
+        .comments-section { max-width: 800px; margin: 0 auto 100px auto; background: #fff; padding: 40px; border: 1px solid #eee; }
+
+        /* =========================================
+           הגדרות עיצוב מיוחדות למסכי טלפון בלבד
+           ========================================= */
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 15px; text-align: center; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
+
+            .post-container { margin: 0; padding: 40px 20px; box-shadow: none; }
+            .hero-image { height: 30vh; margin-bottom: 25px; }
+            .post-header h1 { font-size: 32px; }
+            .post-content { font-size: 17px; line-height: 1.6; }
+            
+            .section-title { font-size: 22px; margin-top: 35px; padding-top: 20px; }
+
+            .recent-posts-grid { flex-direction: column; gap: 20px; }
+        }
+    </style>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4D038KR7FQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4D038KR7FQ');
+    </script>
+    
+</head>
+<body>
+
+    <header>
+        <div class="logo">ישראלי ביפן</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="forum.html">Forum</a></li>
+                <li><a href="general-info.html">תכנון טיול ומידע כללי על יפן</a></li>
+                <li><a href="tokyo-fuji.html">טוקיו פוג'י והסביבה</a></li>
+                <li><a href="alps.html">האלפים היפניים</a></li>
+                <li><a href="kyoto-osaka.html">קיוטו אוסקה ומה שביניהן</a></li>
+                <li><a href="island-hopping.html">איילנד הופינג ביפן</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="post-container">
+        
+        <img src="images/ramen.jpg.avif" alt="מידע לתרמילאי ביפן" class="hero-image">
+
+        <div class="post-header">
+            <h1>מידע לתרמילאי ביפן</h1>
+        </div>
+
+        <div class="post-content">
+            <p>יפן יכולה להיות יקרה, אבל אם יודעים איפה לחתוך פינות, אפשר לטייל בה חודשים בלי לפשוט רגל.<br>
+            ריכזנו לכם כאן את כל ה"פנינות" הקטנות שחוסכות כסף וסוגרות פינות קריטיות.</p>
+            
+            <h2 class="section-title">תקציב 💸</h2>
+            <p>בואו נשים את הקלפים על השולחן כבר על ההתחלה, יפן היא לא הודו. אם אתם בונים על לסגור חודש ב-3,000 ש"ח, אתם לא במקום הנכון. מצד שני, היא גם לא "בור ללא תחתית" כמו שלפעמים חושבים.</p>
+            <p>התשובה לשאלה "כמה זה עולה?" תלויה בכם, אבל דאגנו לכם למספרים האמיתיים מהשטח: חברים טובים שלנו סיימו חודש תרמילאי ממוצע ב-<strong>7,000 ש"ח</strong>, בעוד שאנחנו (שקצת יותר פינקנו את עצמנו) הגענו לאזור ה-<strong>11,500 ש"ח</strong>.</p>
+
+            <span class="sub-title">מה משפיע על המחיר?</span>
+            <p>הטווח הזה נובע משלושה משתנים מרכזיים:</p>
+            <ul>
+                <li><strong>העיר שבה אתם נמצאים:</strong> בטוקיו הכל יקר יותר משמעותית (בעיקר הלינה). ככל שמתרחקים לערים קטנות או לאזורים כפריים, המחירים צונחים.</li>
+                <li><strong>מה אתם אוכלים:</strong> יפן מציעה הכל – החל מארוחות מדהימות ב-10 ש"ח בסופרים (7-Eleven/Family Mart), ראמן ב-20₪, טונקאטסו ב-75₪ ועד למסעדות מישלן שיכולות לעלות מאות שקלים לאדם.</li>
+                <li><strong>איך אתם זזים:</strong> התחבורה ביפן היא הוצאה כבדה. ה-JR Pass, אוטובוסי לילה והשינקנסן – הבחירה ביניהם יכולה לשנות את התקציב שלכם במאות שקלים.</li>
+            </ul>
+
+            <h2 class="section-title">כסף וצ'יינג' (Exchange) 💰</h2>
+            <p><strong>Ninja Money Exchange</strong> - נמצא בשינג׳וקו עם שערים מצויינים. שימו לב, בארץ אומנם אפשר להמיר שקל ליין (המטבע היפני) ישירות בלי המרה לדולר באמצע, אבל ביפן לא ניתן להמיר שקלים!</p>
+            <p>כתובת: 1 Chome−2−12, Nishishinjuku, Shinjuku City</p>
+            <p>מבחינת הכספומטים, הכי מומלץ למשוך מזומן בחנויות של 7-eleven, שזה גם הכי נוח ונמצא בכל פינה.</p>
+
+            <h2 class="section-title">לוקרים ואחסון ציוד 🎒</h2>
+            <p>בעיקרון בכל תחנת רכבת/מטרו יש לוקרים שניתן להשכיר במקרה הצורך, אבל במקרה והם תפוסים או שזה סתם יוצא לא נוח, יש אופציה נוספת - אפליקציית <strong>Ecbo Cloak</strong>. זו אפליקציה שמאפשרת לכם להזמין מקום לאחסון התיק בבתי קפה, חנויות ומסעדות, וזה לפעמים זול יותר מלוקר בתחנה.</p>
+
+            <h2 class="section-title">הוסטלים מומלצים 🛌</h2>
+            <p>המקומות שקיבלנו עליהם המלצות ולא היינו בהם:</p>
+            <ul>
+                <li><strong>טוקיו:</strong> Unplan (יש להם כמה סניפים).</li>
+                <li><strong>אוסקה:</strong> Acro Capsule Hotel Namba Dotonbori (חוויית קפסולה קלאסית במיקום מרכזי).</li>
+                <li><strong>קיוטו:</strong> Piece Hostel Sanjo.</li>
+            </ul>
+
+            <h2 class="section-title">בית השלום - לינה חינמית 🕊️</h2>
+            <p>מדובר בארגון של יפנים נוצרים שפשוט אוהבים את ישראל בטירוף ומארחים תרמילאים ישראלים <strong>בחינם לגמרי</strong> (עד 3 לילות)! זה באמת חוסך המון כסף והאירוח שם הוא הכי לבבי וחם שיש, אבל חשוב לנו לומר שזה לא הוסטל רגיל ויש להם כמה כללים שחובה לציית להם כדי לכבד את המקום😇</p>
+            
+            <span class="sub-title">כמה דברים שחשוב לדעת:</span>
+            <ul>
+                <li>צריך לחזור לדירה עד 22:30 ולסיים מקלחות עד 23:00.</li>
+                <li>בבוקר מגישים ארוחת בוקר וצריך לצאת מהחדר עד 09:00.</li>
+                <li>הם יחסית שמרנים אז הם פחות זורמים על זוגות שישנים באותו חדר, קחו את זה בחשבון.</li>
+                <li>חובה לתאם איתם מראש באימייל (גם אם דיברתם בטלפון הם מבקשים אישור במייל), הם ישלחו לכם את כל הוראות ההגעה ברגע שתאושרו.</li>
+            </ul>
+
+            <span class="sub-title">דרכי התקשרות:</span>
+            <ul>
+                <li><strong>טוקיו:</strong> Email: <a href="mailto:aki1106@e06.itscom.net" class="content-link">aki1106@e06.itscom.net</a> | Phone: +81-3-3700-7077</li>
+                <li><strong>קיוטו:</strong> +81-75-4614603</li>
+                <li><strong>נארה:</strong> +81-74-2240734</li>
+                <li><strong>הירושימה:</strong> +81-82-9225676</li>
+            </ul>
+            <p>לסיכום, זו חוויה ממש מיוחדת ומרגשת לראות כמה הם אוהבים אותנו, אז אם אתם זורמים על הכללים שלהם זה ממש שווה את זה, וזו דרך מעולה להכיר יפנים ולחוות את יפן בדרך ייחודית.</p>
+
+            <h2 class="section-title">התניידות 🚌</h2>
+            <p>במעבר בין ערים יש מספר אופציות של תחבורה ציבורית. אם אתם מחפשים לחסוך ויש לכם זמן, האופציה הזולה ביותר היא <strong>אוטובוסי לילה</strong>. אני אגיד לכם את האמת – אנחנו לא לקחנו אוטובוס לילה אפילו פעם אחת, אבל כן לקחנו אוטובוס של 4 שעות מקאנזווה לאוסקה וזה היה ממש סבבה, נוח בטירוף וזול משמעותית מהשינקנסן.</p>
+            <p>הקטע באוטובוסי לילה הוא שהם חוסכים לכם פעמיים: גם את הכסף של הנסיעה וגם לילה בהוסטל, שזה בכלל סוגר פינה למי שבתקציב. האתר הכי מומלץ והכי פשוט להזמנה מראש הוא של חברת Willer Express, יש להם המון קווים והאתר שלהם ממש ברור.</p>
+            <p>לינק לאתר להזמנת נסיעות: <a href="https://willerexpress.com/en/" target="_blank" class="content-link">Willer Express</a></p>
+            <p>נ.ב. אם אתם מתכננים כמה נסיעות ארוכות באוטובוס, תבדקו את ה-Japan Bus Pass שלהם באתר, זה יכול להוזיל לכם את העסק עוד יותר😘</p>
+            <p><strong>טיסות פנים:</strong> לפעמים טיסה מטוקיו לאוסקה או לאוקינאווה בחברה כמו <em>Peach</em> או <em>Jetstar</em> תעלה לכם פחות מנסיעה ברכבת, וזה חוסך המון זמן. שווה לבדוק ב-Skyscanner לפני שקונים כרטיס לרכבת. אם הגעתם ליפן עם אחת מחברות התעופה של יפן חלקן גם מציעות טיסות פנים בחינם אז שווה לבדוק.</p>
+
+            <h2 class="section-title">כביסה 🧺</h2>
+            <p>ברוב ההוסטלים יש מכונות כביסה על מטבעות, אבל המייבשים שם לרוב מאוד חלשים ומספר המייבשים מאוד נמוך, יצא לנו שנתקענו עם כביסה רטובה וחיכינו 3 שעות שמישהו יסיים לייבש את הכביסה שלו, חוויה ממש. בכל מקרה אנחנו הגענו עם חוט ארוך בדיוק למקרה כזה והפכנו את החדר מטר על מטר שלנו למתלה בגדים אחד גדול וצפוף.</p>
+            <p>הלקח מכל העניין הוא א׳ כדאי להביא חבל כביסה למקרה ש.. ו-ב׳ חפשו <strong>Laundromat</strong> (מכבסה ציבורית) בשכונה. המכונות שם ענקיות, המייבשים אמורים להיות הרבה יותר חזקים ובתקווה שתוך חצי שעה-שעה תסגרו את הסיפור.</p>
+
+            <h2 class="section-title">מספרות וספרים (לגברים) ✂️</h2>
+            <p>אני אישית לא הסתפרתי ביפן אבל אספנו לכם כאן כמה המלצות שקיבלנו מאנשים:</p>
+            
+            <span class="sub-title">טוקיו</span>
+            <ul>
+                <li><strong>ZUG2WANG</strong></li>
+                <li><strong>QB House:</strong> רשת מספרות זולה (סביב 1,350 ין). יש להם סניפים כמעט בכל תחנת רכבת גדולה. תספורת ב-10 דקות, בלי חפיפה, יעיל וזול.</li>
+            </ul>
+
+            <span class="sub-title">קיוטו</span>
+            <ul>
+                <li><strong>Frank’s Chop Shop:</strong> חייב להזמין מקום מראש באתר שלהם.</li>
+                <li><strong>Takagi:</strong> ספר שעובד בעיקר עם מספריים.</li>
+            </ul>
+
+            <span class="sub-title">אוסקה</span>
+            <ul>
+                <li><strong>C&M:</strong> רשת מספרות אמינה וזולה.</li>
+                <li><strong>BARBER Suu:</strong> אם אתם רוצים להשקיע בעצמכם. תספורת יקרה יותר אבל משקיעים בכם המון (תשריינו לזה שעה לפחות).</li>
+            </ul>
+
+        </div>
+    </main>
+
+    <section class="recent-posts-wrapper">
+        <h2 class="recent-posts-title">Recent Posts</h2>
+        <div class="recent-posts-grid">
+            
+            <a href="route-planning.html" class="recent-card">
+                <img src="images/map1.AVIF" alt="תכנון מסלול">
+                <div class="recent-card-body">
+                    <h4>תכנון מסלול</h4>
+                </div>
+            </a>
+
+            <a href="japan-info.html" class="recent-card">
+                <img src="images/plan.JPG" alt="יפן - מידע כללי">
+                <div class="recent-card-body">
+                    <h4>יפן - מידע כללי</h4>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <div style="max-width: 800px; margin: 50px auto; padding: 0 20px;">
+        <p id="disqus-loader" style="text-align: center; font-size: 20px; color: #3e7b73; margin-bottom: 30px;">טוען תגובות... ⏳</p>
+        <div id="disqus_thread"></div>
+        <script>
+            var disqus_config = function () {
+                this.callbacks.onReady = [function() {
+                    document.getElementById('disqus-loader').style.display = 'none';
+                }];
+            };
+            (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://israeli-at-japan.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+</body>
+</html>
