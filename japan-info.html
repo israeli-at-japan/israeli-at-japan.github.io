@@ -11,20 +11,26 @@
     <style>
         /* איפוס והגדרות בסיס */
         body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
-        body { font-family: 'Assistant', sans-serif; color: #3e7b73; line-height: 1.8; background-color: #fafafa; }
+        
+        /* שינוי: טקסט רץ בצבע שחור/אפור כהה לקריאות מקסימלית */
+        body { font-family: 'Assistant', sans-serif; color: #333; line-height: 1.8; background-color: #fafafa; }
         a { text-decoration: none; color: inherit; }
+
+        /* שינוי: הגדרת הטורקיז רק לכותרות */
+        h1, h2, h3, h4 { color: #3e7b73; }
 
         /* תפריט עליון */
         header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: #fff; border-bottom: 1px solid #eee; }
         .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
         nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
         nav ul li:hover { opacity: 0.7; cursor: pointer; }
+        nav ul li a { color: #3e7b73; }
 
         /* אזור התוכן של הפוסט */
         .post-container { max-width: 800px; margin: 50px auto; background: #fff; padding: 60px; box-shadow: 0 0 10px rgba(0,0,0,0.02); }
         
         .post-header { text-align: center; margin-bottom: 40px; }
-        .post-header h1 { font-size: 45px; font-weight: 300; margin-bottom: 10px; }
+        .post-header h1 { font-size: 45px; font-weight: 300; margin-bottom: 10px; color: #3e7b73; }
         .post-meta { font-size: 14px; color: #888; margin-bottom: 5px; }
         .post-date { font-size: 14px; color: #888; text-align: left; display: block; margin-bottom: 30px; padding-bottom: 20px; }
 
@@ -38,7 +44,7 @@
             margin-top: 50px; 
             padding-top: 30px; 
             margin-bottom: 15px; 
-            color: #2e5750; 
+            color: #3e7b73; /* שונה לטורקיז האחיד */
             border-top: 1px solid #c4e0d7; 
         }
         
@@ -57,12 +63,13 @@
             margin-bottom: 5px; 
             display: inline-block; 
             font-size: 20px;
+            color: #3e7b73; /* וידוא צבע טורקיז */
         }
         
         .post-content a.content-link { color: #437a71; text-decoration: underline; }
         .post-content a.content-link:hover { color: #2e5750; }
         
-        .map-link { display: block; margin-bottom: 10px; color: #437a71; text-decoration: underline; }
+        .map-link { display: block; margin-bottom: 10px; color: #437a71; text-decoration: underline; font-weight: 600; }
 
         /* אזור פוסטים אחרונים (מסונכרן עם תבנית פוג'י) */
         .recent-posts-wrapper { max-width: 1000px; margin: 0 auto 40px auto; padding: 0 20px; }
@@ -85,8 +92,8 @@
 
         /* אזור תגובות */
         .comments-section { max-width: 800px; margin: 0 auto 100px auto; background: #fff; padding: 40px; border: 1px solid #eee; }
-        .comments-section h3 { font-weight: 300; font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
-        .comment-box { width: 100%; box-sizing: border-box; border: 1px solid #ddd; padding: 15px; font-family: 'Assistant', sans-serif; font-size: 16px; min-height: 80px; resize: vertical; color: #3e7b73; }
+        .comments-section h3 { font-weight: 300; font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; color: #3e7b73; }
+        .comment-box { width: 100%; box-sizing: border-box; border: 1px solid #ddd; padding: 15px; font-family: 'Assistant', sans-serif; font-size: 16px; min-height: 80px; resize: vertical; color: #333; }
         .comment-box:focus { outline: none; border-color: #3e7b73; }
 
         /* =========================================
@@ -113,13 +120,13 @@
     </style>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4D038KR7FQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-4D038KR7FQ');
-</script>
+      gtag('config', 'G-4D038KR7FQ');
+    </script>
     
 </head>
 <body>
@@ -220,6 +227,37 @@
             <p>השכרת רכב ביפן יחסית יקרה לכן אנחנו לא השכרנו, ולדעתנו זה ממש לא חובה באי הונשו (Honshu) - האי הגדול ביותר ביפן, עליו ממוקמת גם העיר טוקיו. אבל אם אתם ממש מסתייגים מתחבצ אז רכב כן יכול להיות נחמד כשנוסעים לאזור פוג’י ולאלפים היפניים.<br>
             באי הוקאידו הבנו שהשכרת רכב היא חובה אבל לצערנו בסוף לא הגענו לשם ואין לנו מידע נוסף.</p>
 
+            <h2 class="section-title">הצ'ק-ליסט: 25 מאכלים שחובה לנסות 🍣</h2>
+            <p>אתחיל בזה שיפן היא באמת גן עדן של אוכל, ויש בה כמויות של מנות מטורפות, מוכרות יותר ופחות. אי אפשר באמת להגיע להכל בטיול אחד, אבל יש דברים שהם בעינינו ממש חובה ופשוט שווה לנסות. כדי שלא תלכו לאיבוד מול כל השפע הזה, סידרנו לכם רשימה של כל המאכלים הכי שווים.</p>
+            <p>אתם יכולים פשוט ללחוץ על הכפתור פה למטה, להדביק את זה בפתקים בטלפון (Notes), ללחוץ שם על הכפתור של הצ'ק-ליסט (בסרגל כלים), ופשוט לסמן ✔️ על כל מה שניסיתם בדרך!</p>
+
+            <button onclick="copyChecklist()" style="padding: 12px 24px; background-color: #3e7b73; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 18px; font-weight: 600; font-family: 'Assistant', sans-serif; transition: background 0.3s; margin-top: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                העתק רשימה לפתקים 📝
+            </button>
+
+            <p id="copyMessage" style="display: none; color: #3e7b73; font-weight: 600; margin-top: 15px; font-size: 16px;">
+                הרשימה הועתקה בהצלחה!
+            </p>
+
+            <script>
+            function copyChecklist() {
+                const checklistText = `הנבחרת שלנו: 25 מאכלים ביפן שאסור לפספס 🍣\n\nהקלאסיקות:\n○ סושי וסשימי 🍣\n○ ראמן (Ramen) 🍜\n○ טמפורה (Tempura) 🍤\n○ בקר וואגיו (Wagyu) 🥩\n\nאטריות וקערות אורז:\n○ אודון / סובה (Udon/Soba) 🥢\n○ קציצות בקר ואורז (בסגנון Hikiniku to Come) 🍳\n○ גיו-קאטסו (Gyukatsu) 🥩\n○ אומורייס (Omurice) 🍳\n○ טונקאטסו / קאטסו-דון 🐷\n○ גיו-דון (Gyudon) 🍚\n○ קארי יפני 🍛\n○ אונאגי (Unagi) 🐍\n\nנשנושים ואוכל רחוב:\n○ טאקויאקי (Takoyaki) 🐙\n○ אוקונומיאקי (Okonomiyaki) 🥞\n○ יאקיטורי (Yakitori) 🍢\n○ גיוזה (Gyoza) 🥟\n○ אוניגירי (Onigiri) 🍙\n○ קארי פאן (Kare Pan) 🥖\n\nמסביב לשולחן (חוויה):\n○ יאקיניקו (Yakiniku) 🔥\n○ סוקיאקי / שאבו-שאבו (סיר חם יפני) 🍲\n\nפינת המתוקים:\n○ מאצה (Matcha) 🍵\n○ מוצ'י (Mochi) 🍡\n○ דאנגו (Dango) 🍢\n○ מאפים וקינוחים עם אנקו (Anko - ממרח שעועית אדומה) 🫘\n○ לחם מלון (Melon Pan) 🍈`;
+
+                // פקודת העתקה ללוח של המכשיר
+                navigator.clipboard.writeText(checklistText).then(() => {
+                    // מציג את הודעת ההצלחה
+                    document.getElementById("copyMessage").style.display = "block";
+                    
+                    // מעלים את ההודעה אחרי 3.5 שניות
+                    setTimeout(() => {
+                        document.getElementById("copyMessage").style.display = "none";
+                    }, 3000);
+                }).catch(err => {
+                    console.error('משהו השתבש בהעתקה: ', err);
+                    alert('אופס! משהו השתבש בהעתקה. נסו שוב.');
+                });
+            }
+            </script>
             <h2 class="section-title">המלצות בגוגל מפות</h2>
             <p>ככה תמיד תראו מה האטרקציות הקרובות ואיזה מסעדות שוות יש באיזור, חשוב לציין ששמרנו הרבה מסעדות שלא הספקנו להיות בהן אבל כן קיבלנו עליהן המלצות אז כנראה שלא תיפלו😁</p>
             
