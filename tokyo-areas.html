@@ -11,8 +11,10 @@
     <style>
         /* איפוס והגדרות בסיס */
         body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
-        body { font-family: 'Assistant', sans-serif; color: #3e7b73; line-height: 1.6; background-color: #fafafa; }
+        body { font-family: 'Assistant', sans-serif; color: #333; line-height: 1.8; background-color: #fafafa; }
         a { text-decoration: none; color: inherit; }
+
+        h1, h2, h3, h4 { color: #3e7b73; }
 
         /* תפריט עליון */
         header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: #fff; border-bottom: 1px solid #eee; }
@@ -30,27 +32,28 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.02);
         }
 
-        /* כותרות וטקסט בפוסט */
-        .post-title { font-size: 42px; font-weight: 400; color: #3e7b73; margin-bottom: 10px; margin-top: 20px;}
+        .post-title { font-size: 45px; font-weight: 300; margin-bottom: 20px; text-align: center; }
         
-        .post-content h3 { font-size: 24px; font-weight: 600; color: #3e7b73; margin: 40px 0 15px 0; }
-        .post-content p { font-size: 19px; font-weight: 300; color: #555; line-height: 1.8; margin-bottom: 25px; }
+        .post-content h3 { font-size: 24px; font-weight: 600; margin: 40px 0 15px 0; }
+        .post-content p { font-size: 18px; margin-bottom: 20px; }
         
-        /* עיצוב קישורים בתוך הטקסט */
-        .post-content a { color: #3e7b73; text-decoration: underline; font-weight: 400; }
+        /* עיצוב רשימות לאטרקציות */
+        .post-content ul { list-style-type: disc; margin-right: 25px; margin-bottom: 30px; font-size: 18px; }
+        .post-content ul li { margin-bottom: 12px; }
+        
+        .post-content a { color: #437a71; text-decoration: underline; font-weight: 600; }
         .post-content a:hover { opacity: 0.7; }
 
-        /* תמונות בתוך הפוסט */
+        /* תמונות בתוך הפוסט - משמשות כמפריד/כותרת */
         .post-content img {
             width: 100%;
-            aspect-ratio: 4 / 2.35; /* השורה הזו שומרת את המקום ומונעת קפיצות! */
+            aspect-ratio: 4 / 2.35;
             object-fit: cover;
             border-radius: 4px;
-            margin: 40px 0;
+            margin: 50px 0 20px 0; /* רווח גדול מעל התמונה כדי שתשמש כהפרדה לאזור חדש */
             display: block;
         }
 
-        /* תמונה ראשית מעל הכותרת */
         .hero-image {
             width: 100%;
             height: 40vh;
@@ -58,72 +61,32 @@
             object-position: center;
             border-radius: 4px;
             display: block;
-            margin: 0 0 30px 0;
+            margin: 0 0 40px 0;
         }
 
-        /* קו מפריד */
         hr { border: 0; border-top: 1px solid #ddd; margin: 60px 0; }
 
-        /* אזור פוסטים אחרונים (Recent Posts) - 3 כרטיסיות */
+        /* אזור פוסטים אחרונים */
         .recent-posts-wrapper { max-width: 1000px; margin: 0 auto 40px auto; padding: 0 20px; }
-        .recent-posts-title { font-size: 24px; font-weight: 300; color: #3e7b73; margin-bottom: 30px; text-align: left; }
+        .recent-posts-title { font-size: 24px; font-weight: 300; margin-bottom: 30px; text-align: left; color: #3e7b73;}
         .recent-posts-grid { display: flex; gap: 30px; } 
         
-        .recent-card {
-            flex: 1;
-            background: #fff;
-            border: 1px solid #eee;
-            transition: transform 0.2s;
-        }
+        .recent-card { flex: 1; background: #fff; border: 1px solid #eee; transition: transform 0.2s; }
         .recent-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
         .recent-card img { width: 100%; height: 200px; object-fit: cover; margin: 0; border-radius: 0; }
         .recent-card-body { padding: 20px; }
         .recent-card h4 { font-size: 20px; font-weight: 300; color: #3e7b73; margin-bottom: 40px; }
         
-        /* אייקונים תחתונים בכרטיסייה */
         .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding-top: 15px; color: #999; font-size: 14px; }
         .card-footer-left { display: flex; gap: 15px; }
 
-        /* אזור תגובות (Comments) */
-        .comments-outer-wrapper {
-            max-width: 1000px;
-            margin: 0 auto 80px auto;
-            padding: 0 20px;
-        }
-        .comments-box {
-            background: #fff;
-            border: 1px solid #c9dfdc;
-            padding: 40px;
-        }
-        .comments-header {
-            font-size: 18px;
-            color: #3e7b73;
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        .comments-box hr {
-            margin: 0 0 30px 0;
-            border: none;
-            border-top: 1px solid #eee;
-        }
-        .comments-input {
-            width: 100%;
-            min-height: 80px;
-            border: 1px solid #ddd;
-            padding: 15px;
-            box-sizing: border-box;
-            font-family: 'Assistant', sans-serif;
-            font-size: 16px;
-            resize: vertical;
-            color: #555;
-            background: #fff;
-        }
-        .comments-input::placeholder {
-            color: #999;
-        }
+        /* אזור תגובות */
+        .comments-outer-wrapper { max-width: 1000px; margin: 0 auto 80px auto; padding: 0 20px; }
+        .comments-box { background: #fff; border: 1px solid #c9dfdc; padding: 40px; }
+        .comments-header { font-size: 18px; color: #3e7b73; margin-bottom: 15px; text-align: left; }
 
         /* אזור גוגל מפס */
-        .maps-section h3 { font-size: 24px; color: #3e7b73; margin-bottom: 20px; font-weight: 400; text-align: right;}
+        .maps-section h3 { font-size: 24px; margin-bottom: 20px; font-weight: 400; text-align: right;}
         .maps-link { font-size: 19px; color: #3e7b73; text-decoration: underline; font-weight: 300;}
 
         /* רספונסיביות לטלפון */
@@ -131,30 +94,26 @@
             header { flex-direction: column; padding: 15px; text-align: center; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
             
-            .post-container { margin: 0; padding: 40px 20px; border-radius: 0; }
+            .post-container { margin: 0; padding: 40px 20px; box-shadow: none; border-radius: 0; }
             .post-title { font-size: 32px; }
-            .post-content p { font-size: 17px; }
+            .post-content p, .post-content ul { font-size: 17px; }
             
             .recent-posts-grid { flex-direction: column; }
             .comments-outer-wrapper { padding: 0; margin-top: 40px; }
             .comments-box { border-left: none; border-right: none; padding: 20px;}
             
-            .hero-image {
-                height: 30vh;
-            }
+            .hero-image { height: 30vh; margin-bottom: 20px;}
+            .post-content img { margin: 40px 0 15px 0; }
         }
     </style>
 
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D038KR7FQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-4D038KR7FQ');
-</script>
-    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4D038KR7FQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4D038KR7FQ');
+    </script>
 </head>
 <body>
 
@@ -176,7 +135,6 @@
     <main class="post-container">
         
         <img src="images/tokyon.JPG" alt="טוקיו אזורים תמונה ראשית" class="hero-image">
-
         <h1 class="post-title">טוקיו - אזורים</h1>
         
         <div class="post-content">
@@ -186,98 +144,99 @@
             <img src="images/shinjuku.jpg.avif" alt="שינג'וקו" loading="lazy">
             
             <p>שינג'וקו הוא האזור עם הכי הרבה רחובות מגניבים ושלטי ניאון ומלא חנויות ומסעדות שווה להיות גם ביום וגם בלילה.</p>
-            <p>
-                רחובות מרכזיים- golden gai<br>
-                Omoide Yokocho<br>
-                קבוקיצ'י<br>
-                (הרחובות פעילים במיוחד בלילה אבל לקבוקיצ'י מומלץ להגיע גם ביום)
-            </p>
-            <p>בלילה יש נקודת תצפית על פרסומת ענקית של חתול זה נשמע קיטשי אבל זה באמת חמוד אז לכו לשם cat board.</p>
-            <p>ארוחת בוקר- egg slut, לקחת את הכריך המפורסם שלהם עם המקושקשת הרכה. צמוד יש מאפיה גם ממש טעימה.</p>
-            <p>הגענו לאזור של הגנים היפנים והיה יפה בטירוף- Gyuen park.</p>
-            <p>Meiji jingu-<br>
-            מקדש יחסית מתוייר אבל אם מגיעים מהצפון נכנסים דרך שער טורי ענק ומרשים ששם יש פחות אנשים ובכיף אפשר לעשות אחלה תמונה, ואחרי יש הליכה ביער שהוא גם ממש יפה. ביציאה מהמקדש שווה לצאת ביציאה הראשית לכיוון harjuku יש שם מלא חביות סאקה שמצויר עליהם דברים וזה מגניב ממש.</p>
-            <p>פארק יותר גדול יותר מתאים לפיקניק יש אזור ענק של מדשאות, ויש אזורים עם פרחים ממש יפה (אם Yoyogi park- זה או הפארק הזה או הגיואן אנחנו ממליצים על הגיואן כי הגנים היפנים שם זה באמת משהו מיוחד).</p>
-            <p>תצפית חינמית על העיר tokyo metropolitan government building, יכול להחליף תצפיות בתשלום.</p>
+            <ul>
+                <li>רחובות מרכזיים - Golden Gai, Omoide Yokocho, קבוקיצ'י (הרחובות פעילים במיוחד בלילה אבל לקבוקיצ'י מומלץ להגיע גם ביום)</li>
+                <li>Cat board - בלילה יש נקודת תצפית על פרסומת ענקית של חתול זה נשמע קיטשי אבל זה באמת חמוד אז לכו לשם.</li>
+                <li>Egg slut - ארוחת בוקר, לקחת את הכריך המפורסם שלהם עם המקושקשת הרכה. צמוד יש מאפיה גם ממש טעימה.</li>
+                <li>Gyuen park - הגענו לאזור של הגנים היפנים והיה יפה בטירוף.</li>
+                <li>Meiji jingu - מקדש יחסית מתוייר אבל אם מגיעים מהצפון נכנסים דרך שער טורי ענק ומרשים ששם יש פחות אנשים ובכיף אפשר לעשות אחלה תמונה, ואחרי יש הליכה ביער שהוא גם ממש יפה. ביציאה מהמקדש שווה לצאת ביציאה הראשית לכיוון harjuku יש שם מלא חביות סאקה שמצויר עליהם דברים וזה מגניב ממש.</li>
+                <li>Yoyogi park - פארק יותר גדול יותר מתאים לפיקניק יש אזור ענק של מדשאות, ויש אזורים עם פרחים ממש יפה (זה או הפארק הזה או הגיואן אנחנו ממליצים על הגיואן כי הגנים היפנים שם זה באמת משהו מיוחד).</li>
+                <li>Tokyo metropolitan government building - תצפית חינמית על העיר, יכול להחליף תצפיות בתשלום.</li>
+            </ul>
 
             <img src="images/harjuku.jpg.avif" alt="הארג'וקו" loading="lazy">
             
             <p>הארג'וקו נמצא ממש על התפר בין שינג'וקו לשיבויה, ונמצא ממש על היציאה/כניסה ממקדש מייג'י.</p>
-            <p>רחוב takeshita הוא הרחוב המרכזי, רחוב ממש עמוס אבל גם צבעוני ומגניב עם מלא גימיקים כמו טוסט עם גבינה צבעונית וצמר גפן ענק וכל מיני חנויות אנימה.</p>
+            <ul>
+                <li>Takeshita - הוא הרחוב המרכזי, רחוב ממש עמוס אבל גם צבעוני ומגניב עם מלא גימיקים כמו טוסט עם גבינה צבעונית וצמר גפן ענק וכל מיני חנויות אנימה.</li>
+            </ul>
             <p>הרחוב נראה ממש עמוס אבל כשנכנסים לתוכו הוא מרגיש קצת פחות עמוס וזה כן חוויה ללכת ולראות את החנויות הצבעוניות והגימיקים.</p>
 
             <img src="images/shibuya.jpg.avif" alt="שיבויה" loading="lazy">
             
             <p>שיבויה ושינג'וקו יחסית קרובות אחת לשנייה לכן הרבה מההמלצות חופפות לשניהם כמו- פארק ייוגי ומקדש מייג'י.</p>
             <p>גם פה שווה להיות ברחובות המרכזיים גם ביום וגם בלילה.</p>
-            <p>רחוב Omotesando- רחוב ממש חמוד וקרוב להארג'וקו, כיף להסתובב יש שם את matcha tokyo אני לקחתי את השייק בננה מאצ'ה ונהניתי מכל רגע (גם את הרחוב הזה מייחסים גם לשינגוקו ולשיבויה).</p>
-            <p>Oriental Bazar חנות מזכרות זולה וכיפית ממש.</p>
-            <p>דאמפלינג טעים Harajuku Gyozaro<br>
-            רחוב מרכזי ללילה - golden gai</p>
-            <p>מעבר חצייה גדול שמלא אנשים עוברים בו, נחשב אטרקציה להרבה אנשים והרבה גם עולים Shibuya crossing- לסטארבאקס כדי לצלם את המעבר חצייה. תכלס זה מגניב אבל לא משהו מיוחד ובכל מקרה מגיעים לשם כי זה אזור מרכזי.</p>
-            <p>חודש מראש צריך להזמין מקום לתצפית אם רוצים להגיע בשקיעה, עולה חמישים שח, לדעתנו שווה -Shibuya sky את זה, התצפית ממש יפה וגדולה ומשקיפה על האזורים המרכזיים, ממליצים להגיע בזמן שקיעה/ערב כי זה הכי יפה כשחשוך ולהיות מוכנים לעמוד קצת בתורים. בגלל שיש שער בערך שעה תור אז מומלץ להזמין את הכרטיס שעה וחצי לפני השקיעה.</p>
-            <p>רחוב ממש יפה בערב עם מסעדות -Miashita</p>
-            <p>אוכל-<br>
-            פנקייקים אווריריים וטעימים בטירוף, הגענו בבוקר והיה תור מטורף אז הלכנו וחזרנו בסביבות שש ולא היה -Flippers תור אז אם לא אכפת לכם להחליף ארוחות זה ממש טעים.<br>
-            סושי מנוע, אחת המסעדות המגניבות שהייתי בהם ואפילו שיש תור הוא רץ מהר Uobei Shibuya.</p>
+            <ul>
+                <li>Omotesando - רחוב ממש חמוד וקרוב להארג'וקו, כיף להסתובב יש שם את matcha tokyo אני לקחתי את השייק בננה מאצ'ה ונהניתי מכל רגע (גם את הרחוב הזה מייחסים גם לשינגוקו ולשיבויה).</li>
+                <li>Oriental Bazar - חנות מזכרות זולה וכיפית ממש.</li>
+                <li>Harajuku Gyozaro - דאמפלינג טעים.</li>
+                <li>Golden gai - רחוב מרכזי ללילה.</li>
+                <li>Shibuya crossing - מעבר חצייה גדול שמלא אנשים עוברים בו, נחשב אטרקציה להרבה אנשים והרבה גם עולים לסטארבאקס כדי לצלם את המעבר חצייה. תכלס זה מגניב אבל לא משהו מיוחד ובכל מקרה מגיעים לשם כי זה אזור מרכזי.</li>
+                <li>Shibuya sky - חודש מראש צריך להזמין מקום לתצפית אם רוצים להגיע בשקיעה, עולה חמישים שח, לדעתנו שווה את זה, התצפית ממש יפה וגדולה ומשקיפה על האזורים המרכזיים, ממליצים להגיע בזמן שקיעה/ערב כי זה הכי יפה כשחשוך ולהיות מוכנים לעמוד קצת בתורים. בגלל שיש שער בערך שעה תור אז מומלץ להזמין את הכרטיס שעה וחצי לפני השקיעה.</li>
+                <li>Miashita - רחוב ממש יפה בערב עם מסעדות.</li>
+            </ul>
+            <p>אוכל:</p>
+            <ul>
+                <li>Flippers - פנקייקים אווריריים וטעימים בטירוף, הגענו בבוקר והיה תור מטורף אז הלכנו וחזרנו בסביבות שש ולא היה תור אז אם לא אכפת לכם להחליף ארוחות זה ממש טעים.</li>
+                <li>Uobei Shibuya - סושי מנוע, אחת המסעדות המגניבות שהייתי בהם ואפילו שיש תור הוא רץ מהר.</li>
+            </ul>
 
             <img src="images/shimo.jpg.avif" alt="שימטקזאווה" loading="lazy">
             
             <p>שימטקזאווה זה אזור מגניב של חנויות וינטג' ויד שנייה, פשוט להגיע ולהסתובב.</p>
             <p>גם שם יש סניף של flippers ושם בכלל אין תור אם זה מעניין אתכם, מעבר לזה יש שם גם הרבה בתי קפה ומסעדות.</p>
-            <p>מרחק תחנת רכבת אחת יש את מקדש החתולים<br>
-            Gotokuji Temple<br>
-            לדעתנו זה אחד המקדשים המגניבים שהיינו בהם בתוך טוקיו עצמה וגם ההגעה אליו הייתה ממש נחמדה הליכה ברחובות עם בתים של תושבים בארכיטקטורה יפנית. אבל הוא ממש מרוחק ובהמשך גילינו שהקטע של המלא פסלונים של חיות נפוץ בהרבה מקדשים.</p>
+            <ul>
+                <li>Gotokuji Temple - מרחק תחנת רכבת אחת יש את מקדש החתולים. לדעתנו זה אחד המקדשים המגניבים שהיינו בהם בתוך טוקיו עצמה וגם ההגעה אליו הייתה ממש נחמדה הליכה ברחובות עם בתים של תושבים בארכיטקטורה יפנית. אבל הוא ממש מרוחק ובהמשך גילינו שהקטע של המלא פסלונים של חיות נפוץ בהרבה מקדשים.</li>
+            </ul>
 
             <img src="images/odiba.jpg.avif" alt="אודאיבה" loading="lazy">
             
             <p>אודאיבה זה אי מלאכותי שהפכו לאזור תיירותי, תכלס בעינינו לא מקום חובה אבל הוא כן מתאים אם במקרה יש יום גשום כי הפעילויות שם הם בעיקר קניונים ומוזיאונים.</p>
-            <p>
-                - טיםלאב פלאנטס- תערוכה מהממת שמשלבת טכנולוגיה ואומנות, צריך להזמין מראש כרטיס (50₪) דרך אפליקציית klook.<br>
-                - מוזיאון לחדשנות טכנולוגיות Miraikan , מוזיאון נחמד יש בו כל מיני רובוטים שזה מגניב ואז כל מיני דברים מדעיים.<br>
-                - דייבר סיטי קניון עם כל מיני חנויות גימיקים כמו הלו קיטי ואנימה, בכניסה יש רובוט ענק שזה די מגניב.<br>
-                - פסל החירות, חיקוי קטן שלו שיכול להיות מגניב ללכת לראות אותו.
-            </p>
+            <ul>
+                <li>טיםלאב פלאנטס - תערוכה מהממת שמשלבת טכנולוגיה ואומנות, צריך להזמין מראש כרטיס (50₪) דרך אפליקציית klook.</li>
+                <li>Miraikan - מוזיאון לחדשנות טכנולוגיות, מוזיאון נחמד יש בו כל מיני רובוטים שזה מגניב ואז כל מיני דברים מדעיים.</li>
+                <li>דייבר סיטי - קניון עם כל מיני חנויות גימיקים כמו הלו קיטי ואנימה, בכניסה יש רובוט ענק שזה די מגניב.</li>
+                <li>פסל החירות - חיקוי קטן שלו שיכול להיות מגניב ללכת לראות אותו.</li>
+            </ul>
 
             <img src="images/asakusa.jpg.avif" alt="אסקוסה" loading="lazy">
             
             <p>היופי באסקוסה שהכל ממש קרוב אחד לשני וזה אזור מהמם יש שם שני מקדשים שבינהם יש רחובות כיפיים של חנויות, מזכרות ובעיקר מלא אוכל, אנחנו פשוט עברנו מלא דוכנים וניסינו מלא מאכלים יפניים.</p>
-            <p>
-                - מקדש סנסו ג'י<br>
-                - רחוב נקמיסה Nakamise Market, מזכרות ומאכלים יפניים<br>
-                - רחוב ameyoko shopping street הרחוב שמוביל למקדש (לקנות בסמטאות של הרחוב יותר זול)<br>
-                - פארק סומידה, יותר טיילת יפה שיש לה תצפית על בניין שיש עליו פסל מיוחד וענק
-            </p>
+            <ul>
+                <li>מקדש סנסו ג'י</li>
+                <li>Nakamise Market - רחוב נקמיסה, מזכרות ומאכלים יפניים</li>
+                <li>Ameyoko shopping street - הרחוב שמוביל למקדש (לקנות בסמטאות של הרחוב יותר זול)</li>
+                <li>פארק סומידה - יותר טיילת יפה שיש לה תצפית על בניין שיש עליו פסל מיוחד וענק</li>
+            </ul>
             <p>אנחנו ישנו באסקוסה אז יצא שהגענו גם בלילה למקדשים והם מאוד יפים בלילה ויש הרבה פחות אנשים אבל כל החנויות והדוכנים סגורים.</p>
-            <p>מסעדה ממש טובה שהגענו אליה במקרה-Asakusa<br>
-            Yakiniku Tanki 浅草焼肉 たん鬼 （たんき）</p>
+            <p>מסעדה ממש טובה שהגענו אליה במקרה- Asakusa Yakiniku Tanki 浅草焼肉 たん鬼 （たんき）</p>
 
             <img src="images/ueno.jpg.avif" alt="אואנו" loading="lazy">
             
             <p>מה שאהבנו באואנו זה שהוא קצת טוקיו המלוכלכת, הרחובות של השוק צבעוניים ומגניבים, הוא מלא באנשים ויש מלא ברים ומסעדות, אנשים מעשנים ושותים ברחובות, השוק מזכיר אפילו קצת את תאילנד שזה נראה כאילו מוכרים זיופים אבל תכלס זה נראה אמיתי ויש גם חנויות באמת טובות.</p>
-            <p>
-                - שוק אמיקו (Ameyoko)<br>
-                - פארק אואנו, פארק חמוד יש שם כל מיני מקדשים קטנים וגם בריכת לוטוסים
-            </p>
+            <ul>
+                <li>Ameyoko - שוק אמיקו</li>
+                <li>פארק אואנו - פארק חמוד יש שם כל מיני מקדשים קטנים וגם בריכת לוטוסים</li>
+            </ul>
             <p>אם יש לכם הרבה זמן בטוקיו שווה לקפוץ לשם לשעתיים כזה אם לא אפשר לוותר.</p>
             <p>שמענו שגם מגניב בשוק שם בלילה אבל לא היינו.</p>
 
             <img src="images/daika.jpg.avif" alt="דאיקאניאמה" loading="lazy">
             
             <p>דאיקאניאמה קרוב לשיבויה, אזור ממש יפה ונעים להליכה אבל אין הרבה מה לעשות זה רק חנויות ומסעדות ואולי איזה פארק, רק אם בית אסקורה פתוח שווה להגיע.</p>
-            <p>
-                - בית אסקורה (כניסה בתשלום) בית יפני מסורתי של פעם, שימו לב מתי פתוח שם כשאנחנו הגענו היה סגור.<br>
-                - מתחם טי סייט- Tsutaya, חנות ספרים וגלריה
-            </p>
+            <ul>
+                <li>בית אסקורה (כניסה בתשלום) - בית יפני מסורתי של פעם, שימו לב מתי פתוח שם כשאנחנו הגענו היה סגור.</li>
+                <li>Tsutaya - מתחם טי סייט, חנות ספרים וגלריה</li>
+            </ul>
 
             <img src="images/ginza.jpg.avif" alt="גינזה" loading="lazy">
             
             <p>גינזה זה אזור חנויות יוקרתי נראה כמו ניו יורק, גם מתאים ליום גשם כי זה רק לעבור בין חנויות.</p>
-            <p>
-                - יוניקלו הכי גדול בטוקיו (12 קומות)<br>
-                - איטויה חנות כלי כתיבה ציור עיצוב וכו<br>
-                - תיאטרון קבוקיזה, ניתן לקנות כרטיס למערכה אחת באותו יום, מספר המקומות מוגבל (לא היינו אבל זאת אטרקציה מוכרת)
-            </p>
+            <ul>
+                <li>יוניקלו הכי גדול בטוקיו (12 קומות)</li>
+                <li>איטויה חנות כלי כתיבה ציור עיצוב וכו</li>
+                <li>תיאטרון קבוקיזה - ניתן לקנות כרטיס למערכה אחת באותו יום, מספר המקומות מוגבל (לא היינו אבל זאת אטרקציה מוכרת)</li>
+            </ul>
 
             <img src="images/akihabara.jpg.avif" alt="אקיהברה" loading="lazy">
 
@@ -286,21 +245,23 @@
 
             <img src="images/minato.jpg.avif" alt="מינאטו" loading="lazy">
 
-            <p>מינאטו יחסית קרוב לארמון הקיסר ולא רחוק מהteam lab borderless<br>
-            - מקדש עם טורי גייטס אדומים hie shrine<br>
-            - מקדש מגניב עם מלא שועלים וכשהגענו בדיוק הייתה תפילה וזה היה מהמם Toyokawa Inari Betsuin</p>
+            <p>מינאטו יחסית קרוב לארמון הקיסר ולא רחוק מהteam lab borderless</p>
+            <ul>
+                <li>Hie shrine - מקדש עם טורי גייטס אדומים</li>
+                <li>Toyokawa Inari Betsuin - מקדש מגניב עם מלא שועלים וכשהגענו בדיוק הייתה תפילה וזה היה מהמם</li>
+            </ul>
 
             <hr style="border-top: 1px dashed #3e7b73; margin: 60px 0 40px 0;">
 
             <h3>אזורים קרובים אחד לשני שאפשר לשלב באותו יום</h3>
-            <p>
-                שינגוקו - הארגוקו - שיבויה<br>
-                שיבויה - דאיקינאמה<br>
-                גינזה - אודייבה<br>
-                אסקוסה - גינזה<br>
-                אסקוסה - אקיהברה - אואנו<br>
-                שיבויה - שימטקזאווה (לא הכי קרוב אבל שימטקזאווה די רחוק)
-            </p>
+            <ul>
+                <li>שינגוקו - הארגוקו - שיבויה</li>
+                <li>שיבויה - דאיקינאמה</li>
+                <li>גינזה - אודייבה</li>
+                <li>אסקוסה - גינזה</li>
+                <li>אסקוסה - אקיהברה - אואנו</li>
+                <li>שיבויה - שימטקזאווה (לא הכי קרוב אבל שימטקזאווה די רחוק)</li>
+            </ul>
 
             <div class="maps-section" style="margin-top: 40px;">
                 <h3>נקודות בגוגל מפס</h3>
@@ -353,19 +314,14 @@
 
         <div id="disqus_thread"></div>
         <script>
-            /**
-            * הגדרות דיסקאס - כאן אנחנו אומרים לו מה לעשות כשהוא מוכן
-            */
             var disqus_config = function () {
-                // הפונקציה הזו מופעלת אוטומטית ברגע שהתגובות נטענו במלואן
                 this.callbacks.onReady = [function() {
                     document.getElementById('disqus-loader').style.display = 'none';
                 }];
             };
             
-            (function() { // DON'T EDIT BELOW THIS LINE
+            (function() {
             var d = document, s = d.createElement('script');
-            // אל תשכח לוודא שזו הכתובת הנכונה שלך:
             s.src = 'https://israeli-at-japan.disqus.com/embed.js';
             s.setAttribute('data-timestamp', +new Date());
             (d.head || d.body).appendChild(s);
