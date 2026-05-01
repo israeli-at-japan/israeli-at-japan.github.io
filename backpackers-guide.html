@@ -149,6 +149,7 @@
         right: -300px;
         width: 260px;
         height: 100vh;
+        overflow-y: auto; /* <--- הוספנו את השורה הזו בשביל הגלילה */
         background-color: #fff;
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
         z-index: 1001; /* מכסה את הכפתור כשהוא נפתח */
@@ -389,6 +390,17 @@
             link.addEventListener("click", () => {
                 sideMenu.classList.remove("open");
             });
+        });
+
+        // סגירת התפריט בלחיצה בכל מקום מחוץ אליו
+        document.addEventListener("click", function(event) {
+            // בודק אם התפריט בכלל פתוח עכשיו
+            if (sideMenu.classList.contains("open")) {
+                // בודק שהלחיצה לא הייתה בתוך התפריט, וגם לא על כפתור ההמבורגר שניסה לפתוח אותו
+                if (!sideMenu.contains(event.target) && !floatingBtn.contains(event.target)) {
+                    sideMenu.classList.remove("open");
+                }
+            }
         });
     });
 </script>
