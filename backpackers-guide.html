@@ -16,7 +16,18 @@
         a { text-decoration: none; color: inherit; }
 
         /* תפריט עליון */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: #fff; border-bottom: 1px solid #eee; }
+        /* תפריט עליון - עדכנו פה את המיקום שיהיה דביק למחשב */
+    header { 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        padding: 20px 50px; 
+        background: #fff; 
+        border-bottom: 1px solid #eee; 
+        position: sticky; /* הופך לדביק */
+        top: 0; /* נדבק לחלק העליון */
+        z-index: 1000; /* דואג שהוא תמיד ירחף מעל התוכן ולא יוסתר */
+        }
         .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
         nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
         nav ul li:hover { opacity: 0.7; cursor: pointer; }
@@ -90,7 +101,7 @@
            הגדרות עיצוב מיוחדות למסכי טלפון בלבד
            ========================================= */
         @media (max-width: 768px) {
-            header { flex-direction: column; padding: 15px; text-align: center; }
+            header { flex-direction: column; padding: 15px; text-align: center; position: relative; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
 
             .post-container { margin: 0; padding: 40px 20px; box-shadow: none; }
@@ -101,6 +112,65 @@
             .section-title { font-size: 22px; margin-top: 35px; padding-top: 20px; }
 
             .recent-posts-grid { flex-direction: column; gap: 20px; }
+
+                /* מבטל את ההדבקה של התפריט העליון בטלפון כדי לחסוך מקום */
+
+
+    /* כפתור ההמבורגר הצף - מוסתר כברירת מחדל, יופיע בגלילה */
+    .floating-menu-btn {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        left: 20px; /* שמנו בצד שמאל, אפשר לשנות ל-right אם תעדיף */
+        width: 55px;
+        height: 55px;
+        background-color: #3e7b73;
+        color: #fff;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 55px;
+        font-size: 26px;
+        cursor: pointer;
+        z-index: 999;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        transition: transform 0.2s;
+    }
+    .floating-menu-btn:active { transform: scale(0.95); }
+
+    /* תפריט הצד המחליק */
+    .side-menu {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: -300px; /* מוסתר מחוץ למסך מצד ימין */
+        width: 260px;
+        height: 100vh;
+        background-color: #fff;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 1001;
+        transition: right 0.3s ease;
+        padding-top: 60px;
+    }
+    .side-menu.open { right: 0; /* מחליק פנימה */ }
+    
+    .side-menu ul { list-style: none; padding: 0; margin: 0; }
+    .side-menu ul li { border-bottom: 1px solid #f5f5f5; }
+    .side-menu ul li a {
+        color: #3e7b73;
+        font-size: 18px;
+        font-weight: 600;
+        display: block;
+        padding: 15px 25px;
+    }
+    .side-menu-close {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        font-size: 35px;
+        color: #333;
+        cursor: pointer;
+        line-height: 1;
+    }
         }
     </style>
 
@@ -129,6 +199,21 @@
             </ul>
         </nav>
     </header>
+
+    <div id="floatingBtn" class="floating-menu-btn">☰</div>
+
+<div id="sideMenu" class="side-menu">
+    <div id="closeBtn" class="side-menu-close">&times;</div>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="forum.html">Forum</a></li>
+        <li><a href="general-info.html">תכנון טיול ומידע כללי</a></li>
+        <li><a href="tokyo-fuji.html">טוקיו פוג'י והסביבה</a></li>
+        <li><a href="alps.html">האלפים היפניים</a></li>
+        <li><a href="kyoto-osaka.html">קיוטו ואוסקה</a></li>
+        <li><a href="island-hopping.html">איילנד הופינג ביפן</a></li>
+    </ul>
+</div>
 
     <main class="post-container">
         
@@ -264,6 +349,45 @@
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const floatingBtn = document.getElementById("floatingBtn");
+        const sideMenu = document.getElementById("sideMenu");
+        const closeBtn = document.getElementById("closeBtn");
+
+        // פונקציה לבדיקת גלילה בטלפון
+        window.addEventListener("scroll", function() {
+            // בודק שאנחנו במסך של טלפון (עד 768 פיקסלים)
+            if (window.innerWidth <= 768) {
+                // אם גללנו יותר מ-200 פיקסלים למטה, הכפתור יופיע
+                if (window.scrollY > 200) {
+                    floatingBtn.style.display = "block";
+                } else {
+                    floatingBtn.style.display = "none";
+                }
+            }
+        });
+
+        // פתיחת התפריט בלחיצה על ההמבורגר
+        floatingBtn.addEventListener("click", function() {
+            sideMenu.classList.add("open");
+        });
+
+        // סגירת התפריט בלחיצה על האיקס
+        closeBtn.addEventListener("click", function() {
+            sideMenu.classList.remove("open");
+        });
+
+        // סגירת התפריט אם לוחצים על אחד הקישורים
+        const menuLinks = sideMenu.querySelectorAll("a");
+        menuLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                sideMenu.classList.remove("open");
+            });
+        });
+    });
+</script>
 
 </body>
 </html>
