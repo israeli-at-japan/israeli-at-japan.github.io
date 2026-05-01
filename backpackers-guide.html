@@ -28,6 +28,8 @@
         top: 0; /* נדבק לחלק העליון */
         z-index: 1000; /* דואג שהוא תמיד ירחף מעל התוכן ולא יוסתר */
         }
+        /* הסתרת תפריט הצד והכפתור במסכים גדולים */
+        .side-menu, .floating-menu-btn { display: none; }
         .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
         nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
         nav ul li:hover { opacity: 0.7; cursor: pointer; }
@@ -116,19 +118,21 @@
                 /* מבטל את ההדבקה של התפריט העליון בטלפון כדי לחסוך מקום */
 
 
-    /* כפתור ההמבורגר הצף - מוסתר כברירת מחדל, יופיע בגלילה */
+        /* כפתור ההמבורגר הצף - ימין למעלה וממורכז */
     .floating-menu-btn {
-        display: none;
+        display: none; /* ישתנה ל-flex דרך ה-JS */
         position: fixed;
-        bottom: 30px;
-        left: 20px; /* שמנו בצד שמאל, אפשר לשנות ל-right אם תעדיף */
+        top: 25px; /* שינינו ללמעלה */
+        right: 20px; /* שינינו לימינה */
         width: 55px;
         height: 55px;
         background-color: #3e7b73;
         color: #fff;
         border-radius: 50%;
-        text-align: center;
-        line-height: 55px;
+        /* 3 השורות הבאות דואגות למרכוז מושלם של האייקון */
+        display: flex; 
+        justify-content: center;
+        align-items: center;
         font-size: 26px;
         cursor: pointer;
         z-index: 999;
@@ -139,19 +143,19 @@
 
     /* תפריט הצד המחליק */
     .side-menu {
-        display: block;
+        display: block; /* מחזיר אותו לחיים רק במסך טלפון */
         position: fixed;
         top: 0;
-        right: -300px; /* מוסתר מחוץ למסך מצד ימין */
+        right: -300px;
         width: 260px;
         height: 100vh;
         background-color: #fff;
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        z-index: 1001;
+        z-index: 1001; /* מכסה את הכפתור כשהוא נפתח */
         transition: right 0.3s ease;
         padding-top: 60px;
     }
-    .side-menu.open { right: 0; /* מחליק פנימה */ }
+    .side-menu.open { right: 0; }
     
     .side-menu ul { list-style: none; padding: 0; margin: 0; }
     .side-menu ul li { border-bottom: 1px solid #f5f5f5; }
@@ -361,11 +365,11 @@
             // בודק שאנחנו במסך של טלפון (עד 768 פיקסלים)
             if (window.innerWidth <= 768) {
                 // אם גללנו יותר מ-200 פיקסלים למטה, הכפתור יופיע
-                if (window.scrollY > 200) {
-                    floatingBtn.style.display = "block";
-                } else {
-                    floatingBtn.style.display = "none";
-                }
+            if (window.scrollY > 200) {
+                floatingBtn.style.display = "flex"; // <-- שינינו פה!
+            } else {
+                floatingBtn.style.display = "none";
+            }
             }
         });
 
