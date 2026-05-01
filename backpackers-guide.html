@@ -180,6 +180,11 @@
         line-height: 1;
     }
         }
+
+        /* הקפאת גלילה של האתר כשהתפריט מובייל פתוח */
+        body.no-scroll {
+        overflow: hidden;
+        }
     </style>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4D038KR7FQ"></script>
@@ -380,11 +385,13 @@
         // פתיחת התפריט בלחיצה על ההמבורגר
         floatingBtn.addEventListener("click", function() {
             sideMenu.classList.add("open");
+            document.body.classList.add("no-scroll"); // <-- מקפיא את הרקע
         });
 
         // סגירת התפריט בלחיצה על האיקס
         closeBtn.addEventListener("click", function() {
             sideMenu.classList.remove("open");
+            document.body.classList.remove("no-scroll"); // <-- משחרר את הרקע
         });
 
         // סגירת התפריט אם לוחצים על אחד הקישורים
@@ -392,16 +399,16 @@
         menuLinks.forEach(link => {
             link.addEventListener("click", () => {
                 sideMenu.classList.remove("open");
+                document.body.classList.remove("no-scroll"); // <-- משחרר את הרקע
             });
         });
 
         // סגירת התפריט בלחיצה בכל מקום מחוץ אליו
         document.addEventListener("click", function(event) {
-            // בודק אם התפריט בכלל פתוח עכשיו
             if (sideMenu.classList.contains("open")) {
-                // בודק שהלחיצה לא הייתה בתוך התפריט, וגם לא על כפתור ההמבורגר שניסה לפתוח אותו
                 if (!sideMenu.contains(event.target) && !floatingBtn.contains(event.target)) {
                     sideMenu.classList.remove("open");
+                    document.body.classList.remove("no-scroll"); // <-- משחרר את הרקע
                 }
             }
         });
