@@ -157,8 +157,14 @@
         z-index: 1001; 
         transition: right 0.3s ease;
         padding-top: 60px;
-        padding-bottom: 120px; /* מרווח נשימה כדי שהלינק האחרון לא ייתקע למטה */
-        -webkit-overflow-scrolling: touch; /* מחליק את הגלילה באייפון */
+        padding-bottom: 50px; /* מרווח נשימה כדי שהלינק האחרון לא ייתקע למטה */
+    }
+    /* "כרית אוויר" שקופה בתחתית הרשימה כדי לספוג את הקפיצות של ספארי */
+    .side-menu ul::after {
+        content: "";
+        display: block;
+        height: 150px; /* גובה הריבוע הבלתי נראה */
+        width: 100%;
     }
     .side-menu.open { right: 0; }
     
