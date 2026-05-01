@@ -143,18 +143,21 @@
 
     /* תפריט הצד המחליק */
     .side-menu {
-        display: block; /* מחזיר אותו לחיים רק במסך טלפון */
+        display: block; 
         position: fixed;
         top: 0;
         right: -300px;
         width: 260px;
-        height: 100vh;
-        overflow-y: auto; /* <--- הוספנו את השורה הזו בשביל הגלילה */
+        height: 100vh; /* גיבוי לדפדפנים ישנים */
+        height: 100dvh; /* הגובה הדינמי החדש והמדויק */
+        overflow-y: auto;
+        overscroll-behavior: contain; /* מונע את ה"קפיץ" המעצבן של הטלפון */
         background-color: #fff;
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        z-index: 1001; /* מכסה את הכפתור כשהוא נפתח */
+        z-index: 1001; 
         transition: right 0.3s ease;
         padding-top: 60px;
+        padding-bottom: 50px; /* מרווח נשימה כדי שהלינק האחרון לא ייתקע למטה */
     }
     .side-menu.open { right: 0; }
     
