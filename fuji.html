@@ -31,10 +31,9 @@ header {
 /* הסתרת תפריט הצד והכפתור במסכים גדולים */
 .side-menu, .floating-menu-btn { display: none; }
 
-/* הקפאת גלילה אמיתית לספארי באייפון */
-html.no-scroll, body.no-scroll {
+/* הקפאת גלילה פשוטה וקונסיסטנטית */
+body.no-scroll {
     overflow: hidden;
-    height: 100%;
 }
 
 .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
@@ -419,44 +418,33 @@ nav ul li a { color: #3e7b73; }
             }
         });
 
-        // פונקציית עזר להקפאת גלילה (כולל html לספארי)
-        function toggleScroll(disable) {
-            if (disable) {
-                document.body.classList.add("no-scroll");
-                document.documentElement.classList.add("no-scroll");
-            } else {
-                document.body.classList.remove("no-scroll");
-                document.documentElement.classList.remove("no-scroll");
-            }
-        }
-
-        // פתיחת התפריט
+        // פתיחת התפריט (עם ההקפאה הפשוטה)
         floatingBtn.addEventListener("click", function() {
             sideMenu.classList.add("open");
-            toggleScroll(true);
+            document.body.classList.add("no-scroll"); 
         });
 
-        // סגירה בלחיצה על האיקס
+        // סגירת התפריט בלחיצה על האיקס
         closeBtn.addEventListener("click", function() {
             sideMenu.classList.remove("open");
-            toggleScroll(false);
+            document.body.classList.remove("no-scroll"); 
         });
 
-        // סגירה בלחיצה על הקישורים
+        // סגירת התפריט בלחיצה על הקישורים
         const menuLinks = sideMenu.querySelectorAll("a");
         menuLinks.forEach(link => {
             link.addEventListener("click", () => {
                 sideMenu.classList.remove("open");
-                toggleScroll(false);
+                document.body.classList.remove("no-scroll"); 
             });
         });
 
-        // סגירה בלחיצה בחוץ
+        // סגירת התפריט בלחיצה בחוץ
         document.addEventListener("click", function(event) {
             if (sideMenu.classList.contains("open")) {
                 if (!sideMenu.contains(event.target) && !floatingBtn.contains(event.target)) {
                     sideMenu.classList.remove("open");
-                    toggleScroll(false);
+                    document.body.classList.remove("no-scroll"); 
                 }
             }
         });
