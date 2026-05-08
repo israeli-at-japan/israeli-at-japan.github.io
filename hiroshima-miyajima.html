@@ -16,7 +16,26 @@
         a { text-decoration: none; color: inherit; }
 
         /* תפריט עליון */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: #fff; border-bottom: 1px solid #eee; }
+        /* תפריט עליון - דביק למחשב */
+header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 20px 50px; 
+    background: #fff; 
+    border-bottom: 1px solid #eee; 
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+}
+
+/* הסתרת תפריט הצד והכפתור במסכים גדולים */
+.side-menu, .floating-menu-btn { display: none; }
+
+/* הקפאת גלילה פשוטה וקונסיסטנטית למובייל */
+body.no-scroll {
+    overflow: hidden;
+}
         .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
         nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
         nav ul li:hover { opacity: 0.7; cursor: pointer; }
@@ -128,7 +147,7 @@
         /* רספונסיביות לטלפון */
         @media (max-width: 768px) {
             .hero-image { height: 30vh; }
-            header { flex-direction: column; padding: 15px; text-align: center; }
+            header { flex-direction: column; padding: 15px; text-align: center; position: relative; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
             
             .post-container { margin: 0; padding: 40px 20px; border-radius: 0; }
@@ -139,6 +158,76 @@
             .recent-card { flex: 1 1 100%; }
             .comments-outer-wrapper { padding: 0; margin-top: 40px; }
             .comments-box { border-left: none; border-right: none; padding: 20px;}
+
+            /* כפתור ההמבורגר הצף */
+    .floating-menu-btn {
+        display: none; 
+        position: fixed;
+        bottom: 30px;
+        right: 20px; 
+        width: 55px;
+        height: 55px;
+        background-color: #3e7b73;
+        color: #fff;
+        border-radius: 50%;
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        font-size: 26px;
+        cursor: pointer;
+        z-index: 999;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        transition: transform 0.2s;
+    }
+    .floating-menu-btn:active { transform: scale(0.95); }
+
+    /* תפריט הצד המחליק */
+    .side-menu {
+        display: block; 
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 260px;
+        height: 100vh; 
+        height: 100dvh; 
+        overflow-y: auto;
+        overscroll-behavior: contain; 
+        background-color: #fff;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 1001; 
+        transition: right 0.3s ease;
+        padding-top: 60px;
+        padding-bottom: 50px; 
+    }
+
+    /* "כרית אוויר" שקופה בתחתית הרשימה כדי לספוג את הקפיצות של ספארי */
+    .side-menu ul::after {
+        content: "";
+        display: block;
+        height: 150px; 
+        width: 100%;
+    }
+    
+    .side-menu.open { right: 0; }
+    
+    .side-menu ul { list-style: none; padding: 0; margin: 0; }
+    .side-menu ul li { border-bottom: 1px solid #f5f5f5; }
+    .side-menu ul li a {
+        color: #3e7b73;
+        font-size: 18px;
+        font-weight: 600;
+        display: block;
+        padding: 15px 25px;
+    }
+    .side-menu-close {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        font-size: 35px;
+        color: #333;
+        cursor: pointer;
+        line-height: 1;
+    }
         }
     </style>
 
@@ -169,6 +258,21 @@
             </ul>
         </nav>
     </header>
+
+    <div id="floatingBtn" class="floating-menu-btn">☰</div>
+
+<div id="sideMenu" class="side-menu">
+    <div id="closeBtn" class="side-menu-close">&times;</div>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="forum.html">Forum</a></li>
+        <li><a href="general-info.html">תכנון טיול ומידע כללי</a></li>
+        <li><a href="tokyo-fuji.html">טוקיו פוג'י והסביבה</a></li>
+        <li><a href="alps.html">האלפים היפניים</a></li>
+        <li><a href="kyoto-osaka.html">קיוטו ואוסקה</a></li>
+        <li><a href="island-hopping.html">איילנד הופינג ביפן</a></li>
+    </ul>
+</div>
 
     <main class="post-container">
         
@@ -283,6 +387,56 @@
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const floatingBtn = document.getElementById("floatingBtn");
+        const sideMenu = document.getElementById("sideMenu");
+        const closeBtn = document.getElementById("closeBtn");
+
+        // בדיקת גלילה להצגת הכפתור בטלפון
+        window.addEventListener("scroll", function() {
+            if (window.innerWidth <= 768) {
+                if (window.scrollY > 200) {
+                    floatingBtn.style.display = "flex";
+                } else {
+                    floatingBtn.style.display = "none";
+                }
+            }
+        });
+
+        // פתיחת התפריט (הקפאה פשוטה)
+        floatingBtn.addEventListener("click", function() {
+            sideMenu.classList.add("open");
+            document.body.classList.add("no-scroll"); 
+        });
+
+        // סגירת התפריט בלחיצה על האיקס
+        closeBtn.addEventListener("click", function() {
+            sideMenu.classList.remove("open");
+            document.body.classList.remove("no-scroll"); 
+        });
+
+        // סגירת התפריט בלחיצה על אחד הקישורים
+        const menuLinks = sideMenu.querySelectorAll("a");
+        menuLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                sideMenu.classList.remove("open");
+                document.body.classList.remove("no-scroll"); 
+            });
+        });
+
+        // סגירת התפריט בלחיצה בכל מקום מחוץ אליו
+        document.addEventListener("click", function(event) {
+            if (sideMenu.classList.contains("open")) {
+                if (!sideMenu.contains(event.target) && !floatingBtn.contains(event.target)) {
+                    sideMenu.classList.remove("open");
+                    document.body.classList.remove("no-scroll"); 
+                }
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
