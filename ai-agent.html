@@ -64,7 +64,9 @@
             const data = await response.json();
             
             // מחליף את הלינקים שג'מיני מייצר ללינקים לחיצים ב-HTML
-            let formattedAnswer = data.answer.replace(/🔗/g, '<br><br>🔗'); 
+            // מחלצים את הטקסט עצמו, גם אם פייתון שלח אותו בתוך אובייקט
+            let textToFormat = typeof data.answer === 'string' ? data.answer : (data.answer.answer || data.answer.result || data.answer.content);
+            let formattedAnswer = textToFormat.replace(/🔗/g, '<br><br>🔗');
             
             responseDiv.innerHTML = formattedAnswer;
 
