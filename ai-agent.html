@@ -63,10 +63,26 @@
 
             const data = await response.json();
             
-            // מחליף את הלינקים שג'מיני מייצר ללינקים לחיצים ב-HTML
-            // מחלצים את הטקסט עצמו, גם אם פייתון שלח אותו בתוך אובייקט
-            let textToFormat = typeof data.answer === 'string' ? data.answer : (data.answer.answer || data.answer.result || data.answer.content);
-            let formattedAnswer = textToFormat.replace(/🔗/g, '<br><br>🔗');
+            // קודם כל - נדפיס את כל מה שהשרת החזיר לקונסולה כדי שנראה בעיניים!
+console.log("Full data from server:", data);
+
+// מנסים לחלץ את הטקסט בכמה דרכים נפוצות
+let textToFormat = "";
+if (typeof data.answer === 'string') {
+    textToFormat = data.answer;
+} else if (data.answer && data.answer.result) {
+    textToFormat = data.answer.result;
+} else if (data.answer && data.answer.answer) {
+    textToFormat = data.answer.answer;
+} else if (data.answer && data.answer.output) {
+    textToFormat = data.answer.output;
+} else {
+    // אם לא מצאנו שום דבר מוכר, נהפוך את כל החבילה לטקסט ונציג אותה על המסך
+    // ככה נוכל לראות את המבנה של התשובה מול העיניים בלי שהאתר יקרוס
+    textToFormat = JSON.stringify(data.answer, null, 2); 
+}
+
+let formattedAnswer = textToFormat.replace(/🔗/g, '<br><br>🔗');
             
             responseDiv.innerHTML = formattedAnswer;
 
