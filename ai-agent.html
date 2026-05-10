@@ -84,10 +84,60 @@
                 textToFormat = "התקבלה תשובה בפורמט לא מוכר.";
             }
 
-            // מוסיפים ירידות שורה לפני הלינקים
-            let formattedAnswer = textToFormat.replace(/🔗/g, '<br><br>🔗');
-            
-            responseDiv.innerHTML = formattedAnswer;
+            // --- מתחיל פה: פילטר העיצוב החכם והמלא ---
+let formattedAnswer = textToFormat;
+
+// 1. הופך את הכוכביות (**) של ג'מיני לטקסט מודגש אמיתי ב-HTML
+formattedAnswer = formattedAnswer.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+// 2. תופס לינקים של מרקדאון (במידה וג'מיני יחליט לשלוח כאלו)
+formattedAnswer = formattedAnswer.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color: #007bff; font-weight: bold;">$1</a>');
+
+// 3. מילון הלינקים המלא של israeli-in-japan!
+formattedAnswer = formattedAnswer.replace(/(?<!href=")(https:\/\/[^\s<]+)/g, function(url) {
+    // מנקה פסיקים או נקודות שאולי נדבקו בטעות בסוף הלינק
+    let cleanUrl = url.replace(/[.,)]$/, ''); 
+    
+    let title = "לכתבה המלאה לחץ כאן"; // בררת מחדל אם הלינק לא ברשימה
+    
+    if (cleanUrl.includes("backpackers-guide")) {
+        title = "למדריך המלא לתרמילאים ביפן";
+    } else if (cleanUrl.includes("fuji")) {
+        title = "למדריך על אזור הר פוג'י";
+    } else if (cleanUrl.includes("hiroshima-miyajima")) {
+        title = "למדריך על הירושימה ומיאג'ימה";
+    } else if (cleanUrl.includes("japan-info")) {
+        title = "למידע כללי וטיפים חשובים ליפן";
+    } else if (cleanUrl.includes("kamakura")) {
+        title = "למדריך על קמאקורה";
+    } else if (cleanUrl.includes("kanazawa-shirakawa")) {
+        title = "למדריך על קנזאווה ושירקאווה-גו";
+    } else if (cleanUrl.includes("kyoto-post")) {
+        title = "למדריך המקיף על קיוטו";
+    } else if (cleanUrl.includes("mat-kiso-kam")) {
+        title = "למדריך על מצומוטו, עמק קיסו וקמיקוצ'י";
+    } else if (cleanUrl.includes("nikko")) {
+        title = "למדריך על ניקו";
+    } else if (cleanUrl.includes("okayama-naoshima")) {
+        title = "למדריך על אוקיאמה ונאושימה";
+    } else if (cleanUrl.includes("osaka-post")) {
+        title = "למדריך על אוסקה וקובה";
+    } else if (cleanUrl.includes("route-planning")) {
+        title = "למדריך תכנון מסלולים ביפן";
+    } else if (cleanUrl.includes("tokyo-areas")) {
+        title = "למדריך השכונות והאזורים בטוקיו";
+    } else if (cleanUrl.includes("tokyo.html")) {
+        title = "למדריך הכללי על טוקיו";
+    } else if (cleanUrl.includes("uji-nara")) {
+        title = "למדריך על נארה ואוג'י";
+    }
+    
+    // מחזיר את המילה הלחיצה בעיצוב כחול ומודגש
+    return `<a href="${cleanUrl}" target="_blank" style="color: #007bff; font-weight: bold; text-decoration: none;">${title}</a>`;
+});
+
+responseDiv.innerHTML = formattedAnswer;
+// --- מסתיים פה ---
 
         } catch (error) {
             responseDiv.innerHTML = `<span style="color:red;">אופס! משהו השתבש. נסה שוב מאוחר יותר.</span>`;
