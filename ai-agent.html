@@ -63,26 +63,29 @@
 
             const data = await response.json();
             
-            // קודם כל - נדפיס את כל מה שהשרת החזיר לקונסולה כדי שנראה בעיניים!
-console.log("Full data from server:", data);
+            // מאחדים את הפאזל שהשרת שלח לטקסט אחד רציף
+            let textToFormat = "";
 
-// מנסים לחלץ את הטקסט בכמה דרכים נפוצות
-let textToFormat = "";
-if (typeof data.answer === 'string') {
-    textToFormat = data.answer;
-} else if (data.answer && data.answer.result) {
-    textToFormat = data.answer.result;
-} else if (data.answer && data.answer.answer) {
-    textToFormat = data.answer.answer;
-} else if (data.answer && data.answer.output) {
-    textToFormat = data.answer.output;
-} else {
-    // אם לא מצאנו שום דבר מוכר, נהפוך את כל החבילה לטקסט ונציג אותה על המסך
-    // ככה נוכל לראות את המבנה של התשובה מול העיניים בלי שהאתר יקרוס
-    textToFormat = JSON.stringify(data.answer, null, 2); 
-}
+            if (Array.isArray(data.answer)) {
+                // אם קיבלנו רשימה של חלקים, נעבור עליהם אחד אחד
+                data.answer.forEach(item => {
+                    if (typeof item === 'string') {
+                        // אם זה טקסט רגיל (כמו האותיות הבודדות) - נוסיף אותו
+                        textToFormat += item;
+                    } else if (item && item.text) {
+                        // אם זה האובייקט עם התשובה המרכזית - נוציא ממנו את הטקסט ונוסיף
+                        textToFormat += item.text;
+                    }
+                });
+            } else if (typeof data.answer === 'string') {
+                // למקרה שבעתיד השרת פתאום ישלח טקסט רגיל
+                textToFormat = data.answer;
+            } else {
+                textToFormat = "התקבלה תשובה בפורמט לא מוכר.";
+            }
 
-let formattedAnswer = textToFormat.replace(/🔗/g, '<br><br>🔗');
+            // מוסיפים ירידות שורה לפני הלינקים
+            let formattedAnswer = textToFormat.replace(/🔗/g, '<br><br>🔗');
             
             responseDiv.innerHTML = formattedAnswer;
 
