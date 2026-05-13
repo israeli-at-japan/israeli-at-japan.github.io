@@ -25,24 +25,24 @@
         .chat-header h1 { font-size: 42px; font-weight: 300; color: #3e7b73; margin-bottom: 10px; }
         .chat-header p { font-size: 20px; color: #3e7b73; opacity: 0.9; }
 
-        .chat-container { width: 100%; max-width: 800px; background: #fff; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.06); padding: 30px; box-sizing: border-box; }
+        /* הקופסה הלבנה המיותרת הוסרה, עכשיו זה רק עוטף בלתי נראה לרוחב */
+        .chat-container { width: 100%; max-width: 800px; padding: 10px; box-sizing: border-box; }
         
-        /* === תיבת החיפוש בסגנון Gemini === */
+        /* === תיבת החיפוש המרחפת בסגנון Gemini === */
         .gemini-input-bar {
             display: flex;
             align-items: center;
-            background-color: #f0f4f9;
+            background-color: #fff; /* התיבה עצמה לבנה ומרחפת */
             border-radius: 50px;
             padding: 8px 10px 8px 15px;
             gap: 12px;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06); /* צל עדין שנותן עומק */
             border: 1px solid transparent;
             transition: all 0.3s ease;
         }
 
         .gemini-input-bar:focus-within {
-            background-color: #fff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             border-color: #e0e0e0;
         }
 
@@ -58,25 +58,34 @@
         }
 
         .gemini-input-bar input::placeholder {
-            color: #888;
+            color: #999;
         }
 
-        /* בורר המומחים בסגנון כפתור ה-Pro */
+        /* === בורר המומחים המעוצב (דורס את ספארי/כרום) === */
         .agent-dropdown {
-            padding: 8px 15px;
-            border-radius: 20px;
-            border: 1px solid #dcdcdc;
-            background-color: #fff;
+            appearance: none; /* מבטל את העיצוב המכוער של מערכת ההפעלה */
+            -webkit-appearance: none;
+            padding: 8px 15px 8px 35px; /* מרווח שמאלי בשביל החץ */
+            border-radius: 50px;
+            border: 1px solid #eaeaea;
+            background-color: #f9f9f9;
             font-family: 'Assistant', sans-serif;
             font-size: 15px;
-            color: #333;
+            font-weight: 600;
+            color: #555;
             cursor: pointer;
             outline: none;
-            transition: border-color 0.2s;
+            transition: all 0.2s;
+            /* הוספת חץ מותאם אישית בצד שמאל */
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+            background-repeat: no-repeat;
+            background-position: left 12px center;
+            background-size: 14px;
         }
         
         .agent-dropdown:hover {
             border-color: #3e7b73;
+            background-color: #fff;
         }
 
         /* כפתור שליחה עגול */
@@ -105,9 +114,9 @@
             transform: scale(1.05);
         }
 
-        /* אזור התשובה והטעינה */
-        #ai-response { margin-top: 30px; font-size: 17px; line-height: 1.8; color: #333; padding: 0 10px; }
-        #ai-response strong { color: #3e7b73; }
+        /* אזור התשובה והטעינה - עכשיו יושבים ישירות על הרקע הירוק */
+        #ai-response { margin-top: 30px; font-size: 17.5px; line-height: 1.8; color: #2c5953; padding: 0 15px; }
+        #ai-response strong { color: #1e403a; font-weight: 600; }
         
         .loading { color: #3e7b73; font-style: italic; display: none; text-align: center; margin-top: 20px; font-weight: 600; }
 
@@ -117,11 +126,11 @@
             nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
             .chat-section { padding: 30px 5%; }
             .chat-header h1 { font-size: 32px; }
-            .chat-container { padding: 20px; }
+            .chat-container { padding: 0; }
             
-            /* שבירת שורות בתיבה במסכים ממש קטנים */
+            /* שבירת שורות בתיבה במסכים קטנים כדי שיהיה נוח להקליד */
             .gemini-input-bar { flex-wrap: wrap; border-radius: 20px; padding: 15px; }
-            .agent-dropdown { order: 2; width: auto; flex-grow: 1; }
+            .agent-dropdown { order: 2; width: auto; flex-grow: 1; text-align: right; }
             .send-btn { order: 3; }
         }
     </style>
