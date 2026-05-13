@@ -1,150 +1,188 @@
-<style>
-    .chat-container { max-width: 600px; margin: 20px auto; font-family: sans-serif; direction: rtl; }
-    .chat-box { border: 1px solid #ccc; padding: 15px; border-radius: 8px; background: #f9f9f9; }
-    .input-group { margin-bottom: 10px; display: flex; gap: 10px; }
-    select, input, button { padding: 8px; font-size: 16px; }
-    input { flex-grow: 1; }
-    button { cursor: pointer; background: #007bff; color: white; border: none; border-radius: 4px; }
-    #ai-response { margin-top: 15px; white-space: pre-wrap; font-size: 15px; line-height: 1.5; }
-    .loading { color: #666; font-style: italic; display: none; }
-</style>
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שאל את המומחים - ישראלי ביפן</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* איפוס הגדרות בסיס ופונט - זהה לעמוד הבית */
+        body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+        body { font-family: 'Assistant', sans-serif; color: #3e7b73; line-height: 1.6; background-color: #fff; }
+        a { text-decoration: none; color: inherit; }
 
-<div class="chat-container">
-    <div class="chat-box">
-        <h3>שאל את צוות המומחים שלנו! 🇯🇵</h3>
+        /* תפריט עליון - מועתק מעמוד הבית */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; border-bottom: 1px solid #eee; background: white; }
+        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; color: #3e7b73; font-weight: 600; }
+        nav ul li:hover { opacity: 0.7; cursor: pointer; }
+
+        /* אזור הצ'אט המעוצב */
+        .chat-section { padding: 60px 10%; background-color: #d8f0e6; min-height: 80vh; display: flex; flex-direction: column; align-items: center; }
+        .chat-header { text-align: center; margin-bottom: 30px; }
+        .chat-header h1 { font-size: 42px; font-weight: 300; color: #3e7b73; margin-bottom: 10px; }
+        .chat-header p { font-size: 20px; color: #3e7b73; opacity: 0.9; }
+
+        .chat-container { width: 100%; max-width: 800px; background: #fff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); padding: 30px; box-sizing: border-box; }
         
-        <div class="input-group">
-            <select id="agent-mode">
-                <option value="general">מיקה (סוכנת טיולים והמלצות)</option>
-                <option value="history">משה (מומחה היסטוריה ותרבות)</option>
-            </select>
-        </div>
+        /* עיצוב שדות הקלט */
+        .input-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; }
+        .row-group { display: flex; gap: 10px; }
+        
+        select, input { padding: 12px 15px; font-size: 16px; border: 1px solid #3e7b73; border-radius: 4px; font-family: 'Assistant', sans-serif; color: #3e7b73; outline: none; }
+        input { flex-grow: 1; }
+        select { background: white; cursor: pointer; }
+        
+        button { padding: 12px 25px; font-size: 18px; font-weight: 600; cursor: pointer; background: #3e7b73; color: white; border: none; border-radius: 4px; transition: opacity 0.2s; font-family: 'Assistant', sans-serif; }
+        button:hover { opacity: 0.9; }
 
-        <div class="input-group">
-            <input type="text" id="user-question" placeholder="למשל: מה כדאי לעשות בקיוטו?">
-            <button onclick="askJapanAI()">שאל</button>
-        </div>
+        /* אזור התשובה */
+        #ai-response { margin-top: 25px; font-size: 17px; line-height: 1.8; color: #333; border-top: 1px solid #eee; padding-top: 20px; }
+        #ai-response strong { color: #3e7b73; }
+        
+        .loading { color: #3e7b73; font-style: italic; display: none; text-align: center; margin-top: 10px; font-weight: 600; }
 
-        <div id="loading-msg" class="loading">הסוכן חושב, זה יכול לקחת כמה שניות...</div>
-        <div id="ai-response"></div>
-    </div>
-</div>
-
-<script>
-    async function askJapanAI() {
-        const questionInput = document.getElementById('user-question').value;
-        const modeSelect = document.getElementById('agent-mode').value;
-        const responseDiv = document.getElementById('ai-response');
-        const loadingMsg = document.getElementById('loading-msg');
-
-        if (!questionInput.trim()) return;
-
-        // מנקה תשובה קודמת ומציג טעינה
-        responseDiv.innerHTML = '';
-        loadingMsg.style.display = 'block';
-
-        try {
-            // שולח את הבקשה לשרת שלך ב-Render
-            const response = await fetch('https://japan-ai-backend-mfjd.onrender.com/ask', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    question: questionInput,
-                    mode: modeSelect
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error('שגיאה בתקשורת עם השרת');
-            }
-
-            const data = await response.json();
-            
-            // מאחדים את הפאזל שהשרת שלח לטקסט אחד רציף
-            let textToFormat = "";
-
-            if (Array.isArray(data.answer)) {
-                // אם קיבלנו רשימה של חלקים, נעבור עליהם אחד אחד
-                data.answer.forEach(item => {
-                    if (typeof item === 'string') {
-                        // אם זה טקסט רגיל (כמו האותיות הבודדות) - נוסיף אותו
-                        textToFormat += item;
-                    } else if (item && item.text) {
-                        // אם זה האובייקט עם התשובה המרכזית - נוציא ממנו את הטקסט ונוסיף
-                        textToFormat += item.text;
-                    }
-                });
-            } else if (typeof data.answer === 'string') {
-                // למקרה שבעתיד השרת פתאום ישלח טקסט רגיל
-                textToFormat = data.answer;
-            } else {
-                textToFormat = "התקבלה תשובה בפורמט לא מוכר.";
-            }
-
-            // --- מתחיל פה: פילטר העיצוב החכם והמלא ---
-let formattedAnswer = textToFormat;
-
-// 1. הופך את הכוכביות (**) של ג'מיני לטקסט מודגש אמיתי ב-HTML
-formattedAnswer = formattedAnswer.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
-// 2. תופס לינקים של מרקדאון (במידה וג'מיני יחליט לשלוח כאלו)
-formattedAnswer = formattedAnswer.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color: #007bff; font-weight: bold;">$1</a>');
-
-// 3. מילון הלינקים המלא של israeli-in-japan!
-formattedAnswer = formattedAnswer.replace(/(?<!href=")(https:\/\/[^\s<]+)/g, function(url) {
-    // מנקה פסיקים או נקודות שאולי נדבקו בטעות בסוף הלינק
-    let cleanUrl = url.replace(/[.,)]$/, ''); 
-    
-    let title = "לכתבה המלאה לחץ כאן"; // בררת מחדל אם הלינק לא ברשימה
-    
-    if (cleanUrl.includes("backpackers-guide")) {
-        title = "למדריך המלא לתרמילאים ביפן";
-    } else if (cleanUrl.includes("fuji")) {
-        title = "למדריך על אזור הר פוג'י";
-    } else if (cleanUrl.includes("hiroshima-miyajima")) {
-        title = "למדריך על הירושימה ומיאג'ימה";
-    } else if (cleanUrl.includes("japan-info")) {
-        title = "למידע כללי וטיפים חשובים ליפן";
-    } else if (cleanUrl.includes("kamakura")) {
-        title = "למדריך על קמאקורה";
-    } else if (cleanUrl.includes("kanazawa-shirakawa")) {
-        title = "למדריך על קנזאווה ושירקאווה-גו";
-    } else if (cleanUrl.includes("kyoto-post")) {
-        title = "למדריך המקיף על קיוטו";
-    } else if (cleanUrl.includes("mat-kiso-kam")) {
-        title = "למדריך על מצומוטו, עמק קיסו וקמיקוצ'י";
-    } else if (cleanUrl.includes("nikko")) {
-        title = "למדריך על ניקו";
-    } else if (cleanUrl.includes("okayama-naoshima")) {
-        title = "למדריך על אוקיאמה ונאושימה";
-    } else if (cleanUrl.includes("osaka-post")) {
-        title = "למדריך על אוסקה וקובה";
-    } else if (cleanUrl.includes("route-planning")) {
-        title = "למדריך תכנון מסלולים ביפן";
-    } else if (cleanUrl.includes("tokyo-areas")) {
-        title = "למדריך השכונות והאזורים בטוקיו";
-    } else if (cleanUrl.includes("tokyo")) {
-        title = "למדריך הכללי על טוקיו";
-    } else if (cleanUrl.includes("uji-nara")) {
-        title = "למדריך על נארה ואוג'י";
-    }
-    
-    // מחזיר את המילה הלחיצה בעיצוב כחול ומודגש
-    return `<a href="${cleanUrl}" target="_blank" style="color: #007bff; font-weight: bold; text-decoration: none;">${title}</a>`;
-});
-
-responseDiv.innerHTML = formattedAnswer;
-// --- מסתיים פה ---
-
-        } catch (error) {
-            responseDiv.innerHTML = `<span style="color:red;">אופס! משהו השתבש. נסה שוב מאוחר יותר.</span>`;
-            console.error('Error:', error);
-        } finally {
-            // מסתיר את הודעת הטעינה
-            loadingMsg.style.display = 'none';
+        /* התאמה לנייד */
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 15px; text-align: center; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
+            .chat-section { padding: 30px 5%; }
+            .chat-header h1 { font-size: 32px; }
+            .row-group { flex-direction: column; }
+            .chat-container { padding: 20px; }
         }
-    }
-</script>
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">ישראלי ביפן</div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="forum">Forum</a></li>
+                <li><a href="general-info">תכנון טיול ומידע כללי</a></li>
+                <li><a href="tokyo-fuji">טוקיו פוג'י</a></li>
+                <li><a href="alps">האלפים היפניים</a></li>
+                <li><a href="kyoto-osaka">קיוטו אוסקה</a></li>
+                <li><a href="island-hopping">איילנד הופינג</a></li>
+                <li><a href="ai-agent">סוכן AI</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="chat-section">
+        <div class="chat-header">
+            <h1>שאל את צוות המומחים שלנו! 🇯🇵</h1>
+            <p>הסוכנים החכמים שלנו כאן כדי לעזור לכם לתכנן את הטיול המושלם.</p>
+        </div>
+
+        <div class="chat-container">
+            <div class="input-group">
+                <label for="agent-mode">בחר מומחה:</label>
+                <select id="agent-mode">
+                    <option value="general">מיקה (סוכנת טיולים והמלצות)</option>
+                    <option value="history">משה (מומחה היסטוריה ותרבות)</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="user-question">השאלה שלך:</label>
+                <div class="row-group">
+                    <input type="text" id="user-question" placeholder="למשל: מה כדאי לעשות בקיוטו?">
+                    <button onclick="askJapanAI()">שאל</button>
+                </div>
+            </div>
+
+            <div id="loading-msg" class="loading">המומחה שלנו מעבד את הנתונים, זה לוקח רגע...</div>
+            <div id="ai-response"></div>
+        </div>
+    </section>
+
+    <script>
+        async function askJapanAI() {
+            const questionInput = document.getElementById('user-question').value;
+            const modeSelect = document.getElementById('agent-mode').value;
+            const responseDiv = document.getElementById('ai-response');
+            const loadingMsg = document.getElementById('loading-msg');
+
+            if (!questionInput.trim()) return;
+
+            responseDiv.innerHTML = '';
+            loadingMsg.style.display = 'block';
+
+            try {
+                const response = await fetch('https://japan-ai-backend-mfjd.onrender.com/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        question: questionInput,
+                        mode: modeSelect
+                    })
+                });
+
+                if (!response.ok) throw new Error('שגיאה בתקשורת עם השרת');
+
+                const data = await response.json();
+                
+                let textToFormat = "";
+                if (Array.isArray(data.answer)) {
+                    data.answer.forEach(item => {
+                        if (typeof item === 'string') textToFormat += item;
+                        else if (item && item.text) textToFormat += item.text;
+                    });
+                } else if (typeof data.answer === 'string') {
+                    textToFormat = data.answer;
+                } else {
+                    textToFormat = "התקבלה תשובה בפורמט לא מוכר.";
+                }
+
+                // --- פילטר העיצוב החכם ---
+                let formattedAnswer = textToFormat;
+
+                // 1. הדגשות
+                formattedAnswer = formattedAnswer.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+                // 2. לינקים של מרקדאון
+                formattedAnswer = formattedAnswer.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color: #3e7b73; font-weight: bold; text-decoration: underline;">$1</a>');
+
+                // 3. מילון הלינקים והפיכתם ליפים (כולל תיקון טוקיו)
+                formattedAnswer = formattedAnswer.replace(/(?<!href=")(https:\/\/[^\s<]+)/g, function(url) {
+                    let cleanUrl = url.replace(/[.,)]$/, ''); 
+                    let title = "לכתבה המלאה לחץ כאן";
+                    
+                    if (cleanUrl.includes("backpackers-guide")) title = "למדריך המלא לתרמילאים ביפן";
+                    else if (cleanUrl.includes("fuji")) title = "למדריך על אזור הר פוג'י";
+                    else if (cleanUrl.includes("hiroshima-miyajima")) title = "למדריך על הירושימה ומיאג'ימה";
+                    else if (cleanUrl.includes("japan-info")) title = "למידע כללי וטיפים חשובים ליפן";
+                    else if (cleanUrl.includes("kamakura")) title = "למדריך על קמאקורה";
+                    else if (cleanUrl.includes("kanazawa-shirakawa")) title = "למדריך על קנזאווה ושירקאווה-גו";
+                    else if (cleanUrl.includes("kyoto-post")) title = "למדריך המקיף על קיוטו";
+                    else if (cleanUrl.includes("mat-kiso-kam")) title = "למדריך על מצומוטו, עמק קיסו וקמיקוצ'י";
+                    else if (cleanUrl.includes("nikko")) title = "למדריך על ניקו";
+                    else if (cleanUrl.includes("okayama-naoshima")) title = "למדריך על אוקיאמה ונאושימה";
+                    else if (cleanUrl.includes("osaka-post")) title = "למדריך על אוסקה וקובה";
+                    else if (cleanUrl.includes("route-planning")) title = "למדריך תכנון מסלולים ביפן";
+                    else if (cleanUrl.includes("tokyo-areas")) title = "למדריך השכונות והאזורים בטוקיו";
+                    else if (cleanUrl.includes("tokyo")) title = "למדריך הכללי על טוקיו";
+                    else if (cleanUrl.includes("uji-nara")) title = "למדריך על נארה ואוג'י";
+                    
+                    return `<a href="${cleanUrl}" target="_blank" style="color: #3e7b73; font-weight: bold; text-decoration: underline;">${title}</a>`;
+                });
+
+                responseDiv.innerHTML = formattedAnswer;
+
+            } catch (error) {
+                responseDiv.innerHTML = `<span style="color:red;">אופס! משהו השתבש. יכול להיות שהשרת מתעורר משינה, נסה ללחוץ שוב בעוד כמה שניות.</span>`;
+                console.error('Error:', error);
+            } finally {
+                loadingMsg.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
