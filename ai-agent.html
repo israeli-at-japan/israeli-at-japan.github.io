@@ -8,12 +8,12 @@
     <link rel="canonical" href="https://israeli-in-japan.com/ai-agent" />
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* איפוס הגדרות בסיס ופונט - זהה לעמוד הבית */
+        /* איפוס הגדרות בסיס ופונט */
         body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
         body { font-family: 'Assistant', sans-serif; color: #3e7b73; line-height: 1.6; background-color: #fff; }
         a { text-decoration: none; color: inherit; }
 
-        /* תפריט עליון - מועתק מעמוד הבית */
+        /* תפריט עליון */
         header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; border-bottom: 1px solid #eee; background: white; }
         .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
         nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; color: #3e7b73; font-weight: 600; }
@@ -21,28 +21,95 @@
 
         /* אזור הצ'אט המעוצב */
         .chat-section { padding: 60px 10%; background-color: #d8f0e6; min-height: 80vh; display: flex; flex-direction: column; align-items: center; }
-        .chat-header { text-align: center; margin-bottom: 30px; }
+        .chat-header { text-align: center; margin-bottom: 40px; }
         .chat-header h1 { font-size: 42px; font-weight: 300; color: #3e7b73; margin-bottom: 10px; }
         .chat-header p { font-size: 20px; color: #3e7b73; opacity: 0.9; }
 
-        .chat-container { width: 100%; max-width: 800px; background: #fff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); padding: 30px; box-sizing: border-box; }
+        .chat-container { width: 100%; max-width: 800px; background: #fff; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.06); padding: 30px; box-sizing: border-box; }
         
-        /* עיצוב שדות הקלט */
-        .input-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; }
-        .row-group { display: flex; gap: 10px; }
-        
-        select, input { padding: 12px 15px; font-size: 16px; border: 1px solid #3e7b73; border-radius: 4px; font-family: 'Assistant', sans-serif; color: #3e7b73; outline: none; }
-        input { flex-grow: 1; }
-        select { background: white; cursor: pointer; }
-        
-        button { padding: 12px 25px; font-size: 18px; font-weight: 600; cursor: pointer; background: #3e7b73; color: white; border: none; border-radius: 4px; transition: opacity 0.2s; font-family: 'Assistant', sans-serif; }
-        button:hover { opacity: 0.9; }
+        /* === תיבת החיפוש בסגנון Gemini === */
+        .gemini-input-bar {
+            display: flex;
+            align-items: center;
+            background-color: #f0f4f9;
+            border-radius: 50px;
+            padding: 8px 10px 8px 15px;
+            gap: 12px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
 
-        /* אזור התשובה */
-        #ai-response { margin-top: 25px; font-size: 17px; line-height: 1.8; color: #333; border-top: 1px solid #eee; padding-top: 20px; }
+        .gemini-input-bar:focus-within {
+            background-color: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-color: #e0e0e0;
+        }
+
+        .gemini-input-bar input {
+            flex-grow: 1;
+            border: none;
+            background: transparent;
+            font-size: 17px;
+            font-family: 'Assistant', sans-serif;
+            color: #3e7b73;
+            outline: none;
+            padding: 10px 15px;
+        }
+
+        .gemini-input-bar input::placeholder {
+            color: #888;
+        }
+
+        /* בורר המומחים בסגנון כפתור ה-Pro */
+        .agent-dropdown {
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #dcdcdc;
+            background-color: #fff;
+            font-family: 'Assistant', sans-serif;
+            font-size: 15px;
+            color: #333;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        
+        .agent-dropdown:hover {
+            border-color: #3e7b73;
+        }
+
+        /* כפתור שליחה עגול */
+        .send-btn {
+            background-color: #f0f4f9;
+            color: #888;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        /* הארת כפתור השליחה כשיש טקסט */
+        .gemini-input-bar.has-text .send-btn {
+            background-color: #d8f0e6;
+            color: #3e7b73;
+        }
+
+        .gemini-input-bar.has-text .send-btn:hover {
+            background-color: #c2e2d4;
+            transform: scale(1.05);
+        }
+
+        /* אזור התשובה והטעינה */
+        #ai-response { margin-top: 30px; font-size: 17px; line-height: 1.8; color: #333; padding: 0 10px; }
         #ai-response strong { color: #3e7b73; }
         
-        .loading { color: #3e7b73; font-style: italic; display: none; text-align: center; margin-top: 10px; font-weight: 600; }
+        .loading { color: #3e7b73; font-style: italic; display: none; text-align: center; margin-top: 20px; font-weight: 600; }
 
         /* התאמה לנייד */
         @media (max-width: 768px) {
@@ -50,8 +117,12 @@
             nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
             .chat-section { padding: 30px 5%; }
             .chat-header h1 { font-size: 32px; }
-            .row-group { flex-direction: column; }
             .chat-container { padding: 20px; }
+            
+            /* שבירת שורות בתיבה במסכים ממש קטנים */
+            .gemini-input-bar { flex-wrap: wrap; border-radius: 20px; padding: 15px; }
+            .agent-dropdown { order: 2; width: auto; flex-grow: 1; }
+            .send-btn { order: 3; }
         }
     </style>
 </head>
@@ -80,20 +151,20 @@
         </div>
 
         <div class="chat-container">
-            <div class="input-group">
-                <label for="agent-mode">בחר מומחה:</label>
-                <select id="agent-mode">
-                    <option value="general">מיקה (סוכנת טיולים והמלצות)</option>
-                    <option value="history">משה (מומחה היסטוריה ותרבות)</option>
+            
+            <div class="gemini-input-bar" id="input-bar-container">
+                <input type="text" id="user-question" placeholder="שאל את מיקה שאלה..." oninput="checkInputStatus()" onkeypress="handleKeyPress(event)">
+                
+                <select id="agent-mode" class="agent-dropdown" onchange="updatePlaceholder()">
+                    <option value="general">מיקה (טיולים)</option>
+                    <option value="history">משה (היסטוריה)</option>
                 </select>
-            </div>
 
-            <div class="input-group">
-                <label for="user-question">השאלה שלך:</label>
-                <div class="row-group">
-                    <input type="text" id="user-question" placeholder="למשל: מה כדאי לעשות בקיוטו?">
-                    <button onclick="askJapanAI()">שאל</button>
-                </div>
+                <button class="send-btn" onclick="askJapanAI()" aria-label="שלח">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
             </div>
 
             <div id="loading-msg" class="loading">המומחה שלנו מעבד את הנתונים, זה לוקח רגע...</div>
@@ -102,6 +173,36 @@
     </section>
 
     <script>
+        // שינוי טקסט הפלייסחולדר בהתאם למומחה שנבחר
+        function updatePlaceholder() {
+            const mode = document.getElementById('agent-mode').value;
+            const input = document.getElementById('user-question');
+            if (mode === 'general') {
+                input.placeholder = "שאל את מיקה שאלה...";
+            } else {
+                input.placeholder = "שאל את משה שאלה...";
+            }
+            input.focus();
+        }
+
+        // הארת כפתור השליחה רק כשיש טקסט בתיבה
+        function checkInputStatus() {
+            const input = document.getElementById('user-question').value;
+            const container = document.getElementById('input-bar-container');
+            if (input.trim().length > 0) {
+                container.classList.add('has-text');
+            } else {
+                container.classList.remove('has-text');
+            }
+        }
+
+        // מאפשר שליחה גם בלחיצה על Enter במקלדת
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                askJapanAI();
+            }
+        }
+
         async function askJapanAI() {
             const questionInput = document.getElementById('user-question').value;
             const modeSelect = document.getElementById('agent-mode').value;
@@ -151,7 +252,7 @@
                 // 2. לינקים של מרקדאון
                 formattedAnswer = formattedAnswer.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color: #3e7b73; font-weight: bold; text-decoration: underline;">$1</a>');
 
-                // 3. מילון הלינקים והפיכתם ליפים (כולל תיקון טוקיו)
+                // 3. מילון הלינקים
                 formattedAnswer = formattedAnswer.replace(/(?<!href=")(https:\/\/[^\s<]+)/g, function(url) {
                     let cleanUrl = url.replace(/[.,)]$/, ''); 
                     let title = "לכתבה המלאה לחץ כאן";
@@ -176,6 +277,10 @@
                 });
 
                 responseDiv.innerHTML = formattedAnswer;
+
+                // ניקוי תיבת הטקסט לאחר השליחה המוצלחת
+                document.getElementById('user-question').value = '';
+                checkInputStatus();
 
             } catch (error) {
                 responseDiv.innerHTML = `<span style="color:red;">אופס! משהו השתבש. יכול להיות שהשרת מתעורר משינה, נסה ללחוץ שוב בעוד כמה שניות.</span>`;
