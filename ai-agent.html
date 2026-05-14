@@ -174,7 +174,7 @@
         <div class="chat-container">
             
             <div class="gemini-input-bar" id="input-bar-container">
-                <input type="text" id="user-question" placeholder="שאל את מיקה שאלה..." oninput="checkInputStatus()" onkeypress="handleKeyPress(event)">
+                <input type="text" id="user-question" placeholder="יש לך שאלה למיקה?" oninput="checkInputStatus()" onkeypress="handleKeyPress(event)">
                 
                 <select id="agent-mode" class="agent-dropdown" onchange="updatePlaceholder()">
                     <option value="general">מיקה (טיולים)</option>
@@ -199,9 +199,9 @@
             const mode = document.getElementById('agent-mode').value;
             const input = document.getElementById('user-question');
             if (mode === 'general') {
-                input.placeholder = "שאל את מיקה שאלה...";
+                input.placeholder = "יש לך שאלה למיקה?";
             } else {
-                input.placeholder = "שאל את משה שאלה...";
+                input.placeholder = "יש לך שאלה למשה?";
             }
             input.focus();
         }
