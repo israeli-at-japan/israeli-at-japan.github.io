@@ -38,23 +38,7 @@
         .chat-header p { font-size: 20px; color: #3e7b73; opacity: 0.9; }
 
         /* הקופסה הלבנה המיותרת הוסרה, עכשיו זה רק עוטף בלתי נראה לרוחב */
-        /* תיבת צ'אט באפקט זכוכית (Glassmorphism) */
-        .chat-container { 
-            width: 100%; 
-            max-width: 800px; 
-            /* צבע לבן עם 65% אטימות */
-            background: rgba(255, 255, 255, 0.65); 
-            /* אפקט טשטוש יוקרתי למה שנמצא מאחורי התיבה */
-            backdrop-filter: blur(8px); 
-            -webkit-backdrop-filter: blur(8px);
-            /* פינות מאוד עגולות כמו בסקיצה */
-            border-radius: 40px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-            padding: 40px; 
-            box-sizing: border-box; 
-            /* מסגרת לבנה עדינה להשלמת המראה */
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
+        .chat-container { width: 100%; max-width: 800px; padding: 10px; box-sizing: border-box; }
         
         /* === תיבת החיפוש המרחפת בסגנון Gemini === */
         .gemini-input-bar {
