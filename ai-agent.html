@@ -168,7 +168,11 @@
     <section class="chat-section">
         <div class="chat-header">
             <h1>שאל את צוות המומחים שלנו! 🇯🇵</h1>
-            <p>הסוכנים החכמים שלנו כאן כדי לעזור לכם לתכנן את הטיול המושלם.</p>
+            <p style="margin-bottom: 10px;">הסוכנים החכמים שלנו כאן כדי לעזור לכם לתכנן את הטיול המושלם.</p>
+            <p style="font-size: 16px; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.5;">
+                <strong>מיקה</strong> מתבססת על התוכן והניסיון שלנו באתר ותשמח לעזור עם המלצות ותכנון מסלולים.<br> 
+                <strong>משה</strong> הוא מומחה התרבות שלנו, וישמח לענות על שאלות כלליות בנושאי היסטוריה ומסורת יפנית.
+            </p>
         </div>
 
         <div class="chat-container">
@@ -275,10 +279,13 @@
                     console.warn(`Attempt ${attempts} failed.`, error);
                     
                     if (attempts >= maxAttempts) {
-                        // אם ניסינו פעמיים ועדיין קרס, נציג את השגיאה האדומה
-                        responseDiv.innerHTML = `<span style="color:#d9534f; font-weight:600;">אופס! השרת עמוס קצת כרגע. נסה ללחוץ על השליחה שוב.</span>`;
+                        // השרת לא ענה אחרי שני ניסיונות - כנראה הגענו למגבלה היומית
+                        responseDiv.innerHTML = `<span style="color:#d9534f; font-weight:600; display:block; text-align:center; padding: 15px; background: rgba(217, 83, 79, 0.1); border-radius: 10px;">
+                            אופס! נראה שהסוכנים שלנו עמוסים מאוד כרגע.<br>
+                            <span style="font-size: 15px; font-weight: 400;">היות ומערכת ה-AI עדיין בגרסת הרצה, יש לנו מגבלת שאלות יומית שיתכן והסתיימה. נשמח שתנסו שוב מחר, או שתשאלו אותנו ישירות בפורום האתר!</span>
+                        </span>`;
                         loadingMsg.style.display = 'none';
-                        return; // עוצרים הכל
+                        return;
                     }
                     
                     // אם אנחנו פה, הניסיון הראשון נכשל. השרת כנראה עוד מתעורר.
