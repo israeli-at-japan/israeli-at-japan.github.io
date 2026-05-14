@@ -20,13 +20,41 @@
         nav ul li:hover { opacity: 0.7; cursor: pointer; }
 
         /* אזור הצ'אט המעוצב */
-        .chat-section { padding: 60px 10%; background-color: #d8f0e6; min-height: 80vh; display: flex; flex-direction: column; align-items: center; }
+        /* אזור הצ'אט המעוצב עם תמונת הרקע */
+        .chat-section { 
+            padding: 60px 10%; 
+            min-height: 80vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+            /* הוספת תמונת הרקע */
+            background-image: url('images/japan-bg.jpg'); /* שים לב שהשם תואם לשם התמונה שהעלית */
+            background-size: cover; /* מוודא שהתמונה מכסה את כל השטח */
+            background-position: center center; /* ממקם את התמונה באמצע */
+            background-repeat: no-repeat;
+        }
         .chat-header { text-align: center; margin-bottom: 40px; }
         .chat-header h1 { font-size: 42px; font-weight: 300; color: #3e7b73; margin-bottom: 10px; }
         .chat-header p { font-size: 20px; color: #3e7b73; opacity: 0.9; }
 
         /* הקופסה הלבנה המיותרת הוסרה, עכשיו זה רק עוטף בלתי נראה לרוחב */
-        .chat-container { width: 100%; max-width: 800px; padding: 10px; box-sizing: border-box; }
+        /* תיבת צ'אט באפקט זכוכית (Glassmorphism) */
+        .chat-container { 
+            width: 100%; 
+            max-width: 800px; 
+            /* צבע לבן עם 65% אטימות */
+            background: rgba(255, 255, 255, 0.65); 
+            /* אפקט טשטוש יוקרתי למה שנמצא מאחורי התיבה */
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px);
+            /* פינות מאוד עגולות כמו בסקיצה */
+            border-radius: 40px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            padding: 40px; 
+            box-sizing: border-box; 
+            /* מסגרת לבנה עדינה להשלמת המראה */
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
         
         /* === תיבת החיפוש המרחפת בסגנון Gemini === */
         .gemini-input-bar {
@@ -145,9 +173,9 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="forum">Forum</a></li>
                 <li><a href="general-info">תכנון טיול ומידע כללי</a></li>
-                <li><a href="tokyo-fuji">טוקיו פוג'י</a></li>
+                <li><a href="tokyo-fuji"> טוקיו פוג'י והסביבה</a></li>
                 <li><a href="alps">האלפים היפניים</a></li>
-                <li><a href="kyoto-osaka">קיוטו אוסקה</a></li>
+                <li><a href="kyoto-osaka">קיוטו אוסקה ומה שביניהן</a></li>
                 <li><a href="island-hopping">איילנד הופינג</a></li>
             </ul>
         </nav>
