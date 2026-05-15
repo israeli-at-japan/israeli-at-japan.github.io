@@ -16,7 +16,7 @@
         a { text-decoration: none; color: inherit; }
 
         /* תפריט עליון */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; border-bottom: 1px solid #eee; background: white; position: relative; z-index: 100; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; border-bottom: 1px solid #eee; background: white; position: relative; z-index: 1000; }
         .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
         nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; color: #3e7b73; font-weight: 600; }
         nav ul li:hover { opacity: 0.7; cursor: pointer; }
@@ -42,7 +42,7 @@
         .card img { width: 100%; height: 250px; object-fit: cover; }
         .card h3 { font-size: 18px; padding: 20px; font-weight: 600; color: #3e7b73; }
 
-        /* --- עיצוב סקשן המאצ'ה המתוקן והחסין --- */
+        /* --- סקשן המאצ'ה המעוצב --- */
         .matcha-donate-section {
             position: relative;
             background-color: #ffffff; 
@@ -61,8 +61,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            /* ריווח שמאלי גדול בשביל לאפשר לתמונת המגש לפלוש פנימה */
-            padding: 50px 50px 50px 300px; 
+            padding: 50px 50px 50px 280px; /* ריווח משמאל */
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             position: relative;
             z-index: 2;
@@ -70,33 +69,17 @@
 
         .matcha-tray-img {
             position: absolute;
-            left: -80px;
+            left: -30px; /* הוזז ימינה מ-80- כדי להיכנס יותר לתיבה */
             top: 50%;
             transform: translateY(-50%);
             width: 380px; 
-            z-index: 5; /* מקפיץ את התמונה לקומה הכי גבוהה */
-            /* שינינו את כיוון הצל שמאלה בלבד כדי למנוע את הפס השחור למטה */
-            filter: drop-shadow(-10px 0px 15px rgba(0,0,0,0.06));
+            z-index: 10; /* מעל הכל */
+            filter: drop-shadow(-15px 10px 20px rgba(0,0,0,0.08)); /* צל רך ללא שחור בתחתית */
         }
 
-        .matcha-donate-content {
-            flex: 1;
-            text-align: right;
-        }
-
-        .matcha-donate-content h2 {
-            color: #1b3d36;
-            font-size: 30px;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .matcha-donate-content p {
-            color: #2c5953;
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
+        .matcha-donate-content { flex: 1; text-align: right; }
+        .matcha-donate-content h2 { color: #1b3d36; font-size: 30px; margin-bottom: 15px; font-weight: 600; }
+        .matcha-donate-content p { color: #2c5953; font-size: 18px; line-height: 1.6; margin-bottom: 30px; }
 
         .matcha-btn {
             background: #2a5a4a;
@@ -109,42 +92,52 @@
             transition: all 0.3s;
             box-shadow: 0 6px 15px rgba(42, 90, 74, 0.2);
         }
-        .matcha-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(42, 90, 74, 0.3);
-            opacity: 0.95;
-        }
+        .matcha-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(42, 90, 74, 0.3); opacity: 0.95; }
 
-        /* קישוטים מרחפים */
-        .matcha-decorations { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 4; }
+        /* קישוטים מרחפים - Z-index גבוה כדי שיהיו מעל הטקסט */
+        .matcha-decorations { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 20; }
         .deco { position: absolute; opacity: 0.5; }
         .leaf-1 { top: 10%; left: 10%; width: 70px; transform: rotate(-10deg); }
         .leaf-2 { top: 15%; right: 15%; width: 60px; transform: rotate(35deg); }
         .leaf-3 { bottom: 10%; left: 30%; width: 50px; transform: rotate(10deg); }
         .leaf-4 { bottom: 15%; right: 25%; width: 65px; transform: rotate(-45deg); }
-        .whisk-1 { top: 10px; right: 5%; width: 90px; transform: rotate(85deg); opacity: 0.4; }
-        .whisk-2 { bottom: 20px; right: 5%; width: 130px; transform: rotate(-10deg); opacity: 0.3; }
+        .whisk-1 { top: 30px; right: 5%; width: 80px; transform: rotate(85deg); opacity: 0.4; }
+        .whisk-2 { bottom: 50px; right: 8%; width: 110px; transform: rotate(-15deg); opacity: 0.3; }
 
-        /* התאמה לנייד */
+        /* =========================================
+           הגדרות עיצוב לנייד - שחזור מהקוד הישן והטוב
+           ========================================= */
         @media (max-width: 768px) {
             header { flex-direction: column; padding: 15px; text-align: center; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
-            
+
+            .hero { flex-direction: column; padding: 40px 5%; text-align: center; gap: 30px; }
+            .hero-text h1 { font-size: 38px; }
+            .hero-text p { font-size: 18px; }
+
+            .middle-text { padding: 40px 10%; }
+            .middle-text h2 { font-size: 28px; }
+            .middle-text p { font-size: 18px; }
+
+            .card { width: 100%; margin-bottom: 20px; }
+            .grid { gap: 15px; }
+
+            /* התאמת סקשן המאצ'ה לנייד */
             .matcha-donate-card {
-                padding: 220px 20px 40px 20px; /* פינוי מקום לתמונה שתעלה למעלה */
+                padding: 220px 20px 40px 20px; 
                 flex-direction: column;
                 text-align: center;
-                margin-top: 60px;
+                margin-top: 40px;
             }
             .matcha-tray-img {
                 left: 50%;
                 top: -30px;
                 transform: translateX(-50%);
-                width: 300px;
+                width: 280px;
             }
             .matcha-donate-content { text-align: center; }
             .matcha-donate-content h2 { font-size: 24px; }
-            .deco { display: none; }
+            .deco { display: none; } /* הסרת קישוטים בנייד למניעת עומס ויזואלי */
         }
     </style>
 
@@ -166,10 +159,10 @@
                 <li><a href="forum">Forum</a></li>
                 <li><a href="ai-agent">סוכן AI ✨</a></li>
                 <li><a href="general-info">תכנון טיול ומידע כללי</a></li>
-                <li><a href="tokyo-fuji">טוקיו פוג'י והסביבה</a></li>
+                <li><a href="tokyo-fuji">טוקיו פוג'י</a></li>
                 <li><a href="alps">האלפים היפניים</a></li>
-                <li><a href="kyoto-osaka">קיוטו אוסקה ומה שביניהן</a></li>
-                <li><a href="island-hopping">איילנד הופינג ביפן</a></li>
+                <li><a href="kyoto-osaka">קיוטו אוסקה</a></li>
+                <li><a href="island-hopping">איילנד הופינג</a></li>
             </ul>
         </nav>
     </header>
@@ -227,9 +220,8 @@
 
         <div class="matcha-donate-card">
             <img src="images/matcha.png.avif" alt="קערת מאצ'ה על מגש עץ" class="matcha-tray-img">
-            
             <div class="matcha-donate-content">
-                <h2>אהבתם את התוכן? נשמח אם תפנקו אותנו במאצ'ה</h2>
+                <h2>אהבתם את התוכן? נשמח אם תפנקו אותנו במאצ'ה 🍵</h2>
                 <p>האתר הזה נבנה באהבה על מנת להעניק השראה. אם המדריכים, הטיפים או המסלולים המקוריים שלנו עזרו לכם לתכנן את הרגע המושלם שלכם, נשמח אם תבחרו להעריך את המאמץ בכוס מאצ'ה. תרומה קטנה שלכם עוזרת לנו לשמור על התוכן ללא פרסומות ולהמשיך לייצר עוד.</p>
                 <a href="כאן_תשים_את_הלינק_של_פייבוקס" target="_blank" class="matcha-btn">Buy me a matcha 🍵</a>
             </div>
