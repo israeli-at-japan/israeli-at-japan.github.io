@@ -20,19 +20,30 @@
         nav ul li:hover { opacity: 0.7; cursor: pointer; }
 
         /* אזור הצ'אט המעוצב */
-        /* אזור הצ'אט המעוצב עם תמונת הרקע */
+        /* אזור הצ'אט המעוצב - ללא התמונה עצמה */
         .chat-section { 
             padding: 60px 10%; 
-            min-height: 80vh; 
+            min-height: 100vh; 
             display: flex; 
             flex-direction: column; 
             align-items: center;
-            /* הוספת תמונת הרקע */
-            background-image: url('images/ai-image.png.avif'); /* שים לב שהשם תואם לשם התמונה שהעלית */
-            background-size: cover; /* מוודא שהתמונה מכסה את כל השטח */
-            background-position: center center; /* ממקם את התמונה באמצע */
+            isolation: isolate; /* שומר שהרקע שלנו לא יברח אחורה מדי */
+        }
+
+        /* יצירת שכבת רקע חכמה שמונעת קפיצות וריצודים */
+        .chat-section::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('images/ai-image.png.avif'); 
+            background-size: cover; 
+            background-position: center center; 
             background-repeat: no-repeat;
-            background-attachment: fixed;
+            z-index: -1; /* דוחף את התמונה מאחורי הטקסט והתיבה */
+            will-change: transform; /* אומר לכרטיס המסך לרנדר את זה בצורה חלקה */
         }
         .chat-header { text-align: center; margin-bottom: 40px; }
         .chat-header h1 { font-size: 42px; font-weight: 300; color: #3e7b73; margin-bottom: 10px; }
