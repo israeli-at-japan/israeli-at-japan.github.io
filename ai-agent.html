@@ -14,7 +14,17 @@
         a { text-decoration: none; color: inherit; }
 
         /* תפריט עליון */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; border-bottom: 1px solid #eee; background: white; }
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 50px; 
+            border-bottom: 1px solid #eee; 
+            background: white; 
+            /* שתי השורות שמצילות את התפריט: */
+            position: relative; 
+            z-index: 100; 
+        }
         .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
         nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; color: #3e7b73; font-weight: 600; }
         nav ul li:hover { opacity: 0.7; cursor: pointer; }
