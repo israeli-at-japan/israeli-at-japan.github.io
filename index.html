@@ -12,126 +12,126 @@
     <style>
         /* איפוס הגדרות בסיס ופונט */
         body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
-        
-        /* שינוי צבע הטקסט הכללי לירוק-תכלת */
         body { font-family: 'Assistant', sans-serif; color: #3e7b73; line-height: 1.6; }
         a { text-decoration: none; color: inherit; }
 
         /* תפריט עליון */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; border-bottom: 1px solid #eee; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; border-bottom: 1px solid #eee; background: white; position: relative; z-index: 100; }
         .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
-        
-        /* שינוי צבע התפריט והגדלה קלה */
         nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; color: #3e7b73; font-weight: 600; }
         nav ul li:hover { opacity: 0.7; cursor: pointer; }
 
-        /* אזור התמונה והטקסט הראשי */
+        /* אזור ה-Hero */
         .hero { display: flex; align-items: center; justify-content: space-between; padding: 80px 10%; gap: 50px; }
         .hero-text { flex: 1; }
         .hero-text h1 { font-size: 50px; color: #3e7b73; margin-bottom: 20px; line-height: 1.2; font-weight: 300; }
-        
-        /* הגדלת טקסט הפסקה ושינוי צבע */
         .hero-text p { font-size: 22px; color: #3e7b73; }
         .hero-image { flex: 1; }
         .hero-image img { width: 100%; border-radius: 4px; }
 
-        /* אזור הטקסט האמצעי */
+        /* טקסט אמצעי */
         .middle-text { text-align: center; padding: 50px 20%; }
         .middle-text h2 { font-size: 36px; color: #3e7b73; margin-bottom: 20px; font-weight: 300; }
-        
-        /* הגדלת טקסט הפסקה ושינוי צבע */
         .middle-text p { font-size: 22px; color: #3e7b73; }
 
-        /* אזור הכרטיסיות (קטגוריות) */
+        /* כרטיסיות קטגוריות */
         .categories-section { background-color: #d8f0e6; padding: 60px 10%; text-align: center; }
         .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
-        
         .card { width: 300px; background: #fff; text-align: center; display: block; transition: transform 0.2s; }
         .card:hover { transform: translateY(-5px); }
         .card img { width: 100%; height: 250px; object-fit: cover; }
-        
-        /* שינוי צבע הטקסט בכרטיסיות */
         .card h3 { font-size: 18px; padding: 20px; font-weight: 600; color: #3e7b73; }
 
-        /* עיצוב סקשן המאצ'ה */
+        /* --- עיצוב מתקדם לסקשן המאצ'ה --- */
         .matcha-section {
-            padding: 60px 10%;
-            background-color: #ffffff; /* רקע לבן שמשתלב אחרי הכרטיסיות */
+            padding: 100px 10%;
+            background-color: #ffffff; /* לבן מחוץ לתיבה */
             text-align: center;
+            overflow: visible; 
         }
         .matcha-container {
-            max-width: 650px;
+            max-width: 900px;
             margin: 0 auto;
-            background: #d8f0e6; /* הרקע הירקרק העדין של האתר */
-            padding: 40px 30px;
+            position: relative;
+        }
+        .matcha-card {
+            background: #d8f0e6; /* טורקיז בתוך התיבה */
+            padding: 40px 30px 40px 180px; /* מרווח משמאל לתמונה */
             border-radius: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             border: 1px solid #c2e2d4;
+            position: relative;
+            z-index: 1;
+            text-align: right;
+            display: flex;
+            justify-content: flex-end;
         }
-        .matcha-container h2 {
-            font-size: 32px;
+        .matcha-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            max-width: 600px;
+        }
+        .matcha-text h2 {
+            font-size: 30px;
             color: #3e7b73;
             margin-bottom: 15px;
             font-weight: 600;
         }
-        .matcha-container p {
-            font-size: 19px;
+        .matcha-text p {
+            font-size: 17px;
             color: #3e7b73;
             margin-bottom: 30px;
             line-height: 1.5;
         }
         .matcha-btn {
             display: inline-block;
-            background-color: #3e7b73;
+            background-color: #2c5953;
             color: white;
-            font-size: 19px;
+            font-size: 18px;
             font-weight: 600;
             padding: 12px 35px;
             border-radius: 50px;
             transition: all 0.3s;
-            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(44, 89, 83, 0.2);
         }
         .matcha-btn:hover {
-            opacity: 0.9;
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(62, 123, 115, 0.3);
+            box-shadow: 0 6px 15px rgba(44, 89, 83, 0.3);
+            opacity: 0.9;
+        }
+        .matcha-floating-image {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(-20%, -50%); /* מוציא את התמונה מחוץ למסגרת */
+            width: 320px;
+            z-index: 2;
+            pointer-events: none;
         }
 
-        /* =========================================
-           הגדרות עיצוב מיוחדות למסכי טלפון בלבד
-           ========================================= */
+        /* התאמה לנייד */
         @media (max-width: 768px) {
-            
-            /* סידור התפריט העליון שייכנס במסך */
             header { flex-direction: column; padding: 15px; text-align: center; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
-
-            /* הפיכת אזור הפתיחה (Hero) מ"צד בצד" ל"אחד מתחת לשני" */
-            .hero { flex-direction: column; padding: 40px 5%; text-align: center; gap: 30px; }
-            .hero-text h1 { font-size: 38px; } /* הקטנת הכותרת הענקית */
-            .hero-text p { font-size: 18px; }
-
-            /* הקטנת הרווחים בחלק האמצעי */
+            .hero { flex-direction: column; padding: 40px 5%; text-align: center; }
+            .hero-text h1 { font-size: 38px; }
             .middle-text { padding: 40px 10%; }
-            .middle-text h2 { font-size: 28px; }
-            .middle-text p { font-size: 18px; }
-
-            /* כרטיסיות הקטגוריות יתפסו את כל רוחב המסך בטלפון */
-            .card { width: 100%; margin-bottom: 20px; }
-            .grid { gap: 15px; }
+            .card { width: 100%; }
+            
+            .matcha-card { padding: 20px; padding-top: 160px; text-align: center; justify-content: center; }
+            .matcha-content { align-items: center; }
+            .matcha-floating-image { width: 220px; top: 0; left: 50%; transform: translate(-50%, -40%); }
         }
     </style>
 
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D038KR7FQ"></script>
-<script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4D038KR7FQ"></script>
+    <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-4D038KR7FQ');
     </script>
-    
 </head>
 <body>
 
@@ -142,11 +142,11 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="forum">Forum</a></li>
                 <li><a href="ai-agent">סוכן AI ✨</a></li>
-                <li><a href="general-info">תכנון טיול ומידע כללי על יפן</a></li>
-                <li><a href="tokyo-fuji">טוקיו פוג'י והסביבה</a></li>
+                <li><a href="general-info">תכנון טיול ומידע כללי</a></li>
+                <li><a href="tokyo-fuji">טוקיו פוג'י</a></li>
                 <li><a href="alps">האלפים היפניים</a></li>
-                <li><a href="kyoto-osaka">קיוטו אוסקה ומה שביניהן</a></li>
-                <li><a href="island-hopping">איילנד הופינג ביפן</a></li>
+                <li><a href="kyoto-osaka">קיוטו אוסקה</a></li>
+                <li><a href="island-hopping">איילנד הופינג</a></li>
             </ul>
         </nav>
     </header>
@@ -155,7 +155,7 @@
         <div class="hero-text">
             <h1>ישראלי ביפן</h1>
             <br>
-            <p>קצת עלינו - אנחנו זוג תרמילאים שהגיע ליפן בסוף אפריל מיד עם סוף פריחת הדובדבן, לא התקמצנו או חסכנו אז כנראה שגם אם אתם לא תרמילאים תוכלו להיעזר באתר הזה. המון אנשים פנו אלינו לקבל מידע על יפן אז החלטנו לאגד את הכל ולהפיץ כדי שכולם יוכלו להיעזר במידע ובחוויה שלנו.</p>
+            <p>קצת עלינו - אנחנו זוג תרמילאים שהגיע ליפן בסוף אפריל מיד עם סוף פריחת הדובדבן. המון אנשים פנו אלינו לקבל מידע על יפן אז החלטנו לאגד את הכל ולהפיץ כדי שכולם יוכלו להיעזר במידע ובחוויה שלנו.</p>
         </div>
         <div class="hero-image">
             <img src="images/main.jpeg.avif" alt="Japan Garden">
@@ -164,14 +164,14 @@
 
     <section class="middle-text">
         <h2>גלו את יפן בדרך שלכם</h2>
-        <p>בין אם אתם חולמים לטייל בין ערי המטרופולין המודרניות, לטבול ביופי הטבע של האלפים היפניים, או ליהנות מחוויות תרבות ייחודיות – יפן מציעה אינסוף אפשרויות. בחרנו עבורכם את ההמלצות המובילות, מחולקות לפי קטגוריות שיעזרו לכם לבנות את הטיול המושלם. לחצו על אחת מתתי הקטגוריות למטה כדי להתחיל לחקור את היעדים שתרצו לגלות</p>
+        <p>בין אם אתם חולמים לטייל בין ערי המטרופולין המודרניות או לטבול בטבע – יפן מציעה אינסוף אפשרויות. בחרנו עבורכם את ההמלצות המובילות שיעזרו לכם לבנות את הטיול המושלם.</p>
     </section>
 
     <section class="categories-section">
         <div class="grid">
             <a href="general-info" class="card">
                 <img src="images/map1.AVIF" alt="תכנון מסלול">
-                <h3>תכנון מסלול ומידע כללי על יפן</h3>
+                <h3>תכנון מסלול ומידע כללי</h3>
             </a>
             <a href="tokyo-fuji" class="card">
                 <img src="images/tokyod.JPG" alt="טוקיו">
@@ -186,7 +186,7 @@
                 <h3>קיוטו אוסקה ומה שביניהן</h3>
             </a>
             <a href="island-hopping" class="card">
-                <img src="images/naoshima1.JPG" alt="איילנד הופינג" style="object-position: center bottom;">
+                <img src="images/naoshima1.JPG" alt="איילנד הופינג">
                 <h3>איילנד הופינג ביפן</h3>
             </a>
         </div>
@@ -194,11 +194,18 @@
 
     <section class="matcha-section">
         <div class="matcha-container">
-            <h2>🍵 אהבתם את התוכן? 🍵</h2>
-            <p>האתר הזה נבנה באהבה ומופעל בהתנדבות. אם המדריכים, הטיפים או הסוכנים החכמים שלנו עזרו לכם לתכנן את הטיול המושלם ליפן, נשמח אם תפנקו אותנו בכוס מאצ'ה!</p>
-            <a href="כאן_תשים_את_הלינק_של_פייבוקס" target="_blank" class="matcha-btn">
-                פנקו אותנו במאצ'ה
-            </a>
+            <div class="matcha-card">
+                <div class="matcha-content">
+                    <div class="matcha-text">
+                        <h2>אהבתם את התוכן? נשמח אם תפנקו אותנו במאצ'ה חמה 🍵</h2>
+                        <p>האתר הזה נבנה באהבה על מנת להעניק השראה. אם המדריכים, הטיפים או הסוכנים החכמים שלנו עזרו לכם לתכנן את הרגע המושלם שלכם, נשמח אם תבחרו להעריך את המאמץ בכוס מאצ'ה. תרומה קטנה שלכם עוזרת לנו לשמור על התוכן ללא פרסומות ולהמשיך לייצר עוד.</p>
+                    </div>
+                    <a href="כאן_תשים_את_הלינק_של_פייבוקס" target="_blank" class="matcha-btn">
+                        פנקו אותנו במאצ'ה
+                    </a>
+                </div>
+            </div>
+            <img src="images/ai-image.png.avif" alt="Matcha bowl" class="matcha-floating-image">
         </div>
     </section>
 
