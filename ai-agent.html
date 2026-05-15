@@ -309,11 +309,28 @@
                     textToFormat = "התקבלה תשובה בפורמט לא מוכר.";
                 }
 
+                // --- פילטר העיצוב החכם והמאוורר ---
                 let formattedAnswer = textToFormat;
 
+                // 1. שבירת שורות טבעית של ג'מיני
+                formattedAnswer = formattedAnswer.replace(/\n/g, '<br>');
+
+                // 2. הפרדה ברורה לפינת הקישורים - דוחף ירידת שורה לפני ואחרי האייקון
+                formattedAnswer = formattedAnswer.replace(/🔗/g, '<br><br>🔗<br>');
+
+                // 3. אוורור רשימות ממוספרות (1. 2. 3.)
+                formattedAnswer = formattedAnswer.replace(/(\s)(\d+\.\s)/g, '<br><br>$2');
+
+                // 4. הפיכת מקפים וכוכביות לרשימת בולטים מסודרת (יסדר גם את הלינקים בסוף!)
+                formattedAnswer = formattedAnswer.replace(/(?:\s|^)([-*])\s/g, '<br>• ');
+
+                // 5. הדגשות
                 formattedAnswer = formattedAnswer.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+                // 6. לינקים של מרקדאון
                 formattedAnswer = formattedAnswer.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color: #3e7b73; font-weight: bold; text-decoration: underline;">$1</a>');
 
+                // 7. מילון הלינקים של israeli-in-japan
                 formattedAnswer = formattedAnswer.replace(/(?<!href=")(https:\/\/[^\s<]+)/g, function(url) {
                     let cleanUrl = url.replace(/[.,)]$/, ''); 
                     let title = "לכתבה המלאה לחץ כאן";
@@ -336,6 +353,9 @@
                     
                     return `<a href="${cleanUrl}" target="_blank" style="color: #3e7b73; font-weight: bold; text-decoration: underline;">${title}</a>`;
                 });
+
+                // ניקוי רווחים מיותרים בהתחלה אם נוצרו
+                formattedAnswer = formattedAnswer.replace(/^(<br>)+/, '');
 
                 responseDiv.innerHTML = formattedAnswer;
 
