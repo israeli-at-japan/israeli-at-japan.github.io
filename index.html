@@ -58,26 +58,32 @@
             border: 1px solid #e2efe8;
             max-width: 950px;
             width: 100%;
+            box-sizing: border-box; /* הקסם שמונע מהרוחב להתפוצץ! */
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 50px 50px 50px 280px; /* ריווח משמאל */
+            padding: 50px; /* ריווח שווה ונקי מכל הכיוונים */
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             position: relative;
             z-index: 2;
         }
 
+        /* התמונה עדיין פורצת שמאלה כרגיל */
         .matcha-tray-img {
             position: absolute;
-            left: -30px; /* הוזז ימינה מ-80- כדי להיכנס יותר לתיבה */
+            left: -30px; 
             top: 50%;
             transform: translateY(-50%);
             width: 380px; 
-            z-index: 10; /* מעל הכל */
-            filter: drop-shadow(-15px 10px 20px rgba(0,0,0,0.08)); /* צל רך ללא שחור בתחתית */
+            z-index: 10; 
+            filter: drop-shadow(-15px 10px 20px rgba(0,0,0,0.08)); 
         }
 
-        .matcha-donate-content { flex: 1; text-align: right; }
+        .matcha-donate-content { 
+            flex: 1; 
+            text-align: right; 
+            margin-left: 320px; /* "קיר הבטון" - דוחף את הטקסט ימינה ומשאיר חלל ריק לתמונה */
+        }
+
         .matcha-donate-content h2 { color: #1b3d36; font-size: 30px; margin-bottom: 15px; font-weight: 600; }
         .matcha-donate-content p { color: #2c5953; font-size: 18px; line-height: 1.6; margin-bottom: 30px; }
 
@@ -135,7 +141,7 @@
                 transform: translateX(-50%);
                 width: 280px;
             }
-            .matcha-donate-content { text-align: center; }
+            .matcha-donate-content { text-align: center; margin-left: 0; }
             .matcha-donate-content h2 { font-size: 24px; }
             .deco { display: none; } /* הסרת קישוטים בנייד למניעת עומס ויזואלי */
             .desktop-break { display: none; }
