@@ -16,7 +16,7 @@
         a { text-decoration: none; color: inherit; }
 
         /* תפריט עליון */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; border-bottom: 1px solid #eee; background: white; position: relative; z-index: 1000; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; border-bottom: 1px solid #eee; background: white; position: relative; z-index: 100; }
         .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
         nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; color: #3e7b73; font-weight: 600; }
         nav ul li:hover { opacity: 0.7; cursor: pointer; }
@@ -42,7 +42,7 @@
         .card img { width: 100%; height: 250px; object-fit: cover; }
         .card h3 { font-size: 18px; padding: 20px; font-weight: 600; color: #3e7b73; }
 
-        /* --- סקשן המאצ'ה המעוצב --- */
+        /* --- עיצוב סקשן המאצ'ה המתוקן והחסין --- */
         .matcha-donate-section {
             position: relative;
             background-color: #ffffff; 
@@ -58,34 +58,44 @@
             border: 1px solid #e2efe8;
             max-width: 950px;
             width: 100%;
-            box-sizing: border-box; /* הקסם שמונע מהרוחב להתפוצץ! */
+            box-sizing: border-box; /* שומר שהטקסט לא יגלוש לתמונה */
             display: flex;
             align-items: center;
-            padding: 50px; /* ריווח שווה ונקי מכל הכיוונים */
+            justify-content: space-between;
+            padding: 50px 50px 50px 330px; /* ריווח נכון משמאל */
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             position: relative;
             z-index: 2;
         }
 
-        /* התמונה עדיין פורצת שמאלה כרגיל */
         .matcha-tray-img {
             position: absolute;
-            left: -30px; 
+            left: -40px; 
             top: 50%;
             transform: translateY(-50%);
             width: 380px; 
-            z-index: 10; 
-            filter: drop-shadow(-15px 10px 20px rgba(0,0,0,0.08)); 
+            z-index: 5; 
+            filter: drop-shadow(-10px 10px 15px rgba(0,0,0,0.06)); /* צל רך נטול פס שחור */
         }
 
-        .matcha-donate-content { 
-            flex: 1; 
-            text-align: right; 
-            margin-left: 320px; /* "קיר הבטון" - דוחף את הטקסט ימינה ומשאיר חלל ריק לתמונה */
+        .matcha-donate-content {
+            flex: 1;
+            text-align: right;
         }
 
-        .matcha-donate-content h2 { color: #1b3d36; font-size: 30px; margin-bottom: 15px; font-weight: 600; }
-        .matcha-donate-content p { color: #2c5953; font-size: 18px; line-height: 1.6; margin-bottom: 30px; }
+        .matcha-donate-content h2 {
+            color: #1b3d36;
+            font-size: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .matcha-donate-content p {
+            color: #2c5953;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
 
         .matcha-btn {
             background: #2a5a4a;
@@ -98,25 +108,29 @@
             transition: all 0.3s;
             box-shadow: 0 6px 15px rgba(42, 90, 74, 0.2);
         }
-        .matcha-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(42, 90, 74, 0.3); opacity: 0.95; }
+        .matcha-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(42, 90, 74, 0.3);
+            opacity: 0.95;
+        }
 
-        /* קישוטים מרחפים - Z-index גבוה כדי שיהיו מעל הטקסט */
-        .matcha-decorations { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 20; }
-        . { position: absolute; opacity: 0.5; }
+        /* קישוטים מרחפים */
+        .matcha-decorations { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 4; }
+        .deco { position: absolute; opacity: 0.5; }
         .leaf-1 { top: 10%; left: 10%; width: 70px; transform: rotate(-10deg); }
         .leaf-2 { top: 15%; right: 15%; width: 60px; transform: rotate(35deg); }
         .leaf-3 { bottom: 10%; left: 30%; width: 50px; transform: rotate(10deg); }
         .leaf-4 { bottom: 15%; right: 25%; width: 65px; transform: rotate(-45deg); }
-        .whisk-1 { top: 60px; right: 9%; width: 80px; transform: rotate(85deg); opacity: 0.4; }
-        .whisk-2 { bottom: 50px; right: 8%; width: 110px; transform: rotate(-15deg); opacity: 0.3; }
+        
+        /* הוויסקים ממוקמים מחדש בגדלים נכונים */
+        .whisk-1 { top: 60px; right: 7%; width: 90px; transform: rotate(85deg); opacity: 0.4; }
+        .whisk-2 { bottom: 30px; right: 9%; width: 110px; transform: rotate(-10deg); opacity: 0.3; }
 
-        /* =========================================
-           הגדרות עיצוב לנייד - שחזור מהקוד הישן והטוב
-           ========================================= */
+        /* התאמה לנייד */
         @media (max-width: 768px) {
             header { flex-direction: column; padding: 15px; text-align: center; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
-
+            
             .hero { flex-direction: column; padding: 40px 5%; text-align: center; gap: 30px; }
             .hero-text h1 { font-size: 38px; }
             .hero-text p { font-size: 18px; }
@@ -128,23 +142,22 @@
             .card { width: 100%; margin-bottom: 20px; }
             .grid { gap: 15px; }
 
-            /* התאמת סקשן המאצ'ה לנייד */
             .matcha-donate-card {
                 padding: 220px 20px 40px 20px; 
                 flex-direction: column;
                 text-align: center;
-                margin-top: 40px;
+                margin-top: 60px;
             }
             .matcha-tray-img {
                 left: 50%;
                 top: -30px;
                 transform: translateX(-50%);
-                width: 280px;
+                width: 300px;
             }
-            .matcha-donate-content { text-align: center; margin-left: 0; }
+            .matcha-donate-content { text-align: center; }
             .matcha-donate-content h2 { font-size: 24px; }
-            .deco { display: none; } /* הסרת קישוטים בנייד למניעת עומס ויזואלי */
-            .desktop-break { display: none; }
+            .deco { display: none; }
+            .desktop-break { display: none; } /* מסתיר את שבירת השורה בטלפון */
         }
     </style>
 
@@ -165,7 +178,7 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="forum">Forum</a></li>
                 <li><a href="ai-agent">סוכן AI ✨</a></li>
-                <li><a href="general-info">תכנון טיול ומידע כללי על יפן</a></li>
+                <li><a href="general-info">תכנון טיול ומידע כללי</a></li>
                 <li><a href="tokyo-fuji">טוקיו פוג'י והסביבה</a></li>
                 <li><a href="alps">האלפים היפניים</a></li>
                 <li><a href="kyoto-osaka">קיוטו אוסקה ומה שביניהן</a></li>
@@ -178,7 +191,7 @@
         <div class="hero-text">
             <h1>ישראלי ביפן</h1>
             <br>
-            <p>בסוף אפריל מיד עם סוף פריחת הדובדבן, לא התקמצנו או חסכנו אז כנראה שגם אם אתם לא תרמילאים תוכלו להיעזר באתר הזה. המון אנשים פנו אלינו לקבל מידע על יפן אז החלטנו לאגד את הכל ולהפיץ כדי שכולם יוכלו להיעזר במידע ובחוויה שלנו</p>
+            <p>קצת עלינו- אנחנו זוג תרמילאים שהגיע ליפן בסוף אפריל מיד עם סוף פריחת הדובדבן, לא התקמצנו או חסכנו אז כנראה שגם אם אתם לא תרמילאים תוכלו להיעזר באתר הזה. המון אנשים פנו אלינו לקבל מידע על יפן אז החלטנו לאגד את הכל ולהפיץ כדי שכולם יוכלו להיעזר במידע ובחוויה שלנו</p>
         </div>
         <div class="hero-image">
             <img src="images/main.jpeg.avif" alt="Japan Garden">
@@ -187,7 +200,7 @@
 
     <section class="middle-text">
         <h2>גלו את יפן בדרך שלכם</h2>
-        <p>בין אם אתם חולמים לטייל בין ערי המטרופולין המודרניות, לטבול ביופי הטבע של האלפים היפניים, או ליהנות מחוויות תרבות ייחודיות – יפן מציעה אינסוף אפשרויות. בחרנו עבורכם את ההמלצות המובילות, מחולקות לפי קטגוריות שיעזרו לכם לבנות את הטיול המושלם. לחצו על אחת מתתי הקטגוריות למטה כדי להתחיל לחקור את היעדים שתרצו לגלות</p>
+        <p>בין אם אתם חולמים לטייל בין ערי המטרופולין המודרניות, לטבול ביופי הטבע של האלפים היפניים, או ליהנות מחוויות תרבות ייחודיות – יפן מציעה אינסוף אפשרויות. בחרנו עבורכם את ההמלצות המובילות שיעזרו לכם לבנות את הטיול המושלם.</p>
     </section>
 
     <section class="categories-section">
@@ -227,6 +240,7 @@
 
         <div class="matcha-donate-card">
             <img src="images/matcha.png.avif" alt="קערת מאצ'ה על מגש עץ" class="matcha-tray-img">
+            
             <div class="matcha-donate-content">
                 <h2>אהבתם את התוכן? נשמח אם תפנקו אותנו במאצ'ה 🍵</h2>
                 <p>האתר הזה נבנה באהבה על מנת להעניק השראה. אם המדריכים, הטיפים או המסלולים המקוריים שלנו עזרו לכם לתכנן את הרגע המושלם שלכם,<br class="desktop-break">נשמח אם תבחרו להעריך את המאמץ בכוס מאצ'ה. תרומה קטנה שלכם עוזרת לנו לשמור על התוכן ללא פרסומות ולהמשיך לייצר עוד.</p>
