@@ -313,7 +313,7 @@
                     // אם אנחנו פה, הניסיון הראשון נכשל. השרת כנראה עוד מתעורר.
                     // נחכה 3 שניות, וננסה שוב אוטומטית.
                     loadingMsg.innerHTML = 'מארגן את המידע עבורך, עוד רגע...';
-                    await new Promise(resolve => setTimeout(resolve, 3000));
+                    await new Promise(resolve => setTimeout(resolve, 8000));
                 }
             }
 
