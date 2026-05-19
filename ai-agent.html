@@ -312,10 +312,10 @@
                     console.warn(`Attempt ${attempts} failed.`, error);
                     
                     if (attempts >= maxAttempts) {
-                        // השרת לא ענה אחרי שני ניסיונות - כנראה הגענו למגבלה היומית
+                        // השרת לא ענה אחרי שני ניסיונות - כנראה השרת עדיין מתעורר משינה
                         responseDiv.innerHTML = `<span style="color:#d9534f; font-weight:600; display:block; text-align:center; padding: 15px; background: rgba(217, 83, 79, 0.1); border-radius: 10px;">
-                            אופס! נראה שהסוכנים שלנו עמוסים מאוד כרגע.<br>
-                            <span style="font-size: 15px; font-weight: 400;">היות ומערכת ה-AI עדיין בגרסת הרצה, יש לנו מגבלת שאלות יומית שיתכן והסתיימה. נשמח שתנסו שוב מחר, או שתשאלו אותנו ישירות בפורום האתר!</span>
+                            אופס! נראה שהמומחים שלנו צריכים עוד רגע קטן כדי להתעורר. ☕<br>
+                        <span style="font-size: 15px; font-weight: 400;">לפעמים לוקח למערכת כמה שניות נוספות לעלות. אנא המתינו 3-4 שניות ונסו לשלוח את השאלה שוב! אם הבעיה ממשיכה, נשמח לעזור לכם ישירות בפורום האתר.</span>
                         </span>`;
                         loadingMsg.style.display = 'none';
                         return;
