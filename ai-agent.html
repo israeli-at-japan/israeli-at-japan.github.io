@@ -204,7 +204,7 @@
 
     <section class="chat-section">
         <div class="chat-header">
-            <h1>שאל את צוות המומחים שלנו! 🇯🇵</h1>
+            <h1>שאל את צוות המומחים שלנו! <span id="japan-emoji">🇯🇵</span></h1>
             <p style="margin-bottom: 10px;">הסוכנים החכמים שלנו כאן כדי לעזור לכם לתכנן את הטיול המושלם.</p>
             <p style="font-size: 16px; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.5;">
                 <strong>מיקה</strong> מתבססת על התוכן והניסיון שלנו באתר ותשמח לעזור עם המלצות ותכנון מסלולים.<br> 
@@ -241,6 +241,11 @@
             fetch('https://japan-ai-backend-mfjd.onrender.com/')
                 .then(() => console.log('Server is awake!'))
                 .catch(() => console.log('Wake up ping sent.'));
+            // --- הקוד החדש: החלפת אימוג'י למשתמשי ווינדוס ---
+            if (navigator.userAgent.indexOf("Win") !== -1) {
+                document.getElementById('japan-emoji').innerText = '⛩️';
+            }
+            // ------------------------------------------------
         });
 
         // שינוי טקסט הפלייסחולדר
