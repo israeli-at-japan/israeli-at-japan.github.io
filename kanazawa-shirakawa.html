@@ -109,6 +109,28 @@ body.no-scroll {
         .comment-box { width: 100%; box-sizing: border-box; border: 1px solid #ddd; padding: 15px; font-family: 'Assistant', sans-serif; font-size: 16px; min-height: 80px; resize: vertical; color: #3e7b73; }
         .comment-box:focus { outline: none; border-color: #3e7b73; }
 
+        /* העיצוב של הלינק עצמו */
+        .clean-hotel-link {
+            color: #118ab2; /* צבע כחול-טורקיז מודרני ונקי */
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease; /* אנימציה חלקה */
+        }
+        
+        /* מה קורה כשעולים עם העכבר (Hover) */
+        .clean-hotel-link:hover {
+            color: #073b4c;
+            border-bottom: 2px solid #073b4c; /* קו תחתון שמופיע באלגנטיות */
+        }
+        
+        /* עיצוב המילה בוקינג בסוגריים כדי שלא תשתלט */
+        .booking-tag {
+            font-size: 0.85em;
+            font-weight: normal;
+            color: #6c757d; /* צבע אפור עדין */
+        }
+
         /* רספונסיביות לטלפון */
         @media (max-width: 768px) {
             header { flex-direction: column; padding: 15px; text-align: center; position: relative; }
@@ -255,12 +277,9 @@ body.no-scroll {
             <p>
                 מומלץ לישון באזור Katamachi או בצד המערבי של Hyakumangoku dori Ave.<br><br>
                 
-                <strong>מלון מומלץ:</strong> KOKO HOTEL Premier 金沢香林坊<br>
-                <a href="https://www.booking.com/Share-Jg5khxp" target="_blank" style="display: inline-block; padding: 6px 12px; margin-top: 5px; margin-bottom: 15px; background-color: #003580; color: white; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 14px;">לבדיקת זמינות ומחירים ב-Booking</a>
-                <br>
+                <strong>מלון מומלץ:</strong> <a href="https://www.booking.com/Share-Jg5khxp" target="_blank" class="clean-hotel-link">KOKO HOTEL Premier 金沢香林坊 <span class="booking-tag">(Booking.com)</span></a><br>
                 
-                <strong>הוסטל מומלץ לתרמילאים(מקלחת ושירותים משותפים):</strong> BENJAMIN HOTEL KANAZAWA (ベンジャミンホテル金沢)<br>
-                <a href="https://www.booking.com/Share-lFQRn3T" target="_blank" style="display: inline-block; padding: 6px 12px; margin-top: 5px; background-color: #003580; color: white; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 14px;">לבדיקת זמינות ומחירים ב-Booking</a>
+                <strong>הוסטל מומלץ לתרמילאים:</strong> <a href="https://www.booking.com/Share-lFQRn3T" target="_blank" class="clean-hotel-link">BENJAMIN HOTEL KANAZAWA (ベンジャミンホテル金沢) <span class="booking-tag">(Booking.com)</span></a>
             </p>
             
             <h3>אטרקציות</h3>
