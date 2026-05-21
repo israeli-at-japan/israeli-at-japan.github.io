@@ -99,6 +99,35 @@
         /* אזור תגובות */
         .comments-section { max-width: 800px; margin: 0 auto 100px auto; background: #fff; padding: 40px; border: 1px solid #eee; }
 
+        /* העיצוב של הלינק במצב הרגיל (לפני שעולים עליו) */
+        .hover-booking-link {
+            color: #118ab2; /* צבע הלינק הרגיל */
+            text-decoration: none !important; /* הפקודה הזו מעיפה את הקו התחתון שראינו בתמונה */
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* מעבר חלק */
+        }
+        
+        /* ה-B של בוקינג - מוסתרת לחלוטין במצב רגיל */
+        .booking-b {
+            display: none; /* מעלים את ה-B */
+            font-weight: 900;
+            margin-left: 5px; /* רווח קטן בין ה-B לשם המלון */
+        }
+        
+        /* מה קורה כשעולים עם העכבר - רקע כחול של בוקינג וטקסט לבן */
+        .hover-booking-link:hover {
+            background-color: #003580; /* הכחול החי והבולט של הכפתורים בבוקינג */
+            color: #ffffff !important;
+        }
+        
+        /* כשעולים עם העכבר - ה-B מופיעה */
+        .hover-booking-link:hover .booking-b {
+            display: inline-block; /* הפקודה שגורמת ל-B לצוץ */
+            color: #ffffff;
+        }
+
         /* =========================================
            הגדרות עיצוב מיוחדות למסכי טלפון בלבד
            ========================================= */
@@ -272,9 +301,9 @@
             <h2 class="section-title">הוסטלים מומלצים 🛌</h2>
             <p>המקומות שקיבלנו עליהם המלצות ולא היינו בהם:</p>
             <ul>
-                <li><strong>טוקיו:</strong> Unplan (יש להם כמה סניפים).</li>
-                <li><strong>אוסקה:</strong> Acro Capsule Hotel Namba Dotonbori (חוויית קפסולה קלאסית במיקום מרכזי).</li>
-                <li><strong>קיוטו:</strong> Piece Hostel Sanjo.</li>
+                <li><strong>טוקיו:</strong> <a href="https://www.booking.com/Share-ouo0h3S" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Unplan</a> (יש להם כמה סניפים).</li>
+                <li><strong>אוסקה:</strong> <a href="https://www.booking.com/Share-y4OAjE" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Acro Capsule Hotel Namba Dotonbori</a> (חוויית קפסולה קלאסית במיקום מרכזי).</li>
+                <li><strong>קיוטו:</strong> <a href="https://www.booking.com/Share-3xwB6jc" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Piece Hostel Sanjo</a>.</li>
             </ul>
 
             <h2 class="section-title">בית השלום - לינה חינמית 🕊️</h2>
