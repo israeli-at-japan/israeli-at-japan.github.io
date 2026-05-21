@@ -109,31 +109,32 @@ body.no-scroll {
         .comment-box { width: 100%; box-sizing: border-box; border: 1px solid #ddd; padding: 15px; font-family: 'Assistant', sans-serif; font-size: 16px; min-height: 80px; resize: vertical; color: #3e7b73; }
         .comment-box:focus { outline: none; border-color: #3e7b73; }
 
-        /* העיצוב של הלינק במצב הרגיל (הרקע שקוף) */
+        /* העיצוב של הלינק במצב הרגיל (לפני שעולים עליו) */
         .hover-booking-link {
-            color: #118ab2; /* הצבע הרגיל של הקישור - בחרתי בטורקיז/כחול מודרני שמשתלב יפה */
-            text-decoration: none;
+            color: #118ab2; /* צבע הלינק הרגיל */
+            text-decoration: none !important; /* הפקודה הזו מעיפה את הקו התחתון שראינו בתמונה */
             font-weight: 600;
-            padding: 4px 8px; /* הריווח הנסתר שמונע מהטקסט לקפוץ */
+            padding: 4px 8px;
             border-radius: 6px;
-            transition: all 0.3s ease; /* מעבר צבע חלק */
+            transition: background-color 0.3s ease, color 0.3s ease; /* מעבר חלק */
         }
         
-        /* העיצוב של ה-B הקטנה ליד השם */
+        /* ה-B של בוקינג - מוסתרת לחלוטין במצב רגיל */
         .booking-b {
-            font-weight: 800;
-            color: #003580; /* הכחול הרשמי של בוקינג */
-            margin-left: 4px; /* רווח קטן בין ה-B לשם המלון */
+            display: none; /* מעלים את ה-B */
+            font-weight: 900;
+            margin-left: 5px; /* רווח קטן בין ה-B לשם המלון */
         }
         
-        /* מה קורה כשעולים עם העכבר */
+        /* מה קורה כשעולים עם העכבר - רקע כחול של בוקינג וטקסט לבן */
         .hover-booking-link:hover {
-            background-color: #003580; /* הריבוע מתמלא בכחול בוקינג */
-            color: #ffffff; /* הטקסט הופך ללבן */
+            background-color: #0071c2; /* הכחול החי והבולט של הכפתורים בבוקינג */
+            color: #ffffff !important;
         }
         
-        /* צובע גם את ה-B בלבן במעבר עכבר כדי שהכל יהיה אחיד */
+        /* כשעולים עם העכבר - ה-B מופיעה */
         .hover-booking-link:hover .booking-b {
+            display: inline-block; /* הפקודה שגורמת ל-B לצוץ */
             color: #ffffff;
         }
 
