@@ -109,26 +109,32 @@ body.no-scroll {
         .comment-box { width: 100%; box-sizing: border-box; border: 1px solid #ddd; padding: 15px; font-family: 'Assistant', sans-serif; font-size: 16px; min-height: 80px; resize: vertical; color: #3e7b73; }
         .comment-box:focus { outline: none; border-color: #3e7b73; }
 
-        /* העיצוב של הלינק עצמו */
-        .clean-hotel-link {
-            color: #118ab2; /* צבע כחול-טורקיז מודרני ונקי */
+        /* העיצוב של הלינק במצב הרגיל (הרקע שקוף) */
+        .hover-booking-link {
+            color: #118ab2; /* הצבע הרגיל של הקישור - בחרתי בטורקיז/כחול מודרני שמשתלב יפה */
             text-decoration: none;
             font-weight: 600;
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s ease; /* אנימציה חלקה */
+            padding: 4px 8px; /* הריווח הנסתר שמונע מהטקסט לקפוץ */
+            border-radius: 6px;
+            transition: all 0.3s ease; /* מעבר צבע חלק */
         }
         
-        /* מה קורה כשעולים עם העכבר (Hover) */
-        .clean-hotel-link:hover {
-            color: #073b4c;
-            border-bottom: 2px solid #073b4c; /* קו תחתון שמופיע באלגנטיות */
+        /* העיצוב של ה-B הקטנה ליד השם */
+        .booking-b {
+            font-weight: 800;
+            color: #003580; /* הכחול הרשמי של בוקינג */
+            margin-left: 4px; /* רווח קטן בין ה-B לשם המלון */
         }
         
-        /* עיצוב המילה בוקינג בסוגריים כדי שלא תשתלט */
-        .booking-tag {
-            font-size: 0.85em;
-            font-weight: normal;
-            color: #6c757d; /* צבע אפור עדין */
+        /* מה קורה כשעולים עם העכבר */
+        .hover-booking-link:hover {
+            background-color: #003580; /* הריבוע מתמלא בכחול בוקינג */
+            color: #ffffff; /* הטקסט הופך ללבן */
+        }
+        
+        /* צובע גם את ה-B בלבן במעבר עכבר כדי שהכל יהיה אחיד */
+        .hover-booking-link:hover .booking-b {
+            color: #ffffff;
         }
 
         /* רספונסיביות לטלפון */
@@ -277,9 +283,9 @@ body.no-scroll {
             <p>
                 מומלץ לישון באזור Katamachi או בצד המערבי של Hyakumangoku dori Ave.<br><br>
                 
-                <strong>מלון מומלץ:</strong> <a href="https://www.booking.com/Share-Jg5khxp" target="_blank" class="clean-hotel-link">KOKO HOTEL Premier 金沢香林坊 <span class="booking-tag">(Booking.com)</span></a><br>
+                <strong>מלון מומלץ:</strong> <a href="https://www.booking.com/Share-Jg5khxp" target="_blank" class="hover-booking-link"><span class="booking-b">B.</span> KOKO HOTEL Premier 金沢香林坊</a><br><br>
                 
-                <strong>הוסטל מומלץ לתרמילאים:</strong> <a href="https://www.booking.com/Share-lFQRn3T" target="_blank" class="clean-hotel-link">BENJAMIN HOTEL KANAZAWA (ベンジャミンホテル金沢) <span class="booking-tag">(Booking.com)</span></a>
+                <strong>הוסטל מומלץ לתרמילאים:</strong> <a href="https://www.booking.com/Share-lFQRn3T" target="_blank" class="hover-booking-link"><span class="booking-b">B.</span> BENJAMIN HOTEL KANAZAWA (ベンジャミンホテル金沢)</a>
             </p>
             
             <h3>אטרקציות</h3>
