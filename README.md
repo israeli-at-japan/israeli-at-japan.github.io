@@ -1,1 +1,1 @@
-# israeli-at-japan.github.io
+# israeli-at-japan.com
