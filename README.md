@@ -1,1 +1,1 @@
-# israeli-at-japan.com
+# israeli-in-japan.com
