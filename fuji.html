@@ -62,7 +62,7 @@ nav ul li a { color: #3e7b73; }
         
         /* עיצוב קישורים בתוך הטקסט */
         .post-content a { color: #3e7b73; text-decoration: underline; font-weight: 400; }
-        .post-content a:hover { opacity: 0.7; }
+        .post-content a:not(.hover-booking-link):hover { opacity: 0.7; }
 
         /* תמונות בתוך הפוסט */
         .post-content img {
@@ -143,6 +143,35 @@ nav ul li a { color: #3e7b73; }
         }
         .comments-input::placeholder {
             color: #999;
+        }
+
+        /* העיצוב של הלינק במצב הרגיל (לפני שעולים עליו) */
+        a.hover-booking-link {
+            color: #437a71 !important; /* צבע הלינק הרגיל */
+            text-decoration: none !important; /* הפקודה הזו מעיפה את הקו התחתון שראינו בתמונה */
+            font-weight: 600 !important;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* מעבר חלק */
+        }
+        
+        /* ה-B של בוקינג - מוסתרת לחלוטין במצב רגיל */
+        .booking-b {
+            display: none; /* מעלים את ה-B */
+            font-weight: 900;
+            margin-left: 5px; /* רווח קטן בין ה-B לשם המלון */
+        }
+        
+        /* מה קורה כשעולים עם העכבר - רקע כחול של בוקינג וטקסט לבן */
+        .hover-booking-link:hover {
+            background-color: #003580; /* הכחול החי והבולט של הכפתורים בבוקינג */
+            color: #ffffff !important;
+        }
+        
+        /* כשעולים עם העכבר - ה-B מופיעה */
+        .hover-booking-link:hover .booking-b {
+            display: inline-block; /* הפקודה שגורמת ל-B לצוץ */
+            color: #ffffff;
         }
 
         /* רספונסיביות לטלפון */
@@ -301,11 +330,14 @@ nav ul li a { color: #3e7b73; }
             <hr style="margin: 40px 0;">
 
             <h3>לינה</h3>
-            <p>אנחנו ישנו בעיירת kawaguchiko<br>
-            מלון Toyoko inn</p>
-            <p>חדר פרטי עלה 280 ש"ח וזה המחיר הכי טוב שראינו באזור לחדר פרטי וסגרנו ממש כמה ימים מראש.<br>
-            מגיע עם ארוחת בוקר שהיא סבבה, יש שם מכונת כביסה ומייבש בתשלום, הסעות חינם הלוך וחזור מהתחנה המרכזית (בשעות קבועות), ושמירת חפצים בחינם.</p>
-
+            <p>אנחנו ישנו בעיירת kawaguchiko.</p>
+            
+            <ul>
+                <li><strong>המלון שאנחנו ישנו בו:</strong> <a href="https://www.booking.com/Share-aHlxVG" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Toyoko Inn Fuji Kawaguchiko Ohashi</a><br>
+                חדר פרטי עלה 280 ש"ח וזה המחיר הכי טוב שראינו באזור לחדר פרטי וסגרנו ממש כמה ימים מראש. מגיע עם ארוחת בוקר שהיא סבבה, יש שם מכונת כביסה ומייבש בתשלום, הסעות חינם הלוך וחזור מהתחנה המרכזית (בשעות קבועות), ושמירת חפצים בחינם.</li>
+                <li><strong>מלון מומלץ:</strong> <a href="https://www.booking.com/Share-S2PHFtw" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Rakuyu</a></li>
+            </ul>
+            
             <h3>Fuji Q</h3>
             <p>פארק שעשועים הכי משוגע שיש ביפן והרביעי הכי טוב בעולם, הגענו ביום שהראות על פוגי לא הייתה טובה ובגלל זה הפארק היה ריק וזה היה מטורף עלינו על הכלללל בלי תורים בכלל.<br>
             עלה 143 ש״ח, שילמנו בכניסה.<br>
