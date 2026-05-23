@@ -58,7 +58,7 @@ body.no-scroll {
         
         /* עיצוב קישורים בתוך הטקסט */
         .post-content a { color: #3e7b73; text-decoration: underline; font-weight: 400; }
-        .post-content a:hover { opacity: 0.7; }
+        .post-content a:not(.hover-booking-link):hover { opacity: 0.7; }
 
         /* תמונות בתוך הפוסט */
         .post-content img {
@@ -143,6 +143,36 @@ body.no-scroll {
         /* אזור גוגל מפס */
         .maps-section h3 { font-size: 24px; color: #3e7b73; margin-bottom: 20px; font-weight: 400; text-align: right;}
         .maps-link { font-size: 19px; color: #3e7b73; text-decoration: underline; font-weight: 300;}
+
+        /* העיצוב של הלינק במצב הרגיל (לפני שעולים עליו) */
+        a.hover-booking-link {
+            color: #437a71 !important; /* צבע הלינק הרגיל */
+            text-decoration: none !important; /* הפקודה הזו מעיפה את הקו התחתון שראינו בתמונה */
+            font-weight: 600 !important;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* מעבר חלק */
+        }
+        
+        /* ה-B של בוקינג - מוסתרת לחלוטין במצב רגיל */
+        .booking-b {
+            display: none; /* מעלים את ה-B */
+            font-weight: 900;
+            margin-left: 5px; /* רווח קטן בין ה-B לשם המלון */
+        }
+        
+        /* מה קורה כשעולים עם העכבר - רקע כחול של בוקינג וטקסט לבן */
+        .hover-booking-link:hover {
+            background-color: #003580 !important; /* הכחול החי והבולט של הכפתורים בבוקינג */
+            color: #ffffff !important;
+            opacity: 1 !important; /* <--- ביטול שקיפות */
+        }
+        
+        /* כשעולים עם העכבר - ה-B מופיעה */
+        .hover-booking-link:hover .booking-b {
+            display: inline-block; /* הפקודה שגורמת ל-B לצוץ */
+            color: #ffffff;
+        }
 
         /* רספונסיביות לטלפון */
         @media (max-width: 768px) {
@@ -292,7 +322,20 @@ body.no-scroll {
             <hr style="margin: 30px 0;">
 
             <h3>לינה</h3>
-            <p>אם אתם עושים את המסלול שלנו חשוב לישון קרוב לתחנת הרכבת, אנחנו ישנו ב- <strong>The One Five Okayama</strong> שהיה אליו קו רכבת חשמלית ישיר מתחנת הרכבת או 20 דק' הליכה.</p>
+            <p>אם אתם עושים את המסלול שלנו, חשוב לישון קרוב לתחנת הרכבת באוקיאמה.</p>
+            
+            <p><strong>מלונות מומלצים באוקיאמה:</strong></p>
+            <ul>
+                <li><strong>המלון שאנחנו ישנו בו (מתאים לתרמילאים):</strong> <a href="https://www.booking.com/Share-KNbrSEs" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> The OneFive Okayama</a> - היה אליו קו רכבת חשמלית ישיר מתחנת הרכבת או 20 דק' הליכה.</li>
+                <li><strong>מלון מומלץ:</strong> <a href="https://www.booking.com/Share-iqRud67" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Okayama Koraku Hotel</a></li>
+            </ul>
+            
+            <p><strong>מלונות ללינה באי נאושימה עצמו:</strong></p>
+            <ul>
+                <li><strong>Benesse House:</strong> <a href="https://benesse-artsite.jp/en/stay/" target="_blank" rel="noopener noreferrer">Benesse House</a> - המלון המפורסם שרוב יצירות האמנות והמוזיאונים באי שייכים לו (קישור ישיר לאתר הרשמי).<br>
+                <strong>כדאי לדעת לפני שמזמינים:</strong> פתיחת התאריכים להזמנה נפתחת בדיוק 180 יום מראש, ומומלץ למהר להזמין באותו הרגע כי המקומות אוזלים מהר. המבנה המרכזי והמבוקש ביותר הוא ה-Oval (שרוב האנשים מכוונים אליו). הלינה מגיעה עם כניסה בחינם לחלק מהמוזיאונים, ואפילו נותנת למתארחים גישה אקסקלוסיבית אליהם בשעות הלילה לאחר שאחרון התיירים עוזב את האי.</li>
+                <li><strong>מלון נוסף (יותר קל להזמין אליו מקום ובמחיר נוח יותר):</strong> <a href="https://www.booking.com/Share-78hUFzr" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> MY LODGE Naoshima</a></li>
+            </ul>
 
             <img src="images/okayama.jpg.avif" alt="קולאז' אוקיאמה" loading="lazy">
 
