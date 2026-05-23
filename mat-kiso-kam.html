@@ -59,7 +59,7 @@ body.no-scroll {
         
         /* עיצוב קישורים בתוך הטקסט */
         .post-content a { color: #3e7b73; text-decoration: underline; font-weight: 400; }
-        .post-content a:hover { opacity: 0.7; }
+        .post-content a:not(.hover-booking-link):hover { opacity: 0.7; }
 
         /* תמונות בתוך הפוסט */
         .post-content img {
@@ -103,6 +103,35 @@ body.no-scroll {
         .comments-section h3 { font-weight: 300; font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
         .comment-box { width: 100%; box-sizing: border-box; border: 1px solid #ddd; padding: 15px; font-family: 'Assistant', sans-serif; font-size: 16px; min-height: 80px; resize: vertical; color: #3e7b73; }
         .comment-box:focus { outline: none; border-color: #3e7b73; }
+
+        /* העיצוב של הלינק במצב הרגיל (לפני שעולים עליו) */
+        a.hover-booking-link {
+            color: #437a71 !important; /* צבע הלינק הרגיל */
+            text-decoration: none !important; /* הפקודה הזו מעיפה את הקו התחתון שראינו בתמונה */
+            font-weight: 600 !important;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* מעבר חלק */
+        }
+        
+        /* ה-B של בוקינג - מוסתרת לחלוטין במצב רגיל */
+        .booking-b {
+            display: none; /* מעלים את ה-B */
+            font-weight: 900;
+            margin-left: 5px; /* רווח קטן בין ה-B לשם המלון */
+        }
+        
+        /* מה קורה כשעולים עם העכבר - רקע כחול של בוקינג וטקסט לבן */
+        .hover-booking-link:hover {
+            background-color: #003580; /* הכחול החי והבולט של הכפתורים בבוקינג */
+            color: #ffffff !important;
+        }
+        
+        /* כשעולים עם העכבר - ה-B מופיעה */
+        .hover-booking-link:hover .booking-b {
+            display: inline-block; /* הפקודה שגורמת ל-B לצוץ */
+            color: #ffffff;
+        }
 
         /* רספונסיביות לטלפון */
         @media (max-width: 768px) {
@@ -244,7 +273,12 @@ body.no-scroll {
             <hr style="margin: 30px 0;">
 
             <h3>לינה</h3>
-            <p>אם אתם מגיעים למצומטו ועושים את המסלול טיול שלנו חובה לישון צמוד לתחנת רכבת המרכזית, היינו 2 דקות הליכה ממנה וזה ממש הקל עלינו, קוראים למקום premier hotel cabin matsumoto, עלה 235₪ ללילה</p>
+            <p>אם אתם מגיעים למצומוטו ועושים את מסלול הטיול שלנו, חובה לישון צמוד לתחנת הרכבת המרכזית. אנחנו ישנו במרחק של 2 דקות הליכה ממנה וזה ממש הקל עלינו:</p>
+            
+            <ul>
+                <li><strong>מלון מאוד קרוב לתחנת הרכבת:</strong> <a href="https://www.booking.com/Share-hj8ud5w" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Toyoko Inn Matsumoto eki Higashi guchi</a></li>
+                <li><strong>מלון 5 דקות הליכה מהרכבת:</strong> <a href="https://www.booking.com/Share-tAsfp7" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Richmond Hotel Matsumoto</a></li>
+            </ul>
             
             <p>חשוב לציין שאם אתם מוותרים על עמק הקיסו אבל רוצים להגיע לקמיקוצ'י ולמסלול האלפיני יותר מומלץ ללון בטויאמה.</p>
 
