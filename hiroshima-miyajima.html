@@ -58,7 +58,7 @@ body.no-scroll {
         
         /* עיצוב קישורים בתוך הטקסט */
         .post-content a { color: #3e7b73; text-decoration: underline; font-weight: 400; }
-        .post-content a:hover { opacity: 0.7; }
+        .post-content a:not(.hover-booking-link):hover { opacity: 0.7; }
 
         /* תמונות בתוך הפוסט */
         .post-content img {
@@ -143,6 +143,35 @@ body.no-scroll {
         /* אזור גוגל מפס */
         .maps-section h3 { font-size: 24px; color: #3e7b73; margin-bottom: 20px; font-weight: 400; text-align: right;}
         .maps-link { font-size: 19px; color: #3e7b73; text-decoration: underline; font-weight: 300;}
+
+        /* העיצוב של הלינק במצב הרגיל (לפני שעולים עליו) */
+        a.hover-booking-link {
+            color: #437a71 !important; /* צבע הלינק הרגיל */
+            text-decoration: none !important; /* הפקודה הזו מעיפה את הקו התחתון שראינו בתמונה */
+            font-weight: 600 !important;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* מעבר חלק */
+        }
+        
+        /* ה-B של בוקינג - מוסתרת לחלוטין במצב רגיל */
+        .booking-b {
+            display: none; /* מעלים את ה-B */
+            font-weight: 900;
+            margin-left: 5px; /* רווח קטן בין ה-B לשם המלון */
+        }
+        
+        /* מה קורה כשעולים עם העכבר - רקע כחול של בוקינג וטקסט לבן */
+        .hover-booking-link:hover {
+            background-color: #003580; /* הכחול החי והבולט של הכפתורים בבוקינג */
+            color: #ffffff !important;
+        }
+        
+        /* כשעולים עם העכבר - ה-B מופיעה */
+        .hover-booking-link:hover .booking-b {
+            display: inline-block; /* הפקודה שגורמת ל-B לצוץ */
+            color: #ffffff;
+        }
 
         /* רספונסיביות לטלפון */
         @media (max-width: 768px) {
@@ -291,6 +320,12 @@ body.no-scroll {
 
             <h3>לינה</h3>
             <p>מומלץ לישון בקרבת פארק השלום וטירת הירושימה, או ליד תחנת הרכבת של הירושימה.</p>
+            
+            <p><strong>מלונות מומלצים:</strong></p>
+            <ul>
+                <li><a href="https://www.booking.com/Share-wa7dRb" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> THE KNOT HIROSHIMA</a></li>
+                <li><a href="https://www.booking.com/Share-ZPVE529" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Randor Hotel Hiroshima Prestige</a></li>
+            </ul>
 
             <h3>הגעה להירושימה</h3>
             <p>אנחנו נסענו מקיוטו להירושימה ומיאג׳ימה, אוקאימה ונאושימה וחזרה לאוסקה בחמישה ימים, עם התכנון הזה יצא לנו משתלם לקנות <strong>JR PASS לאזור Kanasai-Hiroshima</strong>, שהתוקף שלו חמישה ימים, ככה גם עשינו את כל הנסיעות ברכבות JR וברכבת השינקנסן.</p>
