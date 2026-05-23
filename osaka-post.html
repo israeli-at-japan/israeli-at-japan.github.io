@@ -58,7 +58,7 @@ body.no-scroll {
         
         /* עיצוב קישורים בתוך הטקסט */
         .post-content a { color: #3e7b73; text-decoration: underline; font-weight: 400; }
-        .post-content a:hover { opacity: 0.7; }
+        .post-content a:not(.hover-booking-link):hover { opacity: 0.7; }
 
         /* תמונות בתוך הפוסט */
         .post-content img {
@@ -138,6 +138,36 @@ body.no-scroll {
         /* אייקונים תחתונים בכרטיסייה */
         .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding-top: 15px; color: #999; font-size: 14px; }
         .card-footer-left { display: flex; gap: 15px; }
+
+         /* העיצוב של הלינק במצב הרגיל (לפני שעולים עליו) */
+        a.hover-booking-link {
+            color: #437a71 !important; /* צבע הלינק הרגיל */
+            text-decoration: none !important; /* הפקודה הזו מעיפה את הקו התחתון שראינו בתמונה */
+            font-weight: 600 !important;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* מעבר חלק */
+        }
+        
+        /* ה-B של בוקינג - מוסתרת לחלוטין במצב רגיל */
+        .booking-b {
+            display: none; /* מעלים את ה-B */
+            font-weight: 900;
+            margin-left: 5px; /* רווח קטן בין ה-B לשם המלון */
+        }
+        
+        /* מה קורה כשעולים עם העכבר - רקע כחול של בוקינג וטקסט לבן */
+        .hover-booking-link:hover {
+            background-color: #003580 !important; /* הכחול החי והבולט של הכפתורים בבוקינג */
+            color: #ffffff !important;
+            opacity: 1 !important; /* <--- ביטול שקיפות */
+        }
+        
+        /* כשעולים עם העכבר - ה-B מופיעה */
+        .hover-booking-link:hover .booking-b {
+            display: inline-block; /* הפקודה שגורמת ל-B לצוץ */
+            color: #ffffff;
+        }
 
         /* רספונסיביות לטלפון */
         @media (max-width: 768px) {
@@ -285,8 +315,12 @@ body.no-scroll {
             <hr style="margin: 30px 0;">
 
             <h3>לינה</h3>
-            <p>אנחנו ממליצים לישון בקרבת Dotonbori וקרוב למטרו.<br>
-            אנחנו ישנו ב- <strong>Nest Hotel Osaka Shinsaibashi</strong> שעלה 175₪ ללילה וזה מקום טוב עם wifi מקרטע אבל סך הכל בסדר.</p>
+            <p>אנחנו ממליצים לישון בקרבת דוטונבורי (Dotonbori) וקרוב לתחנות המטרו.</p>
+            
+            <p><strong>מלון מומלץ:</strong></p>
+            <ul>
+                <li><a href="https://www.booking.com/Share-L8XfSXK" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Via Inn Prime Shinsaibashi Yotsubashi</a></li>
+            </ul>
 
             <p>אוסקה עקרונית היא עיר של לילה ואוכל שזה מגניב בטירוף אבל זה לא ממלא את היום יותר מידי ואפשר ביום אחד להגיע לכל האטרקציות המרכזיות של אוסקה שהן:</p>
 
