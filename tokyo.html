@@ -140,6 +140,35 @@ body.no-scroll {
             color: #999;
         }
 
+        /* העיצוב של הלינק במצב הרגיל (לפני שעולים עליו) */
+        a.hover-booking-link {
+            color: #437a71 !important; /* צבע הלינק הרגיל */
+            text-decoration: none !important; /* הפקודה הזו מעיפה את הקו התחתון שראינו בתמונה */
+            font-weight: 600 !important;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* מעבר חלק */
+        }
+        
+        /* ה-B של בוקינג - מוסתרת לחלוטין במצב רגיל */
+        .booking-b {
+            display: none; /* מעלים את ה-B */
+            font-weight: 900;
+            margin-left: 5px; /* רווח קטן בין ה-B לשם המלון */
+        }
+        
+        /* מה קורה כשעולים עם העכבר - רקע כחול של בוקינג וטקסט לבן */
+        .hover-booking-link:hover {
+            background-color: #003580; /* הכחול החי והבולט של הכפתורים בבוקינג */
+            color: #ffffff !important;
+        }
+        
+        /* כשעולים עם העכבר - ה-B מופיעה */
+        .hover-booking-link:hover .booking-b {
+            display: inline-block; /* הפקודה שגורמת ל-B לצוץ */
+            color: #ffffff;
+        }
+
         /* רספונסיביות לטלפון */
         @media (max-width: 768px) {
             header { flex-direction: column; padding: 15px; text-align: center; position: relative; }
@@ -297,10 +326,23 @@ body.no-scroll {
 
             <h3>לינה</h3>
             <p>הלינה בטוקיו מורכבת כי יש בה כל כך הרבה אזורים אז הכי חשוב זה לישון צמוד למטרו עם הרבה קווי רכבת שהחשובים ביותר אלו שמגיעים <strong>לשיבויה ושינג׳וקו</strong> שזה שני האזורים המרכזיים ביותר והמומלצים ביותר ללינה.<br>
-            אנחנו ישנו חמישה לילות באזור לידבשי שהיה יחסית קרוב להכל (בתחב"צ).<br>
+            אנחנו ישנו חמישה לילות באזור לידבאשי שהיה יחסית קרוב להכל (בתחב"צ).<br>
             ובשלושה לילות אחרונים עברנו לאסקוסה שמצד אחד ממש כיף לישון קרוב למקומות מרכזיים מצד שני בתחב"צ שאר האזורים יחסית רחוקים מאיתנו.</p>
 
             <p>אם חיי לילה זה חובה בשבילכם אז אנחנו ממש ממליצים לישון במרכז של שיבויה ושינגוקו (האזור הכי יקר) כי אין תחב"צ בכלל מ-00:30 עד 5 בבוקר.</p>
+
+            <p><strong>מלונות מומלצים לפי אזורים:</strong></p>
+            <ul>
+                <li><strong>שיבויה:</strong> <a href="https://www.booking.com/Share-6PTcjUZ" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> lyf Shibuya Tokyo</a></li>
+                <li><strong>אסקוסה:</strong> <a href="https://www.booking.com/Share-WIUo4l" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Asakusa Tobu Hotel</a></li>
+                <li><strong>גינזה:</strong> <a href="https://www.booking.com/Share-wQhTApE" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> THE BLOSSOM HIBIYA</a></li>
+            </ul>
+            
+            <p><strong>אופציות מעולות בתקציב (למטיילים שרוצים לחסוך):</strong></p>
+            <ul>
+                <li><strong>לידבאשי:</strong> <a href="https://www.booking.com/Share-4gOQpB2" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Hop Inn Tokyo Iidabashi</a> (מלון קרוב לתחנת רכבת מרכזית).</li>
+                <li><strong>אסקוסה:</strong> <a href="https://www.booking.com/Share-pVSWkXS" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Hotel Plus Hostel TOKYO ASAKUSA 2</a> (יש גם חדרים זוגיים וגם דורמס).</li>
+            </ul>
 
             <p style="text-align: center; color: #999;"></p>
 
