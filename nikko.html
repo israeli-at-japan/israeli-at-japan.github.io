@@ -58,7 +58,7 @@ body.no-scroll {
         
         /* עיצוב קישורים בתוך הטקסט */
         .post-content a { color: #3e7b73; text-decoration: underline; font-weight: 400; }
-        .post-content a:hover { opacity: 0.7; }
+        .post-content a:not(.hover-booking-link):hover { opacity: 0.7; }
 
         /* תמונות רגילות/קולאז'ים בתוך הפוסט */
         .post-content img {
@@ -148,6 +148,36 @@ body.no-scroll {
         }
         .comments-input::placeholder {
             color: #999;
+        }
+
+        /* העיצוב של הלינק במצב הרגיל (לפני שעולים עליו) */
+        a.hover-booking-link {
+            color: #437a71 !important; /* צבע הלינק הרגיל */
+            text-decoration: none !important; /* הפקודה הזו מעיפה את הקו התחתון שראינו בתמונה */
+            font-weight: 600 !important;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* מעבר חלק */
+        }
+        
+        /* ה-B של בוקינג - מוסתרת לחלוטין במצב רגיל */
+        .booking-b {
+            display: none; /* מעלים את ה-B */
+            font-weight: 900;
+            margin-left: 5px; /* רווח קטן בין ה-B לשם המלון */
+        }
+        
+        /* מה קורה כשעולים עם העכבר - רקע כחול של בוקינג וטקסט לבן */
+        .hover-booking-link:hover {
+            background-color: #003580 !important; /* הכחול החי והבולט של הכפתורים בבוקינג */
+            color: #ffffff !important;
+            opacity: 1 !important; /* <--- ביטול שקיפות */
+        }
+        
+        /* כשעולים עם העכבר - ה-B מופיעה */
+        .hover-booking-link:hover .booking-b {
+            display: inline-block; /* הפקודה שגורמת ל-B לצוץ */
+            color: #ffffff;
         }
 
         /* רספונסיביות לטלפון */
@@ -348,8 +378,12 @@ body.no-scroll {
             <img src="images/nikko.jpg.avif" alt="קולאז' ניקו" loading="lazy">
 
             <h3>לינה</h3>
-            <p>הלינה בניקו לרוב יקרה, אנחנו ישנו בדורמס שהיו אחלה וממש צמודים לרכבת.<br>
-            <strong>Nikko Park Lodge Tobu Station</strong></p>
+            <p>הלינה בניקו לרוב יקרה, אנחנו ישנו בדורמס שהיו אחלה וממש צמודים לרכבת.</p>
+            
+            <ul>
+                <li><strong>מלון מומלץ:</strong> <a href="https://www.booking.com/Share-mO98Yk" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Nikko Station Hotel 2</a></li>
+                <li><strong>לתרמילאים:</strong> <a href="https://www.booking.com/Share-XdHk7N" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Nikko Park Lodge Tobu Station</a></li>
+            </ul>
 
             <h3>אוכל</h3>
             <p><strong>Udon Yamaroku</strong> - מסעדה טעימה ליד הרכבת נסגרת ב-14:00.</p>
