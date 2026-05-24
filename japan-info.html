@@ -115,6 +115,59 @@ body.no-scroll {
         .comment-box { width: 100%; box-sizing: border-box; border: 1px solid #ddd; padding: 15px; font-family: 'Assistant', sans-serif; font-size: 16px; min-height: 80px; resize: vertical; color: #333; }
         .comment-box:focus { outline: none; border-color: #3e7b73; }
 
+        .summer-tips-accordion {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        
+        .accordion-btn {
+            width: 100%;
+            background: none;
+            color: #333;
+            cursor: pointer;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: none;
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+        
+        .accordion-btn:hover {
+            background-color: #f1f1f1;
+            border-radius: 8px;
+        }
+        
+        .accordion-btn .icon {
+            font-size: 20px;
+            font-weight: normal;
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background-color: white;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .accordion-content ul {
+            padding: 15px 40px 15px 20px;
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .accordion-content li {
+            margin-bottom: 12px;
+        }
+
         /* =========================================
            הגדרות עיצוב מיוחדות למסכי טלפון בלבד
            ========================================= */
@@ -263,8 +316,23 @@ body.no-scroll {
             <p>בעיקרון ביפן או שחם, או שקר, או שיש המון תיירים, אנחנו הגענו ממש אחרי סוף פריחת הדובדבן כדי להימנע מההמונים ומעליית המחירים שמגיעה איתם אבל בסופו של דבר יפן תמיד יפה ומרשימה אז העיקר שתגיעו😁</p>
             <p><strong>דצמבר-מרץ:</strong> קר מאוד ומושלג בחלק מהמקומות, מושלם לסקי באי הצפוני הוקאידו.</p>
             <p><strong>אפריל-יוני:</strong> אביב, לפעמים גשום, לפעמים שמשי, לפעמים קר ולעיתים חם, שבועיים מהתקופה הזו כוללת את פריחת הדובדבן שהיא עונה יקרה מאוד ומלאה בתיירים.</p>
-            <p><strong>יולי-ספטמבר:</strong> חם מאוד וגשום, יש המון פסטיבלים בחודשי הקיץ.</p>
+            <p><strong>יולי-ספטמבר:</strong> חם מאוד, לח ויש סיכוי לגשמים, ויצא שזו גם התקופה שבה רובנו יכולים לטוס בגלל החופש הגדול והחגים. החדשות הטובות? יפן ערוכה לקיץ בצורה מושלמת. יש חנויות, קניונים ותחנות רכבת ממוזגים בכל פינה, וזו העונה היחידה שבה תוכלו לחוות את פסטיבלי הקיץ המסורתיים ומופעי הזיקוקים הענקיים. עם קצת תכנון נכון, הפסקות התרעננות ולבוש קליל, לגמרי אפשר לעשות את זה נהדר.</p>
             <p><strong>אוקטובר-נובמבר:</strong> סתיו, השלכת מגיעה, מזג אוויר דומה לאביב וכמובן שהמון תיירים.</p>
+            
+            <div class="summer-tips-accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>טיפים נוספים לקיץ</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <ul>
+                        <li>הגשמים הם לרוב ממטרים קצרים, למעט הטייפונים (שהם בדרך כלל באוגוסט-ספטמבר) וגם הם לרוב נמשכים יום אחד.</li>
+                        <li><strong>אקססוריז יפניים:</strong> זה אולי נשמע לכם מוזר אבל תאמינו לי שלא תתחרטו על קניה של מאוורר צוואר או מטריה יעודית להגנה מהשמש, כישראלים זה נשמע קצת הזוי אבל תעשו לעצמכם טובה ולפחות תנסו.</li>
+                        <li>אזורים כמו ניקו או האלפים היפניים (כמו מצומוטו וקמיקוצ'י) אמנם גשומים ברוב ימי הקיץ, אבל הטמפרטורה שם נמוכה משמעותית מהערים על קו החוף. זה מפלט מושלם להתרעננות לכמה ימים בטבע. את ניקו הייתי משאיר כיום טיול ספונטני מטוקיו כדי שתוכלו לנסוע ביום לא גשום ובמקרה שאין כזה זכיתם בעוד יום בטוקיו.</li>
+                        <li>אופציה נוספת היא טיסה לאי הצפוני - הוקאידו, אופציה מומלצת בעיקר למבקרים בפעם השניה ביפן, למבקרים בפעם הראשונה זו גם אופציה אבל לדעתי יש החמצה מסויימת של יפן הקלאסית באופציה זו.</li>
+                    </ul>
+                </div>
+            </div>
 
             <h2 class="section-title">איזה טפסים להכין מראש והאם צריך ויזה?</h2>
             <p>בהגעה ליפן מקבלים אשרת כניסה ל90 ימים ובעיקרון לא צריך לעשות כלום לפני, כן יש אופציה למלא טופס מסויים מראש וזה יכול לחסוך זמן בשדה אז אם אתם מתכננים לעלות על רכבת אחרונה מהשדה למרכז(איזור 00 בלילה) שווה לעשות את זה. לנו לא בדקו כרטיסי יציאה מהמדינה אבל בעיקון בודקים.<br>
@@ -487,6 +555,21 @@ body.no-scroll {
             }
         });
     });
+
+        function toggleAccordion(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.icon');
+            
+            if (content.style.maxHeight) {
+                // סגירה
+                content.style.maxHeight = null;
+                icon.textContent = '+';
+            } else {
+                // פתיחה
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.textContent = '−';
+            }
+        }
 </script>
 
 </body>
