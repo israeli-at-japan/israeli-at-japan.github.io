@@ -182,6 +182,8 @@
 
       gtag('config', 'G-4D038KR7FQ');
     </script>
+
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     
 </head>
 <body>
@@ -221,6 +223,8 @@
                     <option value="general">מיקה (טיולים)</option>
                     <option value="history">משה (היסטוריה)</option>
                 </select>
+
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAADXKdZlgC1XjidId"></div>
 
                 <button class="send-btn" onclick="askJapanAI()" aria-label="שלח">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -283,20 +287,26 @@
             const responseDiv = document.getElementById('ai-response');
             const loadingMsg = document.getElementById('loading-msg');
 
+            // --- 1. משיכת האסימון של Cloudflare ---
+            const cfToken = document.querySelector('[name="cf-turnstile-response"]')?.value;
+
             if (!questionInput.trim()) return;
+
+            // --- 2. חסימה אם אין אסימון ---
+            if (!cfToken) {
+                alert("מוודאים שאינך רובוט, אנא המתן שנייה ונסה שוב 🛡️");
+                return;
+            }
 
             responseDiv.innerHTML = '';
             loadingMsg.style.display = 'block';
-            
-            // עדכון טקסט הטעינה למשהו קצת יותר מרגיע, כי ההתעוררות הראשונה לוקחת זמן
             loadingMsg.innerHTML = 'המומחה שלנו מקבל את הנתונים, זה לוקח רגע...';
 
             let attempts = 0;
-            const maxAttempts = 2; // ננסה פעמיים לפני שנוותר
+            const maxAttempts = 2;
             let success = false;
             let data = null;
 
-            // 2. לולאת ניסיונות - אם הדפדפן מתייאש וחותך, ננסה שוב אוטומטית!
             while (attempts < maxAttempts && !success) {
                 try {
                     attempts++;
@@ -308,36 +318,55 @@
                         },
                         body: JSON.stringify({
                             question: questionInput,
-                            mode: modeSelect
+                            mode: modeSelect,
+                            cf_token: cfToken // <-- 3. שליחת האסימון לשרת!
                         })
                     });
+
+                    // בדיקה אם השרת דחה אותנו בגלל שהטקסט ארוך מדי (422)
+                    if (response.status === 422) {
+                        alert("ההודעה שלך ארוכה מדי! 😅\nאנא קצר אותה למקסימום 450 תווים ונסה שוב.");
+                        loadingMsg.style.display = 'none';
+                        turnstile.reset(); // איפוס במקרה של כישלון
+                        return;
+                    }
+
+                    // בדיקה אם המשתמש חצה את מגבלת ה-5 שאלות ב-5 דקות (429)
+                    if (response.status === 429) {
+                        alert("התלהבנו! שאלת קצת יותר מדי שאלות ברצף 😅\nכדי לשמור על השרתים שלנו, אנא המתן 5 דקות ונסה שוב.");
+                        loadingMsg.style.display = 'none';
+                        turnstile.reset(); 
+                        return;
+                    }
 
                     if (!response.ok) throw new Error('שגיאה בתקשורת עם השרת');
 
                     data = await response.json();
-                    success = true; // הצלחנו! אפשר לצאת מהלולאה
+                    success = true;
 
                 } catch (error) {
                     console.warn(`Attempt ${attempts} failed.`, error);
                     
                     if (attempts >= maxAttempts) {
-                        // השרת לא ענה אחרי שני ניסיונות - כנראה השרת עדיין מתעורר משינה
                         responseDiv.innerHTML = `<span style="color:#d9534f; font-weight:600; display:block; text-align:center; padding: 15px; background: rgba(217, 83, 79, 0.1); border-radius: 10px;">
                             אופס! נראה שהמומחים שלנו צריכים עוד רגע קטן כדי להתעורר. ☕<br>
                         <span style="font-size: 15px; font-weight: 400;">לפעמים לוקח למערכת כמה שניות נוספות לעלות. אנא המתינו 3-4 שניות ונסו לשלוח את השאלה שוב! אם הבעיה ממשיכה, נשמח לעזור לכם ישירות בפורום האתר.</span>
                         </span>`;
                         loadingMsg.style.display = 'none';
+                        turnstile.reset(); // איפוס גם פה כדי שיוכל לנסות שוב
                         return;
                     }
                     
-                    // אם אנחנו פה, הניסיון הראשון נכשל. השרת כנראה עוד מתעורר.
-                    // נחכה 3 שניות, וננסה שוב אוטומטית.
                     loadingMsg.innerHTML = 'מארגן את המידע עבורך, עוד רגע...';
                     await new Promise(resolve => setTimeout(resolve, 8000));
                 }
             }
 
-            // --- אם הגענו לכאן, הכל עבד! (פילטר העיצוב) ---
+            // --- 4. איפוס הווידג'ט לקראת השאלה הבאה (מונע שליחת טוקן משומש) ---
+            if (typeof turnstile !== 'undefined') {
+                turnstile.reset();
+            }
+
             if (success && data) {
                 let textToFormat = "";
                 if (Array.isArray(data.answer)) {
@@ -351,28 +380,13 @@
                     textToFormat = "התקבלה תשובה בפורמט לא מוכר.";
                 }
 
-                // --- פילטר העיצוב החכם והמאוורר ---
                 let formattedAnswer = textToFormat;
-
-                // 1. שבירת שורות טבעית של ג'מיני
                 formattedAnswer = formattedAnswer.replace(/\n/g, '<br>');
-
-                // 2. הפרדה ברורה לפינת הקישורים - דוחף ירידת שורה לפני ואחרי האייקון
                 formattedAnswer = formattedAnswer.replace(/🔗/g, '<br><br>🔗<br>');
-
-                // 3. אוורור רשימות ממוספרות (1. 2. 3.)
                 formattedAnswer = formattedAnswer.replace(/(\s)(\d+\.\s)/g, '<br><br>$2');
-
-                // 4. הפיכת מקפים וכוכביות לרשימת בולטים מסודרת (יסדר גם את הלינקים בסוף!)
                 formattedAnswer = formattedAnswer.replace(/(?:\s|^)([-*])\s/g, '<br>• ');
-
-                // 5. הדגשות
                 formattedAnswer = formattedAnswer.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
-                // 6. לינקים של מרקדאון
                 formattedAnswer = formattedAnswer.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color: #3e7b73; font-weight: bold; text-decoration: underline;">$1</a>');
-
-                // 7. מילון הלינקים של israeli-in-japan
                 formattedAnswer = formattedAnswer.replace(/(?<!href=")(https:\/\/[^\s<]+)/g, function(url) {
                     let cleanUrl = url.replace(/[.,)]$/, ''); 
                     let title = "לכתבה המלאה לחץ כאן";
@@ -396,11 +410,8 @@
                     return `<a href="${cleanUrl}" target="_blank" style="color: #3e7b73; font-weight: bold; text-decoration: underline;">${title}</a>`;
                 });
 
-                // ניקוי רווחים מיותרים בהתחלה אם נוצרו
                 formattedAnswer = formattedAnswer.replace(/^(<br>)+/, '');
-
                 responseDiv.innerHTML = formattedAnswer;
-
                 document.getElementById('user-question').value = '';
                 checkInputStatus();
                 loadingMsg.style.display = 'none';
