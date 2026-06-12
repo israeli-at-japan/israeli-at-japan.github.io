@@ -180,6 +180,59 @@ body.no-scroll {
             color: #ffffff;
         }
 
+        .summer-tips-accordion {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        
+        .accordion-btn {
+            width: 100%;
+            background: none;
+            color: #3e7b73;
+            cursor: pointer;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: none;
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+        
+        .accordion-btn:hover {
+            background-color: #f1f1f1;
+            border-radius: 8px;
+        }
+        
+        .accordion-btn .icon {
+            font-size: 20px;
+            font-weight: normal;
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background-color: white;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .accordion-content ul {
+            padding: 15px 40px 15px 20px;
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .accordion-content li {
+            margin-bottom: 12px;
+        }
+
         /* רספונסיביות לטלפון */
         @media (max-width: 768px) {
             header { flex-direction: column; padding: 15px; text-align: center; position: relative; }
