@@ -387,15 +387,24 @@
         <div id="disqus_thread"></div>
         <script>
             var disqus_config = function () {
+                // יצירת הלינק הנקי (בלי פרמטרים של פייסבוק/גוגל)
+                var cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                
+                // הגדרת הלינק הקנוני והמזהה הייחודי עבור דיסקאס
+                this.page.url = cleanUrl; 
+                this.page.identifier = window.location.pathname; 
+
+                // הסתרת טקסט הטעינה כשהתגובות מוכנות
                 this.callbacks.onReady = [function() {
                     document.getElementById('disqus-loader').style.display = 'none';
                 }];
             };
+            
             (function() { 
-            var d = document, s = d.createElement('script');
-            s.src = 'https://israeli-at-japan.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
+                var d = document, s = d.createElement('script');
+                s.src = 'https://israeli-at-japan.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
             })();
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
