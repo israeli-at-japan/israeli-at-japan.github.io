@@ -653,69 +653,73 @@ body.no-scroll {
     </div>
 
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const floatingBtn = document.getElementById("floatingBtn");
-        const sideMenu = document.getElementById("sideMenu");
-        const closeBtn = document.getElementById("closeBtn");
-
-        // בדיקת גלילה להצגת הכפתור בטלפון
-        window.addEventListener("scroll", function() {
-            if (window.innerWidth <= 768) {
-                if (window.scrollY > 200) {
-                    floatingBtn.style.display = "flex";
-                } else {
-                    floatingBtn.style.display = "none";
+        document.addEventListener("DOMContentLoaded", function() {
+            const floatingBtn = document.getElementById("floatingBtn");
+            const sideMenu = document.getElementById("sideMenu");
+            const closeBtn = document.getElementById("closeBtn");
+    
+            // בדיקת גלילה להצגת הכפתור בטלפון
+            window.addEventListener("scroll", function() {
+                if (window.innerWidth <= 768) {
+                    if (window.scrollY > 200) {
+                        floatingBtn.style.display = "flex";
+                    } else {
+                        floatingBtn.style.display = "none";
+                    }
                 }
-            }
-        });
-
-        // פתיחת התפריט (הקפאה פשוטה)
-        floatingBtn.addEventListener("click", function() {
-            sideMenu.classList.add("open");
-            document.body.classList.add("no-scroll"); 
-        });
-
-        // סגירת התפריט בלחיצה על האיקס
-        closeBtn.addEventListener("click", function() {
-            sideMenu.classList.remove("open");
-            document.body.classList.remove("no-scroll"); 
-        });
-
-        // סגירת התפריט בלחיצה על אחד הקישורים
-        const menuLinks = sideMenu.querySelectorAll("a");
-        menuLinks.forEach(link => {
-            link.addEventListener("click", () => {
+            });
+    
+            // פתיחת התפריט (הקפאה פשוטה)
+            floatingBtn.addEventListener("click", function() {
+                sideMenu.classList.add("open");
+                document.body.classList.add("no-scroll"); 
+            });
+    
+            // סגירת התפריט בלחיצה על האיקס
+            closeBtn.addEventListener("click", function() {
                 sideMenu.classList.remove("open");
                 document.body.classList.remove("no-scroll"); 
             });
-        });
-
-        // סגירת התפריט בלחיצה בכל מקום מחוץ אליו
-        document.addEventListener("click", function(event) {
-            if (sideMenu.classList.contains("open")) {
-                if (!sideMenu.contains(event.target) && !floatingBtn.contains(event.target)) {
+    
+            // סגירת התפריט בלחיצה על אחד הקישורים
+            const menuLinks = sideMenu.querySelectorAll("a");
+            menuLinks.forEach(link => {
+                link.addEventListener("click", () => {
                     sideMenu.classList.remove("open");
                     document.body.classList.remove("no-scroll"); 
+                });
+            });
+    
+            // סגירת התפריט בלחיצה בכל מקום מחוץ אליו
+            document.addEventListener("click", function(event) {
+                if (sideMenu.classList.contains("open")) {
+                    if (!sideMenu.contains(event.target) && !floatingBtn.contains(event.target)) {
+                        sideMenu.classList.remove("open");
+                        document.body.classList.remove("no-scroll"); 
+                    }
                 }
-            }
+            });
+    
+            // --- קוד האקורדיונים (זה מה שהיה חסר!) ---
+            const accordionBtns = document.querySelectorAll('.accordion-btn');
+            accordionBtns.forEach(button => {
+                button.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('.icon');
+                    
+                    if (content.style.maxHeight) {
+                        // סגירה
+                        content.style.maxHeight = null;
+                        icon.textContent = '+';
+                    } else {
+                        // פתיחה
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        icon.textContent = '−';
+                    }
+                });
+            });
         });
-    });
-
-        function toggleAccordion(button) {
-            const content = button.nextElementSibling;
-            const icon = button.querySelector('.icon');
-            
-            if (content.style.maxHeight) {
-                // סגירה
-                content.style.maxHeight = null;
-                icon.textContent = '+';
-            } else {
-                // פתיחה
-                content.style.maxHeight = content.scrollHeight + "px";
-                icon.textContent = '−';
-            }
-        }
-</script>
+        </script>
 
 </body>
 </html>
