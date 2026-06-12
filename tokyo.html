@@ -553,6 +553,21 @@ body.no-scroll {
             }
         });
     });
+
+        function toggleAccordion(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.icon');
+            
+            if (content.style.maxHeight) {
+                // סגירה
+                content.style.maxHeight = null;
+                icon.textContent = '+';
+            } else {
+                // פתיחה
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.textContent = '−';
+            }
+        }
 </script>
 
 </body>
