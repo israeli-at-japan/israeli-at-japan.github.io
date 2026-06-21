@@ -21,29 +21,35 @@
 
         /* תפריט עליון */
         /* תפריט עליון - דביק למחשב */
-header { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 20px 50px; 
-    background: #fff; 
-    border-bottom: 1px solid #eee; 
-    position: sticky; 
-    top: 0; 
-    z-index: 1000; 
-}
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 50px; 
+            background: #fff; 
+            border-bottom: 1px solid #eee; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
 
-/* הסתרת תפריט הצד והכפתור במסכים גדולים */
-.side-menu, .floating-menu-btn { display: none; }
-
-/* הקפאת גלילה פשוטה וקונסיסטנטית למובייל */
-body.no-scroll {
-    overflow: hidden;
-}
-        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
-        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
-        nav ul li:hover { opacity: 0.7; cursor: pointer; }
-        nav ul li a { color: #3e7b73; }
+        #menu-placeholder {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        /* הסתרת תפריט הצד והכפתור במסכים גדולים */
+        .side-menu, .floating-menu-btn { display: none; }
+        
+        /* הקפאת גלילה פשוטה וקונסיסטנטית למובייל */
+        body.no-scroll {
+            overflow: hidden;
+        }
+                .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+                nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
+                nav ul li:hover { opacity: 0.7; cursor: pointer; }
+                nav ul li a { color: #3e7b73; }
 
         /* אזור התוכן של הפוסט */
         .post-container { max-width: 800px; margin: 50px auto; background: #fff; padding: 60px; box-shadow: 0 0 10px rgba(0,0,0,0.02); }
