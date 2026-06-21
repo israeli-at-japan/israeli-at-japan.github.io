@@ -3,61 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>בדיקה | ישראלי ביפן</title>
+    <title>יפן | ישראלי ביפן</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="canonical" href="https://israeli-in-japan.com/test" />
-    <meta name="description" content="תכנון מסלול מושלם ליפן: ממסלול קלאסי של שבועיים ועד מסלול מקיף של חודש. הצעות לטוקיו, קיוטו, אוסקה, פוג'י והאלפים היפניים, בהתאמה לעונות השנה.">
+    <meta name="description" content="המדריך המקיף למטייל ביפן: מתי כדאי לטוס, מזומן או אשראי, התניידות עם Suica ו-JR Pass, בחירת אי-סים (eSIM), אפליקציות חובה וטיפים שיחסכו לכם כסף וזמן.">
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-       /* איפוס והגדרות בסיס */
+        /* איפוס והגדרות בסיס */
         body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+        
+        /* שינוי: טקסט רץ בצבע שחור/אפור כהה לקריאות מקסימלית */
         body { font-family: 'Assistant', sans-serif; color: #333; line-height: 1.8; background-color: #fafafa; }
-        h1, h2, h3, h4 { color: #3e7b73; }
         a { text-decoration: none; color: inherit; }
+
+        /* שינוי: הגדרת הטורקיז רק לכותרות */
+        h1, h2, h3, h4 { color: #3e7b73; }
 
         /* תפריט עליון */
         /* תפריט עליון - דביק למחשב */
-        header { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 20px 50px; 
-            background: #fff; 
-            border-bottom: 1px solid #eee; 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-        }
-        
-        /* הסתרת תפריט הצד והכפתור במסכים גדולים */
-        .side-menu, .floating-menu-btn { display: none; }
-        
-        /* הקפאת גלילה פשוטה וקונסיסטנטית למובייל */
-        body.no-scroll {
-            overflow: hidden;
-        }
-                .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
-                nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
-                nav ul li:hover { opacity: 0.7; cursor: pointer; }
-                nav ul li a { color: #3e7b73; }
+header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 20px 50px; 
+    background: #fff; 
+    border-bottom: 1px solid #eee; 
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+}
+
+/* הסתרת תפריט הצד והכפתור במסכים גדולים */
+.side-menu, .floating-menu-btn { display: none; }
+
+/* הקפאת גלילה פשוטה וקונסיסטנטית למובייל */
+body.no-scroll {
+    overflow: hidden;
+}
+        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
+        nav ul li:hover { opacity: 0.7; cursor: pointer; }
+        nav ul li a { color: #3e7b73; }
 
         /* אזור התוכן של הפוסט */
         .post-container { max-width: 800px; margin: 50px auto; background: #fff; padding: 60px; box-shadow: 0 0 10px rgba(0,0,0,0.02); }
         
         .post-header { text-align: center; margin-bottom: 40px; }
-        .post-header h1 { font-size: 45px; font-weight: 300; margin-bottom: 10px; }
-        .post-date { font-size: 14px; color: #888; text-align: left; display: block; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .post-header h1 { font-size: 45px; font-weight: 300; margin-bottom: 10px; color: #3e7b73; }
+        .post-meta { font-size: 14px; color: #888; margin-bottom: 5px; }
+        .post-date { font-size: 14px; color: #888; text-align: left; display: block; margin-bottom: 30px; padding-bottom: 20px; }
 
         .post-content { text-align: right; font-size: 18px; }
-        .post-content p { font-size: 18px; margin-bottom: 20px; }
+        .post-content p { margin-bottom: 20px; }
         
-        .route-title { text-decoration: underline; font-weight: 600; margin-top: 40px; margin-bottom: 15px; display: inline-block; }
-        .post-content ul { list-style: none; margin-bottom: 40px; }
-        .post-content ul li { margin-bottom: 5px; }
+        /* תתי כותרות (עם קו מפריד מעליהן) */
+        .section-title { 
+            font-size: 24px; 
+            font-weight: 600; 
+            margin-top: 50px; 
+            padding-top: 30px; 
+            margin-bottom: 15px; 
+            color: #3e7b73; /* שונה לטורקיז האחיד */
+            border-top: 1px solid #c4e0d7; 
+        }
+        
+        /* ביטול הקו המפריד רק עבור הכותרת הראשונה בפוסט */
+        .post-content .section-title:first-of-type {
+            border-top: none;
+            margin-top: 10px;
+            padding-top: 0;
+        }
 
-        .post-image { width: 100%; margin: 40px 0; border-radius: 4px; }
+        /* תתי-תתי כותרות (בלי דגש, עם קו תחתון) */
+        .sub-title { 
+            font-weight: 400; 
+            text-decoration: underline; 
+            margin-top: 25px; 
+            margin-bottom: 5px; 
+            display: inline-block; 
+            font-size: 20px;
+            color: #3e7b73; /* וידוא צבע טורקיז */
+        }
+        
+        .post-content a.content-link { color: #437a71; text-decoration: underline; }
+        .post-content a.content-link:hover { color: #2e5750; }
+        
+        .map-link { display: block; margin-bottom: 10px; color: #437a71; text-decoration: underline; font-weight: 600; }
 
-        /* אזור פוסטים אחרונים (מסונכרן עם עמוד פוג'י) */
+        /* אזור פוסטים אחרונים (מסונכרן עם תבנית פוג'י) */
         .recent-posts-wrapper { max-width: 1000px; margin: 0 auto 40px auto; padding: 0 20px; }
         .recent-posts-title { font-size: 24px; font-weight: 300; color: #3e7b73; margin-bottom: 30px; text-align: left; }
         .recent-posts-grid { display: flex; gap: 30px; } 
@@ -76,147 +109,326 @@
         .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding-top: 15px; color: #999; font-size: 14px; }
         .card-footer-left { display: flex; gap: 15px; }
 
+        /* אזור תגובות */
+        .comments-section { max-width: 800px; margin: 0 auto 100px auto; background: #fff; padding: 40px; border: 1px solid #eee; }
+        .comments-section h3 { font-weight: 300; font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; color: #3e7b73; }
+        .comment-box { width: 100%; box-sizing: border-box; border: 1px solid #ddd; padding: 15px; font-family: 'Assistant', sans-serif; font-size: 16px; min-height: 80px; resize: vertical; color: #333; }
+        .comment-box:focus { outline: none; border-color: #3e7b73; }
+
+        .summer-tips-accordion {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        
+        .accordion-btn {
+            width: 100%;
+            background: none;
+            color: #3e7b73;
+            cursor: pointer;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: none;
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+        
+        .accordion-btn:hover {
+            background-color: #f1f1f1;
+            border-radius: 8px;
+        }
+        
+        .accordion-btn .icon {
+            font-size: 20px;
+            font-weight: normal;
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background-color: white;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .accordion-content ul {
+            padding: 15px 40px 15px 20px;
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .accordion-content li {
+            margin-bottom: 12px;
+        }
+
         /* =========================================
            הגדרות עיצוב מיוחדות למסכי טלפון בלבד
            ========================================= */
         @media (max-width: 768px) {
             
+            /* סידור התפריט העליון בנייד - רק לוגו */
+            header { flex-direction: column; padding: 20px; text-align: center; position: relative; }
+            nav ul { display: none; } /* השורה הזו מעלימה את התפריט בנייד! */
+
             /* התאמת אזור התוכן המרכזי כדי שלא ייצמד למסך */
             .post-container { margin: 0; padding: 40px 20px; box-shadow: none; }
             .post-header h1 { font-size: 32px; }
             .post-content { font-size: 17px; }
+            
+            /* התאמות תתי-כותרות במובייל */
+            .section-title { font-size: 22px; margin-top: 35px; padding-top: 20px; }
 
             /* הפיכת הפוסטים האחרונים לטור (אחד מתחת לשני) */
             .recent-posts-grid { flex-direction: column; gap: 20px; }
 
-        
-    
-            /* השארת הלוגו ממורכז למעלה והסתרת התפריט הרגיל */
-            header { padding: 15px; text-align: center; display: block; }
-            nav.desktop-nav { display: none; } /* מעלים את רשימת הקישורים בטלפון */
-        
-                /* כפתור ההמבורגר הצף */
-                .floating-menu-btn {
-                    display: flex; /* יוסתר/יוצג על ידי ה-JS אבל ברירת המחדל לנייד היא flex */
-                    position: fixed;
-                    bottom: 30px;
-                    right: 20px; 
-                    width: 55px;
-                    height: 55px;
-                    background-color: #3e7b73;
-                    color: #fff;
-                    border-radius: 50%;
-                    justify-content: center;
-                    align-items: center;
-                    font-size: 26px;
-                    cursor: pointer;
-                    z-index: 999;
-                    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-                    transition: transform 0.2s;
-                }
-                .floating-menu-btn:active { transform: scale(0.95); }
-            
-                /* תפריט הצד המחליק */
-                .side-menu {
-                    display: block; 
-                    position: fixed;
-                    top: 0;
-                    right: -300px;
-                    width: 260px;
-                    height: 100vh; 
-                    height: 100dvh; 
-                    overflow-y: auto;
-                    overscroll-behavior: contain; 
-                    background-color: #fff;
-                    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-                    z-index: 1001; 
-                    transition: right 0.3s ease;
-                    padding-top: 60px;
-                    padding-bottom: 50px; 
-                }
-                .side-menu ul::after { content: ""; display: block; height: 54px; width: 100%; }
-                .side-menu.open { right: 0; }
-                .side-menu ul { list-style: none; padding: 0; margin: 0; }
-                .side-menu ul li { border-bottom: 1px solid #f5f5f5; }
-                .side-menu ul li a { color: #3e7b73; font-size: 18px; font-weight: 600; display: block; padding: 15px 25px; text-decoration: none; }
-                
-                .side-menu-close {
-                    position: absolute;
-                    top: 15px;
-                    left: 20px;
-                    font-size: 35px;
-                    color: #333;
-                    cursor: pointer;
-                    line-height: 1;
-                }
+            /* כפתור ההמבורגר הצף */
+    .floating-menu-btn {
+        display: none; 
+        position: fixed;
+        bottom: 30px;
+        right: 20px; 
+        width: 55px;
+        height: 55px;
+        background-color: #3e7b73;
+        color: #fff;
+        border-radius: 50%;
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        font-size: 26px;
+        cursor: pointer;
+        z-index: 999;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        transition: transform 0.2s;
     }
+    .floating-menu-btn:active { transform: scale(0.95); }
+
+    /* תפריט הצד המחליק */
+    .side-menu {
+        display: block; 
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 260px;
+        height: 100vh; 
+        height: 100dvh; 
+        overflow-y: auto;
+        overscroll-behavior: contain; 
+        background-color: #fff;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 1001; 
+        transition: right 0.3s ease;
+        padding-top: 60px;
+        padding-bottom: 50px; 
+    }
+
+    /* "כרית אוויר" שקופה בתחתית הרשימה כדי לספוג את הקפיצות של ספארי */
+    .side-menu ul::after {
+        content: "";
+        display: block;
+        height: 54px; 
+        width: 100%;
+    }
+    
+    .side-menu.open { right: 0; }
+    
+    .side-menu ul { list-style: none; padding: 0; margin: 0; }
+    .side-menu ul li { border-bottom: 1px solid #f5f5f5; }
+    .side-menu ul li a {
+        color: #3e7b73;
+        font-size: 18px;
+        font-weight: 600;
+        display: block;
+        padding: 15px 25px;
+    }
+    .side-menu-close {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        font-size: 35px;
+        color: #333;
+        cursor: pointer;
+        line-height: 1;
+    }
+        }
 
     </style>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4D038KR7FQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-4D038KR7FQ');
-</script>
+      gtag('config', 'G-4D038KR7FQ');
+    </script>
     
 </head>
 <body>
+
     <div id="menu-placeholder"></div>
 
     <main class="post-container">
         <div class="post-header">
-            <h1>תכנון מסלול</h1>
+            <h1>יפן - מידע כללי</h1>
         </div>
 
         <div class="post-content">
-            <p>חשוב לציין שבנינו את המסלול על בסיס החוויות שלנו בחודשים של מאי-יוני. פחות מומלץ להגיע למטסומוטו וניקו בחודשי החורף (נובמבר עד אפריל) מכיוון שמושלג והמזג אוויר לא מתאים לטיולי הליכה בטבע.<br>
-            בנוסף המסלול האלפיני מומלץ במיוחד לתקופת האביב(אפריל-יולי, תאריכים מדויקים משתנים משנה לשנה)</p>
+            
+            <h2 class="section-title">העונות ביפן</h2>
+            <p>בעיקרון ביפן או שחם, או שקר, או שיש המון תיירים, אנחנו הגענו ממש אחרי סוף פריחת הדובדבן כדי להימנע מההמונים ומעליית המחירים שמגיעה איתם אבל בסופו של דבר יפן תמיד יפה ומרשימה אז העיקר שתגיעו😁</p>
+            <p><strong>דצמבר-מרץ:</strong> קר מאוד ומושלג בחלק מהמקומות, מושלם לסקי באי הצפוני הוקאידו.</p>
+            <p><strong>אפריל-יוני:</strong> אביב, לפעמים גשום, לפעמים שמשי, לפעמים קר ולעיתים חם, שבועיים מהתקופה הזו כוללת את פריחת הדובדבן שהיא עונה מהממת אבל גם יקרה מאוד ומלאה בתיירים.</p>
+            <p><strong>יולי-ספטמבר:</strong> חם מאוד, לח ויש סיכוי לגשמים, ויצא שזו גם התקופה שבה רובנו יכולים לטוס בגלל החופש הגדול והחגים. החדשות הטובות? יפן ערוכה לקיץ בצורה מושלמת. יש חנויות, קניונים ותחנות רכבת ממוזגים בכל פינה, וזו העונה היחידה שבה תוכלו לחוות את פסטיבלי הקיץ המסורתיים ומופעי הזיקוקים הענקיים. עם קצת תכנון נכון, הפסקות התרעננות ולבוש קליל, לגמרי אפשר לעשות את זה נהדר.</p>
+            <p><strong>אוקטובר-נובמבר:</strong> סתיו, השלכת המדהימה מגיעה, מזג אוויר דומה לאביב וכמובן שהמון תיירים.</p>
+            
+            <div class="summer-tips-accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>טיפים נוספים לקיץ</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <ul>
+                        <li>הגשמים הם לרוב ממטרים קצרים, למעט הטייפונים (שהם בדרך כלל באוגוסט-ספטמבר) וגם הם לרוב נמשכים יום אחד.</li>
+                        <li><strong>אקססוריז יפניים:</strong> זה אולי נשמע לכם מוזר אבל תאמינו לי שלא תתחרטו על קניה של מאוורר צוואר או מטריה יעודית להגנה מהשמש, כישראלים זה נשמע קצת הזוי אבל תעשו לעצמכם טובה ולפחות תנסו.</li>
+                        <li>אזורים כמו ניקו או האלפים היפניים (כמו מצומוטו וקמיקוצ'י) אמנם גשומים ברוב ימי הקיץ, אבל הטמפרטורה שם נמוכה משמעותית מהערים על קו החוף. זה מפלט מושלם להתרעננות לכמה ימים בטבע. את ניקו הייתי משאיר כיום טיול ספונטני מטוקיו כדי שתוכלו לנסוע ביום לא גשום ובמקרה שאין כזה זכיתם בעוד יום בטוקיו.</li>
+                        <li>אופציה נוספת היא טיסה לאי הצפוני - הוקאידו, אופציה מומלצת בעיקר למבקרים בפעם השניה ביפן, למבקרים בפעם הראשונה זו גם אופציה אבל לדעתי יש החמצה מסויימת של יפן הקלאסית באופציה זו.</li>
+                    </ul>
+                </div>
+            </div>
 
-            <span class="route-title">המסלול שלנו (חודש-שלושה שבועות):</span>
-            <ul>
-                <li>נחיתה בטוקיו</li>
-                <li>טוקיו 5 ימים (4 טוקיו, 1 קאמאקורה, להוסיף עוד יום אם רוצים גם דיסני)</li>
-                <li>ניקו 2-3 ימים</li>
-                <li>פוג'י (קאווגוצ'יקו) 2-3 ימים</li>
-                <li>מטסומוטו 3 ימים (עמק הקיסו וקאמיקוצ'י)</li>
-                <li>קאנאזווה 3 ימים (שירקאווה גו והמסלול האלפיני)</li>
-                <li>קיוטו 3 ימים (3 קיוטו)</li>
-                <li>טיולי יום מקיוטו/אוסקה ולהוסיף שם עוד לילות- נארה, אוג'י. 2 ימים.</li>
-                <li>אוסקה 2-3 ימים (טיול יום לקובה)</li>
-                <li>הירושימה 2 ימים (1 הירושימה, 1 מיאג'ימה)</li>
-                <li>אוקיאמה 2 לילות 1 ימים (נאושימה)</li>
-                <li>טיסה מאוסקה</li>
-            </ul>
+            <div class="summer-tips-accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>טיסה בגולדן ויק(חג של היפנים באזור תחילת מאי)</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <ul>
+                        <li>אם במקרה אתם מגיעים בגולדן וויק והלחיצו אתכם שזה החג שלהם והכל יהיה עמוס אז אני כאן לספר לכם שזה לא כזה עמוס והיה ממש אחלה ואם לא היינו יודעים שחג לא היינו מרגישים שום דבר חריג.<br>
+                            חשוב לציין שאנחנו היינו בטוקיו במהלך כל הגולדן ויק ויכול להיות שבשאר יפן מרגישים את החג.</li>
+                    </ul>
+                </div>
+            </div>
 
-            <span class="route-title">מפה של המסלול טיול שלנו:</span>
-            <img src="images/map1.AVIF" alt="מפת המסלול" class="post-image">
+            <h2 class="section-title">איזה טפסים להכין מראש והאם צריך ויזה?</h2>
+            <p>בהגעה ליפן מקבלים אשרת כניסה ל90 ימים ובעיקרון לא צריך לעשות כלום לפני, כן יש אופציה למלא טופס מסויים מראש וזה יכול לחסוך זמן בשדה אז אם אתם מתכננים לעלות על רכבת אחרונה מהשדה למרכז(איזור 00 בלילה) שווה לעשות את זה. לנו לא בדקו כרטיסי יציאה מהמדינה אבל בעיקון בודקים.<br>
+            קישור לטופס: <a href="https://www.vjw.digital.go.jp/main/#/vjwplo001" target="_blank" class="content-link">https://www.vjw.digital.go.jp/main/#/vjwplo001</a></p>
 
-            <span class="route-title">מסלול לשבועיים אופציה 1- המסלול הקלאסי</span>
-            <ul>
-                <li>טוקיו 7 ימים (5 טוקיו, 1 קאמאקורה, 1 פוג'י)</li>
-                <li>קיוטו 4 ימים</li>
-                <li>אוסקה 3 ימים (1 נארה, 2 אוסקה)</li>
-            </ul>
+            <h2 class="section-title">איפה נוחתים?</h2>
+            <p>שדות התעופה המרכזיים הם בטוקיו ואוסקה ואנחנו ממליצים לטוס הלוך לאוסקה וחזור מטוקיו (או להפך) וכך לחסוך את הנסיעה היקרה חזרה ליעד שכבר הייתם בו.</p>
 
-            <span class="route-title">מסלול לשבועיים אופציה 2- לאוהבי הטבע</span>
-            <ul>
-                <li>טוקיו 5 ימים (3 טוקיו, 1 קאמאקורה, 1 פוג'י)</li>
-                <li>טויאמה 3 ימים (1 קמיקוצ'י, 1 מסלול אלפיני)</li>
-                <li>קאנאזווה 2 ימים (1 קאנזווה, 1 שירקאווה גו)</li>
-                <li>קיוטו 4 ימים (3 קיוטו, 1 נארה ואוג'י, לצאת לאוסקה בערב אחד או שניים)</li>
-            </ul>
+            <h2 class="section-title">טיפים כלליים</h2>
+            
+            <span class="sub-title">מקדשים</span>
+            <p>כל המקדשים נסגרים סביבות ארבע חמש אז אם יש מקדש בתכנון שלכם תגיעו לפני, אלא אם כן המוזה שלכם היא לראות אותו בלילה</p>
+            
+            <span class="sub-title">מסעדות</span>
+            <p>כל המסעדות מפסיקות להכניס אנשים בערך 45 דקות לפני שעת הסגירה הכתובה בגוגל מפס, לכן מומלץ להגיע שעה לפני הסגירה. שימו לב שבכללי מסעדות נסגרות מוקדם</p>
 
-            <span class="route-title">מסלול לשבועיים אופציה 3- קלאסי משולב עם טבע</span>
-            <ul>
-                <li>טוקיו 4 ימים (3 טוקיו, 1 קאמאקורה)</li>
-                <li>ניקו 2 ימים</li>
-                <li>פוג'י 2 ימים</li>
-                <li>קיוטו 4 ימים (3 קיוטו, 1 נארה ואוג'י)</li>
-                <li>אוסקה 2 ימים (אופציה לטיול יום בקובה)</li>
-            </ul>
+            <span class="sub-title">קניות ו-TAX FREE</span>
+            <p>על כל קניה מעל 5,000 ין (ללא מס) באותה חנות, תוכלו לקבל פטור ממס של 10% ישירות בקופה. למרות שיש היום אפשרות להנפיק ברקוד דיגיטלי לפטור ממס דרך אתר <a href="https://services.digital.go.jp/en/visit-japan-web/" target="_blank" style="color: #3e7b73; text-decoration: underline; font-weight: bold;">Visit Japan Web</a>, המציאות היא שחנויות רבות (כולל סניפים של יוניקלו ודון קיחוטה) עדיין לא עובדות עם הסורק הדיגיטלי וידרשו לראות את הדרכון הפיזי שלכם עם מדבקת הכניסה ליפן. אז שימו לב, בימים שאתם מתכננים שופינג <strong>תמיד תסתובבו עם לפחות דרכון אחד עליכם!</strong>
+            </p>
+            
+            <span class="sub-title">לוקרים</span>
+            <p>כמעט בכל תחנת רכבת תראו לוקרים בהם תוכלו להשאיר את המזוודות והתיקים שלכם בתשלום, פיתרון מאוד נוח לימים של מעברים. ברוב המקומות תוכלו להשאיר את התיקים עד שלושה ימים ותשלמו את ההפרש על הזמן הנוסף כשתגיעו לאסוף את התיקים, אחרי שלושה ימים יפנו לכם את התיקים ובכללי עדיף לשאול מישהו שעובד בתחנה לכמה זמן הלוקר שמור.</p>
+
+            <span class="sub-title">לוקר לטווח זמן ארוך</span>
+            <p>אם אתם צריכים להשאיר משהו בלוקר לתקופה תחפשו בשדה סניף של abc jal, יעלה בערך 35₪ ליום</p>
+
+            <h2 class="section-title">מזומן או אשראי?</h2>
+            <p>הכי משתלם כלכלית להוציא יין(yen) בצ׳יינג׳ בארץ מכיוון שהמטבע מוכר על ידי בנק ישראל וככה תעקפו את ההמרה הכפולה.<br>
+            אנחנו השתמשנו רק במזומן אבל אם אתם מסתייגים ממזומן ומעדיפים אשראי אז בערים המרכזיות רוב המקומות יקבלו גם אשראי, בכל מקרה שווה להוציא מזומן למקרה שתבקרו במסעדה שלא מקבלת אשראי ולקראת סוף הטיול תעברו להשתמש במזומן שנשאר לכם.<br>
+            יש כספומטים בכל סופרמרקט וכולם עם אותה העמלה.<br>
+            בחלק מהמסעדות אפשר גם להשתמש בSuica- עוד מידע על הסוויקה בהתניידות.</p>
+
+            <h2 class="section-title">אי סים, סים מקומי או חבילה מהארץ?</h2>
+            <p>האופציה הזולה ביותר היא אי סים דרך Airalo, קוד הנחה של 3$- MRI4785(הקוד עובד לשני הצדדים וגם אני אקבל מזה 3$). סים מקומי לחודש יעלה מעט יותר מ100₪ וחבילות בארץ זה תלוי בחברה אבל המחירים באזור ה250₪ ומעלה.<br>
+            חיסרון מרכזי של Airalo- לא מקבלים הודעות SMS, התקנת האי סים מעט מסובכת בפעם הראשונה.</p>
+
+            <h2 class="section-title">אפליקציות מומלצות</h2>
+            <p><strong>Google maps</strong>- האפליקציה הקלאסית לכל טיול בחול עובד מצויין עם קווי רכבת ומראה מחירים של נסיעות</p>
+            <p><strong>Google translate</strong>- היפניים בקושי מדברים אנגלית ואחת דרכי התקשורת המרכזיות היא גוגל תרגם, אפשר להשתמש באפליקציה דרך המצלמה כדי לתרגם שלטים ותפריטים</p>
+            <p><strong>Mymizu</strong>- מראה איפה יש מקומות למלא מים, ככה אפשר להסתובב עם בקבוק חצי ליטר במהלך היום וכשנגמר לפתוח את האפליקציה, במקומות מרכזיים כמו טוקיו יש איפה למלא מים כמעט כל 500 מטרים</p>
+            <p><strong>Klook</strong>- אפליקציה לקניית כרטיסי רכבת ספציפיים ובעיקר אטרציות שונות</p>
+
+            <h2 class="section-title">התניידות</h2>
+            
+            <span class="sub-title">Suica</span>
+            <p>הרב הקו היפני או בשמו Suica הוא נוח במיוחד למשתמשי האייפון, מומלץ להוריד את הכרטיס Suica לאפל wallet ולהעלות אליו כסף. בכניסה לכל תחנת מטרו או אוטובוס תוכלו להעביר את הטלפון שלכם במקום לקנות כרטיס, שימו לב שהכרטיס עובד רק בערים מרכזיות.<br>
+            למשתמשי אנדרואיד אל דאגה, פשוט תצטרכו להוציא כרטיס suica פיזי בשדה (לדעתי יש גם אופציה בחלק מהתחנות בעיר אבל אנחנו עם אייפון אז אני לא בטוח), את הכרטיס תוכלו להטעין בכל תחנת מטרו והוא עובד בדיוק כמו הכרטיס הדיגיטלי שבאייפון.</p>
+
+            <span class="sub-title">JR PASS</span>
+            <p>ביפן חברת הרכבות הגדולה נקראת JR, תוכלו לקנות כרטיס מיוחד שיאפשר לכם נסיעה חופשית בקווים הפועלים על ידם, שהם בדרך כלל קווים בין עירוניים והשינקנסן, אך לא כוללים את המטרו.<br>
+            יש סוגים רבים של כרטיסים, הכוללים אזורים ספציפיים ומספר ימים שונה בין איזור לאיזור. בשנים האחרונות הפאס התייקר משמעותית והוא לא משתלם כמעט אף פעם.<br>
+            בגלל נסיעות מרובות בין קיוטו להירושימה וחזרה לאוסקה בזמן קצר הפאס הספציפי לאיזור הזה יצא לנו משתלם, למרות שאם יש לכם זמן ולא מפריע לכם נסיעות ארוכות, כנראה שעדיין יהיה יותר זול לעשות את המעברים באוטובוסים.<br>
+            אתר שבו אפשר לבדוק האם הפאס משתלם- <a href="https://www.japan-guide.com/railpass/" target="_blank" class="content-link">https://www.japan-guide.com/railpass/</a></p>
+
+            <span class="sub-title">אוטובוסים</span>
+            <p>מעברים בין ערים גדולות ורחוקות, כמו קאנזווה לאוסקה או אוסקה להירושימה אפשר לבצע באוטובוסים שיקחו מספר שעות ובמחיר יחסית נוח, אז אם אתם מנסים לחסוך זאת בהחלט אופציה שווה.<br>
+            אתר לקניית כרטיסים לאוטובוס- <a href="https://willerexpress.com/en/" target="_blank" class="content-link">https://willerexpress.com/en/</a></p>
+
+            <span class="sub-title">השכרת רכב</span>
+            <p>השכרת רכב ביפן יחסית יקרה לכן אנחנו לא השכרנו, ולדעתנו זה ממש לא חובה באי הונשו (Honshu) - האי הגדול ביותר ביפן, עליו ממוקמת גם העיר טוקיו. אבל אם אתם ממש מסתייגים מתחבצ אז רכב כן יכול להיות נחמד כשנוסעים לאזור פוג’י ולאלפים היפניים.<br>
+            באי הוקאידו הבנו שהשכרת רכב היא חובה אבל לצערנו בסוף לא הגענו לשם ואין לנו מידע נוסף.<br><strong>חשוב לציין שחובה רישיון רכב בינלאומי שהונפק לפני פחות משנה!!!</strong></p>
+
+            <h2 class="section-title">הצ'ק-ליסט: 25 מאכלים שחובה לנסות 🍣</h2>
+            <p>אתחיל בזה שיפן היא באמת גן עדן של אוכל, ויש בה כמויות של מנות מטורפות, מוכרות יותר ופחות. אי אפשר באמת להגיע להכל בטיול אחד, אבל יש דברים שהם בעינינו ממש חובה ופשוט שווה לנסות. כדי שלא תלכו לאיבוד מול כל השפע הזה, סידרנו לכם רשימה של כל המאכלים הכי שווים.</p>
+            <p>אתם יכולים פשוט ללחוץ על הכפתור פה למטה, להדביק את זה בפתקים בטלפון (Notes), ללחוץ שם על הכפתור של הצ'ק-ליסט (בסרגל כלים), ופשוט לסמן ✔️ על כל מה שניסיתם בדרך!</p>
+
+            <button onclick="copyChecklist()" style="padding: 12px 24px; background-color: #3e7b73; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 18px; font-weight: 600; font-family: 'Assistant', sans-serif; transition: background 0.3s; margin-top: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                העתק רשימה לפתקים 📝
+            </button>
+
+            <p id="copyMessage" style="display: none; color: #3e7b73; font-weight: 600; margin-top: 15px; font-size: 16px;">
+                הרשימה הועתקה בהצלחה!
+            </p>
+
+            <script>
+            function copyChecklist() {
+                const checklistText = `הנבחרת שלנו: 25 מאכלים ביפן שאסור לפספס 🍣\n\nהקלאסיקות:\n○ סושי וסשימי 🍣\n○ ראמן (Ramen) 🍜\n○ טמפורה (Tempura) 🍤\n○ בקר וואגיו (Wagyu) 🥩\n\nאטריות וקערות אורז:\n○ אודון / סובה (Udon/Soba) 🥢\n○ קציצות בקר ואורז (בסגנון Hikiniku to Come) 🍳\n○ גיו-קאטסו (Gyukatsu) 🥩\n○ אומורייס (Omurice) 🍳\n○ טונקאטסו / קאטסו-דון 🐷\n○ גיו-דון (Gyudon) 🍚\n○ קארי יפני 🍛\n○ אונאגי (Unagi) 🐍\n\nנשנושים ואוכל רחוב:\n○ טאקויאקי (Takoyaki) 🐙\n○ אוקונומיאקי (Okonomiyaki) 🥞\n○ יאקיטורי (Yakitori) 🍢\n○ גיוזה (Gyoza) 🥟\n○ אוניגירי (Onigiri) 🍙\n○ קארי פאן (Kare Pan) 🥖\n\nמסביב לשולחן (חוויה):\n○ יאקיניקו (Yakiniku) 🔥\n○ סוקיאקי / שאבו-שאבו (סיר חם יפני) 🍲\n\nפינת המתוקים:\n○ מאצה (Matcha) 🍵\n○ מוצ'י (Mochi) 🍡\n○ דאנגו (Dango) 🍢\n○ מאפים וקינוחים עם אנקו (Anko - ממרח שעועית אדומה) 🫘\n○ לחם מלון (Melon Pan) 🍈`;
+
+                // פקודת העתקה ללוח של המכשיר
+                navigator.clipboard.writeText(checklistText).then(() => {
+                    // מציג את הודעת ההצלחה
+                    document.getElementById("copyMessage").style.display = "block";
+                    
+                    // מעלים את ההודעה אחרי 3.5 שניות
+                    setTimeout(() => {
+                        document.getElementById("copyMessage").style.display = "none";
+                    }, 3000);
+                }).catch(err => {
+                    console.error('משהו השתבש בהעתקה: ', err);
+                    alert('אופס! משהו השתבש בהעתקה. נסו שוב.');
+                });
+            }
+            </script>
+
+            <h2 class="section-title">קבוצות וואטסאפ ליפן</h2>
+            <p>לשאלות מהירות והתייעצות בזמן אמת עם מטיילים, יש קבוצות וואטסאפ מאוד פעילות של 'קהילת מזרח'. חשוב לציין שהאתר שלנו אינו קשור אליהם או מנוהל על ידם, אבל אנחנו ממליצים עליהן ככלי עזר בעיקר במקרה של בלתמים או בעיות שצצות כשאתם כבר ביפן.</p>
+            <a href="https://chat.whatsapp.com/K83qzwF0cGy19KsJXsTztf?mode=gi_t" target="_blank" rel="noopener noreferrer" class="map-link">קבוצת יפן ראשית 2026</a>
+            <a href="https://chat.whatsapp.com/KGgw2YK0J835Tq98sfFpZF" target="_blank" rel="noopener noreferrer" class="map-link">קבוצת אוסקה/טוקיו/קיוטו</a>
+
+            <h2 class="section-title">כביסה</h2>
+            <p>את הכביסות שלנו עשינו במלונות שישנו בהם ובהם היו מכונות כביסה בהפעלה עצמאית. שימו לב שלפעמים המייבשים יחסית חלשים ודורשים באיזור ה3 שעות עד שהכביסה מתייבשת. לרוב גם כל המייבשים תפוסים אז לתרמילאים שישנים בתקציב שווה להביא חבל לתלות את הכביסה בחדר כי לא בכל המלונות יש מתלי כביסה.</p>
+
+            <h2 class="section-title">אם קונים אייפון ביפן המצלמה תמיד תעשה רעש?</h2>
+            <p>האייפון כמו רוב הדברים ביפן מאוד זול, יש לזה קאצ׳ קטן, אם תקנו אייפון 13 ומטה המצלמה שלכם תמיד תעשה רעש ולא תוכלו להשתיק אותה. מאייפון 14 ומעלה המצלמה תמשיך לעשות רעש גם כשהטלפון על שקט רק בתוך יפן, ואחרי שתצאו מהמדינה תוכלו להשתיק את המצלמה.</p>
+
+            <h2 class="section-title">המלצות בגוגל מפות</h2>
+            <p>ככה תמיד תראו מה האטרקציות הקרובות ואיזה מסעדות שוות יש באיזור, חשוב לציין ששמרנו הרבה מסעדות שלא הספקנו להיות בהן אבל כן קיבלנו עליהן המלצות אז כנראה שלא תיפלו😁</p>
+            
+            <a href="https://maps.app.goo.gl/87iFDpC3K46SNDPc7" target="_blank" class="map-link">המלצות לטוקיו ניקו וקמקורה</a>
+            <p>לקאווגוצ׳יקו אין לנו מפה אבל די קל למצוא את Fuji-Q ורואים את פוג׳י מכל מקום</p>
+            <a href="https://maps.app.goo.gl/Lnn8wUD46mGMLiCo9" target="_blank" class="map-link">המלצות למצומוטו וקאנזווה</a>
+            <a href="https://maps.app.goo.gl/BN3N2fxZZSnSmkv4A" target="_blank" class="map-link">המלצות לקיוטו אוסקה נארה אוג׳י וקובה</a>
+            <a href="https://maps.app.goo.gl/VEmQWk3JMq536enu7" target="_blank" class="map-link">המלצות להירושימה מיאג׳ימה אוקיאמה ונאושימה</a>
         </div>
     </main>
 
@@ -224,20 +436,10 @@
         <h2 class="recent-posts-title">Recent Posts</h2>
         <div class="recent-posts-grid">
             
-            <a href="backpackers-guide" class="recent-card">
-                <img src="images/ramen.png.avif" alt="מידע לתרמילאי">
+            <a href="route-planning" class="recent-card">
+                <img src="images/map1.AVIF" alt="תכנון מסלול">
                 <div class="recent-card-body">
-                    <h4>מידע לתרמילאי ביפן</h4>
-                    <div class="card-footer">
-                        <div class="card-footer-left"></div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="japan-info" class="recent-card">
-                <img src="images/plan.JPG" alt="יפן - מידע כללי">
-                <div class="recent-card-body">
-                    <h4>יפן - מידע כללי</h4>
+                    <h4>תכנון מסלול</h4>
                     <div class="card-footer">
                         <div class="card-footer-left"></div>
                     </div>
@@ -248,6 +450,16 @@
                 <img src="images/tokyo.jpg.avif" alt="טוקיו - מידע כללי">
                 <div class="recent-card-body">
                     <h4>טוקיו - מידע כללי</h4>
+                    <div class="card-footer">
+                        <div class="card-footer-left"></div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="backpackers-guide" class="recent-card">
+                <img src="images/ramen.png.avif" alt="מידע לתרמילאי ביפן">
+                <div class="recent-card-body">
+                    <h4>מידע לתרמילאי ביפן</h4>
                     <div class="card-footer">
                         <div class="card-footer-left"></div>
                     </div>
@@ -284,8 +496,25 @@
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
-    //קוד תפריט המבורגר
+
     <script src="menu.js"></script>
+
+    <script>
+            function toggleAccordion(button) {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('.icon');
+                
+                if (content.style.maxHeight) {
+                    // סגירה
+                    content.style.maxHeight = null;
+                    icon.textContent = '+';
+                } else {
+                    // פתיחה
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.textContent = '−';
+                }
+            }
+    </script>
 
 </body>
 </html>
