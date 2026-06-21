@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <li><a href="general-info">תכנון מסלול ומידע כללי</a></li>
                 <li><a href="tokyo-fuji">טוקיו פוג'י והסביבה</a></li>
                 <li><a href="alps">האלפים היפניים</a></li>
-                <li><a href="kyoto-osaka">קיוטו ואוסקה</a></li>
+                <li><a href="kyoto-osaka">קיוטו אוסקה ומה שביניהן</a></li>
                 <li><a href="island-hopping">איילנד הופינג ביפן</a></li>
             </ul>
         </div>
