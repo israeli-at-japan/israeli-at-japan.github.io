@@ -140,6 +140,23 @@
         }
         .btn:hover { background-color: #2e5750; }
 
+        /* אנימציית הפיצול לכפתורים */
+        .split-target {
+            opacity: 0;
+            transform: scale(0.5); /* מתחילים קטנים */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* אפקט קפיצה עדין */
+        }
+        
+        .split-target.show {
+            opacity: 1;
+            transform: scale(1); /* גדלים לגודל המקורי */
+        }
+        
+        /* אפקט ריחוף מותאם לכפתור פייסבוק */
+        #fb-btn:hover {
+            background-color: #145dbf !important; /* כחול כהה יותר של פייסבוק במעבר עכבר */
+        }
+
         /* התאמה לנייד */
         @media (max-width: 768px) {
             header { flex-direction: column; padding: 15px; text-align: center; }
@@ -202,7 +219,7 @@
     </header>
 
     <section class="middle-text">
-        <h2>גלו את יפן בדרך שלכם</h2>
+        <h1>גלו את יפן בדרך שלכם</h1>
         <p>תרמילאים, זוגות או משפחות עם ילדים? הגעתם בדיוק למקום הנכון. יפן מציעה אינסוף אפשרויות, והמטרה שלנו היא לעשות לכם סדר בבלאגן. ריכזנו כאן את כל המידע וההמלצות שאתם צריכים כדי לבנות את הטיול שמתאים ספציפית אליכם. פשוט בחרו את אחת הקטגוריות שלמטה, ובואו נתחיל.</p>
     </section>
     
@@ -269,17 +286,26 @@
         <p style="font-size: 24px; font-weight: 400; margin-bottom: 40px; line-height: 1.6;">
             <strong style="color: #437a71; font-size: 30px;">צריכים עזרה עם המסלול? אנחנו כאן! 🙋‍♂️</strong><br><br>
             אתם מוזמנים להתייעץ בכל שעה עם 
-            <a href="הלינק_לסוכן_הAI_שלך" style="color: #437a71; text-decoration: underline; font-weight: bold;">סוכן ה-AI החכם שלנו</a> 
+            <a href="https://israeli-in-japan.com/ai-agent" style="color: #437a71; text-decoration: underline; font-weight: bold;">סוכן ה-AI החכם שלנו</a> 
             שיודע לענות על (כמעט) כל שאלה.<br><br>
             מעדיפים ייעוץ אנושי? בשמחה. לחצו על הכפתור, ספרו לנו מה ההתלבטות שלכם<br>
             ונשמח לעזור באהבה (וללא שום עלות!).
         </p>
-        <a href="mailto:israeli.at.japan@gmail.com" class="btn">Message us</a>
+    
+        <div id="buttons-container" style="display: flex; justify-content: center; gap: 20px; align-items: center; min-height: 60px;">
+            
+            <button id="main-msg-btn" class="btn" onclick="splitButtons()" style="border: none; cursor: pointer; font-family: inherit;">Message us</button>
+    
+            <a href="mailto:israeli.at.japan@gmail.com" id="email-btn" class="btn split-target" style="display: none;">📩 אימייל</a>
+    
+            <a href="https://m.me/israeli.in.japan" target="_blank" id="fb-btn" class="btn split-target" style="display: none; background-color: #1877F2;">f פייסבוק</a>
+            
+        </div>
     </section>
 
     <section class="hero">
         <div class="hero-text">
-            <h1>ישראלי ביפן</h1>
+            <h2>ישראלי ביפן - קצת עלינו</h2>
             <br>
             <p>קצת עלינו- אנחנו זוג תרמילאים שהגיע ליפן בסוף אפריל מיד עם סוף פריחת הדובדבן, לא התקמצנו או חסכנו אז כנראה שגם אם אתם לא תרמילאים תוכלו להיעזר באתר הזה. המון אנשים פנו אלינו לקבל מידע על יפן אז החלטנו לאגד את הכל ולהפיץ כדי שכולם יוכלו להיעזר במידע ובחוויה שלנו</p>
         </div>
@@ -287,6 +313,27 @@
             <img src="images/main.jpeg.avif" alt="Japan Garden">
         </div>
     </section>
+
+    <script>
+    function splitButtons() {
+        const mainBtn = document.getElementById('main-msg-btn');
+        const emailBtn = document.getElementById('email-btn');
+        const fbBtn = document.getElementById('fb-btn');
+    
+        // העלמת הכפתור הראשי
+        mainBtn.style.display = 'none';
+    
+        // הצגת הכפתורים החדשים
+        emailBtn.style.display = 'inline-block';
+        fbBtn.style.display = 'inline-block';
+    
+        // הפעלת האנימציה מיד לאחר ההצגה
+        setTimeout(() => {
+            emailBtn.classList.add('show');
+            fbBtn.classList.add('show');
+        }, 10);
+    }
+    </script>
 
 </body>
 </html>
