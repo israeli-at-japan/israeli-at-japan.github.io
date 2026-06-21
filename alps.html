@@ -30,6 +30,9 @@
         nav ul li:hover { opacity: 0.7; cursor: pointer; }
         nav ul li a { color: #3e7b73; }
 
+        #menu-placeholder {position: sticky; top: 0; z-index: 1000;}
+
+
         /* באנר עליון ראשי */
         .main-banner {
             height: 400px;
@@ -98,9 +101,11 @@
            ========================================= */
         @media (max-width: 768px) {
             
-            /* סידור התפריט העליון שייכנס במסך */
-            header { flex-direction: column; padding: 15px; text-align: center; position: relative; }
-            nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
+            /* השארת הלוגו ממורכז למעלה והסתרת התפריט הרגיל */
+            header { padding: 15px; text-align: center; display: block; }
+            nav.desktop-nav { display: none; } /* מעלים את רשימת הקישורים בטלפון */
+            #menu-placeholder {position: static; }/* הפקודה הזו מבטלת את הדביקות בנייד */
+
 
             /* הפיכת אזור הפתיחה (Hero) מ"צד בצד" ל"אחד מתחת לשני" */
             .hero { flex-direction: column; padding: 40px 5%; text-align: center; gap: 30px; }
@@ -134,21 +139,7 @@
 </head>
 <body>
 
-    <header>
-        <div class="logo">ישראלי ביפן</div>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="forum">Forum</a></li>
-                <li><a href="ai-agent">סוכן AI ✨</a></li>
-                <li><a href="general-info">תכנון מסלול ומידע כללי על יפן</a></li>
-                <li><a href="tokyo-fuji">טוקיו פוג'י והסביבה</a></li>
-                <li><a href="alps">האלפים היפניים</a></li>
-                <li><a href="kyoto-osaka">קיוטו אוסקה ומה שביניהן</a></li>
-                <li><a href="island-hopping">איילנד הופינג ביפן</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div id="menu-placeholder"></div>
 
     <div class="main-banner">
         <div class="overlay"></div>
@@ -180,6 +171,9 @@
         <p>יש לכם שאלה? המלצה על מסעדה<br>שאסור לפספס? או אפילו יעד מיוחד<br>שאף אחד לא שמע עליו? שתפו אותנו<br>בסיפור הדרך שלכם ונשתף אותו כאן</p>
         <a href="mailto:israeli.at.japan@gmail.com" class="btn">Message us</a>
     </section>
+
+    //קוד תפריט המבורגר
+    <script src="menu.js"></script>
 
 </body>
 </html>
