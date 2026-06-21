@@ -16,30 +16,32 @@
         a { text-decoration: none; color: inherit; }
 
         /* תפריט עליון - דביק למחשב */
-header { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 20px 50px; 
-    background: #fff; 
-    border-bottom: 1px solid #eee; 
-    position: sticky; 
-    top: 0; 
-    z-index: 1000; 
-}
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 50px; 
+            background: #fff; 
+            border-bottom: 1px solid #eee; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
 
-/* הסתרת תפריט הצד והכפתור במסכים גדולים */
-.side-menu, .floating-menu-btn { display: none; }
+        #menu-placeholder {position: sticky; top: 0; z-index: 1000;}
 
-/* הקפאת גלילה פשוטה וקונסיסטנטית */
-body.no-scroll {
-    overflow: hidden;
-}
+        /* הסתרת תפריט הצד והכפתור במסכים גדולים */
+        .side-menu, .floating-menu-btn { display: none; }
 
-.logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
-nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
-nav ul li:hover { opacity: 0.7; cursor: pointer; }
-nav ul li a { color: #3e7b73; }
+        /* הקפאת גלילה פשוטה וקונסיסטנטית */
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
+        nav ul li:hover { opacity: 0.7; cursor: pointer; }
+        nav ul li a { color: #3e7b73; }
         .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
         nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
         nav ul li:hover { opacity: 0.7; cursor: pointer; }
@@ -186,7 +188,10 @@ nav ul li a { color: #3e7b73; }
 
         /* רספונסיביות לטלפון */
         @media (max-width: 768px) {
-            header { flex-direction: column; padding: 15px; text-align: center; position: relative; }
+            /* השארת הלוגו ממורכז למעלה והסתרת התפריט הרגיל */
+            header { padding: 15px; text-align: center; display: block; }
+            nav.desktop-nav { display: none; } /* מעלים את רשימת הקישורים בטלפון */
+            #menu-placeholder {position: static; }/* הפקודה הזו מבטלת את הדביקות בנייד */
     
     /* כפתור ההמבורגר הצף */
     .floating-menu-btn {
@@ -281,37 +286,7 @@ nav ul li a { color: #3e7b73; }
 </head>
 <body>
 
-    <header>
-        <div class="logo">ישראלי ביפן</div>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="forum">Forum</a></li>
-                <li><a href="ai-agent">סוכן AI ✨</a></li>
-                <li><a href="general-info">תכנון מסלול ומידע כללי על יפן</a></li>
-                <li><a href="tokyo-fuji">טוקיו פוג'י והסביבה</a></li>
-                <li><a href="alps">האלפים היפניים</a></li>
-                <li><a href="kyoto-osaka">קיוטו אוסקה ומה שביניהן</a></li>
-                <li><a href="island-hopping">איילנד הופינג ביפן</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div id="floatingBtn" class="floating-menu-btn">☰</div>
-
-<div id="sideMenu" class="side-menu">
-    <div id="closeBtn" class="side-menu-close">&times;</div>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="forum">Forum</a></li>
-        <li><a href="ai-agent">סוכן AI ✨</a></li>
-        <li><a href="general-info">תכנון מסלול ומידע כללי</a></li>
-        <li><a href="tokyo-fuji">טוקיו פוג'י והסביבה</a></li>
-        <li><a href="alps">האלפים היפניים</a></li>
-        <li><a href="kyoto-osaka">קיוטו ואוסקה</a></li>
-        <li><a href="island-hopping">איילנד הופינג ביפן</a></li>
-    </ul>
-</div>
+    <div id="menu-placeholder"></div>
 
     <main class="post-container">
         
@@ -459,55 +434,8 @@ nav ul li a { color: #3e7b73; }
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const floatingBtn = document.getElementById("floatingBtn");
-        const sideMenu = document.getElementById("sideMenu");
-        const closeBtn = document.getElementById("closeBtn");
+    <script src="menu.js"></script>
 
-        // בדיקת גלילה להצגת הכפתור
-        window.addEventListener("scroll", function() {
-            if (window.innerWidth <= 768) {
-                if (window.scrollY > 200) {
-                    floatingBtn.style.display = "flex";
-                } else {
-                    floatingBtn.style.display = "none";
-                }
-            }
-        });
-
-        // פתיחת התפריט (עם ההקפאה הפשוטה)
-        floatingBtn.addEventListener("click", function() {
-            sideMenu.classList.add("open");
-            document.body.classList.add("no-scroll"); 
-        });
-
-        // סגירת התפריט בלחיצה על האיקס
-        closeBtn.addEventListener("click", function() {
-            sideMenu.classList.remove("open");
-            document.body.classList.remove("no-scroll"); 
-        });
-
-        // סגירת התפריט בלחיצה על הקישורים
-        const menuLinks = sideMenu.querySelectorAll("a");
-        menuLinks.forEach(link => {
-            link.addEventListener("click", () => {
-                sideMenu.classList.remove("open");
-                document.body.classList.remove("no-scroll"); 
-            });
-        });
-
-        // סגירת התפריט בלחיצה בחוץ
-        document.addEventListener("click", function(event) {
-            if (sideMenu.classList.contains("open")) {
-                if (!sideMenu.contains(event.target) && !floatingBtn.contains(event.target)) {
-                    sideMenu.classList.remove("open");
-                    document.body.classList.remove("no-scroll"); 
-                }
-            }
-        });
-    });
-</script>
 
 </body>
 </html>

@@ -29,6 +29,8 @@ header {
     z-index: 1000; 
 }
 
+ #menu-placeholder {position: sticky; top: 0; z-index: 1000;}
+
 /* הסתרת תפריט הצד והכפתור במסכים גדולים */
 .side-menu, .floating-menu-btn { display: none; }
 
@@ -186,8 +188,10 @@ body.no-scroll {
         /* רספונסיביות לטלפון */
         @media (max-width: 768px) {
             .hero-image { height: 30vh; }
-            header { flex-direction: column; padding: 15px; text-align: center; position: relative; }
-            nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
+            /* השארת הלוגו ממורכז למעלה והסתרת התפריט הרגיל */
+            header { padding: 15px; text-align: center; display: block; }
+            nav.desktop-nav { display: none; } /* מעלים את רשימת הקישורים בטלפון */
+            #menu-placeholder {position: static; }/* הפקודה הזו מבטלת את הדביקות בנייד */
             
             .post-container { margin: 0; padding: 40px 20px; border-radius: 0; }
             .post-title { font-size: 32px; }
@@ -283,37 +287,7 @@ body.no-scroll {
 </head>
 <body>
 
-    <header>
-        <div class="logo">ישראלי ביפן</div>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="forum">Forum</a></li>
-                <li><a href="ai-agent">סוכן AI ✨</a></li>
-                <li><a href="general-info">תכנון מסלול ומידע כללי על יפן</a></li>
-                <li><a href="tokyo-fuji">טוקיו פוג'י והסביבה</a></li>
-                <li><a href="alps">האלפים היפניים</a></li>
-                <li><a href="kyoto-osaka">קיוטו אוסקה ומה שביניהן</a></li>
-                <li><a href="island-hopping">איילנד הופינג ביפן</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div id="floatingBtn" class="floating-menu-btn">☰</div>
-
-<div id="sideMenu" class="side-menu">
-    <div id="closeBtn" class="side-menu-close">&times;</div>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="forum">Forum</a></li>
-        <li><a href="ai-agent">סוכן AI ✨</a></li>
-        <li><a href="general-info">תכנון מסלול ומידע כללי</a></li>
-        <li><a href="tokyo-fuji">טוקיו פוג'י והסביבה</a></li>
-        <li><a href="alps">האלפים היפניים</a></li>
-        <li><a href="kyoto-osaka">קיוטו ואוסקה</a></li>
-        <li><a href="island-hopping">איילנד הופינג ביפן</a></li>
-    </ul>
-</div>
+    <div id="menu-placeholder"></div>
 
     <main class="post-container">
         
@@ -436,55 +410,8 @@ body.no-scroll {
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const floatingBtn = document.getElementById("floatingBtn");
-        const sideMenu = document.getElementById("sideMenu");
-        const closeBtn = document.getElementById("closeBtn");
+    <script src="menu.js"></script>
 
-        // בדיקת גלילה להצגת הכפתור בטלפון
-        window.addEventListener("scroll", function() {
-            if (window.innerWidth <= 768) {
-                if (window.scrollY > 200) {
-                    floatingBtn.style.display = "flex";
-                } else {
-                    floatingBtn.style.display = "none";
-                }
-            }
-        });
-
-        // פתיחת התפריט (הקפאה פשוטה)
-        floatingBtn.addEventListener("click", function() {
-            sideMenu.classList.add("open");
-            document.body.classList.add("no-scroll"); 
-        });
-
-        // סגירת התפריט בלחיצה על האיקס
-        closeBtn.addEventListener("click", function() {
-            sideMenu.classList.remove("open");
-            document.body.classList.remove("no-scroll"); 
-        });
-
-        // סגירת התפריט בלחיצה על אחד הקישורים
-        const menuLinks = sideMenu.querySelectorAll("a");
-        menuLinks.forEach(link => {
-            link.addEventListener("click", () => {
-                sideMenu.classList.remove("open");
-                document.body.classList.remove("no-scroll"); 
-            });
-        });
-
-        // סגירת התפריט בלחיצה בכל מקום מחוץ אליו
-        document.addEventListener("click", function(event) {
-            if (sideMenu.classList.contains("open")) {
-                if (!sideMenu.contains(event.target) && !floatingBtn.contains(event.target)) {
-                    sideMenu.classList.remove("open");
-                    document.body.classList.remove("no-scroll"); 
-                }
-            }
-        });
-    });
-</script>
 
 </body>
 </html>
