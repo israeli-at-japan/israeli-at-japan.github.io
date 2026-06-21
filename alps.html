@@ -13,22 +13,25 @@
         body { font-family: 'Assistant', sans-serif; color: #3e7b73; line-height: 1.6; }
         a { text-decoration: none; color: inherit; }
 
-        /* תפריט עליון - זהה לעמוד הבית */
+        /* תפריט עליון */
+        /* תפריט עליון - עדכנו פה את המיקום שיהיה דביק למחשב */
         header { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 20px 50px; 
-    background: #fff; 
-    border-bottom: 1px solid #eee; 
-    position: sticky; 
-    top: 0; 
-    z-index: 1000; 
-}
-        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
-        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
-        nav ul li:hover { opacity: 0.7; cursor: pointer; }
-        nav ul li a { color: #3e7b73; }
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 50px; 
+            background: #fff; 
+            border-bottom: 1px solid #eee; 
+            position: sticky; /* הופך לדביק */
+            top: 0; /* נדבק לחלק העליון */
+            z-index: 1000; /* דואג שהוא תמיד ירחף מעל התוכן ולא יוסתר */
+            }
+            /* הסתרת תפריט הצד והכפתור במסכים גדולים */
+            .side-menu, .floating-menu-btn { display: none; }
+            .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+            nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
+            nav ul li:hover { opacity: 0.7; cursor: pointer; }
+            nav ul li a { color: #3e7b73; }
 
         #menu-placeholder {position: sticky; top: 0; z-index: 1000;}
 
