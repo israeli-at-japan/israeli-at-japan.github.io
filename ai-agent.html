@@ -18,20 +18,26 @@
         a { text-decoration: none; color: inherit; }
 
         /* תפריט עליון */
+        /* תפריט עליון - עדכנו פה את המיקום שיהיה דביק למחשב */
         header { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
             padding: 20px 50px; 
+            background: #fff; 
             border-bottom: 1px solid #eee; 
-            background: white; 
-            /* שתי השורות שמצילות את התפריט: */
-            position: relative; 
-            z-index: 100; 
-        }
-        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
-        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; color: #3e7b73; font-weight: 600; }
-        nav ul li:hover { opacity: 0.7; cursor: pointer; }
+            position: sticky; /* הופך לדביק */
+            top: 0; /* נדבק לחלק העליון */
+            z-index: 1000; /* דואג שהוא תמיד ירחף מעל התוכן ולא יוסתר */
+            }
+            /* הסתרת תפריט הצד והכפתור במסכים גדולים */
+            .side-menu, .floating-menu-btn { display: none; }
+            .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+            nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
+            nav ul li:hover { opacity: 0.7; cursor: pointer; }
+            nav ul li a { color: #3e7b73; }
+
+        #menu-placeholder {position: sticky; top: 0; z-index: 1000;}
 
         /* אזור הצ'אט המעוצב */
         /* אזור הצ'אט המעוצב - ללא התמונה עצמה */
@@ -160,8 +166,11 @@
 
         /* התאמה לנייד */
         @media (max-width: 768px) {
-            header { flex-direction: column; padding: 15px; text-align: center; }
-            nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
+            /* השארת הלוגו ממורכז למעלה והסתרת התפריט הרגיל */
+            header { padding: 15px; text-align: center; display: block; }
+            nav.desktop-nav { display: none; } /* מעלים את רשימת הקישורים בטלפון */
+            #menu-placeholder {position: static; }/* הפקודה הזו מבטלת את הדביקות בנייד */
+
             .chat-section { padding: 30px 5%; }
             .chat-header h1 { font-size: 32px; }
             .chat-container { padding: 0; }
@@ -170,7 +179,82 @@
             .gemini-input-bar { flex-wrap: wrap; border-radius: 20px; padding: 15px; }
             .agent-dropdown { order: 2; width: auto; flex-grow: 1; text-align: right; }
             .send-btn { order: 3; }
+
+            /* כפתור ההמבורגר הצף - ימין למעלה וממורכז */
+            .floating-menu-btn {
+                display: none; /* ישתנה ל-flex דרך ה-JS */
+                position: fixed;
+                bottom: 30px;
+                right: 20px; /* שינינו לימינה */
+                width: 55px;
+                height: 55px;
+                background-color: #3e7b73;
+                color: #fff;
+                border-radius: 50%;
+                /* 3 השורות הבאות דואגות למרכוז מושלם של האייקון */
+                display: flex; 
+                justify-content: center;
+                align-items: center;
+                font-size: 26px;
+                cursor: pointer;
+                z-index: 999;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                transition: transform 0.2s;
+            }
+            .floating-menu-btn:active { transform: scale(0.95); }
+        
+            /* תפריט הצד המחליק */
+            .side-menu {
+                display: block; 
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 260px;
+                height: 100vh; /* גיבוי לדפדפנים ישנים */
+                height: 100dvh; /* הגובה הדינמי החדש והמדויק */
+                overflow-y: auto;
+                overscroll-behavior: contain; /* מונע את ה"קפיץ" המעצבן של הטלפון */
+                background-color: #fff;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                z-index: 1001; 
+                transition: right 0.3s ease;
+                padding-top: 60px;
+                padding-bottom: 50px; /* מרווח נשימה כדי שהלינק האחרון לא ייתקע למטה */
+            }
+            /* "כרית אוויר" שקופה בתחתית הרשימה כדי לספוג את הקפיצות של ספארי */
+            .side-menu ul::after {
+                content: "";
+                display: block;
+                height: 53px; /* גובה הריבוע הבלתי נראה */
+                width: 100%;
+            }
+            .side-menu.open { right: 0; }
+            
+            .side-menu ul { list-style: none; padding: 0; margin: 0; }
+            .side-menu ul li { border-bottom: 1px solid #f5f5f5; }
+            .side-menu ul li a {
+                color: #3e7b73;
+                font-size: 18px;
+                font-weight: 600;
+                display: block;
+                padding: 15px 25px;
+            }
+            .side-menu-close {
+                position: absolute;
+                top: 15px;
+                left: 20px;
+                font-size: 35px;
+                color: #333;
+                cursor: pointer;
+                line-height: 1;
+            }
         }
+
+        /* הקפאת גלילה של האתר כשהתפריט מובייל פתוח */
+        body.no-scroll {
+        overflow: hidden;
+        }
+
     </style>
 
         <!-- Google tag (gtag.js) -->
@@ -188,21 +272,7 @@
 </head>
 <body>
 
-    <header>
-        <div class="logo">ישראלי ביפן</div>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="forum">Forum</a></li>
-                <li><a href="ai-agent">סוכן AI ✨</a></li>
-                <li><a href="general-info">תכנון טיול ומידע כללי</a></li>
-                <li><a href="tokyo-fuji"> טוקיו פוג'י והסביבה</a></li>
-                <li><a href="alps">האלפים היפניים</a></li>
-                <li><a href="kyoto-osaka">קיוטו אוסקה ומה שביניהן</a></li>
-                <li><a href="island-hopping">איילנד הופינג ביפן</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div id="menu-placeholder"></div>
 
     <section class="chat-section">
         <div class="chat-header">
@@ -418,5 +488,9 @@
             }
         }
     </script>
+
+    //קוד תפריט המבורגר
+    <script src="menu.js"></script>
+    
 </body>
 </html>
