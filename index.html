@@ -142,9 +142,30 @@
         .whisk-1 { top: 60px; right: 17%; width: 90px; transform: rotate(85deg); opacity: 0.4; }
         .whisk-2 { bottom: 30px; right: 19%; width: 110px; transform: rotate(-10deg); opacity: 0.3; }
 
-        /* אזור צור קשר תחתון */
-        .contact-section { text-align: center; padding: 80px 20%; background: #fff; }
-        .contact-section p { font-size: 32px; font-weight: 300; margin-bottom: 40px; line-height: 1.4; }
+       /* אזור צור קשר תחתון */
+        .contact-section { 
+            text-align: center; 
+            padding: 60px 15px; /* הורדנו את ה-20% כדי לתת לטקסט לנשום */
+            background: #f2f9f6; 
+        }
+        
+        .contact-title { 
+            color: #437a71; 
+            font-size: 28px; 
+            font-weight: bold; 
+            margin-top: 0; 
+            margin-bottom: 20px; 
+        }
+        
+        .contact-text { 
+            font-size: 20px; 
+            font-weight: 400; 
+            line-height: 1.5; 
+            margin-bottom: 20px; 
+            max-width: 600px; /* זה מה שישמור שהטקסט במחשב לא יימרח מקצה לקצה */
+            margin-left: auto; 
+            margin-right: auto; 
+        }
         .btn {
             display: inline-block;
             background-color: #437a71;
@@ -207,6 +228,16 @@
             .matcha-donate-content h2 { font-size: 24px; }
             .deco { display: none; }
             .desktop-break { display: none; } /* מסתיר את שבירת השורה בטלפון */
+
+            /* התאמות אזור צור קשר לטלפון */
+            .contact-section { padding: 40px 15px !important; } 
+            .contact-title { font-size: 24px !important; }
+            .contact-text { font-size: 18px !important; line-height: 1.4 !important; }
+            .desktop-break { display: none !important; }
+        
+            /* סידור הכפתורים למטה כדי שייכנסו במסך */
+            #buttons-container { gap: 10px !important; flex-wrap: wrap !important; }
+            .btn { padding: 12px 20px !important; font-size: 16px !important; }
 
             /* כפתור ההמבורגר הצף - ימין למעלה וממורכז */
             .floating-menu-btn {
@@ -361,7 +392,7 @@
         </div>
     </section>
 
-    <section class="contact-section" style="background-color: #f2f9f6;">
+    <section class="contact-section">
         <h2 class="contact-title">צריכים עזרה עם המסלול? אנחנו כאן! 🙋‍♂️</h2>
         
         <p class="contact-text">
