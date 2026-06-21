@@ -9,6 +9,14 @@
     <meta name="description" content="תכנון מסלול מושלם ליפן: ממסלול קלאסי של שבועיים ועד מסלול מקיף של חודש. הצעות לטוקיו, קיוטו, אוסקה, פוג'י והאלפים היפניים, בהתאמה לעונות השנה.">
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+       /* איפוס והגדרות בסיס */
+        body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+        body { font-family: 'Assistant', sans-serif; color: #333; line-height: 1.8; background-color: #fafafa; }
+        h1, h2, h3, h4 { color: #3e7b73; }
+        a { text-decoration: none; color: inherit; }
+
+        /* תפריט עליון */
+        /* תפריט עליון - דביק למחשב */
         header { 
             display: flex; 
             justify-content: space-between; 
@@ -21,19 +29,17 @@
             z-index: 1000; 
         }
         
-        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
-        nav.desktop-nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; margin: 0; padding: 0; }
-        nav.desktop-nav ul li:hover { opacity: 0.7; cursor: pointer; }
-        nav.desktop-nav ul li a { color: #3e7b73; text-decoration: none; }
-        
-        /* הסתרת תפריט הצד והכפתור של הנייד במסכים גדולים */
+        /* הסתרת תפריט הצד והכפתור במסכים גדולים */
         .side-menu, .floating-menu-btn { display: none; }
-        body.no-scroll { overflow: hidden; }
-
-        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
-        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
-        nav ul li:hover { opacity: 0.7; cursor: pointer; }
-        nav ul li a { color: #3e7b73; }
+        
+        /* הקפאת גלילה פשוטה וקונסיסטנטית למובייל */
+        body.no-scroll {
+            overflow: hidden;
+        }
+                .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+                nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
+                nav ul li:hover { opacity: 0.7; cursor: pointer; }
+                nav ul li a { color: #3e7b73; }
 
         /* אזור התוכן של הפוסט */
         .post-container { max-width: 800px; margin: 50px auto; background: #fff; padding: 60px; box-shadow: 0 0 10px rgba(0,0,0,0.02); }
