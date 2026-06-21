@@ -9,11 +9,26 @@
     <meta name="description" content="תכנון מסלול מושלם ליפן: ממסלול קלאסי של שבועיים ועד מסלול מקיף של חודש. הצעות לטוקיו, קיוטו, אוסקה, פוג'י והאלפים היפניים, בהתאמה לעונות השנה.">
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* איפוס והגדרות בסיס */
-        body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
-        body { font-family: 'Assistant', sans-serif; color: #333; line-height: 1.8; background-color: #fafafa; }
-        h1, h2, h3, h4 { color: #3e7b73; }
-        a { text-decoration: none; color: inherit; }
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 50px; 
+            background: #fff; 
+            border-bottom: 1px solid #eee; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+        
+        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+        nav.desktop-nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; margin: 0; padding: 0; }
+        nav.desktop-nav ul li:hover { opacity: 0.7; cursor: pointer; }
+        nav.desktop-nav ul li a { color: #3e7b73; text-decoration: none; }
+        
+        /* הסתרת תפריט הצד והכפתור של הנייד במסכים גדולים */
+        .side-menu, .floating-menu-btn { display: none; }
+        body.no-scroll { overflow: hidden; }
 
         .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
         nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
@@ -67,6 +82,68 @@
 
             /* הפיכת הפוסטים האחרונים לטור (אחד מתחת לשני) */
             .recent-posts-grid { flex-direction: column; gap: 20px; }
+
+        
+    
+            /* השארת הלוגו ממורכז למעלה והסתרת התפריט הרגיל */
+            header { padding: 15px; text-align: center; display: block; }
+            nav.desktop-nav { display: none; } /* מעלים את רשימת הקישורים בטלפון */
+        
+                /* כפתור ההמבורגר הצף */
+                .floating-menu-btn {
+                    display: flex; /* יוסתר/יוצג על ידי ה-JS אבל ברירת המחדל לנייד היא flex */
+                    position: fixed;
+                    bottom: 30px;
+                    right: 20px; 
+                    width: 55px;
+                    height: 55px;
+                    background-color: #3e7b73;
+                    color: #fff;
+                    border-radius: 50%;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 26px;
+                    cursor: pointer;
+                    z-index: 999;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                    transition: transform 0.2s;
+                }
+                .floating-menu-btn:active { transform: scale(0.95); }
+            
+                /* תפריט הצד המחליק */
+                .side-menu {
+                    display: block; 
+                    position: fixed;
+                    top: 0;
+                    right: -300px;
+                    width: 260px;
+                    height: 100vh; 
+                    height: 100dvh; 
+                    overflow-y: auto;
+                    overscroll-behavior: contain; 
+                    background-color: #fff;
+                    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                    z-index: 1001; 
+                    transition: right 0.3s ease;
+                    padding-top: 60px;
+                    padding-bottom: 50px; 
+                }
+                .side-menu ul::after { content: ""; display: block; height: 54px; width: 100%; }
+                .side-menu.open { right: 0; }
+                .side-menu ul { list-style: none; padding: 0; margin: 0; }
+                .side-menu ul li { border-bottom: 1px solid #f5f5f5; }
+                .side-menu ul li a { color: #3e7b73; font-size: 18px; font-weight: 600; display: block; padding: 15px 25px; text-decoration: none; }
+                
+                .side-menu-close {
+                    position: absolute;
+                    top: 15px;
+                    left: 20px;
+                    font-size: 35px;
+                    color: #333;
+                    cursor: pointer;
+                    line-height: 1;
+                }
+    }
 
     </style>
 
