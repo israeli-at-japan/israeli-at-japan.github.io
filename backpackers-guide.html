@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מידע לתרמילאי | ישראלי ביפן</title>
+    <title>מידע לתרמילאי ביפן  | ישראלי ביפן</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="canonical" href="https://israeli-in-japan.com/backpackers-guide" />
     <meta name="description" content="המדריך האולטימטיבי לתרמילאי ביפן: תקציב, אוטובוסי לילה, לינה בחינם בבית שלום, הוסטלים מומלצים, מכבסות ומספרות זולות.">
@@ -17,23 +17,25 @@
 
         /* תפריט עליון */
         /* תפריט עליון - עדכנו פה את המיקום שיהיה דביק למחשב */
-    header { 
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
-        padding: 20px 50px; 
-        background: #fff; 
-        border-bottom: 1px solid #eee; 
-        position: sticky; /* הופך לדביק */
-        top: 0; /* נדבק לחלק העליון */
-        z-index: 1000; /* דואג שהוא תמיד ירחף מעל התוכן ולא יוסתר */
-        }
-        /* הסתרת תפריט הצד והכפתור במסכים גדולים */
-        .side-menu, .floating-menu-btn { display: none; }
-        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
-        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
-        nav ul li:hover { opacity: 0.7; cursor: pointer; }
-        nav ul li a { color: #3e7b73; }
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 50px; 
+            background: #fff; 
+            border-bottom: 1px solid #eee; 
+            position: sticky; /* הופך לדביק */
+            top: 0; /* נדבק לחלק העליון */
+            z-index: 1000; /* דואג שהוא תמיד ירחף מעל התוכן ולא יוסתר */
+            }
+            /* הסתרת תפריט הצד והכפתור במסכים גדולים */
+            .side-menu, .floating-menu-btn { display: none; }
+            .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+            nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
+            nav ul li:hover { opacity: 0.7; cursor: pointer; }
+            nav ul li a { color: #3e7b73; }
+
+        #menu-placeholder {position: sticky; top: 0; z-index: 1000;}
 
         /* אזור התוכן של הפוסט */
         .post-container { max-width: 800px; margin: 50px auto; background: #fff; padding: 60px; box-shadow: 0 0 10px rgba(0,0,0,0.02); }
@@ -132,9 +134,11 @@
            הגדרות עיצוב מיוחדות למסכי טלפון בלבד
            ========================================= */
         @media (max-width: 768px) {
-            header { flex-direction: column; padding: 15px; text-align: center; position: relative; }
-            nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
-
+            /* השארת הלוגו ממורכז למעלה והסתרת התפריט הרגיל */
+            header { padding: 15px; text-align: center; display: block; }
+            nav.desktop-nav { display: none; } /* מעלים את רשימת הקישורים בטלפון */
+            #menu-placeholder {position: static; }/* הפקודה הזו מבטלת את הדביקות בנייד */
+            
             .post-container { margin: 0; padding: 40px 20px; box-shadow: none; }
             .hero-image { height: 30vh; margin-bottom: 25px; }
             .post-header h1 { font-size: 32px; }
@@ -234,37 +238,7 @@
 </head>
 <body>
 
-    <header>
-        <div class="logo">ישראלי ביפן</div>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="forum">Forum</a></li>
-                <li><a href="ai-agent">סוכן AI ✨</a></li>
-                <li><a href="general-info">תכנון מסלול ומידע כללי על יפן</a></li>
-                <li><a href="tokyo-fuji">טוקיו פוג'י והסביבה</a></li>
-                <li><a href="alps">האלפים היפניים</a></li>
-                <li><a href="kyoto-osaka">קיוטו אוסקה ומה שביניהן</a></li>
-                <li><a href="island-hopping">איילנד הופינג ביפן</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div id="floatingBtn" class="floating-menu-btn">☰</div>
-
-<div id="sideMenu" class="side-menu">
-    <div id="closeBtn" class="side-menu-close">&times;</div>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="forum">Forum</a></li>
-        <li><a href="ai-agent">סוכן AI ✨</a></li>
-        <li><a href="general-info">תכנון מסלול ומידע כללי</a></li>
-        <li><a href="tokyo-fuji">טוקיו פוג'י והסביבה</a></li>
-        <li><a href="alps">האלפים היפניים</a></li>
-        <li><a href="kyoto-osaka">קיוטו ואוסקה</a></li>
-        <li><a href="island-hopping">איילנד הופינג ביפן</a></li>
-    </ul>
-</div>
+    <div id="menu-placeholder"></div>
 
     <main class="post-container">
         
@@ -410,57 +384,8 @@
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const floatingBtn = document.getElementById("floatingBtn");
-        const sideMenu = document.getElementById("sideMenu");
-        const closeBtn = document.getElementById("closeBtn");
-
-        // פונקציה לבדיקת גלילה בטלפון
-        window.addEventListener("scroll", function() {
-            // בודק שאנחנו במסך של טלפון (עד 768 פיקסלים)
-            if (window.innerWidth <= 768) {
-                // אם גללנו יותר מ-200 פיקסלים למטה, הכפתור יופיע
-            if (window.scrollY > 200) {
-                floatingBtn.style.display = "flex"; // <-- שינינו פה!
-            } else {
-                floatingBtn.style.display = "none";
-            }
-            }
-        });
-
-        // פתיחת התפריט בלחיצה על ההמבורגר
-        floatingBtn.addEventListener("click", function() {
-            sideMenu.classList.add("open");
-            document.body.classList.add("no-scroll"); // <-- מקפיא את הרקע
-        });
-
-        // סגירת התפריט בלחיצה על האיקס
-        closeBtn.addEventListener("click", function() {
-            sideMenu.classList.remove("open");
-            document.body.classList.remove("no-scroll"); // <-- משחרר את הרקע
-        });
-
-        // סגירת התפריט אם לוחצים על אחד הקישורים
-        const menuLinks = sideMenu.querySelectorAll("a");
-        menuLinks.forEach(link => {
-            link.addEventListener("click", () => {
-                sideMenu.classList.remove("open");
-                document.body.classList.remove("no-scroll"); // <-- משחרר את הרקע
-            });
-        });
-
-        // סגירת התפריט בלחיצה בכל מקום מחוץ אליו
-        document.addEventListener("click", function(event) {
-            if (sideMenu.classList.contains("open")) {
-                if (!sideMenu.contains(event.target) && !floatingBtn.contains(event.target)) {
-                    sideMenu.classList.remove("open");
-                    document.body.classList.remove("no-scroll"); // <-- משחרר את הרקע
-                }
-            }
-        });
-    });
-</script>
+    //קוד תפריט המבורגר
+<script src="menu.js"></script>
 
 </body>
 </html>
