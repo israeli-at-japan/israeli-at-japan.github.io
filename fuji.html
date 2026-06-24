@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>פוג'י | ישראלי ביפן</title>
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="canonical" href="https://israeli-in-japan.com/fuji" />
-    <meta name="description" content="המדריך המלא לטיול בהר פוג'י: קאווגוציקו או האקונה? טיפים לבדיקת הראות, נקודות תצפית מומלצות סביב האגמים, לינה באזור, פארק השעשועים פוג'י קיו וטיפוס לפסגה.">
+    <title>הר פוג'י והאקונה: המדריך המלא לטיול | ישראלי ביפן</title>    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="canonical" href="https://israeli-in-japan.com/test" />
+    <meta name="description" content="מתכננים טיול להר פוג'י? המדריך המלא שיעשה לכם סדר: מתלבטים בין קאווגוצ'יקו להאקונה? כל המידע על נקודות התצפית הכי טובות, המסלול המעגלי, אונסנים ופארק פוג'י-קיו.">
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* איפוס והגדרות בסיס */
@@ -186,6 +185,72 @@
             color: #ffffff;
         }
 
+        /* עיצוב כפתור המידע (i) */
+        .info-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background-color: #437a71;
+            color: white;
+            border: none;
+            font-size: 14px;
+            font-family: serif;
+            font-style: italic;
+            cursor: pointer;
+            margin: 0 6px;
+            vertical-align: middle;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+        .info-btn:hover {
+            background-color: #2e5750;
+            transform: scale(1.1);
+        }
+        
+        /* עיצוב הרקע הכהה של החלון הקופץ */
+        .modal-overlay {
+            display: none; /* מוסתר בהתחלה */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-overlay.show {
+            display: flex; /* מציג את החלון כשיש לו את הקלאס show */
+        }
+        
+        /* עיצוב התמונה שבתוך החלון */
+        .modal-image {
+            max-width: 700px; /* מגביל את הגודל במחשב שלא יהיה תוקפני מדי */
+            width: 90%; /* מבטיח שבטלפון זה עדיין ייראה טוב וישב בתוך המסך */
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+        }
+        
+        /* עיצוב כפתור הסגירה (X) */
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 45px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+        .close-modal:hover {
+            color: #437a71;
+        }
+
         /* רספונסיביות לטלפון */
         @media (max-width: 768px) {
             /* השארת הלוגו ממורכז למעלה והסתרת התפריט הרגיל */
@@ -312,7 +377,16 @@
             <p>דרך אתר <a href="https://fuji-san.info/en/" target="_blank">SeeMtFuji</a> מסתכלים מה הראות של פוג׳י בזמן שאתה רוצה להגיע וזה ממש קריטי, אנחנו הסתכלנו שבוע מראש והראות הייתה טובה אבל בימים שהתקרבו הראות הדרדרה עד שביום הראשון שלנו לא ראינו כלום אז זה ממש משהו שצריך לבדוק ימים בודדים מראש או לקחת את הסיכון.</p>
             <p>חשוב לציין שגם קאווגוציקו וגם האקונה נמצאות צפון מזרחית לפוג׳י וחשוב להסתכל על העמודה הנכונה באתר.</p>
 
+            <h3>טיפוס על הר פוג׳י</h3>
+            <p>הטיפוס אפשרי רק בחודשים יולי עד ספטמבר בתאריכים ספציפיים בגלל תנאי מזג האוויר הקשים על ההר.<br>
+            אנחנו לא הגענו בתקופה ולא טיפסנו על ההר אבל ממה ששמענו מאנשים, אם אתם טיילנים מושבעים זה יהיה אחד המסלולים הבלתי נשכחים שתעשו, ואם הגעתם להתפנק בחופשה ביפן כנראה שתהנו יותר מהנוף אל ההר מאיזה אונסן מפנק.</p>
+
+            <p>קרדיט לשליו דהן שסידר את <a href="https://docs.google.com/document/d/12I-f3dC_OKZkl7oJSB1-uV1oHKeJFYthLsTxiPFZf5g/edit" target="_blank">כל המידע שצריך לטיפוס על פוג׳י</a></p>
+
+
             <hr style="margin: 40px 0;">
+
+            <img src="images/fujikawa.jpg.avif" alt="קולאז' פוג'י" loading="lazy">
 
             <h3>לינה</h3>
             <p>אנחנו ישנו בעיירת kawaguchiko.</p>
@@ -326,8 +400,36 @@
 
             <hr style="margin: 40px 0;">
             
+            <h3>נקודות תצפית על פוג׳י</h3>
+            <p>בתאריכים מסוימים יש פסטיבל פרחים ב- Fuji Motosuko Reasort<br>
+            אמור להיות ממש יפה אבל התור לאוטובוס לשם משוגע, אנחנו הגענו במחשבה שנעלה על האוטובוס של תשע וחצי ואמרו לנו שאולי נספיק ל-11:30 אז ויתרנו, אם אתם בוחרים להשקיע ללכת לפסטיבל פשוט תגיעו מוקדם ותהיו מוכנים לעמוד בתור.</p>
+            
+            <p>אנחנו הלכנו במקום לשני פארקים:</p>
+            <p><strong>Oishi park</strong><br>
+            גם שם היו פרחים מהממים ולא מעט אנשים, אבל הלכנו קצת פנימה לתוך הפרחים ובסוף הגענו לשפת האגם ושם כבר היו פחות אנשים.</p>
+            <p><strong>Oike park</strong><br>
+            יותר קרוב למרכז גם נקודת תצפית חמודה.</p>
+
+            <p>לסיכום, תגיעו בזמן שיש ראות טובה ואז כל מקום שתגיעו אליו יהיה יפה ולא חייב להגיע לאיפה שכולם מגיעים כי זה מפוצץ אנשים.</p>
+
+            <h4>מקומות אייקוניים לתצפית (שלא ביקרנו בהם)</h4>
+            
+            <ul>
+                <li><strong>פגודת צ'ורייטו (Chureito Pagoda):</strong> כנראה התמונה הכי מפורסמת של יפן בעולם, פגודה אדומה עם הר פוג'י ברקע. קחו בחשבון שצריך לטפס כ-400 מדרגות כדי להגיע לתצפית, ושבעונות השיא (פריחת הדובדבן ושלכת) המקום עמוס בצורה קיצונית.</li>
+                
+                <li><strong>הרכבל הפנורמי של הר פוג'י (Mt. Fuji Panoramic Ropeway):</strong> רכבל שעולה להר טנז'ו (Mount Tenjo) ומציע נוף פתוח לחלוטין של הר פוג'י ואגם קאווגוצ'יקו מלמעלה. אטרקציה סופר פופולרית, אז שוב, כדאי להגיע מוקדם כדי להימנע מתורים ארוכים.</li>
+                
+                <li><strong>אושינו הקאי (Oshino Hakkai):</strong> כפר מסורתי שנמצא בין אגם קאווגוצ'יקו לאגם יאמאנקה. יש בו 8 בריכות מים צלולים עם נוף של פוג׳י ברקע.</li>
+                
+                <li><strong>רחוב הונצ'ו בפוּג'יוֹשידָה (Fujiyoshida Retro Shopping Street):</strong> הרחוב המפורסם מהאינסטגרם והטיקטוק, שבו רואים את פוג'י מציץ בענק בקצה של רחוב יפני רגיל עם חנויות ופנסי נייר. טיפ חשוב: שימו לב לתנועת הרכבים ואל תפריעו לתושבים, המקומיים די סובלים שם מעומס התיירים שיורדים לכביש כדי לצלם.</li>
+            </ul>
+
+            <p>אם במקרה הגעתם ואין ראות לכו לפארק שעשועים ותהנו ממלא מתקנים משוגעים בלי תורים.</p>
+
+            <hr style="border-top: 1px dashed #3e7b73; margin: 40px 0;">
+
             <h3>Fuji Q</h3>
-            <p>פארק שעשועים הכי משוגע שיש ביפן והרביעי הכי טוב בעולם, הגענו ביום שהראות על פוגי לא הייתה טובה ובגלל זה הפארק היה ריק וזה היה מטורף עלינו על הכלללל בלי תורים בכלל.<br>
+            <p>פארק שעשועים הכי משוגע שיש ביפן והרביעי הכי טוב בעולם, הגענו ביום שהראות על פוג׳י לא הייתה טובה ובגלל זה הפארק היה ריק וזה היה מטורף עלינו על הכלללל בלי תורים בכלל.<br>
             עלה 143 ש״ח, שילמנו בכניסה.<br>
             יש גם אופציה לקנות כרטיס לשלושה מתקנים או פשוט לשלם בכניסה לכל מתקן אם אתם רוצים משהו בקטנה.</p>
             <p>את הכרטיסים לפארק <a href="https://affiliate.klook.com/redirect?aid=124629&aff_adid=1308886&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F95879-fujiq-highland-admission-ticket" target="_blank" style="color: #3e7b73; text-decoration: underline; font-weight: bold;">תוכלו להזמין מראש דרך קלוק כאן</a>. 💡 <strong>טיפ קטן:</strong> הזינו את הקוד <strong>BETTERONAPP</strong> באפליקציה וקבלו 5% הנחה על ההזמנה הראשונה שלכם.</p>
@@ -340,31 +442,50 @@
                     הכרטיס של קלוק פתוח ל-90 יום ממועד הרכישה, שזה יתרון מטורף שמאפשר לכם גמישות. אבל שימו לב: הפארק לפעמים <strong>סגור לחלוטין בימי חמישי</strong>, ויש ימים שבהם מתקנים מרכזיים (כמו רכבות ההרים הגדולות) סגורים לתחזוקה. לפני שאתם בוחרים יום לנסוע, חובה לבדוק את שעות הפעילות וסטטוס המתקנים <a href="https://www.fujiq.jp/en/schedule/" target="_blank" style="color: #d9534f; text-decoration: underline; font-weight: bold;">בעמוד לוח הזמנים באתר הרשמי של הפארק</a>, כדי לא לעשות את כל הדרך הארוכה לחינם!
                 </p>
             </div>
-            
-            <hr style="border-top: 1px dashed #3e7b73; margin: 40px 0;">
-
-            <h3>נקודות תצפית על פוג׳י</h3>
-            <p>בתאריכים מסוימים יש פסטיבל פרחים ב- Fuji Motosuko Reasort<br>
-            אמור להיות ממש יפה אבל התור לאוטובוס לשם משוגע, אנחנו הגענו במחשבה שנעלה על האוטובוס של תשע וחצי ואמרו לנו שאולי נספיק ל-11:30 אז ויתרנו, אם אתם בוחרים להשקיע ללכת לפסטיבל פשוט תגיעו מוקדם ותיהיו מוכנים לעמוד בתור.</p>
-            
-            <p>אנחנו הלכנו במקום לשני פארקים:</p>
-            <p><strong>Oishi park</strong><br>
-            גם שם היו פרחים מהממים ולא מעט אנשים, אבל הלכנו קצת פנימה לתוך הפרחים ובסוף הגענו לשפת האגם ושם כבר היו פחות אנשים.</p>
-            <p><strong>Oike park</strong><br>
-            יותר קרוב למרכז גם נקודת תצפית חמודה.</p>
-
-            <p>לסיכום, תגיעו בזמן שיש ראות טובה ואז כל מקום שתגיעו אליו יהיה יפה ולא חייב להגיע לאיפה שכולם מגיעים כי זה מפוצץ אנשים.<br>
-            אם במקרה הגעתם ואין ראות לכו לפארק שעשועים ותהנו ממלא מתקנים משוגעים בלי תורים.</p>
 
             <hr style="margin: 40px 0;">
 
-            <h3>טיפוס על הר פוג׳י</h3>
-            <p>הטיפוס אפשרי רק בחודשים יולי עד ספטמבר בתאריכים ספציפיים בגלל תנאי מזג האוויר הקשים על ההר.<br>
-            אנחנו לא הגענו בתקופה ולא טיפסנו על ההר אבל ממה ששמענו מאנשים, אם אתם טיילנים מושבעים זה יהיה אחד המסלולים הבלתי נשכחים שתעשו, ואם הגעתם להתפנק בחופשה ביפן כנראה שתהנו יותר מהנוף אל ההר מאיזה אונסן מפנק.</p>
+            <img src="images/Hakone.jpg.avif" alt="קולאז' האקונה" loading="lazy">
 
-            <p>קרדיט לשליו דהן שסידר את <a href="https://docs.google.com/document/d/12I-f3dC_OKZkl7oJSB1-uV1oHKeJFYthLsTxiPFZf5g/edit" target="_blank">כל המידע שצריך לטיפוס על פוג׳י</a></p>
+            <p>אם קאווגוצ'יקו היא המקום לראות בו את פוג'י מול הפנים, האקונה (Hakone) היא המקום לחוות בו את יפן המסורתית: טבע משגע, אגם ענק ומעיינות חמים (אונסנים). משם אפשר לראות את פוג'י מעט יותר מרחוק ובימים עם ראות ממש טובה, היתרון שלה הוא שגם ביום גשום ומעונן, להסתגר באונסן חם זו חוויה מטורפת בפני עצמה.</p>
+            
+            <h3>דרכי ההגעה להאקונה</h3>
+            <p>למגיעים מטוקיו מתחנת Shinjuku יוצאות רכבות של חברת Odakyu שמגיעות עד ל-Hakone Yumoto. עלות הנסיעה הבסיסית כלולה ב-<a href="https://affiliate.klook.com/sl/HnmxhQ6" target="_blank" rel="noopener noreferrer">Hakone Freepass</a> (האקונה פאס הכתום, שהוא הפאס המומלץ), אך אם תרצו לנסוע ברכבת ה-Romancecar המהירה והישירה, תצטרכו להוסיף תשלום קטן (כ-1,200 ין) עבור מושב שמור. אופציה נוספת היא הגעה עם השינקנסן לתחנת Odawara והחלפה לרכבת מקומית (מומלץ להיעזר בגוגל מאפס).</p>
+            
+            <p><strong>שליחת מזוודות:</strong> בתחנת Hakone Yumoto יש שירות לשליחת מזוודות ישירות למלון. מומלץ מאוד להשתמש בו אם אתם לא לנים בעיירה הזו, כדי שתוכלו להתחיל לטייל מיד כשאתם מגיעים בלי להיסחב. מומלץ להגיע לשירות לפני השעה 12:00 משום שלפעמים הם סוגרים מוקדם, והמזוודה תחכה לכם במלון כבר באותו היום.</p>
+            
+            <h3>לינה</h3>
+            <p>בגדול, יש שני אזורים מרכזיים שנוח ומומלץ להתמקם בהם:</p>
+            <ul>
+                <li><strong>Hakone-Yumoto (האקונה-יומוטו):</strong> התחנה המרכזית שאליה מגיעים מטוקיו. האזור הכי נוח מבחינת תחבורה, יש סביבו המון מסעדות, בתי קפה וחנויות, וזה אידיאלי למי שלא רוצה להיסחב עם מזוודות לתוך ההרים.</li>
+                <li><strong>Gora (גורה):</strong> האזור הכי מומלץ ללינה. כפר הררי שקט שידוע בריוקאנים המסורתיים שלו. הגישה אליו נוחה מאוד עם רכבת ההרים, וזה האזור למי שמחפש חוויה יפנית אותנטית יותר.</li>
+            </ul>
+            <p><strong>מלון מומלץ:</strong> <a href="https://www.anrdoezrs.net/click-101759924-11891539?url=https%3A%2F%2Fwww.booking.com%2Fhotel%2Fjp%2Fxiang-gen-yutowa.he.html" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Hakone Yutowa</a><br>
+            <strong>הוסטל מומלץ:</strong> <a href="https://www.dpbolvw.net/click-101759924-11891539?url=https%3A%2F%2Fwww.booking.com%2Fhotel%2Fjp%2Fhakone-tent.en.html" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Onsen Guesthouse HAKONE TENT</a></p>
+            
+            <h3>מה עושים בהאקונה?</h3>
+            <p>הדרך הכי פופולרית ונוחה לחוות את האזור היא לעשות את "המסלול המעגלי" (Hakone Loop). רוב המטיילים קונים מראש את ה-<a href="https://affiliate.klook.com/sl/HnmxhQ6" target="_blank" rel="noopener noreferrer">Hakone Freepass</a>, כרטיס שחוסך התעסקות וכסף וכולל נסיעה חופשית בכל אמצעי התחבורה של המסלול: רכבת הרים, רכבלים, אוטובוסים וספינה.</p>
+            
+            <p><strong>האטרקציות המרכזיות שאסור לפספס באזור:</strong></p>
+            <ul>
+                <li><strong>המוזיאון הפתוח של האקונה (The Hakone Open-Air Museum):</strong> מקום ענק שמשלב פיסול ואמנות מודרנית יחד עם נוף פתוח ויפהפה של ההרים מסביב.</li>
+                <li><strong>עמק אואקודאני (Owakudani):</strong> עמק געשי פעיל שמגיעים אליו עם הרכבל (חלק מהמסלול המעגלי). האטרקציה המרכזית פה היא הביצים השחורות – ביצים שמתבשלות בתוך המעיינות הוולקניים הרותחים.</li>
+                <li><strong>מקדש האקונה ושער הטורי במים:</strong> שער הטורי האדום והענק שניצב בתוך המים של אגם אשי (Lake Ashi). זה מקדש יפהפה שמוקף בטבע, וקרוב אליו תוכלו גם לעלות על "ספינת הפיראטים" ששטה סביב האגם. קחו בחשבון שיש תור לתמונה עם השער, אלא אם תשקימו קום ותגיעו לשם עם הזריחה.</li>
+                <li><strong>מוזיאון האמנות של נארוקאווה (Narukawa Art Museum):</strong> חובבי אמנות יפנית יעופו על המקום הזה, שכולל גם בית קפה שמציע נוף פנורמי מדהים לאגם ולשער הטורי.</li>
+            </ul>
+            
+            <h3>נקודות תצפית על פוג׳י</h3>
+            <p>הסיכויים הכי גבוהים לראות את פוג׳י הם בבוקר עד 11:30, אבל כמובן שזה לא מובטח ויכול להיות שתופתעו לטובה דווקא בצהריים.</p>
+            <ul>
+                <li><strong>עמק אואקודאני (Owakudani Valley) -</strong> המקום הכי טוב לתצפית על פוג׳י בהאקונה (חלק מהמסלול המעגלי הקלאסי).</li>
+                <li><strong>אגם אשי (Lake Ashi) -</strong> מומלץ לקחת את "ספינת הפיראטים" (Hakone Sightseeing Cruise) או לתצפת מרציף Moto-Hakone (חלק מהמסלול המעגלי).</li>
+                <li><strong>אונסן של Hotel Green Plaza Hakone -</strong> המלון ממוקם במרחק של כ-3 דקות הליכה בלבד מתחנת Ubako של הרכבל (חלק מהמסלול המעגלי). יש לבדוק באתר <a href="https://en-1075.site-translation.com/hakone/spa/" target="_blank" rel="noopener noreferrer">שעות פעילות ומחירים למבקרי יום</a>. חשוב: אין כניסה לאונסן עם קעקועים חשופים, אך ניתן לרכוש במקום מדבקות מיוחדות לכיסוי. מקבלים מגבת במקום. האונסן אינו פרטי והוא מופרד גברים ונשים.</li>
+                <li><strong>הר אשיגרה (Mount Ashigara) -</strong> ידוע גם כהר קינטוקי. 
+                    <button class="info-btn" onclick="openMapModal()" title="לחצו לצפייה במפת המסלול">i</button>
+                    מסלול הליכה שלוקח בין שעתיים לשלוש ברמת קושי בינונית-קשה. נקודת ההתחלה היא במקדש קינטוקי, ותחנת האוטובוס הקרובה (Sengoku) נמצאת במרחק 20 דקות הליכה. מסלול הרבה פחות מתוייר מהמסלול המעגלי. הטיפוס לפסגה עשוי להיות מאתגר ומומלץ להשתמש במקלות הליכה (במיוחד לחסרי ניסיון), מכיוון שהמסלול כולל מדרגות ושטח סלעי עם טיפוס של כ-500 מטרים בגובה.
+                </li>
+            </ul>
 
-            <img src="images/fuji1.jpg.avif" alt="קולאז' פוג'י" loading="lazy">
 
         </div>
     </main>
@@ -435,6 +556,27 @@
     </div>
 
     <script src="menu.js"></script>
+
+    <div id="mapModal" class="modal-overlay" onclick="closeMapModal(event)">
+        <span class="close-modal" onclick="closeMapModal(event)">&times;</span>
+        <img src="images/kintoki-map.png.avif" alt="מפת מסלול הר קינטוקי" class="modal-image">
+    </div>
+    
+    <script>
+        // פונקציות לפתיחה וסגירה של המפה
+        function openMapModal() {
+            document.getElementById('mapModal').classList.add('show');
+            document.body.style.overflow = 'hidden'; // מונע מהעמוד מאחורה להיגלל
+        }
+    
+        function closeMapModal(event) {
+            // מוודא שהסגירה קורית רק אם לחצו על הרקע או על ה-X, ולא על התמונה עצמה
+            if (event.target.id === 'mapModal' || event.target.classList.contains('close-modal')) {
+                document.getElementById('mapModal').classList.remove('show');
+                document.body.style.overflow = 'auto'; // מחזיר את הגלילה לעמוד
+            }
+        }
+    </script>
 
 
 </body>
