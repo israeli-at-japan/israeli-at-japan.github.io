@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>בדיקה | ישראלי ביפן</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="canonical" href="https://israeli-in-japan.com/test" />
+    <meta name="description" content="המדריך המלא לטיול בהר פוג'י: קאווגוציקו או האקונה? טיפים לבדיקת הראות, נקודות תצפית מומלצות סביב האגמים, לינה באזור, פארק השעשועים פוג'י קיו וטיפוס לפסגה.">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* איפוס והגדרות בסיס */
+        body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+        body { font-family: 'Assistant', sans-serif; color: #333; line-height: 1.8; background-color: #fafafa; }
+        h1, h2, h3, h4 { color: #3e7b73; }
+        a { text-decoration: none; color: inherit; }
+
+        /* תפריט עליון - דביק למחשב */
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 50px; 
+            background: #fff; 
+            border-bottom: 1px solid #eee; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+
+        #menu-placeholder {position: sticky; top: 0; z-index: 1000;}
+
+        /* הסתרת תפריט הצד והכפתור במסכים גדולים */
+        .side-menu, .floating-menu-btn { display: none; }
+
+        /* הקפאת גלילה פשוטה וקונסיסטנטית */
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
+        nav ul li:hover { opacity: 0.7; cursor: pointer; }
+        nav ul li a { color: #3e7b73; }
+        .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
+        nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
+        nav ul li:hover { opacity: 0.7; cursor: pointer; }
+        nav ul li a { color: #3e7b73; }
+
+        /* אזור הפוסט המרכזי */
+        .post-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 60px 80px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.02);
+        }
+
+        /* כותרות וטקסט בפוסט */
+        .post-title { font-size: 42px; font-weight: 400; color: #3e7b73; margin-bottom: 10px; margin-top: 20px;}
+        
+        .post-content h3 { font-size: 22px; font-weight: 600; margin: 30px 0 10px 0; }
+        .post-content p { font-size: 18px; margin-bottom: 25px; }
+        /* עיצוב רשימות בתוך הפוסט */
+        .post-content ul { 
+            list-style: disc; 
+            margin-right: 25px; 
+            margin-bottom: 25px; 
+            font-size: 18px; 
+        }
+        .post-content ul li { 
+            margin-bottom: 10px; 
+        }
+        
+        /* עיצוב קישורים בתוך הטקסט */
+        .post-content a { color: #3e7b73; text-decoration: underline; font-weight: 400; }
+        .post-content a:not(.hover-booking-link):hover { opacity: 0.7; }
+
+        /* תמונות בתוך הפוסט */
+        .post-content img {
+            width: 100%;
+            border-radius: 4px;
+            margin: 40px 0;
+            display: block;
+        }
+
+        /* תמונה ראשית מעל הכותרת - חתוכה ל-40% וממורכזת */
+        .hero-image {
+            width: 100%;
+            height: 40vh;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 4px;
+            display: block;
+            margin-bottom: 30px;
+            aspect-ratio: auto;
+        }
+
+        /* קו מפריד */
+        hr { border: 0; border-top: 1px solid #ddd; margin: 60px 0; }
+
+        /* אזור פוסטים אחרונים (Recent Posts) - 3 כרטיסיות */
+        .recent-posts-wrapper { max-width: 1000px; margin: 0 auto 40px auto; padding: 0 20px; }
+        .recent-posts-title { font-size: 24px; font-weight: 300; color: #3e7b73; margin-bottom: 30px; text-align: left; }
+        .recent-posts-grid { display: flex; gap: 30px; } 
+        
+        .recent-card {
+            flex: 1; 
+            background: #fff;
+            border: 1px solid #eee;
+            transition: transform 0.2s;
+        }
+        .recent-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .recent-card img { width: 100%; height: 200px; object-fit: cover; margin: 0; border-radius: 0; aspect-ratio: auto;}
+        .recent-card-body { padding: 20px; }
+        .recent-card h4 { font-size: 20px; font-weight: 300; color: #3e7b73; margin-bottom: 40px; }
+        
+        /* אייקונים תחתונים בכרטיסייה */
+        .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding-top: 15px; color: #999; font-size: 14px; }
+        .card-footer-left { display: flex; gap: 15px; }
+
+        /* אזור תגובות (Comments) */
+        .comments-outer-wrapper {
+            max-width: 1000px;
+            margin: 0 auto 80px auto;
+            padding: 0 20px;
+        }
+        .comments-box {
+            background: #fff;
+            border: 1px solid #c9dfdc;
+            padding: 40px;
+        }
+        .comments-header {
+            font-size: 18px;
+            color: #3e7b73;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .comments-box hr {
+            margin: 0 0 30px 0;
+            border: none;
+            border-top: 1px solid #eee;
+        }
+        .comments-input {
+            width: 100%;
+            min-height: 80px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            box-sizing: border-box;
+            font-family: 'Assistant', sans-serif;
+            font-size: 16px;
+            resize: vertical;
+            color: #555;
+            background: #fff;
+        }
+        .comments-input::placeholder {
+            color: #999;
+        }
+
+        /* העיצוב של הלינק במצב הרגיל (לפני שעולים עליו) */
+        a.hover-booking-link {
+            color: #437a71 !important; /* צבע הלינק הרגיל */
+            text-decoration: none !important; /* הפקודה הזו מעיפה את הקו התחתון שראינו בתמונה */
+            font-weight: 600 !important;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* מעבר חלק */
+        }
+        
+        /* ה-B של בוקינג - מוסתרת לחלוטין במצב רגיל */
+        .booking-b {
+            display: none; /* מעלים את ה-B */
+            font-weight: 900;
+            margin-left: 5px; /* רווח קטן בין ה-B לשם המלון */
+        }
+        
+        /* מה קורה כשעולים עם העכבר - רקע כחול של בוקינג וטקסט לבן */
+        .hover-booking-link:hover {
+            background-color: #003580; /* הכחול החי והבולט של הכפתורים בבוקינג */
+            color: #ffffff !important;
+        }
+        
+        /* כשעולים עם העכבר - ה-B מופיעה */
+        .hover-booking-link:hover .booking-b {
+            display: inline-block; /* הפקודה שגורמת ל-B לצוץ */
+            color: #ffffff;
+        }
+
+        /* רספונסיביות לטלפון */
+        @media (max-width: 768px) {
+            /* השארת הלוגו ממורכז למעלה והסתרת התפריט הרגיל */
+            header { padding: 15px; text-align: center; display: block; }
+            nav.desktop-nav { display: none; } /* מעלים את רשימת הקישורים בטלפון */
+            #menu-placeholder {position: static; }/* הפקודה הזו מבטלת את הדביקות בנייד */
+    
+    /* כפתור ההמבורגר הצף */
+    .floating-menu-btn {
+        display: none; 
+        position: fixed;
+        bottom: 30px;
+        right: 20px; 
+        width: 55px;
+        height: 55px;
+        background-color: #3e7b73;
+        color: #fff;
+        border-radius: 50%;
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        font-size: 26px;
+        cursor: pointer;
+        z-index: 999;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        transition: transform 0.2s;
+    }
+    .floating-menu-btn:active { transform: scale(0.95); }
+
+    /* תפריט הצד המחליק */
+    .side-menu {
+        display: block; 
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 260px;
+        height: 100vh; 
+        height: 100dvh; 
+        overflow-y: auto;
+        overscroll-behavior: contain; 
+        background-color: #fff;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 1001; 
+        transition: right 0.3s ease;
+        padding-top: 60px;
+        padding-bottom: 50px; 
+    }
+
+    /* כרית אוויר שקופה בתחתית הרשימה לספארי */
+    .side-menu ul::after {
+        content: "";
+        display: block;
+        height: 54px; 
+        width: 100%;
+    }
+    .side-menu.open { right: 0; }
+    
+    .side-menu ul { list-style: none; padding: 0; margin: 0; }
+    .side-menu ul li { border-bottom: 1px solid #f5f5f5; }
+    .side-menu ul li a {
+        color: #3e7b73;
+        font-size: 18px;
+        font-weight: 600;
+        display: block;
+        padding: 15px 25px;
+    }
+    .side-menu-close {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        font-size: 35px;
+        color: #333;
+        cursor: pointer;
+        line-height: 1;
+    }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: 15px; margin-top: 15px; }
+            
+            .post-container { margin: 0; padding: 40px 20px; border-radius: 0; }
+            .post-title { font-size: 32px; }
+            .post-content p { font-size: 17px; }
+            
+            .recent-posts-grid { flex-direction: column; }
+            .comments-outer-wrapper { padding: 0; margin-top: 40px; }
+            .comments-box { border-left: none; border-right: none; padding: 20px;}
+            
+            .hero-image { height: 30vh; }
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D038KR7FQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4D038KR7FQ');
+</script>
+</head>
+<body>
+
+    <div id="menu-placeholder"></div>
+
+    <main class="post-container">
+        
+        <img src="images/fuji.jpg" alt="פוג'י תמונה ראשית" class="hero-image">
+
+        <h1 class="post-title">פוג'י</h1>
+        
+        <div class="post-content">
+            
+            <p>פוג׳י הוא אחד הסמלים המפורסמים של יפן, הר בודד שעובר את ה-3000 מטרים וההייפ לגביו מוצדק לחלוטין, לא משנה מאיפה ומאיזו זווית תראו אותו הוא פשוט מרשים.</p>
+            
+            <hr style="margin: 30px 0;">
+
+            <h3>לאיפה נוסעים כשהולכים לפוג׳י?</h3>
+            <p>רוב האנשים כשהם נוסעים לפוג׳י הם נוסעים או להאקונה, שזו עיירת אונסנים, או לקאווגוציקו, האגם המרכזי מבין חמשת האגמים שמסביב לפוג׳י.<br>
+            אנחנו במקור תכננו לנסוע לימנקאקו, האגם הגדול מבין חמשת האגמים, אבל בגלל שהראות על פוג׳י לא הייתה טובה ברוב השהות שלנו החלטנו להחליף לעיירה המרכזית, קאווגוציקו.</p>
+
+            <h3>טיול יום או עם כמה לילות?</h3>
+            <p>את פוג׳י אפשר לעשות כטיול יום מטוקיו, כך תוכלו להסתכל מספר ימים מראש מתי הראות הטובה ביותר ולנסוע בצורה יותר ספונטנית, כן צריך לוודא שיש אוטובוסים בשעות נוחות בתאריך הזה (הלוך בוקר חזור ערב) כי כשיש ראות טובה הכרטיסים נגמרים ומהר.<br>
+            אנחנו תכננו מראש את הזמן שלנו בפוג׳י ועשינו שם שני לילות, ביומיים הראשונים הייתה ראות גרועה אבל ביום האחרון הייתה ראות מצויינת וזה סיפק אותנו, אז אם אתם מחליטים לתכנן את הלינה באזור מראש אז אנחנו ממליצים להישאר שני לילות ובכך להעלות את הסיכויים שלכם לראות טובה.</p>
+
+            <h3>איך יודעים אם יש ראות טובה?</h3>
+            <p>דרך אתר <a href="https://fuji-san.info/en/" target="_blank">SeeMtFuji</a> מסתכלים מה הראות של פוג׳י בזמן שאתה רוצה להגיע וזה ממש קריטי, אנחנו הסתכלנו שבוע מראש והראות הייתה טובה אבל בימים שהתקרבו הראות הדרדרה עד שביום הראשון שלנו לא ראינו כלום אז זה ממש משהו שצריך לבדוק ימים בודדים מראש או לקחת את הסיכון.</p>
+            <p>חשוב לציין שגם קאווגוציקו וגם האקונה נמצאות צפון מזרחית לפוג׳י וחשוב להסתכל על העמודה הנכונה באתר.</p>
+
+            <h3>טיפוס על הר פוג׳י</h3>
+            <p>הטיפוס אפשרי רק בחודשים יולי עד ספטמבר בתאריכים ספציפיים בגלל תנאי מזג האוויר הקשים על ההר.<br>
+            אנחנו לא הגענו בתקופה ולא טיפסנו על ההר אבל ממה ששמענו מאנשים, אם אתם טיילנים מושבעים זה יהיה אחד המסלולים הבלתי נשכחים שתעשו, ואם הגעתם להתפנק בחופשה ביפן כנראה שתהנו יותר מהנוף אל ההר מאיזה אונסן מפנק.</p>
+
+            <p>קרדיט לשליו דהן שסידר את <a href="https://docs.google.com/document/d/12I-f3dC_OKZkl7oJSB1-uV1oHKeJFYthLsTxiPFZf5g/edit" target="_blank">כל המידע שצריך לטיפוס על פוג׳י</a></p>
+
+
+            <hr style="margin: 40px 0;">
+
+            <img src="images/fuji1.jpg.avif" alt="קולאז' פוג'י" loading="lazy">
+
+            <h3>לינה</h3>
+            <p>אנחנו ישנו בעיירת kawaguchiko.</p>
+            
+            <ul>
+                <li><strong>המלון שאנחנו ישנו בו:</strong> <a href="https://www.jdoqocy.com/click-101759924-11891539?url=https%3A%2F%2Fwww.booking.com%2Fhotel%2Fjp%2Ftoyoko-inn-fuji-kawaguchiko-ohashi.he.html" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Toyoko Inn Fuji Kawaguchiko Ohashi</a><br>
+                חדר פרטי עלה 280 ש"ח וזה המחיר הכי טוב שראינו באזור לחדר פרטי וסגרנו ממש כמה ימים מראש. מגיע עם ארוחת בוקר שהיא סבבה, יש שם מכונת כביסה ומייבש בתשלום, הסעות חינם הלוך וחזור מהתחנה המרכזית (בשעות קבועות), ושמירת חפצים בחינם.</li>
+                <li><strong>מלון מומלץ:</strong> <a href="https://www.jdoqocy.com/click-101759924-11891539?url=https%3A%2F%2Fwww.booking.com%2Fhotel%2Fjp%2Frakuyu.he.html" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Rakuyu</a></li>
+                <li><strong>מלון למתפנקים(אונסן עם נוף לפוג׳י):</strong> <a href="https://www.dpbolvw.net/click-101759924-11891539?url=https%3A%2F%2Fwww.booking.com%2Fhotel%2Fjp%2Fla-vista-fujikawaguchiko.he.html" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> La Vista Fujikawaguchiko</a></li>
+            </ul>
+
+            <hr style="margin: 40px 0;">
+            
+            <h3>Fuji Q</h3>
+            <p>פארק שעשועים הכי משוגע שיש ביפן והרביעי הכי טוב בעולם, הגענו ביום שהראות על פוגי לא הייתה טובה ובגלל זה הפארק היה ריק וזה היה מטורף עלינו על הכלללל בלי תורים בכלל.<br>
+            עלה 143 ש״ח, שילמנו בכניסה.<br>
+            יש גם אופציה לקנות כרטיס לשלושה מתקנים או פשוט לשלם בכניסה לכל מתקן אם אתם רוצים משהו בקטנה.</p>
+            <p>את הכרטיסים לפארק <a href="https://affiliate.klook.com/redirect?aid=124629&aff_adid=1308886&k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F95879-fujiq-highland-admission-ticket" target="_blank" style="color: #3e7b73; text-decoration: underline; font-weight: bold;">תוכלו להזמין מראש דרך קלוק כאן</a>. 💡 <strong>טיפ קטן:</strong> הזינו את הקוד <strong>BETTERONAPP</strong> באפליקציה וקבלו 5% הנחה על ההזמנה הראשונה שלכם.</p>
+
+            <div style="background-color: #fef0f0; border-right: 4px solid #d9534f; padding: 15px; border-radius: 8px; margin-top: 15px; margin-bottom: 25px;">
+                <p style="margin-top: 0; margin-bottom: 10px; font-size: 16px; color: #d9534f;">
+                    ⚠️ <strong>אזהרה חשובה לפני שנוסעים:</strong>
+                </p>
+                <p style="margin: 0; font-size: 16px;">
+                    הכרטיס של קלוק פתוח ל-90 יום ממועד הרכישה, שזה יתרון מטורף שמאפשר לכם גמישות. אבל שימו לב: הפארק לפעמים <strong>סגור לחלוטין בימי חמישי</strong>, ויש ימים שבהם מתקנים מרכזיים (כמו רכבות ההרים הגדולות) סגורים לתחזוקה. לפני שאתם בוחרים יום לנסוע, חובה לבדוק את שעות הפעילות וסטטוס המתקנים <a href="https://www.fujiq.jp/en/schedule/" target="_blank" style="color: #d9534f; text-decoration: underline; font-weight: bold;">בעמוד לוח הזמנים באתר הרשמי של הפארק</a>, כדי לא לעשות את כל הדרך הארוכה לחינם!
+                </p>
+            </div>
+            
+            <hr style="border-top: 1px dashed #3e7b73; margin: 40px 0;">
+
+            <h3>נקודות תצפית על פוג׳י</h3>
+            <p>בתאריכים מסוימים יש פסטיבל פרחים ב- Fuji Motosuko Reasort<br>
+            אמור להיות ממש יפה אבל התור לאוטובוס לשם משוגע, אנחנו הגענו במחשבה שנעלה על האוטובוס של תשע וחצי ואמרו לנו שאולי נספיק ל-11:30 אז ויתרנו, אם אתם בוחרים להשקיע ללכת לפסטיבל פשוט תגיעו מוקדם ותיהיו מוכנים לעמוד בתור.</p>
+            
+            <p>אנחנו הלכנו במקום לשני פארקים:</p>
+            <p><strong>Oishi park</strong><br>
+            גם שם היו פרחים מהממים ולא מעט אנשים, אבל הלכנו קצת פנימה לתוך הפרחים ובסוף הגענו לשפת האגם ושם כבר היו פחות אנשים.</p>
+            <p><strong>Oike park</strong><br>
+            יותר קרוב למרכז גם נקודת תצפית חמודה.</p>
+
+            <p>לסיכום, תגיעו בזמן שיש ראות טובה ואז כל מקום שתגיעו אליו יהיה יפה ולא חייב להגיע לאיפה שכולם מגיעים כי זה מפוצץ אנשים.<br>
+            אם במקרה הגעתם ואין ראות לכו לפארק שעשועים ותהנו ממלא מתקנים משוגעים בלי תורים.</p>
+
+            <hr style="margin: 40px 0;">
+
+            <img src="images/fuji1.jpg.avif" alt="קולאז' פוג'י" loading="lazy">
+
+            <h3>האקונה: עיירת האונסנים והמסלול המעגלי</h3>
+            <p>אם קאווגוצ'יקו היא המקום לראות בו את פוג'י מול הפנים, האקונה (Hakone) היא המקום לחוות בו את יפן המסורתית: טבע משגע, אגם ענק ומעיינות חמים (אונסנים). משם אפשר לראות את פוג'י מעט יותר מרחוק ובימים עם ראות ממש טובה, אבל היתרון העצום שלה הוא שגם ביום גשום ומעונן, להסתגר באונסן חם זו חוויה מטורפת בפני עצמה.</p>
+            
+            <h4>כמה זמן מומלץ להיות שם?</h4>
+            <p>אפשר לעשות את האקונה כטיול יום עמוס מטוקיו, אבל כדי באמת לספוג את האווירה, המסלול והאטרקציות בלי לרוץ, ההמלצה היא להישאר שם לילה אחד או שניים.</p>
+            
+            <h4>דרכי ההגעה להאקונה</h4>
+            <p>למגיעים מטוקיו מתחנת Shinjuku יוצאות רכבות של חברת Odakyu שמגיעות עד ל-Hakone Yumoto. עלות הנסיעה הבסיסית כלולה ב-Hakone Freepass (האקונה פאס הכתום, שהוא הפאס המומלץ), אך אם תרצו לנסוע ברכבת ה-Romancecar המהירה והישירה, תצטרכו להוסיף תשלום קטן (כ-1,200 ין) עבור מושב שמור. אופציה נוספת היא הגעה עם השינקנסן לתחנת Odawara והחלפה לרכבת מקומית (מומלץ להיעזר בגוגל מאפס).</p>
+            
+            <p><strong>שליחת מזוודות:</strong> בתחנת Hakone Yumoto יש שירות לשליחת מזוודות ישירות למלון. מומלץ מאוד להשתמש בו אם אתם לא לנים בעיירה הזו, כדי שתוכלו להתחיל לטייל מיד כשאתם מגיעים בלי להיסחב. מומלץ להגיע לשירות לפני השעה 12:00 משום שלפעמים הם סוגרים מוקדם, והמזוודה תחכה לכם במלון כבר באותו היום.</p>
+            
+            <h4>לינה</h4>
+            <p>בגדול, יש שני אזורים מרכזיים שנוח ומומלץ להתמקם בהם:</p>
+            <ul>
+                <li><strong>Hakone-Yumoto (האקונה-יומוטו):</strong> התחנה המרכזית שאליה מגיעים מטוקיו. האזור הכי נוח מבחינת תחבורה, יש סביבו המון מסעדות, בתי קפה וחנויות, וזה אידיאלי למי שלא רוצה להיסחב עם מזוודות לתוך ההרים.</li>
+                <li><strong>Gora (גורה):</strong> האזור הכי מומלץ ללינה. כפר הררי שקט שידוע בריוקאנים המסורתיים שלו. הגישה אליו נוחה מאוד עם רכבת ההרים, וזה האזור למי שמחפש חוויה יפנית אותנטית יותר.</li>
+            </ul>
+            <p><strong>מלון מומלץ:</strong> <a href="https://www.anrdoezrs.net/click-101759924-11891539?url=https%3A%2F%2Fwww.booking.com%2Fhotel%2Fjp%2Fxiang-gen-yutowa.he.html" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Hakone Yutowa</a><br>
+            <strong>הוסטל מומלץ:</strong> <a href="https://www.dpbolvw.net/click-101759924-11891539?url=https%3A%2F%2Fwww.booking.com%2Fhotel%2Fjp%2Fhakone-tent.en.html" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Onsen Guesthouse HAKONE TENT</a></p>
+            
+            <h4>מה עושים בהאקונה?</h4>
+            <p>הדרך הכי פופולרית ונוחה לחוות את האזור היא לעשות את "המסלול המעגלי" (Hakone Loop). רוב המטיילים קונים מראש את ה-<a href="https://affiliate.klook.com/sl/HnmxhQ6" target="_blank" rel="noopener noreferrer">Hakone Freepass</a>, כרטיס שחוסך התעסקות וכסף וכולל נסיעה חופשית בכל אמצעי התחבורה של המסלול: רכבת הרים, רכבלים, אוטובוסים וספינה.</p>
+            
+            <p><strong>האטרקציות המרכזיות שאסור לפספס באזור:</strong></p>
+            <ul>
+                <li><strong>המוזיאון הפתוח של האקונה (The Hakone Open-Air Museum):</strong> המוזיאון הפתוח הראשון ביפן. מקום ענק ומרתק שמשלב פיסול ואמנות מודרנית יחד עם נוף פתוח ויפהפה של ההרים מסביב.</li>
+                <li><strong>עמק אואקודאני (Owakudani):</strong> עמק געשי פעיל שמגיעים אליו עם הרכבל (חלק מהמסלול המעגלי). האטרקציה המרכזית פה היא הביצים השחורות – ביצים שמתבשלות בתוך המעיינות הוולקניים הרותחים.</li>
+                <li><strong>מקדש האקונה ושער הטורי במים:</strong> שער הטורי האדום והענק שניצב בתוך המים של אגם אשי (Lake Ashi). זה מקדש יפהפה שמוקף בטבע, וקרוב אליו תוכלו גם לעלות על "ספינת הפיראטים" ששטה סביב האגם. קחו בחשבון שיש תור לתמונה עם השער, אלא אם תשקימו קום ותגיעו לשם עם הזריחה.</li>
+                <li><strong>מוזיאון האמנות של נארוקאווה (Narukawa Art Museum):</strong> חובבי אמנות יפנית יעופו על המקום הזה, שכולל גם בית קפה שמציע נוף פנורמי מדהים לאגם ולשער הטוריי.</li>
+            </ul>
+            
+            <h4>נקודות תצפית על פוג׳י</h4>
+            <p>הסיכויים הכי גבוהים לראות את פוג׳י הם בבוקר עד 11:30, אבל כמובן שזה לא מובטח ויכול להיות שתופתעו לטובה דווקא בצהריים.</p>
+            <ul>
+                <li><strong>עמק אואקודאני (Owakudani Valley) -</strong> המקום הכי טוב לתצפית על פוג׳י בהאקונה (חלק מהמסלול המעגלי הקלאסי).</li>
+                <li><strong>אגם אשי (Lake Ashi) -</strong> מומלץ לקחת את "ספינת הפיראטים" (Hakone Sightseeing Cruise) או לתצפת מרציף Moto-Hakone (חלק מהמסלול המעגלי).</li>
+                <li><strong>אונסן של Hotel Green Plaza Hakone -</strong> המלון ממוקם במרחק של כ-3 דקות הליכה בלבד מתחנת Ubako של הרכבל (חלק מהמסלול המעגלי). יש לבדוק באתר <a href="https://en-1075.site-translation.com/hakone/spa/" target="_blank" rel="noopener noreferrer">שעות פעילות ומחירים למבקרי יום</a>. חשוב: אין כניסה לאונסן עם קעקועים חשופים, אך ניתן לרכוש במקום מדבקות מיוחדות לכיסוי. מקבלים מגבת במקום.</li>
+                <li><strong>הר אשיגרה (Mount Ashigara) -</strong> ידוע גם כהר קינטוקי. מסלול הליכה שלוקח בין שעתיים לשלוש ברמת קושי בינונית-קשה. נקודת ההתחלה היא במקדש קינטוקי, ותחנת האוטובוס הקרובה (Sengoku) נמצאת במרחק 20 דקות הליכה. מסלול הרבה פחות מתוייר מהמסלול המעגלי. הטיפוס לפסגה עשוי להיות מאתגר ומומלץ להשתמש במקלות הליכה (במיוחד לחסרי ניסיון), מכיוון שהמסלול כולל מדרגות ושטח סלעי עם טיפוס של כ-500 מטרים בגובה.</li>
+            </ul>
+
+
+        </div>
+    </main>
+
+    <section class="recent-posts-wrapper">
+        <h2 class="recent-posts-title">Recent Posts</h2>
+        <div class="recent-posts-grid">
+            
+            <a href="mat-kiso-kam" class="recent-card">
+                <img src="images/mat.webp" alt="מצומטו עמק הקיסו וקמיקוצ'י">
+                <div class="recent-card-body">
+                    <h4>מצומטו עמק הקיסו וקמיקוצ'י</h4>
+                    <div class="card-footer">
+                        <div class="card-footer-left"></div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="nikko" class="recent-card">
+                <img src="images/niko.JPG" alt="ניקו - טבע יפני שעתיים מטוקיו">
+                <div class="recent-card-body">
+                    <h4>ניקו - טבע יפני שעתיים מטוקיו</h4>
+                    <div class="card-footer">
+                        <div class="card-footer-left"></div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="tokyo" class="recent-card">
+                <img src="images/tokyo.JPG" alt="טוקיו- מידע כללי">
+                <div class="recent-card-body">
+                    <h4>טוקיו- מידע כללי</h4>
+                    <div class="card-footer">
+                        <div class="card-footer-left"></div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <div style="max-width: 800px; margin: 50px auto; padding: 0 20px;">
+        <p id="disqus-loader" style="text-align: center; font-size: 20px; color: #3e7b73; margin-bottom: 30px;">טוען תגובות... ⏳</p>
+        <div id="disqus_thread"></div>
+        <script>
+            var disqus_config = function () {
+                // יצירת הלינק הנקי (בלי פרמטרים של פייסבוק/גוגל)
+                var cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                
+                // הגדרת הלינק הקנוני והמזהה הייחודי עבור דיסקאס
+                this.page.url = cleanUrl; 
+                this.page.identifier = window.location.pathname; 
+
+                // הסתרת טקסט הטעינה כשהתגובות מוכנות
+                this.callbacks.onReady = [function() {
+                    document.getElementById('disqus-loader').style.display = 'none';
+                }];
+            };
+            
+            (function() { 
+                var d = document, s = d.createElement('script');
+                s.src = 'https://israeli-at-japan.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    <script src="menu.js"></script>
+
+
+</body>
+</html>
