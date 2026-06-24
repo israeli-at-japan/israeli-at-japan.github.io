@@ -186,6 +186,71 @@
             color: #ffffff;
         }
 
+        /* עיצוב כפתור המידע (i) */
+        .info-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background-color: #437a71;
+            color: white;
+            border: none;
+            font-size: 14px;
+            font-family: serif;
+            font-style: italic;
+            cursor: pointer;
+            margin: 0 6px;
+            vertical-align: middle;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+        .info-btn:hover {
+            background-color: #2e5750;
+            transform: scale(1.1);
+        }
+        
+        /* עיצוב הרקע הכהה של החלון הקופץ */
+        .modal-overlay {
+            display: none; /* מוסתר בהתחלה */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-overlay.show {
+            display: flex; /* מציג את החלון כשיש לו את הקלאס show */
+        }
+        
+        /* עיצוב התמונה שבתוך החלון */
+        .modal-image {
+            max-width: 95%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+        }
+        
+        /* עיצוב כפתור הסגירה (X) */
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 45px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+        .close-modal:hover {
+            color: #437a71;
+        }
+
         /* רספונסיביות לטלפון */
         @media (max-width: 768px) {
             /* השארת הלוגו ממורכז למעלה והסתרת התפריט הרגיל */
@@ -405,7 +470,10 @@
                 <li><strong>עמק אואקודאני (Owakudani Valley) -</strong> המקום הכי טוב לתצפית על פוג׳י בהאקונה (חלק מהמסלול המעגלי הקלאסי).</li>
                 <li><strong>אגם אשי (Lake Ashi) -</strong> מומלץ לקחת את "ספינת הפיראטים" (Hakone Sightseeing Cruise) או לתצפת מרציף Moto-Hakone (חלק מהמסלול המעגלי).</li>
                 <li><strong>אונסן של Hotel Green Plaza Hakone -</strong> המלון ממוקם במרחק של כ-3 דקות הליכה בלבד מתחנת Ubako של הרכבל (חלק מהמסלול המעגלי). יש לבדוק באתר <a href="https://en-1075.site-translation.com/hakone/spa/" target="_blank" rel="noopener noreferrer">שעות פעילות ומחירים למבקרי יום</a>. חשוב: אין כניסה לאונסן עם קעקועים חשופים, אך ניתן לרכוש במקום מדבקות מיוחדות לכיסוי. מקבלים מגבת במקום.</li>
-                <li><strong>הר אשיגרה (Mount Ashigara) -</strong> ידוע גם כהר קינטוקי. מסלול הליכה שלוקח בין שעתיים לשלוש ברמת קושי בינונית-קשה. נקודת ההתחלה היא במקדש קינטוקי, ותחנת האוטובוס הקרובה (Sengoku) נמצאת במרחק 20 דקות הליכה. מסלול הרבה פחות מתוייר מהמסלול המעגלי. הטיפוס לפסגה עשוי להיות מאתגר ומומלץ להשתמש במקלות הליכה (במיוחד לחסרי ניסיון), מכיוון שהמסלול כולל מדרגות ושטח סלעי עם טיפוס של כ-500 מטרים בגובה.</li>
+                <li><strong>הר אשיגרה (Mount Ashigara) -</strong> ידוע גם כהר קינטוקי. 
+                    <button class="info-btn" onclick="openMapModal()" title="לחצו לצפייה במפת המסלול">i</button>
+                    מסלול הליכה שלוקח בין שעתיים לשלוש ברמת קושי בינונית-קשה. נקודת ההתחלה היא במקדש קינטוקי, ותחנת האוטובוס הקרובה (Sengoku) נמצאת במרחק 20 דקות הליכה. מסלול הרבה פחות מתוייר מהמסלול המעגלי. הטיפוס לפסגה עשוי להיות מאתגר ומומלץ להשתמש במקלות הליכה (במיוחד לחסרי ניסיון), מכיוון שהמסלול כולל מדרגות ושטח סלעי עם טיפוס של כ-500 מטרים בגובה.
+                </li>
             </ul>
 
 
@@ -478,6 +546,27 @@
     </div>
 
     <script src="menu.js"></script>
+
+    <div id="mapModal" class="modal-overlay" onclick="closeMapModal(event)">
+        <span class="close-modal" onclick="closeMapModal(event)">&times;</span>
+        <img src="images/kintoki-map.jpg" alt="מפת מסלול הר קינטוקי" class="modal-image">
+    </div>
+    
+    <script>
+        // פונקציות לפתיחה וסגירה של המפה
+        function openMapModal() {
+            document.getElementById('mapModal').classList.add('show');
+            document.body.style.overflow = 'hidden'; // מונע מהעמוד מאחורה להיגלל
+        }
+    
+        function closeMapModal(event) {
+            // מוודא שהסגירה קורית רק אם לחצו על הרקע או על ה-X, ולא על התמונה עצמה
+            if (event.target.id === 'mapModal' || event.target.classList.contains('close-modal')) {
+                document.getElementById('mapModal').classList.remove('show');
+                document.body.style.overflow = 'auto'; // מחזיר את הגלילה לעמוד
+            }
+        }
+    </script>
 
 
 </body>
