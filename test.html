@@ -229,8 +229,9 @@
         
         /* עיצוב התמונה שבתוך החלון */
         .modal-image {
-            max-width: 95%;
-            max-height: 90vh;
+            max-width: 700px; /* מגביל את הגודל במחשב שלא יהיה תוקפני מדי */
+            width: 90%; /* מבטיח שבטלפון זה עדיין ייראה טוב וישב בתוך המסך */
+            max-height: 85vh;
             border-radius: 8px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.5);
         }
