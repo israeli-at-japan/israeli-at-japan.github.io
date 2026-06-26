@@ -312,7 +312,7 @@
         // 1. "השכמה שקטה" - מעירים את השרת ברגע שהעמוד נטען!
         // זה קורה ברקע ולא מפריע לגולש, ונותן לשרת זמן להתעורר
         window.addEventListener('DOMContentLoaded', () => {
-            fetch('https://japan-ai-backend-mfjd.onrender.com/')
+            fetch('https://japan-ai-prod.onrender.com')
                 .then(() => console.log('Server is awake!'))
                 .catch(() => console.log('Wake up ping sent.'));
             // --- הקוד החדש: החלפת אימוג'י למשתמשי ווינדוס ---
@@ -380,7 +380,7 @@
             while (attempts < maxAttempts && !success) {
                 try {
                     attempts++;
-                    const response = await fetch('https://japan-ai-backend-mfjd.onrender.com/ask', {
+                    const response = await fetch('https://japan-ai-prod.onrender.com/ask', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -457,7 +457,7 @@
                 formattedAnswer = formattedAnswer.replace(/(?:\s|^)([-*])\s/g, '<br>• ');
                 formattedAnswer = formattedAnswer.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
                 formattedAnswer = formattedAnswer.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color: #3e7b73; font-weight: bold; text-decoration: underline;">$1</a>');
-                formattedAnswer = formattedAnswer.replace(/(?<!href=")(https:\/\/[^\s<]+)/g, function(url) {
+                formattedAnswer = formattedAnswer.replace(/(?<!href=")(:\/\/[^\s<]+)/g, function(url) {
                     let cleanUrl = url.replace(/[.,)]$/, ''); 
                     let title = "לכתבה המלאה לחץ כאן";
                     
