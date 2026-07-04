@@ -192,6 +192,59 @@ body.no-scroll {
             color: #ffffff;
         }
 
+        .summer-tips-accordion {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        
+        .accordion-btn {
+            width: 100%;
+            background: none;
+            color: #3e7b73;
+            cursor: pointer;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: none;
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+        
+        .accordion-btn:hover {
+            background-color: #f1f1f1;
+            border-radius: 8px;
+        }
+        
+        .accordion-btn .icon {
+            font-size: 20px;
+            font-weight: normal;
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background-color: white;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .accordion-content ul {
+            padding: 15px 40px 15px 20px;
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .accordion-content li {
+            margin-bottom: 12px;
+        }
+
         /* רספונסיביות לטלפון */
         @media (max-width: 768px) {
             /* השארת הלוגו ממורכז למעלה והסתרת התפריט הרגיל */
@@ -340,6 +393,55 @@ body.no-scroll {
             <p><strong>- האגם -</strong> כשמגיעים מתחנת האוטובוס לאגם הוא לא נראה כזה מרשים אז אל תעצרו בעצירה הראשונה תמשיכו ללכת בהמשך יש הרבה מקומות לשבת עם תצפית מקסימה על האגם.</p>
 
             <p><strong>- מסעדה Aizuya Shokudo 会津屋食堂 -</strong> אנחנו ממליצים על הסובה פטריות maitake היא הייתה אחת הסובות הטובות שאכלנו!</p>
+
+            <p>אומנם אנחנו בחרנו בטיפוס הקשוח על הר ננטאי, אבל אזור האגם מציע עוד כמה מסלולים מעולים שאספנו עליהם המלצות חמות:</p>
+
+            <!-- מסלול 1: הר שיראנה -->
+            <div class="summer-tips-accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>הר שיראנה (Nikko Shiranesan) | קשה - קשה מאוד | 4.5-9 שעות</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <ul>
+                        <li>זו הפסגה הגבוהה ביותר באזור קאנטו (2,578 מטר). המסלול עביר רק בחודשים החמים (לרוב יוני עד אוקטובר, בשאר השנה סגור בגלל שלג).</li>
+                        <li>יש לכם שתי אופציות עיקריות לעשות אותו, ובשתיהן מומלץ לעבור בדרך חזרה דרך נקודות התצפית על אגם Goshikinuma,  שזוהר בגווני כחול-ירוק והוא ללא ספק אחת מנקודות השיא של ההר.</li>
+                        <li><strong>דרך הרכבל (Nikko-Shirane Ropeway Sanroku Station):</strong> האופציה הקצרה יותר (מסלול מעגלי של כ-4.5 שעות). הלוגיסטיקה פה קצת טריקית: ההגעה לרכבל מניקו דורשת החלפת אוטובוסים. בעוד שהאוטובוס הראשון כלול ב-Nikko Pass, האוטובוס השני (לאחר ההחלפה) <strong>לא כלול</strong> בפאס וידרוש תשלום נפרד. בנוסף, זמני האוטובוסים חזרה נדירים מאוד ומסתיימים מוקדם, אז חובה לתכנן את לוח הזמנים שלכם בקפידה כדי לא להיתקע.</li>
+                        <li><strong>דרך יומוטו אונסן (Yumoto Onsen):</strong> זו עיירת מעיינות חמים שיש בה גם אפשרויות לינה. ההגעה לנקודת ההתחלה הזו כן כלולה במלואה בפאס (ואין צורך בהחלפות), אבל מכאן מדובר במסלול מעגלי קשוח וארוך של כ-9 שעות (12 ק"מ) שמיועד למיטיבי לכת בלבד.</li>
+                        <li><strong>שורה תחתונה:</strong> מסלול מדהים עם נוף עוצר נשימה לאגם, אבל דורש תכנון לוגיסטי קפדני מראש.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- מסלול 2: רמת סנג'וגהארה -->
+            <div class="summer-tips-accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>מסלול המפלים (Senjogahara Marshland) | קל | 2.5-3 שעות</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <ul>
+                        <li>הליכה נינוחה על גבי שבילי עץ מוגבהים בתוך ביצת כבול אלפינית עצומה.</li>
+                        <li>המסלול כמעט שטוח לחלוטין, מתחיל ממפלי ריוזו (Ryuzu Falls) ומסתיים במפלי יודאקי (Yudaki Falls), או להפך.</li>
+                        <li>קל מאוד להגיע לנקודות ההתחלה והסיום עם האוטובוסים של Tobu שעוברים באזור.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- מסלול 3: הר האנגטסו -->
+            <div class="summer-tips-accordion">
+                <button class="accordion-btn" onclick="toggleAccordion(this)">
+                    <span>הר האנגטסו (Hangetsuyama) | בינוני | 1-1.5 שעות</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <ul>
+                        <li>במקום להתחיל את המסלול מלמטה באזור האגם, רוב המטיילים מגיעים עם אוטובוס או רכב עד לחניון Hangetsuyama (שפעיל בעונות שאין בהן שלג), ומשם נשאר לטפס רק 30-45 דקות לכיוון עד למרפסת התצפית.</li>
+                        <li>הטיפוס אומנם קצר, אבל די תלול. </li>
+                        <li>מהתצפית מקבלים את הנוף הכי אייקוני שיש לאגם צ'וזנג'י כשפסגת הר ננטאי מתנוססת מעליו בשלמותה. שווה את המאמץ!</li>
+                    </ul>
+                </div>
+            </div>
 
             <hr style="border-top: 1px dashed #3e7b73; margin: 40px 0;">
 
