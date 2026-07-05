@@ -3,17 +3,17 @@ html {
     scroll-behavior: smooth;
 }
 
-/* מוסיף מרווח נשימה בחלק העליון רק במסכי מחשב (מעל 768px) כדי שהתפריט לא יסתיר את הכותרת */
+/* מוסיף מרווח נשימה בחלק העליון רק במסכי מחשב כדי שהתפריט העליון לא יסתיר את הכותרת */
 @media (min-width: 768px) {
     html {
-        scroll-padding-top: 100px; /* שנה את המספר הזה לפי הגובה האמיתי של התפריט העליון שלך */
+        scroll-padding-top: 100px;
     }
 }
 
 /* הקופסה הראשית של תפריט הניווט */
 .jump-to-box {
-    background-color: #fbf8f6; /* רקע שמנת רך ולא לבן בוהק */
-    border-right: 4px solid #1a5fb4; /* פס הדגשה כחול ויפה בצד ימין (מתאים ל-RTL) */
+    background-color: #f8f9fa; /* אפור בהיר ומינימליסטי מאוד */
+    border-right: 4px solid #3e7b73; /* טורקיז האתר הרשמי */
     border-radius: 6px;
     padding: 20px;
     margin: 30px 0;
@@ -30,8 +30,8 @@ html {
 
 /* רשימת הקישורים */
 .jump-to-list {
-    list-style-type: none; /* מוריד את הבולטים הברירת-מחדל */
-    padding-right: 5px; /* מרווח ימני קל בגלל שאין בולטים */
+    list-style-type: none !important; /* מעלים את הנקודות השחורות בוודאות */
+    padding-right: 0; /* מיישר את הטקסט לימין בלי מרווח מיותר */
     margin: 0;
 }
 
@@ -41,12 +41,12 @@ html {
 }
 
 .jump-to-list li:last-child {
-    margin-bottom: 0; /* מוריד מרווח מיותר לפריט האחרון */
+    margin-bottom: 0;
 }
 
 /* עיצוב הקישורים עצמם */
 .jump-to-list a {
-    color: #b23b22; /* גוון אדום-אדמה עדין לקישורים */
+    color: #444; /* אפור כהה ואלגנטי */
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s ease;
@@ -54,6 +54,6 @@ html {
 
 /* אפקט מעבר עכבר */
 .jump-to-list a:hover {
-    color: #8a2f1b;
-    text-decoration: underline; /* קו תחתי עדין רק בריחוף */
+    color: #3e7b73; /* מחליף לטורקיז בריחוף */
+    text-decoration: underline; /* קו תחתי עדין לבולטות */
 }
