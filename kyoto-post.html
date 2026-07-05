@@ -8,6 +8,7 @@
     <link rel="canonical" href="https://israeli-in-japan.com/kyoto-post" />
     <meta name="description" content="המדריך המלא לקיוטו: 3 ימי טיול מושלמים בעיר המסורתית של יפן. איפה כדאי לישון, התניידות, מקדשים, אטרקציות חובה המלצות אוכל ועוד.">
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/cssfiles/jumpto.css">
     <style>
         /* איפוס והגדרות בסיס */
         body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
@@ -17,27 +18,27 @@
 
         /* תפריט עליון */
         /* תפריט עליון - דביק למחשב */
-header { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 20px 50px; 
-    background: #fff; 
-    border-bottom: 1px solid #eee; 
-    position: sticky; 
-    top: 0; 
-    z-index: 1000; 
-}
-
- #menu-placeholder {position: sticky; top: 0; z-index: 1000;}
-
-/* הסתרת תפריט הצד והכפתור במסכים גדולים */
-.side-menu, .floating-menu-btn { display: none; }
-
-/* הקפאת גלילה פשוטה וקונסיסטנטית למובייל */
-body.no-scroll {
-    overflow: hidden;
-}
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 50px; 
+            background: #fff; 
+            border-bottom: 1px solid #eee; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+        
+         #menu-placeholder {position: sticky; top: 0; z-index: 1000;}
+        
+        /* הסתרת תפריט הצד והכפתור במסכים גדולים */
+        .side-menu, .floating-menu-btn { display: none; }
+        
+        /* הקפאת גלילה פשוטה וקונסיסטנטית למובייל */
+        body.no-scroll {
+            overflow: hidden;
+        }
         .logo { font-size: 24px; font-weight: 600; color: #3e7b73; }
         nav ul { display: flex; list-style: none; gap: 20px; font-size: 17px; font-weight: 600; }
         nav ul li:hover { opacity: 0.7; cursor: pointer; }
@@ -261,9 +262,20 @@ body.no-scroll {
             
             <p>קיוטו היא אחת הערים היפות ביפן עם היסטוריה עשירה ומקדשים מרשימים. עם כל הטוב הזה מגיעים המוני תיירים, וכיום קיוטו סובלת מתיירות יתר במיוחד בסתיו ובאביב אז תתכוננו לעמוד בתורים ולהיות מוקפים בהמונים. למי שממש לא יכול לסבול את המון האנשים מומלץ להשקים ולהתחיל את היום בחמש בבוקר. אנחנו וויתרנו על התענוג והצלחנו להינות גם מהאתרים המרכזיים העמוסים.</p>
             
+            <div class="jump-to-box">
+                <div class="jump-to-title">ניווט מהיר בפוסט:</div>
+                <ul class="jump-to-list">
+                    <li><a href="#hotels">מלונות ואזורי לינה מומלצים בקיוטו</a></li>
+                    <li><a href="#transportation">התניידות בקיוטו</a></li>
+                    <li><a href="#itinerary">תכנון 3 ימים בקיוטו</a></li>
+                    <li><a href="#attractions">אטרקציות מרכזיות</a></li>
+                    <li><a href="#food-map">אוכל ומפת נקודות</a></li>
+                </ul>
+            </div>
+            
             <hr style="margin: 30px 0;">
 
-            <h3>לינה</h3>
+            <h3 id="hotels">מלונות ואזורי לינה מומלצים</h3>
             <p>האזור המרכזי הוא ליד רחוב פונטצ׳ו (Pontocho Alley) או אזור Gion.<br>
             אנחנו ישנו יחסית רחוק מהמרכז, 10 דקות הליכה דרומית לתחנה המרכזית של קיוטו, וזה חייב אותנו לקחת תחב"צ יחסית הרבה, אבל גם חשוב לציין שרוב האזורים בקיוטו הם בכל מקרה מרחק נסיעה אז רוב הימים עצמם גם ככה מתחילים בנסיעה לאזור עצמו.</p>
             
@@ -278,11 +290,11 @@ body.no-scroll {
                 <li><a href="https://www.tkqlhce.com/click-101759924-11891539?url=https%3A%2F%2Fwww.booking.com%2Fhotel%2Fjp%2Fmiru-kyoto-gion.he.html" target="_blank" rel="noopener noreferrer" class="hover-booking-link"><span class="booking-b">Booking.com</span> Miru Kyoto Gion</a></li>
             </ul>
 
-            <h3>התניידות</h3>
+            <h3 id="transportation">התניידות</h3>
             <p>בקיוטו לעומת טוקיו ואוסקה אין מטרו מפואר ויש שם רק שני קווי מטרו כך שמרבית התחב"צ היא באוטובוסים, כל נסיעה תעלה לכם 230 יין, שזה יקר משמעותית לעומת המטרו.<br>
             אבל אל דאגה היפנים דאגו לנו לדיל משתלם, נסיעות ללא הגבלה ליום שלם ב-1100 יין, תנסו להבין על כמה קווי אוטובוס אתם עומדים לעלות ותקנו את הכרטיס במלון שלכם אם תחליטו שזה משתלם לכם.</p>
 
-            <hr style="margin: 30px 0;">
+            <hr style="margin: 30px 0;" id="itinerary">
 
             <p>את קיוטו עצמה חילקנו לכם לשלושה ימי טיול, אנחנו עשינו ארבעה וביום האחרון כבר קצת נמרחנו, בעיקרון יש איך למלא ארבעה ימים, במיוחד אם עושים טקס תה או סדנאת אוריגאמי.</p>
 
@@ -338,7 +350,7 @@ body.no-scroll {
 
             <hr>
 
-            <h3>אטרקציות חובה בקיוטו</h3>
+            <h3 id="attractions">אטרקציות חובה בקיוטו</h3>
             <p><strong>טקס תה מסורתי</strong>- <a href="https://mai-ko.com/tour/tea-ceremony-and-kimono-experience-kyoto/" target="_blank" style="color: #3e7b73; font-weight: bold; text-decoration: underline;">maikoya tea ceremony</a>, יש גם אופציה לעשות את הטקס בקימונו שזו חוויה בפני עצמה, צריך להזמין לפחות 10 ימים מראש!!! אנחנו ניסינו להזמין שבוע מראש וכבר לא היה מקום ולכן לא עשינו. חברה שלנו הספיקה וממש המליצה.</p>
             <p><strong>סיור לילה בגיון</strong>- סיור גיישות עם מדריך על בסיס טיפים, התמזל מזלינו וראינו באזור ה30+ גיישות וזה היה מטורף לגמרי! ממש ממש ממש ממליצים אחד הערבים הכי טובים שלנו ביפן!<br>
             <a href="https://www.guruwalk.com/kyoto" target="_blank">https://www.guruwalk.com/kyoto</a></p>
@@ -347,7 +359,7 @@ body.no-scroll {
 
             <hr>
 
-            <h3>אוכל</h3>
+            <h3 id="food-map">אוכל</h3>
             <p>
                 <strong>Hikiniku to come</strong> - המבורגר מעולה מסעדה חוויה ומעוצבת יפה בטירוף וגם לא יקרה. 1800 יין לשלוש קציצות עם אורז בלי הגבלה, מרק מיסו ומלא אופציות תיבול. הקאץ׳ שצריך להגיע למסעדה מתשע בבוקר כדי להזמין מקום לערב/צהריים, אנחנו הגענו ב9:40 ובערב היה מקום רק ל-18:30 אז תגיעו ב-9:00!<br><br>
                 <strong>Wagyu Hokusai 肉重 北斎</strong> - המסעדה הזאת הפכה למסעדת הבית שלנו, קופסאות בשר טעימות ואפשר לבקש מנת אורז גדולה בלי תוספת תשלום.<br><br>
