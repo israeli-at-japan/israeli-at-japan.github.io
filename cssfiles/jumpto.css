@@ -10,6 +10,12 @@ html {
     }
 }
 
+/* מוודא שהתמונות שומרות על פרופורציה ולא נמרחות */
+img {
+    max-width: 100%;
+    height: auto !important;
+}
+
 /* הקופסה הראשית של תפריט הניווט */
 .jump-to-box {
     background-color: #f8f9fa;
