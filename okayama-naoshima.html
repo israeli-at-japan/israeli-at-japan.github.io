@@ -106,9 +106,22 @@ body.no-scroll {
             background: #fff;
             border: 1px solid #eee;
             transition: transform 0.2s;
+            /* תוספות קריטיות לייצוב הכרטיסייה: */
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            text-decoration: none; /* מניעת קו תחתון של קישור */
         }
         .recent-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .recent-card img { width: 100%; height: 250px; object-fit: cover; }
+        
+        .recent-card img { 
+            width: 100%; 
+            /* שימוש ב-important כדי לדרוס הגדרות גלובליות קיימות */
+            height: 250px !important; 
+            object-fit: cover !important; 
+            display: block; /* מונע רווח תחתון מעצבן מתחת לתמונה */
+        }
+        
         .recent-card-body { padding: 30px; }
         .recent-card h4 { font-size: 24px; font-weight: 300; color: #3e7b73; margin-bottom: 60px; }
         
