@@ -375,7 +375,7 @@
 
             responseDiv.innerHTML = '';
             loadingMsg.style.display = 'block';
-            loadingMsg.innerHTML = 'המומחה שלנו מקבל את הנתונים, זה לוקח רגע...';
+            document.querySelector('#loading-msg .loading-spinner-text').innerHTML = 'המומחה שלנו מקבל את הנתונים, זה לוקח רגע...';
 
             let attempts = 0;
             const maxAttempts = 2;
@@ -432,7 +432,7 @@
                         return;
                     }
                     
-                    loadingMsg.innerHTML = 'מארגן את המידע עבורך, עוד רגע...';
+                    document.querySelector('#loading-msg .loading-spinner-text').innerHTML = 'מארגן את המידע עבורך, עוד רגע...';
                     await new Promise(resolve => setTimeout(resolve, 8000));
                 }
             }
